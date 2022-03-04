@@ -1,11 +1,15 @@
 import React from 'react';
 
+function toHomePage(){
+    window.location.href="/"
+}
+
 const Header = () => {
     return (
         <div className="header-container">
             <div className="header-content-left">
                 <div className="header-left-logo">
-                    <h1 className="header-title" href="/">MovieShelf</h1>
+                    <h1 className="header-title" onClick={toHomePage}>MovieShelf</h1>
                 </div>
                 <div className="header-left-top">
                     <a className="list-item" href="/board">Top 10</a>

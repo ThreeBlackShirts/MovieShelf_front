@@ -1,14 +1,16 @@
 html, body{
     width: 100%;
-    height: 99%;
+    height: 100vh;
     align-content: center;
+    background : url(images/background/cameraandbooks.jpg);
 }
 
 
 .login-content {
     width: 100%;
-    height: 99%;
+    height: 100%;
     align-content: center;
+    
 }
 
 /* header : title*/
@@ -22,6 +24,7 @@ html, body{
     margin: 0;
     padding-left: 20px;
     padding-top: 20px;
+    color: white;
 }
 
 /* content : login, btn, remember*/
@@ -71,16 +74,8 @@ html, body{
     vertical-align: middle;
 }
 
-.login-content-body-main-info-id input {
-    padding-left: 10px;
-}
-
 .login-content-body-main-info-pw {
     vertical-align: middle;
-}
-
-.login-content-body-main-info-pw input {
-    padding-left: 10px;
 }
 
 .login-content-body-main-info input{
@@ -88,6 +83,7 @@ html, body{
     height: 30px;
     margin: 3px;
     border-radius: 15px;
+    padding-left: 10px;
 }
 
 .login-content-body-main-btn {

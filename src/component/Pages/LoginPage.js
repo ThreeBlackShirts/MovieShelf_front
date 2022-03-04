@@ -1,10 +1,14 @@
 import React from 'react';
 import 'style/loginpage.css'
 
+function toHomePage(){
+    window.location.href="/"
+}
+
 const LoginPage = () => {
     return (
         <div className="login-content">
-            <div className="login-content-title">
+            <div className="login-content-title" onClick={toHomePage}>
                 <h1>MovieShelf</h1>
             </div>
 

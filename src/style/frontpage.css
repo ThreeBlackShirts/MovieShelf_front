@@ -1,0 +1,31 @@
+html, body{
+    width: 100%;
+    height: 100vh;
+    align-content: center;
+    background : url(images/background/cameraandbooks.jpg);
+}
+
+.front-content {
+    width: 100%;
+    height: 100%;
+    align-content: center;
+}
+
+.front-content ul{
+    list-style: none;
+}
+
+.front-title {
+    height: 90px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.front-login-btn {
+    display: inline;
+    width: 20%;
+    margin: 15px;
+    text-decoration: none;
+    color: black;
+    }
+  
