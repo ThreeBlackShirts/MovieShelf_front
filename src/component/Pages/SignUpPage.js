@@ -1,15 +1,18 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import 'style/signuppage.css'
 
+/*
 function toHomePage(){
     window.location.href="/"
 }
+*/
 
 const SignUpPage = () => {
     return (
         <div className="signup-content">
-            <div className="signup-content-title" onClick={toHomePage}>
-                <h1>MovieShelf</h1>
+            <div className="signup-content-title">
+                <Link to='/'><h1>MovieShelf</h1></Link>
             </div>
 
             <div className="signup-content-body">
@@ -44,7 +47,7 @@ const SignUpPage = () => {
 
                     <div className="signup-content-body-main-login">
                         <div className='signup-content-body-main-login-btn'>
-                            <a href='/login'>로그인</a>
+                        <Link to='/login'>LOGIN</Link>
                         </div>
                     </div>
                     

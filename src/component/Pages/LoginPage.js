@@ -1,15 +1,17 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import 'style/loginpage.css'
 
+/*
 function toHomePage(){
     window.location.href="/"
 }
-
+*/
 const LoginPage = () => {
     return (
         <div className="login-content">
-            <div className="login-content-title" onClick={toHomePage}>
-                <h1>MovieShelf</h1>
+            <div className="login-content-title">
+            <Link to='/'><h1>MovieShelf</h1></Link>
             </div>
 
             <div className="login-content-body">
@@ -50,7 +52,7 @@ const LoginPage = () => {
                             아직 나만의 책장이 없으신가요?
                         </div>
                         <div className='login-content-body-main-signup-btn'>
-                            <a href='/signup'>회원가입</a>
+                        <Link to='/signup'>SIGN UP</Link>
                         </div>
                     </div>
                     
