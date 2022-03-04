@@ -11,21 +11,39 @@ html, body{
     align-content: center;
 }
 
-.front-content ul{
-    list-style: none;
+.front-content-header {
+    width: 100%;
+    height: 90px;
+    vertical-align: middle;
 }
 
-.front-title {
-    height: 90px;
+.front-title{
+    display: inline;
+    width: 80%;
     text-align: left;
     vertical-align: middle;
 }
 
+.front-title Link{
+    font-size: 64px;
+    margin: 0;
+    padding-left: 20px;
+    padding-top: 20px;
+    color: white;
+    text-decoration-line: none;
+}
+
 .front-login-btn {
     display: inline;
-    width: 20%;
-    margin: 15px;
-    text-decoration: none;
-    color: black;
+    width: 10%;
+    text-align: right;
+    vertical-align: middle;   
     }
-  
+
+  .front-login-btn Link{
+    margin: 0;
+    padding-right: 20px;
+    padding-top: 20px;
+    color: white;
+    text-decoration-line: none;
+  }
