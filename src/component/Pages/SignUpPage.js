@@ -25,6 +25,12 @@ const SignUpPage = () => {
                         <div className="signup-content-body-main-info-id">
                             <input id="user_email" placeholder="이메일" type="email"/>
                         </div>
+                        <div className="signup-content-body-main-info-id">
+                            <input id="user_name" placeholder="성명" type="text" />
+                        </div>
+                        <div className="signup-content-body-main-info-id">
+                            <input id="user_nickname" placeholder="별명" type="text" />
+                        </div>
                         <div className="signup-content-body-main-info-pw">
                             <input id="user_password" placeholder="비밀번호" type="password"/>
                         </div>
