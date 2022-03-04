@@ -1,11 +1,12 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import './App.css';
-import HomePage from './component/Pages/HomePage';
-import LoginPage from './component/Pages/LoginPage';
-import SignUpPage from './component/Pages/SignUpPage';
-import FrontPage from './component/Pages/FrontPage';
 
+import FrontPage from './component/Pages/FrontPage';
 import { Header } from "./component/Header/Header";
+import HomePage from 'component/Pages/HomePage';
+import LoginPage from 'component/Pages/LoginPage';
+import SignUpPage from 'component/Pages/SignUpPage';
+
 
 const App = () => {
   return (
