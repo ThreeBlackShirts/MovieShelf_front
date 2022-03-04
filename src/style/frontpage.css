@@ -1,0 +1,49 @@
+html, body{
+    width: 100%;
+    height: 100vh;
+    align-content: center;
+    background : url(images/background/cameraandbooks.jpg);
+}
+
+.front-content {
+    width: 100%;
+    height: 100%;
+    align-content: center;
+}
+
+.front-content-header {
+    width: 100%;
+    height: 90px;
+    vertical-align: middle;
+}
+
+.front-title{
+    display: inline;
+    width: 80%;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.front-title Link{
+    font-size: 64px;
+    margin: 0;
+    padding-left: 20px;
+    padding-top: 20px;
+    color: white;
+    text-decoration-line: none;
+}
+
+.front-login-btn {
+    display: inline;
+    width: 10%;
+    text-align: right;
+    vertical-align: middle;   
+    }
+
+  .front-login-btn Link{
+    margin: 0;
+    padding-right: 20px;
+    padding-top: 20px;
+    color: white;
+    text-decoration-line: none;
+  }
