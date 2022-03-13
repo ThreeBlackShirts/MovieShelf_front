@@ -6,6 +6,7 @@ import { Header } from "./component/Header/Header";
 import HomePage from 'component/Pages/HomePage';
 import LoginPage from 'component/Pages/LoginPage';
 import SignUpPage from 'component/Pages/SignUpPage';
+import ListPage from 'component/Pages/ListPage';
 
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/front" element={<FrontPage />} />
+      <Route path="/list" element={<ListPage />} />
     </Routes>
   );
 };
