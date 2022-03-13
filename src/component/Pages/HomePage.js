@@ -8,7 +8,7 @@ const HomePage = () => {
     return (
         <div>
             <Header />
-            <MainContent />
+            <MainContent/>
             <Footer />
         </div>
     );

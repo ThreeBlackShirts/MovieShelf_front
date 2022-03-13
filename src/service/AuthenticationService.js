@@ -4,10 +4,10 @@ const API_URL = "/api/auth/";
 const USER_URL = "/v1";
 
 class AuthenticationService {
-  register(userName, userEmail, userPassword, userNickname) {
+  register(userEmail, userName, userPassword, userNickname) {
     return axios.post(USER_URL + "/signup", {
-      userName,
       userEmail,
+      userName,
       userPassword,
       userNickname
     });
@@ -27,13 +27,35 @@ class AuthenticationService {
   createJWTToken(token) {
     return token // 'Bearer ' + , 'X-AUTH-TOKEN'
   }
-  registerSuccessfulLoginForJwt(username, token) {
+  registerSuccessfulLoginForJwt(userEmail, token) {
     console.log("===registerSuccessfulLoginForJwt===")
     localStorage.setItem('token', token);
-    localStorage.setItem('authenticatedUser', username);
-    sessionStorage.setItem('authenticatedUser', username)
-    this.setupAxiosInterceptors(this.createJWTToken(token))
+    localStorage.setItem('authenticatedUser', userEmail);
+    // sessionStorage.setItem('authenticatedUser', userEmail)
+    // this.setupAxiosInterceptors(this.createJWTToken(token))
     this.setupAxiosInterceptors();
+  }
+  getCurrentUser() {
+    return JSON.parse(localStorage.getItem('authenticatedUser'));
+  }
+
+  isUserLoggedIn() {
+
+    //let user = sessionStorage.getItem('authenticatedUser')
+    const token = localStorage.getItem('token');
+    console.log("===UserloggedInCheck===");
+    console.log(token);
+
+    if (token) {
+      return true;
+    }
+    //if(user===null) return false
+    return false;
+  }
+  
+  logout() {
+    localStorage.removeItem("authenticatedUser");
+    localStorage.removeItem("token");
   }
 }
 

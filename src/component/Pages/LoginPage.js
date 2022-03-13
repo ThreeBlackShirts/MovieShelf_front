@@ -8,6 +8,11 @@ function toHomePage(){
     window.location.href="/"
 }
 */
+// function Login() {
+//     const navigate = useNavigate();
+// }
+
+
 class LoginPage extends Component {
 
     constructor(props) {
@@ -32,6 +37,7 @@ class LoginPage extends Component {
     }
 
     loginClicked() {
+        
         AuthenticationService
             .login(this.state.userEmail, this.state.userPassword)
             .then((response) => {
@@ -41,11 +47,29 @@ class LoginPage extends Component {
                     //X-AUTH-TOKEN으로 다른 url 이용할 때 헤더로 넣어줘야한다.
                 });
                 AuthenticationService.registerSuccessfulLoginForJwt(this.state.userEmail, this.state.token)
-                this.props.history.push(`/${this.state.userEmail}`)
-            }).catch(() => {
+                // this.props.history.push(`/${this.state.userEmail}`)
+                this.setState({ showSuccessMessage: true })
+                this.setState({ hasLoginFailed: false })
+                // document.location.href = "/";
+                // navigate("/");
+                this.props.navigation.navigate("/");
+             
+            }).catch(error => {
+                console.log(error.response)
                 this.setState({ showSuccessMessage: false })
                 this.setState({ hasLoginFailed: true })
-            })
+            }).then(() => {
+                // 항상 실행
+                console.log("final then")
+                // this.props.history.push(`/${this.state.userEmail}`)
+                document.location.href = "/";
+            });
+            
+            // .catch(() => {
+            //     this.setState({ showSuccessMessage: false })
+            //     this.setState({ hasLoginFailed: true })
+            // })
+        
     }
     render() {
         return (

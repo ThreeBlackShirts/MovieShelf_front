@@ -1,11 +1,15 @@
 import React from 'react';
 import { BiSearchAlt } from "react-icons/bi"
+import AuthenticationService from 'service/AuthenticationService';
+import { useState } from 'react';
 
 function toHomePage(){
     window.location.href="/"
 }
 
 const Header = () => {
+    const [onLogin] = useState(AuthenticationService.isUserLoggedIn);
+
     return (
         <div className="header-container">
             <div className="header-content-left">
@@ -31,9 +35,13 @@ const Header = () => {
                 <div className="header-right-setting">
                     
                 </div>
-                <div className="header-right-login-btn">
+                {onLogin && <div className="header-right-login-btn">
+                    <a className="header-right-login-btn" href="/logout">LOGOUT</a>
+                </div>}
+                {!onLogin && <div className="header-right-login-btn">
                     <a className="header-right-login-btn" href="/login">LOGIN</a>
-                </div>
+                </div>}
+                
             </div>
         </div>
     );
