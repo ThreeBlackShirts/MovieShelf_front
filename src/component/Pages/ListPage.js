@@ -6,8 +6,6 @@ import 'style/header.css';
 import 'style/listpage.css';
 import { BiSearchAlt } from "react-icons/bi"
 
-import { BiSearchAlt } from "react-icons/bi"
-
 const ListPage = () => {
     return (
         <div>
