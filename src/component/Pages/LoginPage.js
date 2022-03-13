@@ -26,8 +26,7 @@ class LoginPage extends Component {
     handleChange(event) {
         this.setState(
             {
-                [event.target.name]
-                    : event.target.value
+                [event.target.name] : event.target.value
             }
         )
     }
@@ -36,12 +35,13 @@ class LoginPage extends Component {
         AuthenticationService
             .login(this.state.userEmail, this.state.userPassword)
             .then((response) => {
-                console.log(response)
+                // console.log(response.data.data)
                 this.setState({
-                    token: response.data.token
+                    token: response.data.data
+                    //X-AUTH-TOKEN으로 다른 url 이용할 때 헤더로 넣어줘야한다.
                 });
                 AuthenticationService.registerSuccessfulLoginForJwt(this.state.userEmail, this.state.token)
-                this.props.history.push(`/welcome/${this.state.userEmail}`)
+                this.props.history.push(`/${this.state.userEmail}`)
             }).catch(() => {
                 this.setState({ showSuccessMessage: false })
                 this.setState({ hasLoginFailed: true })
@@ -61,15 +61,16 @@ class LoginPage extends Component {
                         <div className="login-content-body-main-title">
                             <div className="login-content-body-main-title-text">로그인</div>
                         </div>
-
+                        <form >
                         <div className="login-content-body-main-info">
                             <div className="login-content-body-main-info-id">
-                                <input id="userEmail" placeholder="이메일" type="email" onChange={this.handleChange}/>
+                                    <input id="userEmail" name="userEmail" placeholder="이메일" type="email" onChange={this.handleChange}/>
                             </div>
                             <div className="login-content-body-main-info-pw">
-                                <input id="userPassword" placeholder="비밀번호" type="password" onChange={this.handleChange} />
+                                    <input id="userPassword" name="userPassword" placeholder="비밀번호" type="password" autoComplete="on" onChange={this.handleChange} />
                             </div>
-                        </div>
+                            </div>
+                        </form>
 
                         <div className="login-content-body-main-btn">
                             <div className="login-content-body-main-btn-rememberme">
@@ -81,7 +82,8 @@ class LoginPage extends Component {
                             <div className="login-content-body-main-btn-login">
                                 <button id="login" onClick={this.loginClicked}>나의 책장 보러가기</button>
                             </div>
-                        </div>
+                            </div>
+                        
 
                         <div className="login-content-body-main-social">
                             <div>소셜로그인</div>
