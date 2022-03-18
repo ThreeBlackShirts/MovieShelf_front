@@ -23,19 +23,19 @@ const SignUpPage = () => {
 
                     <div className="signup-content-body-main-info">
                         <div className="signup-content-body-main-info-id">
-                            <input id="user_email" placeholder="이메일" type="email"/>
+                            <input id="userEmail" name="userEmail" placeholder="이메일" type="email"/>
                         </div>
                         <div className="signup-content-body-main-info-id">
-                            <input id="user_name" placeholder="성명" type="text" />
+                            <input id="userName" name="userName" placeholder="성명" type="text" />
                         </div>
                         <div className="signup-content-body-main-info-id">
-                            <input id="user_nickname" placeholder="별명" type="text" />
+                            <input id="userNickname" name="userNickname" placeholder="별명" type="text" />
                         </div>
                         <div className="signup-content-body-main-info-pw">
-                            <input id="user_password" placeholder="비밀번호" type="password"/>
+                            <input id="userPassword" name="userPassword"  placeholder="비밀번호" type="password"/>
                         </div>
                         <div className="signup-content-body-main-info-pw">
-                            <input id="user_password" placeholder="비밀번호 확인" type="password"/>
+                            <input id="userPasswordCheck" name="userPasswordCheck" placeholder="비밀번호 확인" type="password"/>
                         </div>
                     </div>
 
@@ -62,6 +62,5 @@ const SignUpPage = () => {
         </div>
     );
 };
-
 
 export default SignUpPage;
