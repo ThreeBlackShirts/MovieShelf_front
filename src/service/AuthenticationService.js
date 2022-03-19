@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const API_URL = "/api/auth/";
-const USER_URL = "/v1";
+// const API_URL = "/api/auth/";
+const USER_API_BASE_URL = "/v1";
 
 class AuthenticationService {
   register(userEmail, userName, userPassword, userNickname) {
-    return axios.post(USER_URL + "/signup", {
+    return axios.post(USER_API_BASE_URL + "/signup", {
       userEmail,
       userName,
       userPassword,
@@ -17,12 +17,12 @@ class AuthenticationService {
       userEmail: userEmail,
       userPassword: userPassword
     }
-    console.log(data);
-    return axios.post(USER_URL + "/login", JSON.stringify(data), {
+    // console.log(data);
+    return axios.post(USER_API_BASE_URL + "/login", JSON.stringify(data), {
       headers: {
         "Content-Type": `application/json`,
       },
-    });
+    })
   }
   createJWTToken(token) {
     return token // 'Bearer ' + , 'X-AUTH-TOKEN'
@@ -37,6 +37,22 @@ class AuthenticationService {
   }
   getCurrentUser() {
     return JSON.parse(localStorage.getItem('authenticatedUser'));
+  }
+
+  setupAxiosInterceptors() {
+    axios.interceptors.request.use(
+      config => {
+        const token = localStorage.getItem('token');
+        if (token) {
+          config.headers['X-AUTH-TOKEN'] = token;
+           //X-AUTH-TOKEN으로 다른 url 이용할 때 헤더로 넣어줘야한다.
+        }
+        // config.headers['Content-Type'] = 'application/json';
+        return config;
+      },
+      error => {
+        Promise.reject(error)
+      });
   }
 
   isUserLoggedIn() {
