@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import 'style/signuppage.css'
+import AuthenticationService from 'service/AuthenticationService';
 
 /*
 function toHomePage(){
@@ -8,59 +9,107 @@ function toHomePage(){
 }
 */
 
-const SignUpPage = () => {
-    return (
-        <div className="signup-content">
-            <div className="signup-content-title">
-                <Link to='/'><h1>MovieShelf</h1></Link>
-            </div>
+class SignUpPage extends Component {
 
-            <div className="signup-content-body">
-                <div className="signup-content-body-main">
-                    <div className="signup-content-body-main-title">
-                        <div className="signup-content-body-main-title-text">회원가입</div>
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            userEmail: localStorage.getItem("authenticatedUser") || '',
+            userPassword: '',
+            userName: '',
+            userNickname: '',
+            userPasswordCheck: '',
+            hasSignUpFailed: false,
+            showSuccessMessage: false
+        }
+        this.handleChange = this.handleChange.bind(this)
+        this.signUpClicked = this.signUpClicked.bind(this)
+    }
+    handleChange(event) {
+        this.setState(
+            {
+                [event.target.name]: event.target.value
+            }
+        )
+    }
+    signUpClicked() {
+        if (this.state.userPasswordCheck === this.state.userPassword) {
+            AuthenticationService.register(this.state.userEmail, this.state.userName, this.state.userPassword, this.state.userNickname)
+                .then((response) => {
+                    console.log(response)
+                    // this.props.history.push(`/login`)
+                    alert('회원가입 성공! 로그인 창으로 이동합니다.');
+                    document.location.href = "/login";
+                    this.setState({ showSuccessMessage: true })
+                    this.setState({ hasSignUpFailed: false })
+                }).catch(() => {
+                    // console.log(error.response)
+                    this.setState({ showSuccessMessage: false })
+                    this.setState({ hasSignUpFailed: true })
+                    alert('SignUp Failed');
+                    document.location.href = "/signup";
+                });
+        } else {
+            alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.")
+        }
+    }
+
+    render() {
+        return (
+            <div className="signup-content">
+                <div className="signup-content-title">
+                    <Link to='/'><h1>MovieShelf</h1></Link>
+                </div>
+
+                <div className="signup-content-body">
+                    <div className="signup-content-body-main">
+                        <div className="signup-content-body-main-title">
+                            <div className="signup-content-body-main-title-text">회원가입</div>
+                        </div>
+                        <form>
+                            <div className="signup-content-body-main-info">
+                                <div className="signup-content-body-main-info-id">
+                                    <input id="userEmail" name="userEmail" placeholder="이메일" type="email" onChange={this.handleChange} />
+                                </div>
+                                <div className="signup-content-body-main-info-id">
+                                    <input id="userName" name="userName" placeholder="성명" type="text" onChange={this.handleChange} />
+                                </div>
+                                <div className="signup-content-body-main-info-id">
+                                    <input id="userNickname" name="userNickname" placeholder="별명" type="text" onChange={this.handleChange} />
+                                </div>
+                                <div className="signup-content-body-main-info-pw">
+                                    <input id="userPassword" name="userPassword" placeholder="비밀번호" type="password" onChange={this.handleChange} />
+                                </div>
+                                <div className="signup-content-body-main-info-pw">
+                                    <input id="userPasswordCheck" name="userPasswordCheck" placeholder="비밀번호 확인" type="password" onChange={this.handleChange} autoComplete="off" />
+                                </div>
+                            </div>
+                        </form>
+
+                        <div className="signup-content-body-main-btn">
+                            <div className="signup-content-body-main-btn-signup">
+                                <button id="signup" onClick={this.signUpClicked}>회원가입</button>
+                            </div>
+                        </div>
+
+
+                        <div className="signup-content-body-main-social">
+                            <div>소셜로그인</div>
+                            <hr></hr>
+
+                        </div>
+
+                        <div className="signup-content-body-main-login">
+                            <div className='signup-content-body-main-login-btn'>
+                                <Link to='/login'>LOGIN</Link>
+                            </div>
+                        </div>
                     </div>
-
-                    <div className="signup-content-body-main-info">
-                        <div className="signup-content-body-main-info-id">
-                            <input id="userEmail" name="userEmail" placeholder="이메일" type="email"/>
-                        </div>
-                        <div className="signup-content-body-main-info-id">
-                            <input id="userName" name="userName" placeholder="성명" type="text" />
-                        </div>
-                        <div className="signup-content-body-main-info-id">
-                            <input id="userNickname" name="userNickname" placeholder="별명" type="text" />
-                        </div>
-                        <div className="signup-content-body-main-info-pw">
-                            <input id="userPassword" name="userPassword"  placeholder="비밀번호" type="password"/>
-                        </div>
-                        <div className="signup-content-body-main-info-pw">
-                            <input id="userPasswordCheck" name="userPasswordCheck" placeholder="비밀번호 확인" type="password"/>
-                        </div>
-                    </div>
-
-                    <div className="signup-content-body-main-btn">
-                        <div className="signup-content-body-main-btn-signup">
-                            <button id="signup">회원가입</button>
-                        </div>
-                    </div>
-
-                    <div className="signup-content-body-main-social">
-                        <div>소셜로그인</div>
-                        <hr></hr>
-
-                    </div>
-
-                    <div className="signup-content-body-main-login">
-                        <div className='signup-content-body-main-login-btn'>
-                        <Link to='/login'>LOGIN</Link>
-                        </div>
-                    </div>
-                    
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
 };
 
 export default SignUpPage;

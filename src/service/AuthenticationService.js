@@ -5,11 +5,16 @@ const USER_API_BASE_URL = "/v1";
 
 class AuthenticationService {
   register(userEmail, userName, userPassword, userNickname) {
-    return axios.post(USER_API_BASE_URL + "/signup", {
-      userEmail,
-      userName,
-      userPassword,
-      userNickname
+    let userData = {
+      userEmail: userEmail,
+      userName: userName,
+      userPassword: userPassword,
+      userNickname: userNickname
+    }
+    return axios.post(USER_API_BASE_URL + "/signup", JSON.stringify(userData), {
+      headers: {
+        "Content-Type": `application/json`,
+      },
     });
   }
   login(userEmail, userPassword) {
