@@ -37,39 +37,24 @@ class LoginPage extends Component {
     }
 
     loginClicked() {
-        
         AuthenticationService
             .login(this.state.userEmail, this.state.userPassword)
             .then((response) => {
-                // console.log(response.data.data)
+                console.log(response)
                 this.setState({
                     token: response.data.data
-                    //X-AUTH-TOKEN으로 다른 url 이용할 때 헤더로 넣어줘야한다.
                 });
-                AuthenticationService.registerSuccessfulLoginForJwt(this.state.userEmail, this.state.token)
+                AuthenticationService.registerSuccessfulLoginForJwt((this.state.userEmail, response.data.data))
                 // this.props.history.push(`/${this.state.userEmail}`)
+                document.location.href = "/";    
                 this.setState({ showSuccessMessage: true })
                 this.setState({ hasLoginFailed: false })
-                // document.location.href = "/";
-                // navigate("/");
-                this.props.navigation.navigate("/");
-             
-            }).catch(error => {
-                console.log(error.response)
+            }).catch(() => {
+                // console.log(error.response)
                 this.setState({ showSuccessMessage: false })
                 this.setState({ hasLoginFailed: true })
-            }).then(() => {
-                // 항상 실행
-                console.log("final then")
-                // this.props.history.push(`/${this.state.userEmail}`)
-                document.location.href = "/";
+                alert('Login Failed');
             });
-            
-            // .catch(() => {
-            //     this.setState({ showSuccessMessage: false })
-            //     this.setState({ hasLoginFailed: true })
-            // })
-        
     }
     render() {
         return (
