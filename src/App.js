@@ -1,12 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 
-import FrontPage from './component/Pages/FrontPage';
 import HomePage from 'component/Pages/HomePage';
 import LoginPage from 'component/Pages/LoginPage';
 import SignUpPage from 'component/Pages/SignUpPage';
 import ListPage from 'component/Pages/ListPage';
 import LogoutComponent from 'component/LogoutComponent';
+import MainPage from 'component/Pages/MainPage';
 
 const App = () => {
 
@@ -21,8 +21,8 @@ const App = () => {
       <Route path="/logout" element={<LogoutComponent/>} />
       <Route path="/login" exact element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />
-      <Route path="/front" element={<FrontPage />} />
       <Route path="/list" element={<ListPage />} />
+      <Route path="/main" element={<MainPage />} />
     </Routes>
   );
 };

@@ -1,0 +1,77 @@
+html, body{
+    width: 100%;
+    height: 100vh;
+    align-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.listpage-content{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.listpage-content-search{
+    width: 100%;
+    height: 120px;
+    margin: auto;
+    padding-top: 50px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.listpage-content-search-btnwrap{
+    width: 30%;
+    height: 30px;
+    margin: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 15px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: lightgrey;
+}
+
+.listpage-content-search-btnwrap input{
+    width: 70%;
+    height: 25px;
+    background-color: lightgrey;
+}
+
+.listpage-search-btn-icon{
+    width: 24px;
+    height: 24px;
+    margin-left: 15px;
+    vertical-align: middle;
+}
+
+.listpage-content-result{
+    width: 80%;
+    display: table;
+    margin: auto;
+    border-radius: 15px;
+}
+
+.listpage-content-result-item{
+    display: inline-block;
+    width: 180px;
+    height: 240px;
+    background-color: lightgrey;
+    margin: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 15px;
+}
+
+.listpage-content-result-item-pic{
+    width: 160px;
+    height: 200px;
+    margin: auto;
+}
+
+.listpage-content-result-item-info{
+    width: 160px;
+    height: 20px;
+    text-align: center;
+    margin: auto;
+}
