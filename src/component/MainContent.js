@@ -2,6 +2,15 @@ import React from 'react';
 
 const MainContent = () => {
     return (
+
+        <div className="main-content">
+            <div className="main-content-userpick">
+                carousel
+            </div>
+            
+        </div>
+
+        /*
         <div className="main-content">
             <div className="main-content-userpick">
                 carousel
@@ -18,6 +27,8 @@ const MainContent = () => {
 
             </div>
         </div>
+
+         */
     );
 };
 

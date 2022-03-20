@@ -4,81 +4,94 @@
     width: 100%;
     flex-direction: column;
     background-color: rgba(0,0,0,0.2);
+    vertical-align: middle;
+    color: white;
   }
   
   /* Header left*/
   .header-content-left {
     display: table-cell;
     width: 25%;
-    vertical-align: middle;
     align-content: center;
+    vertical-align: middle;
+    height: 100%
   }
   
   .header-left-logo {
-    vertical-align: middle;
     display: table-cell;
+    vertical-align: middle;
     width: 250px;
-    padding-left: 20px;
+    height: 100%
   }
-  
-  .header-left-logo a{
+
+  .header-left-logo h1{
     margin: 0;
-  }
+    padding-top: 20px;
+    color: white;
+}
   
   .header-left-top {
-    text-align: center;
-    vertical-align: middle;
     display: table-cell;
+    vertical-align: middle;
+    text-align: center;
     width: 100px;
     margin: auto;
     margin-left: 5px;
   }
-  
-  .header-left-top a {
+
+  .header-left-top h4 {
     text-align: center;
-    color: black;
+    color: white;
+    vertical-align: middle;
     text-decoration: none;
+    margin: 0;
+    padding-top: 20px;
   }
   
   .header-left-genre {
     text-align: center;
-    vertical-align: middle;
     display: table-cell;
+    vertical-align: middle;
     width: 100px;
     margin: auto;
     margin-right: 5px;
   }
   
-  .header-left-genre a {
+  .header-left-genre h4 {
     text-align: center;
-    color: black;
+    color: white;
+    vertical-align: middle;
     text-decoration: none;
+    margin: 0;
+    padding-top: 20px;
   }
   
   /* Header Right*/
   .header-content-right {
     display: table-cell;
-    width: 70%;
     vertical-align: middle;
+    width: 70%;
     text-align: right;
+    height: 100%
   }
   
   .header-right-search-btn{
-    display: inline;
-    text-align: right;
-    width: 40%;
-    margin: 15px;
+    
+    width: 30%;
   }
   
   .search-btn-text {
     display: inline;
     width: 300px;
-    margin-right: 10px;
+    height: 25px;
+    margin-right: 15px;
   }
   
-  .search-btn-btn {
+  .search-btn-icon {
     display: inline;
-    width: 45px;
+    height: 24px;
+    width: 24px;
+    padding-top: 15px;
   }
   
   .header-right-myshelf {
@@ -90,13 +103,18 @@
   .header-right-setting{
     display: inline;
     width: 20%;
-    margin: 15px;
+    margin: 0 15px 0 0;
+    padding-top: 20px;
   }
   
   .header-right-login-btn {
     display: inline;
     width: 20%;
-    margin: 15px;
+    margin: 0 15px 0 0;
+    padding-top: 20px;
     text-decoration: none;
-    color: black;
+    }
+
+    .header-right-login-btn a{
+      color: white;
     }

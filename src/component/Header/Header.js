@@ -2,8 +2,13 @@ import React from 'react';
 import { BiSearchAlt } from "react-icons/bi"
 import AuthenticationService from 'service/AuthenticationService';
 import { useState } from 'react';
+import 'style/header.css'
 
 function toHomePage(){
+    window.location.href="/"
+}
+
+function toBoardPage(){
     window.location.href="/"
 }
 
@@ -17,10 +22,10 @@ const Header = () => {
                     <h1 className="header-title" onClick={toHomePage}>MovieShelf</h1>
                 </div>
                 <div className="header-left-top">
-                    <a className="list-item" href="/board">Top 10</a>
+                    <h4 className="list-item" onClick={toBoardPage}>Top 10</h4>
                 </div>
                 <div className="header-left-genre">
-                    <a className="list-item">Genre</a>
+                    <h4 className="list-item">Genre</h4>
                 </div>
             </div>
 
