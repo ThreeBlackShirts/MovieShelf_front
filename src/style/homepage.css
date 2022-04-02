@@ -1,132 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Noto+Serif+KR:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+
 /* Header */
+
+html{
+  background : url(images/background/cameraandbooks.jpg);
+  width: 100%;
+  height: 100%;
+}
+
+.home-content{
+  font-family: 'Noto Serif KR', serif;
+  width: 100%;
+  height: 100%;
+  align-content: center;
+  color: white;
+}
+
 .home-content-header {
   height: 90px;
   width: 100%;
   flex-direction: column;
-  background-color: rgba(0,0,0,0.3);
 }
 
-/* Header left*/
-.home-content-left {
-  display: table-cell;
-  width: 25%;
+.home-content-header-title {
+  font-family: 'Parisienne', cursive;
+  display: inline-block;
+  width: 50%;
   vertical-align: middle;
-  align-content: center;
+  text-align: left;
 }
 
-.header-left-logo {
+.home-content-header-title-logo {
+  display: inline-block;
+  width: 50%;
+  font-size: 36px;
   vertical-align: middle;
-  display: table-cell;
-  width: 250px;
   padding-left: 20px;
 }
 
-.header-left-logo a{
-  margin: 0;
-}
-
-.header-left-top {
-  text-align: center;
-  vertical-align: middle;
-  display: table-cell;
-  width: 100px;
-  margin: auto;
-  margin-left: 5px;
-}
-
-.header-left-top a {
-  text-align: center;
-  color: black;
-  text-decoration: none;
-}
-
-.header-left-genre {
-  text-align: center;
-  vertical-align: middle;
-  display: table-cell;
-  width: 100px;
-  margin: auto;
-  margin-right: 5px;
-}
-
-.header-left-genre a {
-  text-align: center;
-  color: black;
-  text-decoration: none;
-}
-
-/* Header Right*/
-.header-content-right {
-  display: table-cell;
-  width: 70%;
-  vertical-align: middle;
+.home-content-header-title-login{
+  font-family: 'Roboto Mono', monospace;
+  display: inline-block;
+  width: 50%;
   text-align: right;
+  vertical-align: middle;
 }
 
-.header-right-search-btn{
-  display: inline;
-  text-align: right;
-  width: 40%;
-  margin: 15px;
-}
-
-.search-btn-text {
-  display: inline;
-  width: 300px;
-  margin-right: 10px;
-}
-
-.search-btn-btn {
-  display: inline;
-  width: 45px;
-}
-
-.header-right-myshelf {
-  display: inline;
-  width: 20%;
-  margin: 15px;
-}
-
-.header-right-setting{
-  display: inline;
-  width: 20%;
-  margin: 15px;
-}
-
-.header-right-login-btn {
-  display: inline;
-  width: 20%;
-  margin: 15px;
+.home-content-header-title-login-btn{
+  padding-right: 30px;
+  font-size: 18px;
   text-decoration: none;
-  color: black;
-  }
-
-
-
-/* Footer */
-.wrap {
-  min-height: 100vh;
-  position: relative;
-  width: 100%;
+  color: white;
+  vertical-align: middle;
+  margin: auto;
 }
 
-.footer {
-  width: 100%;
-  height: 60px;
-  bottom: 0;
-  position: absolute;
-  display: flex;
-  align-items: center;
-  border-top: solid 1px #bdc0ba;
-}
-.footer a {
-  float: left;
-  margin: 0 20px;
-  text-decoration: none;
-  color: #1f1f1f;
-  font-size: 15px;
+/*home content*/
+
+.home-content-main{
+  width: 600px;
+  height: 400px;
+  margin: 200px auto 100px auto;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 30px;
 }
 
-.footer a:hover {
+.home-content-main-title{
+  height: 55%;
+}
+
+.home-content-main-title-intro{
+  font-size: 24px;
+  height: 40%;
+ line-height: 100px;
+}
+
+.home-content-main-title-logo{
+  font-family: 'Parisienne', cursive;
+  font-size: 80px;
+  height: 60%;
+}
+
+.home-content-main-search{
+  height: 20%;
+}
+
+.home-content-main-search-text{
+  display: inline-block;
+  width: 240px;
+  height: 40px;
+  border: 0;
+  border-radius: 15px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.home-content-main-search-icon{
+  display: inline-block;
+  vertical-align: middle;
+  width: 30px;
+  height: 30px;
+  padding-left: 10px;
+}
+
+.home-content-main-login{
+  height: 20%;
   text-decoration: underline;
 }

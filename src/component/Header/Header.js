@@ -1,5 +1,5 @@
 import React from 'react';
-import { BiSearchAlt } from "react-icons/bi"
+import { FiSearch } from "react-icons/fi";
 import AuthenticationService from 'service/AuthenticationService';
 import { useState } from 'react';
 import 'style/header.css'
@@ -31,8 +31,8 @@ const Header = () => {
 
             <div className="header-content-right">
                 <div className="header-right-search-btn">
-                    <input type="text" className="search-btn-text"></input>
-                    <BiSearchAlt className="search-btn-icon"/>
+                    <input type="text" className="header-right-search-btn-text"></input>
+                    <FiSearch className="header-right-search-btn-icon"/>
                 </div>
                 <div className="header-right-myshelf">
                     나의 책장
