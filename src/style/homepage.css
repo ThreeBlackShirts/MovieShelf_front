@@ -41,7 +41,7 @@ html{
   padding-left: 20px;
 }
 
-.home-content-header-title-login{
+.home-content-header-login{
   font-family: 'Roboto Mono', monospace;
   display: inline-block;
   width: 50%;
@@ -49,7 +49,7 @@ html{
   vertical-align: middle;
 }
 
-.home-content-header-title-login-btn{
+.home-content-header-login-btn{
   padding-right: 30px;
   font-size: 18px;
   text-decoration: none;
