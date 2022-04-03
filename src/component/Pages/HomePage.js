@@ -1,6 +1,10 @@
 import React from 'react';
-import Footer from '../Footer/Footer';
+import AuthenticationService from 'service/AuthenticationService';
+import { useState } from 'react';
+
 import 'style/homepage.css';
+import Footer from '../Footer/Footer';
+
 import { FiSearch } from "react-icons/fi";
 
 function toHomePage(){
@@ -8,15 +12,20 @@ function toHomePage(){
 }
 
 const HomePage = () => {
+    const [onLogin] = useState(AuthenticationService.isUserLoggedIn);
+
     return (
         <div className="home-content">
             <div className="home-content-header">
                 <div className="home-content-header-title">
                     <h1 className="home-content-header-title-logo" onClick={toHomePage}>MovieShelf</h1>
                 </div>
-                <div className="home-content-header-login">
-                    <a className="home-content-header-login-btn" href="/logout">LOGOUT</a>
-                </div>
+                {onLogin && <div className="home-content-header-login">
+                <a className="home-content-header-login-btn" href="/logout">LOGOUT</a>
+                </div>}
+                {!onLogin && <div className="home-content-header-login">
+                <a className="home-content-header-login-btn" href="/logout">LOGIN</a>
+                </div>}
             </div>
             <div className="home-content-main">
                 <div className="home-content-main-title">
