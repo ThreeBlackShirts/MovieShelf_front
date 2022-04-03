@@ -1,125 +1,125 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Noto+Serif+KR:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
 
 
 /* Header */
+
 .header-container {
-    height: 90px;
-    width: 100%;
-    flex-direction: column;
-    background-color: rgba(0,0,0,0.2);
-    vertical-align: middle;
-    color: white;
-  }
-  
-  /* Header left*/
-  .header-content-left {
-    display: table-cell;
-    width: 25%;
-    align-content: center;
-    vertical-align: middle;
-    height: 100%
-  }
-  
-  .header-left-logo {
-    display: table-cell;
-    vertical-align: middle;
-    width: 250px;
-    height: 100%
-  }
-
-  .header-left-logo h1{
-    margin: 0;
-    padding-top: 20px;
-    color: white;
+  font-family: 'Nanum Gothic', sans-serif;
+  height: 90px;
+  width: 100%;
+  vertical-align: middle;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
 }
-  
-  .header-left-top {
-    display: table-cell;
-    vertical-align: middle;
-    text-align: center;
-    width: 100px;
-    margin: auto;
-    margin-left: 5px;
-  }
 
-  .header-left-top h4 {
-    text-align: center;
-    color: white;
-    vertical-align: middle;
-    text-decoration: none;
-    margin: 0;
-    padding-top: 20px;
-  }
-  
-  .header-left-genre {
-    text-align: center;
-    display: table-cell;
-    vertical-align: middle;
-    width: 100px;
-    margin: auto;
-    margin-right: 5px;
-  }
-  
-  .header-left-genre h4 {
-    text-align: center;
-    color: white;
-    vertical-align: middle;
-    text-decoration: none;
-    margin: 0;
-    padding-top: 20px;
-  }
-  
-  /* Header Right*/
-  .header-content-right {
-    display: table-cell;
-    vertical-align: middle;
-    width: 70%;
-    text-align: right;
-    height: 100%
-  }
-  
-  .header-right-search-btn{
-    
-    width: 30%;
-  }
-  
-  .search-btn-text {
-    display: inline;
-    width: 300px;
-    height: 25px;
-    margin-right: 15px;
-  }
-  
-  .search-btn-icon {
-    display: inline;
-    height: 24px;
-    width: 24px;
-    padding-top: 15px;
-  }
-  
-  .header-right-myshelf {
-    display: inline;
-    width: 20%;
-    margin: 15px;
-  }
-  
-  .header-right-setting{
-    display: inline;
-    width: 20%;
-    margin: 0 15px 0 0;
-    padding-top: 20px;
-  }
-  
-  .header-right-login-btn {
-    display: inline;
-    width: 20%;
-    margin: 0 15px 0 0;
-    padding-top: 20px;
-    text-decoration: none;
-    }
+.header-content-title{
+  font-family: 'Sacramento', cursive;
+  display: inline-block;
+  width: 50%;
+  text-align: left;
+  vertical-align: middle;
+}
 
-    .header-right-login-btn a{
-      color: white;
-    }
+.header-content-title-logo{
+  display: inline-block;
+  width: 30%;
+  vertical-align: middle;
+  padding-left: 20px;
+}
+
+.header-content-title-logo-h1{
+  font-size: 36px;
+}
+
+.header-content-title-top{
+  display: inline-block;
+  width: 10%;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.header-content-title-genre{
+  display: inline-block;
+  width: 10%;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.header-content-title-item{
+  font-family: 'Roboto Mono', monospace;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.header-content-userbtn{
+  font-family: 'Nanum Gothic', sans-serif;
+  display: inline-block;
+  width: 50%;
+  text-align: right;
+  vertical-align: middle;
+}
+
+.header-content-userbtn-search-btn{
+  display: inline-block;
+  width: 40%;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.header-content-userbtn-search-btn-text{
+  width: 80%;
+  height: 24px;
+  margin-right: 3%;
+  border: 0;
+  border-radius: 15px;
+  text-align: center;
+  vertical-align: middle;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.header-content-userbtn-search-btn-icon{
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+.header-content-userbtn-myshelf{
+  display: inline-block;
+  width: 10%;
+  vertical-align: middle;
+}
+
+.header-content-userbtn-myshelf-icon{
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+
+.header-content-userbtn-setting{
+  display: inline-block;
+  width: 10%;
+  vertical-align: middle;
+}
+
+.header-content-userbtn-setting-icon{
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+
+.header-content-userbtn-login{
+  font-family: 'Roboto Mono', monospace;
+  display: inline-block;
+  width: 10%;
+  vertical-align: middle;
+  padding-right: 5%;
+}
+
+
+.header-content-userbtn-login-btn{
+  color: white;
+  text-decoration: none;
+}

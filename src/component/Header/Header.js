@@ -1,8 +1,11 @@
 import React from 'react';
-import { FiSearch } from "react-icons/fi";
 import AuthenticationService from 'service/AuthenticationService';
 import { useState } from 'react';
 import 'style/header.css'
+import { FiSearch } from "react-icons/fi";
+import { ImBooks } from "react-icons/im";
+import { IoIosSettings } from "react-icons/io";
+
 
 function toHomePage(){
     window.location.href="/"
@@ -17,34 +20,34 @@ const Header = () => {
 
     return (
         <div className="header-container">
-            <div className="header-content-left">
-                <div className="header-left-logo">
-                    <h1 className="header-title" onClick={toHomePage}>MovieShelf</h1>
+            <div className="header-content-title">
+                <div className="header-content-title-logo">
+                    <h1 className="header-content-title-logo-h1" onClick={toHomePage}>MovieShelf</h1>
                 </div>
-                <div className="header-left-top">
-                    <h4 className="list-item" onClick={toBoardPage}>Top 10</h4>
+                <div className="header-content-title-top">
+                    <h4 className="header-content-title-item" onClick={toHomePage}>Top 10</h4>
                 </div>
-                <div className="header-left-genre">
-                    <h4 className="list-item">Genre</h4>
+                <div className="header-content-title-genre">
+                    <h4 className="header-content-title-item">Genre</h4>
                 </div>
             </div>
 
-            <div className="header-content-right">
-                <div className="header-right-search-btn">
-                    <input type="text" className="header-right-search-btn-text"></input>
-                    <FiSearch className="header-right-search-btn-icon"/>
+            <div className="header-content-userbtn">
+                <div className="header-content-userbtn-search-btn">
+                    <input type="text" className="header-content-userbtn-search-btn-text"></input>
+                    <FiSearch className="header-content-userbtn-search-btn-icon"/>
                 </div>
-                <div className="header-right-myshelf">
-                    나의 책장
+                <div className="header-content-userbtn-myshelf">
+                    <ImBooks className="header-content-userbtn-myshelf-icon"/>
                 </div>
-                <div className="header-right-setting">
-                    
+                <div className="header-content-userbtn-setting">
+                    <IoIosSettings className="header-content-userbtn-setting-icon"/>
                 </div>
-                {onLogin && <div className="header-right-login-btn">
-                    <a className="header-right-login-btn" href="/logout">LOGOUT</a>
+                {onLogin && <div className="header-content-userbtn-login">
+                    <h4 className="header-content-userbtn-login-btn" href="/logout">LOGOUT</h4>
                 </div>}
-                {!onLogin && <div className="header-right-login-btn">
-                    <a className="header-right-login-btn" href="/login">LOGIN</a>
+                {!onLogin && <div className="header-content-userbtn-login">
+                    <h4 className="header-content-userbtn-login-btn" href="/login">LOGIN</h4>
                 </div>}
                 
             </div>

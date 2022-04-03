@@ -14,8 +14,8 @@ const HomePage = () => {
                 <div className="home-content-header-title">
                     <h1 className="home-content-header-title-logo" onClick={toHomePage}>MovieShelf</h1>
                 </div>
-                <div className="home-content-header-title-login">
-                    <a className="home-content-header-title-login-btn" href="/logout">LOGOUT</a>
+                <div className="home-content-header-login">
+                    <a className="home-content-header-login-btn" href="/logout">LOGOUT</a>
                 </div>
             </div>
             <div className="home-content-main">
