@@ -24,7 +24,7 @@ const HomePage = () => {
                 <a className="home-content-header-login-btn" href="/logout">LOGOUT</a>
                 </div>}
                 {!onLogin && <div className="home-content-header-login">
-                <a className="home-content-header-login-btn" href="/logout">LOGIN</a>
+                <a className="home-content-header-login-btn" href="/login">LOGIN</a>
                 </div>}
             </div>
             <div className="home-content-main">
