@@ -60,7 +60,7 @@ class LoginPage extends Component {
         return (
             <div className="login-content">
                 <div className="login-content-title">
-                    <Link to='/'><h1>MovieShelf</h1></Link>
+                    <Link to='/' id='login-content-title-logo'>MovieShelf</Link>
                 </div>
 
                 <div className="login-content-body">

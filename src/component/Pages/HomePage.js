@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import AuthenticationService from 'service/AuthenticationService';
+import { Link } from "react-router-dom";
 import { useState } from 'react';
 
 import 'style/homepage.css';
@@ -33,11 +34,11 @@ const HomePage = () => {
                     <div className="home-content-main-title-logo">MovieShelf</div>
                 </div>
                 <div className="home-content-main-search">
-                    <input className="home-content-main-search-text" placeholder="당신의 영화를 검색해 보세요!" type="text"/>
+                    <input className="home-content-main-search-text" placeholder="당신의 영화를 검색해 보세요!" type="text"></input>
                     <FiSearch className="home-content-main-search-icon"/>
                 </div>
                 <div className="home-content-main-login">
-                    <a>로그인하여 나만의 영화책장만들기</a>
+                    <Link id='home-content-main-login-Link' to='/login'>로그인하여 나만의 영화책장만들기</Link>
                 </div>
             </div>
             <Footer />

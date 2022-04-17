@@ -9,6 +9,16 @@ import 'style/footer.css'
 import { FiSearch } from "react-icons/fi";
 
 const ListPage = () => {
+
+    /*
+    searchMovie() {
+        MovieService
+            .search(input)
+            // listpage-search-text = input
+    }
+    */
+
+    
     return (
         <div>
             <Header />

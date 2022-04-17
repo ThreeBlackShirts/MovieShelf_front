@@ -5,6 +5,7 @@ html, body{
 }
 
 .signup-content {
+    font-family: 'Noto Serif KR', serif;
     width: 100%;
     height: 100%;
     align-content: center;
@@ -13,6 +14,7 @@ html, body{
 
 /* header : title*/
 .signup-content-title {
+    font-family: 'Parisienne', cursive;
     height: 90px;
     text-align: left;
     vertical-align: middle;

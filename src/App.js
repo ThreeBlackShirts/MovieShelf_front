@@ -7,6 +7,7 @@ import SignUpPage from 'component/Pages/SignUpPage';
 import ListPage from 'component/Pages/ListPage';
 import LogoutComponent from 'component/LogoutComponent';
 import MainPage from 'component/Pages/MainPage';
+import DetailPage from 'component/Pages/DetailPage';
 
 const App = () => {
 
@@ -23,6 +24,7 @@ const App = () => {
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/list" element={<ListPage />} />
       <Route path="/main" element={<MainPage />} />
+      <Route path="/detail" element={<DetailPage />} />
     </Routes>
   );
 };
