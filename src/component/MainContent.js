@@ -11,17 +11,18 @@ class MainContent extends Component {
         this.state = {
             userEmail: localStorage.getItem("authenticatedUser") || '',
             token: localStorage.getItem("token") || '',
+            testinput: '',
             hasLoginFailed: false,
             showSuccessMessage: false,
-            testinput : ''
         }
-        this.handleChange = this.handleChange.bind(this)
+        // this.handleChange = this.handleChange.bind(this)
+        this.searchMovie = this.searchMovie.bind(this)
         
     }
-    handleChange(event) {
+    handleChange = (e) => {
         this.setState(
             {
-                [event.target.name] : event.target.value
+                [e.target.id]: e.target.value
             }
         )
     }
@@ -64,7 +65,7 @@ class MainContent extends Component {
             <div className="main-content">
                 <div className="main-content-userpick">
                     carousel
-                    <input id='testinput' name='testinput' placeholder="당신의 영화를 검색해 보세요!" type="text" onChange={this.handleChange}></input>
+                    <input id='testinput' name='testinput' placeholder="당신의 영화를 검색해 보세요!" type="text" onChange={this.handleChange}/>
                     <FiSearch id="testsearch_icon1" onClick={this.searchMovie}/>
                     <FiSearch id="testsearch_icon2" onClick={this.allMovie}/>
                     <div id='testresponse'></div>
