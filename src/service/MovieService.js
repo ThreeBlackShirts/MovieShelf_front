@@ -1,7 +1,7 @@
 import axios from "axios";
 import AuthenticationService from "./AuthenticationService";
 
-const MOVIE_API_BASE_URL = "/movie"
+const MOVIE_API_BASE_URL = "/api/movie"
 
 class MovieService {
 
@@ -17,8 +17,9 @@ class MovieService {
 	}
 
 	all() {
-		//all(movieTitle, moviePoster, movieRank) {
-			/*
+		/*
+		all(movieTitle, moviePoster, movieRank) {
+			
 			let movieData = {
 			movieTitle: movieTitle,
 			moviePoster: moviePoster,
@@ -26,7 +27,7 @@ class MovieService {
 		}
 			*/
 		
-		return axios.post(MOVIE_API_BASE_URL+"/alllist",{
+		return axios.get(MOVIE_API_BASE_URL+"/alllist",{
 			headers: {
 				"Content-Type": 'application/json',
 			}

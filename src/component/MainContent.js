@@ -15,6 +15,7 @@ class MainContent extends Component {
             showSuccessMessage: false,
             testinput : ''
         }
+        this.handleChange = this.handleChange.bind(this)
         
     }
     handleChange(event) {
@@ -26,6 +27,7 @@ class MainContent extends Component {
     }
 
     searchMovie() {
+        console.log("searchbtn clicked")
         MovieService
             .search(this.state.testinput)
             .then((response) => {
@@ -44,6 +46,7 @@ class MainContent extends Component {
     }
 
     allMovie() {
+        console.log("allbtn clicked")
         MovieService
             .all()
             .then((response) => {
@@ -61,9 +64,9 @@ class MainContent extends Component {
             <div className="main-content">
                 <div className="main-content-userpick">
                     carousel
-                    <input id='testinput' placeholder="당신의 영화를 검색해 보세요!" type="text"></input>
-                    <FiSearch id="testsearch_icon" onClick={this.searchMovie}/>
-                    <FiSearch id="testsearch_icon" onClick={this.allMovie}/>
+                    <input id='testinput' name='testinput' placeholder="당신의 영화를 검색해 보세요!" type="text" onChange={this.handleChange}></input>
+                    <FiSearch id="testsearch_icon1" onClick={this.searchMovie}/>
+                    <FiSearch id="testsearch_icon2" onClick={this.allMovie}/>
                     <div id='testresponse'></div>
                 </div>
                 
