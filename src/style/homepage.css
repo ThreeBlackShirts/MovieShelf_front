@@ -83,6 +83,7 @@ html{
   font-family: 'Parisienne', cursive;
   font-size: 80px;
   height: 60%;
+  padding-right: 36px;
 }
 
 .home-content-main-search{
@@ -90,6 +91,7 @@ html{
 }
 
 .home-content-main-search-text{
+  font-family: 'Noto Serif KR', serif;
   display: inline-block;
   width: 240px;
   height: 40px;
@@ -109,5 +111,10 @@ html{
 
 .home-content-main-login{
   height: 20%;
-  text-decoration: underline;
+}
+
+#home-content-main-login-Link{
+  font-family: 'Noto Serif KR', serif;
+  text-decoration: none;
+  color: white;
 }
