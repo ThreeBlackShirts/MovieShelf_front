@@ -38,8 +38,8 @@ const DetailPage = () => {
                             <div className='detailpage-reviews-review-profile-name'>1</div>
                         </div>
                         <div className='detailpage-reviews-review-content'>
-                            <div className='detailpage-reviews-review-content-rating'>4/5</div>
-                            <div className='detailpage-reviews-review-content-text'>재밌어요~</div>
+                            <div className='detailpage-reviews-review-content-rating'>평점</div>
+                            <div className='detailpage-reviews-review-content-text'>한줄평</div>
                         </div>
                     </div>
                     <div className='detailpage-reviews-review'>
@@ -48,8 +48,8 @@ const DetailPage = () => {
                             <div className='detailpage-reviews-review-profile-name'>2</div>
                         </div>
                         <div className='detailpage-reviews-review-content'>
-                            <div className='detailpage-reviews-review-content-rating'>1/5</div>
-                            <div className='detailpage-reviews-review-content-text'>재미없어요~</div>
+                            <div className='detailpage-reviews-review-content-rating'>평점</div>
+                            <div className='detailpage-reviews-review-content-text'>한줄평</div>
                         </div>
                     </div>
                 </div>
