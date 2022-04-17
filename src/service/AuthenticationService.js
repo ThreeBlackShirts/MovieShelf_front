@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // const API_URL = "/api/auth/";
-const USER_API_BASE_URL = "/v1";
+const USER_API_BASE_URL = "/api/v1";
 
 class AuthenticationService {
   register(userEmail, userName, userPassword, userNickname) {
