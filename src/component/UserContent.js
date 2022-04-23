@@ -28,6 +28,8 @@ class UserContent extends Component {
                 // this.setState({
                 //     token: response.data.data
                 // });
+                this.state.userName = response.data.userName
+                this.state.userNickname = response.data.userNickname
             }).catch(() => {
                 console.log(error.response)
             });
