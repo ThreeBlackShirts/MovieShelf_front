@@ -1,7 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Noto+Serif+KR:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap');
+
+/*
+#detailpage{
+    
+}
+
+*/
 
 #detailpage-content{
+    font-family: 'Noto Serif KR', serif;
     width: 100%;
     text-align: center;
+    color: gainsboro;
 }
 
 #gobackbtn{
@@ -21,15 +34,18 @@
     color: white;
 }
 
+/* - 제목~정보 상자 */
+
 #detailpage-info-box{
     width: 80%;
     margin: auto;
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.5);
+    
 }
 
 #detailpage-info-title{
     font-size: 30px;
+    font-weight: bold;
     text-align: left;
     padding-left: 20px;
 }
@@ -42,44 +58,164 @@
 .detailpage-info-anchor-a{
     display: inline-block;
     width: 15%;
+    font-size: 18px;
+    font-weight: bold;
     text-decoration: underline;
-    color: black;
+    color: gainsboro;
 }
+
+/* - 주요정보 */
+
+#detailpage-info-majorinfo{
+    width: 100%;
+    height: 400px;
+    vertical-align: center;
+}
+
+.detailpage-box-title{
+    text-align: center;
+    font-size: 18px;
+    height: 36px;
+}
+
+#detailpage-info-majorinfo-img{
+    display: inline-block;
+    width: 200px;
+    height: 280px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0 20px 0 20px;
+    
+}
+
+#detailpage-info-poster-img {
+    width: 200px;
+    height: 240px;
+}
+
+#detailpage-info-majorinfo-basic{
+    display: inline-block;
+    width: 64%;
+    text-align: left;
+    vertical-align: middle;
+    margin: 10px 20px 10px 20px;
+}
+
+.detailpage-info-majorinfo-basic-content{
+    font-size: 12px;
+}
+
+#detailpage-info-majorinfo-basic p{
+    text-align: justify;
+}
+
+#detailpage-info-majorinfo-basic-storyline{
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+/* - 트레일러, 스틸컷 */
 
 #detailpage-img-box{
     display: table;
-    text-align: center;
     width: 80%;
     margin: auto;
+    text-align: center;
     align-content: center;
     vertical-align: middle;
-    background-color: rgba(255, 202, 202, 0.5);
+    
 }
 
-#detailpage-reviews-box{
-    display: table;
+#detailpage-img-trailer{
+    height: 360px;
+    width: 100%;
     text-align: center;
-    width: 80%;
-    margin: auto;
+    vertical-align: center;
+}
+
+.detailpage-img-table-wrap{
+    width: 70%;
+    text-align: center;
     align-content: center;
     vertical-align: middle;
-    background-color: rgba(196, 252, 196, 0.5);
+    margin: auto;
 }
+
+.detailpage-img-table{
+    width: 100%;
+    text-align: center;
+    margin: auto;
+}
+
+.detailpage-img-trailer-td{
+    display: table-cell;
+    width: 30%;
+}
+
+#detailpage-img-stillcut{
+    height: 360px;
+    width: 100%;
+    vertical-align: center;
+}
+
+.detailpage-img-stillcut-td{
+    display: table-cell;
+    width: 25%;
+}
+
+/* - 평정/리뷰 */
+
+#detailpage-reviews-box{
+    width: 80%;
+    height: 500px;
+    margin: auto;
+    text-align: center;
+    align-content: center;
+    vertical-align: middle;
+}
+
+#detailpage-reviews-review-table-wrap{
+    width: 90%;
+    text-align: center;
+    align-content: center;
+    vertical-align: middle;
+    margin: auto;
+}
+
+#detailpage-reviews-review-table{
+    width: 100%;
+    text-align: center;
+    margin: auto;
+}
+
 
 .detailpage-reviews-review{
     display: table-cell;
-    width: 45%;
-    height: 60px;
+    width: 50%;
+    height: 100px;
     text-align: center;
 }
 
 .detailpage-reviews-review-profile{
     display: inline-block;
-    width: 25%;
+    width: 30%;
     vertical-align: middle;
+}
+
+.detailpage-reviews-review-profile-img{
+    width: 60px;
+    height: 60px;
 }
 
 .detailpage-reviews-review-content{
     display: inline-block;
-    width: 75%;
+    text-align: justify;
+    width: 70%;
+}
+#detailpage-reviews-pagecontroller{
+    height: 60px;
+    width: 60%;
+    text-align: center;
+    vertical-align: middle;
+    margin: auto;
 }

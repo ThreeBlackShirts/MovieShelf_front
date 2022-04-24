@@ -1,16 +1,18 @@
 import React, {Component} from 'react';
 import { Link } from "react-router-dom";
-import 'style/loginpage.css'
+
+import 'style/loginpage.css';
+
 import AuthenticationService from 'service/AuthenticationService';
 
-/*
-function toHomePage(){
-    window.location.href="/"
-}
-*/
+
+function toHomePage() { window.location.href="/"    }
+
 // function Login() {
 //     const navigate = useNavigate();
 // }
+
+//background : url(images/background/cameraandbooks.jpg);
 
 
 class LoginPage extends Component {
@@ -60,7 +62,7 @@ class LoginPage extends Component {
         return (
             <div className="login-content">
                 <div className="login-content-title">
-                    <Link to='/' id='login-content-title-logo'>MovieShelf</Link>
+                    <h1 id='login-content-title-logo' onClick={toHomePage}>MovieShelf</h1>
                 </div>
 
                 <div className="login-content-body">

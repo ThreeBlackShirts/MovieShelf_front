@@ -1,14 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Noto+Serif+KR:wght@300&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap');
 
-/* Header */
+/* Header
+background : url(images/background/cameraandbooks.jpg);
+background-color: rgba(0, 0, 0, 0.7);
+*/
 
-html{
-  background : url(images/background/cameraandbooks.jpg);
+html, body{
   width: 100%;
-  height: 100%;
 }
 
 .home-content{
@@ -17,6 +18,7 @@ html{
   height: 100%;
   align-content: center;
   color: white;
+  background : url(images/background/cameraandbooks.jpg);
 }
 
 .home-content-header {
@@ -26,20 +28,43 @@ html{
 }
 
 .home-content-header-title {
-  font-family: 'Parisienne', cursive;
   display: inline-block;
   width: 50%;
   vertical-align: middle;
   text-align: left;
+  font-family: 'Parisienne', cursive;
 }
 
-.home-content-header-title-logo {
+#home-content-header-title-logo {
   display: inline-block;
   width: 50%;
   font-size: 36px;
   vertical-align: middle;
   padding-left: 20px;
 }
+
+.home-content-header-icon{
+  display: inline-block;
+  width: 50%;
+  text-align: right;
+}
+
+#home-content-header-myshelf{
+  display: inline-block;
+  text-align: right;
+  vertical-align: middle;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+#home-content-header-myshelf-icon{
+  color: white;
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  padding-right: 30px;
+}
+
 
 .home-content-header-login{
   font-family: 'Roboto Mono', monospace;
@@ -62,8 +87,8 @@ html{
 
 .home-content-main{
   width: 600px;
-  height: 400px;
-  margin: 200px auto 100px auto;
+  height: 480px;
+  margin: 140px auto 160px auto;
   text-align: center;
   vertical-align: middle;
   border-radius: 30px;

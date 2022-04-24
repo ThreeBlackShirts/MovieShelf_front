@@ -3,11 +3,9 @@ import { Link } from "react-router-dom";
 import 'style/signuppage.css'
 import AuthenticationService from 'service/AuthenticationService';
 
-/*
-function toHomePage(){
-    window.location.href="/"
-}
-*/
+
+function toHomePage(){  window.location.href="/"    }
+
 
 class SignUpPage extends Component {
 
@@ -59,7 +57,7 @@ class SignUpPage extends Component {
         return (
             <div className="signup-content">
                 <div className="signup-content-title">
-                    <Link to='/'><h1>MovieShelf</h1></Link>
+                    <h1 id='signup-content-title-logo' onClick={toHomePage}>MovieShelf</h1>
                 </div>
 
                 <div className="signup-content-body">
