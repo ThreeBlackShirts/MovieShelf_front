@@ -19,6 +19,13 @@ class UserContent extends Component {
         // this.handleChange = this.handleChange.bind(this)
     }
 
+    handleChange = (e) => {
+        this.setState(
+            {
+                [e.target.id]: e.target.value
+            }
+        )
+    }
    
     getUserInfo = () => {
         UserService
@@ -30,7 +37,10 @@ class UserContent extends Component {
                 // });
                 this.state.userName = response.data.userName
                 this.state.userNickname = response.data.userNickname
-            }).catch(() => {
+                console.log(response.data.userName)
+                console.log(this.state.userName)
+                console.log(this.state.userNickname)
+            }).catch((error) => {
                 console.log(error.response)
             });
     }
@@ -41,6 +51,9 @@ class UserContent extends Component {
             <div className="user-info">
                 <div className="user-info-content">
                     content
+                    <div className="userName" name="userName" id="userName" onChange={this.handleChange}>
+                        {this.state.userName}
+                    </div>
                 </div>
             </div>
         );
