@@ -1,6 +1,11 @@
-html, body{
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Noto+Serif+KR:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap');
+
+html{
     width: 100%;
-    height: 100vh;
+    height: 100%;
     align-content: center;
 }
 
@@ -9,26 +14,25 @@ html, body{
     width: 100%;
     height: 100%;
     align-content: center;
-    background : url(images/background/cameraandbooks.jpg);
 }
 
 /* header : title*/
 .signup-content-title {
-    font-family: 'Parisienne', cursive;
     height: 90px;
-    text-align: left;
+    width: 100%;
+    flex-direction: column;
     vertical-align: middle;
+    text-align: left;
+    font-family: 'Parisienne', cursive;
 }
 
-.signup-content-title a {
-    text-decoration: none;
-}
-
-.signup-content-title h1{
-    margin: 0;
+#signup-content-title-logo{
+    display: inline-block;
     padding-left: 20px;
-    padding-top: 20px;
+    font-size: 36px;
+    font-weight: bold;
     color: white;
+    text-decoration: none;
 }
 
 /* content : login, btn, remember*/

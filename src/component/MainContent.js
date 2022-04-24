@@ -33,13 +33,13 @@ class MainContent extends Component {
             .search(this.state.testinput)
             .then((response) => {
                 console.log(response)
-                alert("search");
+                alert(this.state.testinput +"search");
                 /*
                 this.setstate({
                     testresponse: response.data.data
                 });
                 */
-                //document.location.href = "/listpage";
+                document.location.href = "/listpage";
             }).catch(() => {
                 console.log("searchfailed")
                 alert("search fail");
