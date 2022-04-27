@@ -34,12 +34,13 @@ class AuthenticationService {
   }
   registerSuccessfulLoginForJwt(userEmail, token) {
     console.log("===registerSuccessfulLoginForJwt===")
-    localStorage.setItem('token', token);
     localStorage.setItem('authenticatedUser', userEmail);
+    localStorage.setItem('token', token);
     // sessionStorage.setItem('authenticatedUser', userEmail)
     // this.setupAxiosInterceptors(this.createJWTToken(token))
     this.setupAxiosInterceptors();
   }
+
   getCurrentUser() {
     return JSON.parse(localStorage.getItem('authenticatedUser'));
   }
@@ -75,8 +76,8 @@ class AuthenticationService {
   }
   
   logout() {
-    localStorage.removeItem("authenticatedUser");
-    localStorage.removeItem("token");
+    localStorage.removeItem('authenticatedUser');
+    localStorage.removeItem('token');
   }
 }
 

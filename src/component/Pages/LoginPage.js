@@ -46,7 +46,10 @@ class LoginPage extends Component {
                 this.setState({
                     token: response.data.data
                 });
-                AuthenticationService.registerSuccessfulLoginForJwt((this.state.userEmail, response.data.data))
+                console.log('loginClicked');
+                console.log(this.state.userEmail, this.state.token);
+                AuthenticationService.registerSuccessfulLoginForJwt(this.state.userEmail, this.state.token);
+                
                 // this.props.history.push(`/${this.state.userEmail}`)
                 document.location.href = "/";    
                 this.setState({ showSuccessMessage: true })

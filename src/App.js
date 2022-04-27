@@ -8,6 +8,7 @@ import ListPage from 'component/Pages/ListPage';
 import LogoutComponent from 'component/LogoutComponent';
 import MainPage from 'component/Pages/MainPage';
 import DetailPage from 'component/Pages/DetailPage';
+import UserInfoPage from 'component/Pages/UserInfoPage';
 
 const App = () => {
 
@@ -25,6 +26,7 @@ const App = () => {
       <Route path="/list" element={<ListPage />} />
       <Route path="/main" element={<MainPage />} />
       <Route path="/detail" element={<DetailPage />} />
+      <Route path="/userinfo" element={<UserInfoPage />} />
     </Routes>
   );
 };
