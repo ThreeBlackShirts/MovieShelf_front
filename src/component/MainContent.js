@@ -17,8 +17,6 @@ class MainContent extends Component {
         }
         // this.handleChange = this.handleChange.bind(this)
         this.searchMovie = this.searchMovie.bind(this)
-
-        
     }
     handleChange = (e) => {
         this.setState(
