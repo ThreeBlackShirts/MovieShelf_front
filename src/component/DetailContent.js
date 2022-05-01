@@ -21,7 +21,7 @@ class DetailContent extends Component {
                     </div>
                     <div id='detailpage-info-majorinfo'>
                         <h4 className='detailpage-box-title'>주요 정보</h4>
-                        <div id='detailpage-info-majorinfo-img'>
+                        <div id='detailpage-info-poster-img-wrap'>
                             <img id='detailpage-info-poster-img' src={require('../images/test/test_detail.jpg')} />
                             <div>★ ★ ★ ★ ☆</div>
                         </div>
