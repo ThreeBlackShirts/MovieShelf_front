@@ -1,0 +1,198 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Noto+Serif+KR:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap');
+
+
+#reviewpage{
+    min-height: 100vh;
+}
+
+#reviewpage-content{
+    font-family: 'Noto Serif KR', serif;
+    width: 100%;
+    min-height: 84vh;
+    text-align: center;
+}
+
+#gobackbtn{
+    display: inline-block;
+    height: 54px;
+    width: 100%;
+    text-align: left;
+}
+
+#gobackbtn-icon{
+    display: inline-block;
+    width: 54px;
+    height: 54px;
+    text-align: left;
+    padding-left: 20px;
+    vertical-align: middle;
+    color: white;
+}
+
+#reviewpage-wrap{
+    width: 90%;
+    text-align: center;
+    margin: auto;
+}
+
+#reviewpage-moviereview{
+    width: 100%;
+    min-height: 50vh;
+}
+
+#reviewpage-moviereview-movieinfo{
+    display: inline-block;
+    width: 25%;
+    height: 360px;
+    background-color: gainsboro;
+    border-radius: 10px;
+}
+
+#reviewpage-moviereview-img-wrap{
+    width: 100%;
+    height: 320px;
+    background-color: gainsboro;
+    border-radius: 10px;
+}
+
+#reviewpage-moviereview-img{
+    width: 210px;
+    height: 320px;
+    object-fit: contain;
+    background-color: gainsboro;
+}
+
+#reviewpage-moviereview-rate{
+    height: 40px;
+    background-color: darkgray;
+    border-radius: 0 0 10px 10px;
+}
+
+    #reviewpage-moviereview-rate span{
+        vertical-align: middle;
+        font-size: 22px;
+    }
+
+#reviewpage-moviereview-detail{
+    display: inline-block;
+    width: 60%;
+    min-height: 360px;
+    vertical-align: top;
+    margin-left: 20px;
+    padding: 0 1% 0 1%;
+    border-radius: 10px;
+    background-color: gainsboro;
+}
+
+#reviewpage-moviereview-detail-header{
+    height: 40%;
+    text-align: center;
+    margin-top: 1%;
+}
+
+    #reviewpage-moviereview-detail-header-title{
+        display: inline-block;
+        width: 70%;
+        font-size: 30px;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    .moviereview-content-btn{
+        display: inline-block;
+        width: 10%;
+        text-align: center;
+    }
+
+    .moviereview-content-btn-icon{
+        width: 24px;
+        height: 24px;
+    }
+
+#reviewpage-moviereview-detail-content{
+    font-size: 16px;
+    height: 60%;
+    margin-top: 2%;
+    text-align: justify;
+}
+
+#reviewpage-hr{
+    width: 90%;
+    text-align: center;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 60%;
+}
+
+/*리뷰(댓글)*/
+
+#reviewpage-comment-wrap{
+    width: 80%;
+    text-align: center;
+    margin: auto;
+}
+
+.reviewpage-comment{
+    height: 60px;
+    vertical-align: top;
+    background-color: gainsboro;
+    border-radius: 15px;
+    border-style: solid;
+    border-width: 1px;
+    margin-bottom: 10px;
+}
+
+.reviewpage-comment-user{
+    display: inline-block;
+    height: 60px;
+    width: 15%;
+    vertical-align: middle;
+    text-align: justify;
+}
+
+    .reviewpage-comment-user-profile{
+        display: inline-block;
+        vertical-align: middle;
+        width: 40%;
+        height: 60px;
+    }
+
+        .reviewpage-comment-user-profile-img{
+            width: 40px;
+            height: 40px;
+            margin: 10px;
+            padding: 0;
+            object-fit: contain;
+            vertical-align: baseline;
+            border-width: 1px;
+        }
+
+    .reviewpage-comment-user-id{
+        display: inline-block;
+        vertical-align: middle;
+        width: 50%;
+    }
+
+.reviewpage-comment-content{
+    display: inline-block;
+    height: 60px;
+    width: 70%;
+    vertical-align: middle;
+    text-align: justify;
+    line-height: 60px;
+}
+
+.reviewpage-comment-content-btn{
+    display: inline-block;
+    width: 5%;
+    text-align: center;
+}
+
+.reviewpage-comment-content-btn-icon{
+    width: 20px;
+    height: 20px;
+}

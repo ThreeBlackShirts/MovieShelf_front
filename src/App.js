@@ -9,6 +9,7 @@ import LogoutComponent from 'component/LogoutComponent';
 import MainPage from 'component/Pages/MainPage';
 import DetailPage from 'component/Pages/DetailPage';
 import UserInfoPage from 'component/Pages/UserInfoPage';
+import ReviewPage from 'component/Pages/ReviewPage';
 
 const App = () => {
 
@@ -27,6 +28,7 @@ const App = () => {
       <Route path="/main" element={<MainPage />} />
       <Route path="/detail" element={<DetailPage />} />
       <Route path="/userinfo" element={<UserInfoPage />} />
+      <Route path="/review" element={<ReviewPage />} />
     </Routes>
   );
 };
