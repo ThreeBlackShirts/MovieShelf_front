@@ -73,22 +73,12 @@ class MainContent extends Component {
             </div>
     
             /*
-            <div className="main-content">
-                <div className="main-content-userpick">
-                    carousel
-                </div>
-                <div className="main-content-recommended-popular">
-                    <div>
-                        
-                    </div>
-                </div>
-                <div className="main-content-recommended-new">
-    
-                </div>
-                <div className="main-content-recommended-genre">
-    
-                </div>
-            </div>
+                    <input type="text" className="header-content-userbtn-search-btn-text" list='header-content-search-list'></input>
+                    <datalist id='header-content-search-list'>
+                        <option value="제목"></option>
+                        <option value="배우"></option>
+                        <option value="장르"></option>
+                    </datalist>
     
              */
         );

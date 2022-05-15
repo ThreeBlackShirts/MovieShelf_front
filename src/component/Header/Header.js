@@ -36,6 +36,14 @@ const Header = () => {
 
             <div className="header-content-userbtn">
                 <div className="header-content-userbtn-search-btn">
+                    <div id="header-content-userbtn-search-btn-subject-wrap">
+                        <input id='subject-title' type='radio' name='search-subject'/>
+                            <label htmlFor='subject-title'>제목</label>
+                        <input id='subject-actor' type='radio' name='search-subject'/>
+                            <label htmlFor='subject-actor'>배우</label>
+                        <input id='subject-genre' type='radio' name='search-subject'/>
+                            <label htmlFor='subject-genre'>장르</label>
+                    </div>
                     <input type="text" className="header-content-userbtn-search-btn-text"></input>
                     <FiSearch className="header-content-userbtn-search-btn-icon"/>
                 </div>
