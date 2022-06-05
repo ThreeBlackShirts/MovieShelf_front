@@ -4,11 +4,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap');
 
+@font-face {
+  font-family: 'IM_Hyemin-Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Bold.woff2') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'IM_Hyemin-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Regular.woff2') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* Header */
 
 .header-container {
-  font-family: 'Nanum Gothic', sans-serif;
-  height: 90px;
+  font-family: 'IM_Hyemin-Bold';
+  height: 10vh;
   width: 100%;
   vertical-align: middle;
   color: white;
@@ -55,7 +69,7 @@
 }
 
 .header-content-userbtn{
-  font-family: 'Nanum Gothic', sans-serif;
+  font-family: 'twayair';
   display: inline-block;
   width: 50%;
   text-align: right;
@@ -82,7 +96,7 @@
 }
 
 #header-content-userbtn-search-btn-subject-wrap label{
-  font-family: 'Hi Melody', cursive;
+  font-family: 'IM_Hyemin-Regular';
 }
 
 #header-content-userbtn-search-btn-subject-wrap input[type=radio]+label{

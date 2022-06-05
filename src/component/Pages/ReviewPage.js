@@ -6,7 +6,7 @@ import 'style/reviewpage.css';
 
 const ReviewPage = () => {
     return (
-        <div id='reviewpage'>
+        <div className='reviewpage'>
             <Header />
             <ReviewContent />
             <Footer />

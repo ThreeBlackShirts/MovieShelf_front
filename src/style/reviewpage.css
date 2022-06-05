@@ -3,13 +3,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap');
 
-
-#reviewpage{
+@font-face {
+    font-family: 'IM_Hyemin-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Bold.woff2') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.reviewpage{
     min-height: 100vh;
 }
 
 #reviewpage-content{
-    font-family: 'Noto Serif KR', serif;
+    font-family: 'IM_Hyemin-Bold';
     width: 100%;
     min-height: 84vh;
     text-align: center;
