@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 import MovieService from 'service/MovieService';
 
-import { FiSearch } from "react-icons/fi";
-
 class MainContent extends Component {
     constructor(props) {
         super(props)
@@ -11,51 +9,45 @@ class MainContent extends Component {
         this.state = {
             userEmail: localStorage.getItem("authenticatedUser") || '',
             token: localStorage.getItem("token") || '',
-            testinput: '',
+            //target 예시. 나중에 위시리스트 적용되면 변경해야함.
+            target: '범죄도시2',
+            recommendData : [],
+            categoryData : [],
             hasLoginFailed: false,
             showSuccessMessage: false,
         }
-        // this.handleChange = this.handleChange.bind(this)
-        this.searchMovie = this.searchMovie.bind(this)
-    }
-    handleChange = (e) => {
-        this.setState(
-            {
-                [e.target.id]: e.target.value
-            }
-        )
     }
 
-    searchMovie() {
-        console.log("searchbtn clicked")
-        MovieService
-            .search(this.state.testinput)
-            .then((response) => {
-                console.log(response)
-                alert(this.state.testinput +"search");
-                /*
-                this.setstate({
-                    testresponse: response.data.data
+    recommendMovieList() {
+        console.log("Recommendation Movie")
+        if(this.state.target !== null && this.state.target !== ""){
+            console.log(this.state.target +"'s recommnedation")
+            MovieService
+                .recommendation(this.state.target)
+                .then((response) => {
+                    console.log(response.data.data)
+                    this.state = ({ recommendData: response.data.data })
+                }).catch(() => {
+                    console.log("Recommendation failed")
+                    alert("Recommendation fail");
                 });
-                */
-                document.location.href = "/listpage";
-            }).catch(() => {
-                console.log("searchfailed")
-                alert("search fail");
-            });
+        }else{
+            console.log("target error")
+            history.back()
+        }
     }
 
-    allMovie() {
-        console.log("allbtn clicked")
+    categoryMovieList() {
+        console.log("MovieShelf's category Movie")
         MovieService
-            .all()
+            .category()
             .then((response) => {
-                console.log(response)
-                alert("all");
+                console.log(response.data.data)
+                this.state = ({ categoryData: response.data.data })
             }).catch(() => {
-                console.log("allfailed")
-                alert("all fail");
-            })
+                console.log("category failed")
+                alert("category fail");
+            });
     }
 
     render() {
@@ -63,11 +55,7 @@ class MainContent extends Component {
 
             <div className="main-content">
                 <div className="main-content-userpick">
-                    carousel
-                    <input id='testinput' name='testinput' placeholder="당신의 영화를 검색해 보세요!" type="text" onChange={this.handleChange}/>
-                    <FiSearch id="testsearch_icon1" onClick={this.searchMovie}/>
-                    <FiSearch id="testsearch_icon2" onClick={this.allMovie}/>
-                    <div id='testresponse'></div>
+                    영화 포스터가 나열될 수 있게 리스트 html 작성 필요
                 </div>
                 
             </div>
