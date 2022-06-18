@@ -13,10 +13,7 @@ class MovieService {
 	}
 
 	detail(target) {
-		let Data = {
-			movieTitle : target
-		}
-		return axios.get(MOVIE_API_BASE_URL+"/detail/"+target, JSON.stringify(Data), {
+		return axios.get(MOVIE_API_BASE_URL+"/detailed/"+target, {
 			headers: {
 				"Content-Type": 'application/json',
 			},

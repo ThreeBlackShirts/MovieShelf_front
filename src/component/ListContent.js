@@ -49,9 +49,17 @@ class ListContent extends Component {
         }
     }
 
+    targetNameSet() {
+        //const target = document.getElementById("").innerText
+        //window.localStorage.setItem('target', target)
+        window.localStorage.setItem('target', "범죄도시2")
+        //location.href(`/detail/${target}`)
+        location.href = "/detail"
+    }
+
     render() {
         return (
-            <div className="listpage-content" onLoad={this.searchMovie()}>
+            <div className="listpage-content" onLoad={this.searchMovie}>
                 <div className="listpage-content-search">
                     <div className="listpage-content-search-btnwrap">
                         <input type="text" id="listpage-search-text" placeholder='검색한 단어' value={this.state.input}></input>
@@ -59,7 +67,7 @@ class ListContent extends Component {
                     </div>
                 </div>
                 <div className="listpage-content-result">
-                    <div className="listpage-content-result-item">
+                    <div className="listpage-content-result-item" onClick={this.targetNameSet}>
                         <div className="listpage-content-result-item-pic"><img/></div>
                         <div className="listpage-content-result-item-info">영화 이름</div>
                     </div>
