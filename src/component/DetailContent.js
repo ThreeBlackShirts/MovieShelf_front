@@ -1,15 +1,51 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 
+import MovieService from 'service/MovieService';
 import 'style/detailpage.css';
 
 import { MdKeyboardArrowLeft } from "react-icons/md";
 
 class DetailContent extends Component {
-    
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            userEmail: localStorage.getItem("authenticatedUser") || '',
+            token: localStorage.getItem("token") || '',
+            target: localStorage.getItem("target") || '',
+            data: {},
+            hasLoginFailed: false,
+            showSuccessMessage: false,
+        }
+        this.detailhMovie = this.detailhMovie.bind(this)
+    }
+
+    detailhMovie() {
+        console.log("detail Movie")
+        if(this.state.target !== null && this.state.target !== ""){
+            console.log(this.state.target +" detail")
+            MovieService
+                .detail(this.state.target)
+                .then((response) => {
+                    console.log(response.data.data)
+                    localStorage.removeItem("target")
+                    //this.state.data에 검색된 영화 정보(제목, 포스터url...)들 리스트로 담겨있음.
+                    //잘 모르겠으면 콘솔 출력된 것 보기!
+                    this.state = ({ data: response.data.data })
+                }).catch(() => {
+                    console.log("detail failed")
+                    alert("detail fail");
+                });
+        }else{
+            console.log("target error")
+            history.back()
+        }
+    }
+
     render() {
         return (
-            <div id='detailpage-content'>
+            <div id='detailpage-content' onLoad={this.detailhMovie()}>
                 <div id='gobackbtn'><MdKeyboardArrowLeft id='gobackbtn-icon'/></div>
                 <div id='detailpage-info-box'>
                     <div id='detailpage-info-title'>제목</div>
