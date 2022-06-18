@@ -20,6 +20,22 @@ class MovieService {
 		});
 	}
 
+	recommendation(target) {
+		return axios.post(MOVIE_API_BASE_URL+"/recommendation", JSON.stringify(target), {
+			headers: {
+				"Content-Type": 'application/json',
+			},
+		});
+	}
+
+	category() {
+		return axios.post(MOVIE_API_BASE_URL+"/category", {
+			headers: {
+				"Content-Type": 'application/json',
+			},
+		});
+	}
+
 }
 
 export default new MovieService()
