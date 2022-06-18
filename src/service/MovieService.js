@@ -1,36 +1,25 @@
 import axios from "axios";
-import AuthenticationService from "./AuthenticationService";
 
 const MOVIE_API_BASE_URL = "/api/movie"
 
 class MovieService {
 
 	search(input) {
-		let Data = {
-			input : input
-		}
-		return axios.post(MOVIE_API_BASE_URL+"/search", JSON.stringify(Data), {
+		return axios.post(MOVIE_API_BASE_URL+"/search", JSON.stringify(input), {
 			headers: {
 				"Content-Type": 'application/json',
 			},
 		});
 	}
 
-	all() {
-		/*
-		all(movieTitle, moviePoster, movieRank) {
-			
-			let movieData = {
-			movieTitle: movieTitle,
-			moviePoster: moviePoster,
-			movieRank: movieRank
+	detail(target) {
+		let Data = {
+			movieTitle : target
 		}
-			*/
-		
-		return axios.get(MOVIE_API_BASE_URL+"/alllist",{
+		return axios.get(MOVIE_API_BASE_URL+"/detail/"+target, JSON.stringify(Data), {
 			headers: {
 				"Content-Type": 'application/json',
-			}
+			},
 		});
 	}
 
