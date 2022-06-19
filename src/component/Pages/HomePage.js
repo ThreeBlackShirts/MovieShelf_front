@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import AuthenticationService from 'service/AuthenticationService';
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 
 import 'style/homepage.css';
+import AuthenticationService from 'service/AuthenticationService';
+import ListContent from 'component/ListContent';
 import Footer from '../Footer/Footer';
 
 import { FiSearch } from "react-icons/fi";
@@ -11,6 +12,15 @@ import { ImBooks } from "react-icons/im";
 
 function toHomePage(){
     window.location.href="/"
+}
+
+function search() {
+    const input = document.getElementById("search-input").value
+    if(input !== null && input !== ""){
+    window.localStorage.setItem('input', input)
+    location.href = "/list"
+    }else
+        alert("검색어를 입력해주세요.")
 }
 
 const HomePage = () => {
@@ -38,8 +48,10 @@ const HomePage = () => {
                     <div className="home-content-main-title-logo">MovieShelf</div>
                 </div>
                 <div className="home-content-main-search">
-                    <input className="home-content-main-search-text" placeholder="당신의 영화를 검색해 보세요!" type="text"></input>
+                    <input className="home-content-main-search-text"  id='search-input' placeholder="당신의 영화를 검색해 보세요!" type="text"></input>
+                    <button className="home-content-main-search-button" onClick={search}>
                     <FiSearch className="home-content-main-search-icon"/>
+                    </button>
                 </div>
                 <div className="home-content-main-login">
                     {!onLogin && <Link id='home-content-main-login-Link' to='/login'>로그인하여 나만의 영화책장만들기</Link>}                    
