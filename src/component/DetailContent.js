@@ -83,35 +83,39 @@ class DetailContent extends Component {
                         <h4 className='detailpage-box-title'><hr className='detailpage-info-hr-left'/>트레일러<hr className='detailpage-info-hr-right'/></h4>
                         <div className='detailpage-img-table-wrap'>
                             <table className='detailpage-img-table'>
-                                <tr>
-                                    <td className='detailpage-img-trailer-td'>img 1</td>
-                                    <td className='detailpage-img-trailer-td'>img 2</td>
-                                    <td className='detailpage-img-trailer-td'>img 3</td>
-                                </tr>
-                                <tr>
-                                    <td className='detailpage-img-trailer-td'>img 1</td>
-                                    <td className='detailpage-img-trailer-td'>img 2</td>
-                                    <td className='detailpage-img-trailer-td'>img 3</td>
-                                </tr>
+                                <thead>
+                                    <tr>
+                                        <td className='detailpage-img-trailer-td'>img 1</td>
+                                        <td className='detailpage-img-trailer-td'>img 2</td>
+                                        <td className='detailpage-img-trailer-td'>img 3</td>
+                                    </tr>
+                                    <tr>
+                                        <td className='detailpage-img-trailer-td'>img 1</td>
+                                        <td className='detailpage-img-trailer-td'>img 2</td>
+                                        <td className='detailpage-img-trailer-td'>img 3</td>
+                                    </tr>
+                                </thead>
                             </table>
                         </div>
                     </div>
                     <div id='detailpage-img-stillcut'>
                         <h4 className='detailpage-box-title'><hr className='detailpage-info-hr-left'/>스틸컷<hr className='detailpage-info-hr-right'/></h4>
                         <div className='detailpage-img-table-wrap'>
-                        <table className='detailpage-img-table'>
-                                <tr>
-                                    <td className='detailpage-img-stillcut-td'>img 1</td>
-                                    <td className='detailpage-img-stillcut-td'>img 2</td>
-                                    <td className='detailpage-img-stillcut-td'>img 3</td>
-                                    <td className='detailpage-img-stillcut-td'>img 4</td>
-                                </tr>
-                                <tr>
-                                    <td className='detailpage-img-stillcut-td'>img 1</td>
-                                    <td className='detailpage-img-stillcut-td'>img 2</td>
-                                    <td className='detailpage-img-stillcut-td'>img 3</td>
-                                    <td className='detailpage-img-stillcut-td'>img 4</td>
-                                </tr>
+                            <table className='detailpage-img-table'>
+                                <thead>
+                                    <tr>
+                                        <td className='detailpage-img-stillcut-td'>img 1</td>
+                                        <td className='detailpage-img-stillcut-td'>img 2</td>
+                                        <td className='detailpage-img-stillcut-td'>img 3</td>
+                                        <td className='detailpage-img-stillcut-td'>img 4</td>
+                                    </tr>
+                                    <tr>
+                                        <td className='detailpage-img-stillcut-td'>img 1</td>
+                                        <td className='detailpage-img-stillcut-td'>img 2</td>
+                                        <td className='detailpage-img-stillcut-td'>img 3</td>
+                                        <td className='detailpage-img-stillcut-td'>img 4</td>
+                                    </tr>
+                                </thead>
                             </table>
                         </div>
                     </div>
@@ -120,72 +124,74 @@ class DetailContent extends Component {
                     <h4 className='detailpage-box-title'><hr className='detailpage-info-hr-left'/>평점/리뷰<hr className='detailpage-info-hr-right'/></h4>
                     <div id='detailpage-reviews-review-table-wrap'>
                         <table id='detailpage-reviews-review-table'>
-                            <tr>
-                                <td className='detailpage-reviews-review'>
-                                    <div className='detailpage-reviews-review-profile'>
-                                        <div className='detailpage-reviews-review-profile-img-wrap'><img className='detailpage-reviews-review-profile-img' src={require('../images/test/testprofile.png')} /> </div>
-                                        <div className='detailpage-reviews-review-profile-name'>이름</div>
-                                    </div>
-                                    <div className='detailpage-reviews-review-content'>
-                                        <div className='detailpage-reviews-review-content-rating'>★★★★★</div>
-                                        <div className='detailpage-reviews-review-content-text'>한줄평</div>
-                                    </div>
-                                </td>
-                                <td className='detailpage-reviews-review'>
-                                    <div className='detailpage-reviews-review-profile'>
-                                        <div className='detailpage-reviews-review-profile-img-wrap'><img className='detailpage-reviews-review-profile-img' src={require('../images/test/testprofile.png')} /> </div>
-                                        <div className='detailpage-reviews-review-profile-name'>이름</div>
-                                    </div>
-                                    <div className='detailpage-reviews-review-content'>
-                                        <div className='detailpage-reviews-review-content-rating'>★★★★★</div>
-                                        <div className='detailpage-reviews-review-content-text'>한줄평</div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className='detailpage-reviews-review'>
-                                    <div className='detailpage-reviews-review-profile'>
-                                        <div className='detailpage-reviews-review-profile-img-wrap'><img className='detailpage-reviews-review-profile-img' src={require('../images/test/testprofile.png')} /> </div>
-                                        <div className='detailpage-reviews-review-profile-name'>이름</div>
-                                    </div>
-                                    <div className='detailpage-reviews-review-content'>
-                                        <div className='detailpage-reviews-review-content-rating'>★★★★★</div>
-                                        <div className='detailpage-reviews-review-content-text'>한줄평</div>
-                                    </div>
-                                </td>
-                                <td className='detailpage-reviews-review'>
-                                    <div className='detailpage-reviews-review-profile'>
-                                        <div className='detailpage-reviews-review-profile-img-wrap'><img className='detailpage-reviews-review-profile-img' src={require('../images/test/testprofile.png')} /> </div>
-                                        <div className='detailpage-reviews-review-profile-name'>이름</div>
-                                    </div>
-                                    <div className='detailpage-reviews-review-content'>
-                                        <div className='detailpage-reviews-review-content-rating'>★★★★★</div>
-                                        <div className='detailpage-reviews-review-content-text'>한줄평</div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className='detailpage-reviews-review'>
-                                    <div className='detailpage-reviews-review-profile'>
-                                        <div className='detailpage-reviews-review-profile-img-wrap'><img className='detailpage-reviews-review-profile-img' src={require('../images/test/testprofile.png')} /> </div>
-                                        <div className='detailpage-reviews-review-profile-name'>이름</div>
-                                    </div>
-                                    <div className='detailpage-reviews-review-content'>
-                                        <div className='detailpage-reviews-review-content-rating'>★★★★★</div>
-                                        <div className='detailpage-reviews-review-content-text'>한줄평</div>
-                                    </div>
-                                </td>
-                                <td className='detailpage-reviews-review'>
-                                    <div className='detailpage-reviews-review-profile'>
-                                        <div className='detailpage-reviews-review-profile-img-wrap'><img className='detailpage-reviews-review-profile-img' src={require('../images/test/testprofile.png')} /> </div>
-                                        <div className='detailpage-reviews-review-profile-name'>이름</div>
-                                    </div>
-                                    <div className='detailpage-reviews-review-content'>
-                                        <div className='detailpage-reviews-review-content-rating'>★★★★★</div>
-                                        <div className='detailpage-reviews-review-content-text'>한줄평</div>
-                                    </div>
-                                </td>
-                            </tr>
+                            <thead>
+                                <tr>
+                                    <td className='detailpage-reviews-review'>
+                                        <div className='detailpage-reviews-review-profile'>
+                                            <div className='detailpage-reviews-review-profile-img-wrap'><img className='detailpage-reviews-review-profile-img' src={require('../images/test/testprofile.png')} /> </div>
+                                            <div className='detailpage-reviews-review-profile-name'>이름</div>
+                                        </div>
+                                        <div className='detailpage-reviews-review-content'>
+                                            <div className='detailpage-reviews-review-content-rating'>★★★★★</div>
+                                            <div className='detailpage-reviews-review-content-text'>한줄평</div>
+                                        </div>
+                                    </td>
+                                    <td className='detailpage-reviews-review'>
+                                        <div className='detailpage-reviews-review-profile'>
+                                            <div className='detailpage-reviews-review-profile-img-wrap'><img className='detailpage-reviews-review-profile-img' src={require('../images/test/testprofile.png')} /> </div>
+                                            <div className='detailpage-reviews-review-profile-name'>이름</div>
+                                        </div>
+                                        <div className='detailpage-reviews-review-content'>
+                                            <div className='detailpage-reviews-review-content-rating'>★★★★★</div>
+                                            <div className='detailpage-reviews-review-content-text'>한줄평</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td className='detailpage-reviews-review'>
+                                        <div className='detailpage-reviews-review-profile'>
+                                            <div className='detailpage-reviews-review-profile-img-wrap'><img className='detailpage-reviews-review-profile-img' src={require('../images/test/testprofile.png')} /> </div>
+                                            <div className='detailpage-reviews-review-profile-name'>이름</div>
+                                        </div>
+                                        <div className='detailpage-reviews-review-content'>
+                                            <div className='detailpage-reviews-review-content-rating'>★★★★★</div>
+                                            <div className='detailpage-reviews-review-content-text'>한줄평</div>
+                                        </div>
+                                    </td>
+                                    <td className='detailpage-reviews-review'>
+                                        <div className='detailpage-reviews-review-profile'>
+                                            <div className='detailpage-reviews-review-profile-img-wrap'><img className='detailpage-reviews-review-profile-img' src={require('../images/test/testprofile.png')} /> </div>
+                                            <div className='detailpage-reviews-review-profile-name'>이름</div>
+                                        </div>
+                                        <div className='detailpage-reviews-review-content'>
+                                            <div className='detailpage-reviews-review-content-rating'>★★★★★</div>
+                                            <div className='detailpage-reviews-review-content-text'>한줄평</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td className='detailpage-reviews-review'>
+                                        <div className='detailpage-reviews-review-profile'>
+                                            <div className='detailpage-reviews-review-profile-img-wrap'><img className='detailpage-reviews-review-profile-img' src={require('../images/test/testprofile.png')} /> </div>
+                                            <div className='detailpage-reviews-review-profile-name'>이름</div>
+                                        </div>
+                                        <div className='detailpage-reviews-review-content'>
+                                            <div className='detailpage-reviews-review-content-rating'>★★★★★</div>
+                                            <div className='detailpage-reviews-review-content-text'>한줄평</div>
+                                        </div>
+                                    </td>
+                                    <td className='detailpage-reviews-review'>
+                                        <div className='detailpage-reviews-review-profile'>
+                                            <div className='detailpage-reviews-review-profile-img-wrap'><img className='detailpage-reviews-review-profile-img' src={require('../images/test/testprofile.png')} /> </div>
+                                            <div className='detailpage-reviews-review-profile-name'>이름</div>
+                                        </div>
+                                        <div className='detailpage-reviews-review-content'>
+                                            <div className='detailpage-reviews-review-content-rating'>★★★★★</div>
+                                            <div className='detailpage-reviews-review-content-text'>한줄평</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </thead>
                         </table>
                     </div>
                     <br/>
