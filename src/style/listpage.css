@@ -4,8 +4,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap');
 
 @font-face {
-    font-family: 'IM_Hyemin-Bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Bold.woff2') format('woff');
+    font-family: 'IM_Hyemin-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Regular.woff2') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -17,43 +17,52 @@ html, body{
 }
 
 .listpage-content{
-    font-family: 'IM_Hyemin-Bold';
+    font-family:'IM_Hyemin-Regular';
     width: 100%;
-    height: 100%;
+    min-height: 82.8vh;
     text-align: center;
 }
 
 .listpage-content-search{
     width: 100%;
-    height: 120px;
+    height: 15vh;
     margin: auto;
-    padding-top: 50px;
     text-align: center;
     vertical-align: middle;
 }
 
-.listpage-content-search-btnwrap{
-    width: 30%;
-    height: 30px;
+.listpage-content-search-boxwrap{
+    width: 50%;
+    padding-top: 5vh;
+    text-align: center;
+    vertical-align: middle;
     margin: auto;
-    padding-top: 10px;
-    padding-bottom: 10px;
+}
+
+.listpage-content-search-box{
+    width: 50%;
+    height: 4vh;
+    margin: auto;
     border-radius: 15px;
     text-align: center;
     vertical-align: middle;
     background-color: lightgrey;
 }
 
-.listpage-content-search-btnwrap input{
+.listpage-content-search-text{
     width: 70%;
-    height: 25px;
+    height: 90%;
+    border-width: 0ch;
+    text-align: justify;
+    vertical-align: middle;
     background-color: lightgrey;
+    font-family:'IM_Hyemin-Regular';
 }
 
-.listpage-search-btn-icon{
+.listpage-content-search-btn-icon{
     width: 24px;
     height: 24px;
-    margin-left: 15px;
+    text-align: center;
     vertical-align: middle;
 }
 

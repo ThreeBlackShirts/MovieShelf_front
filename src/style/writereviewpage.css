@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Noto+Serif+KR:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap');
+
+@font-face {
+    font-family: 'IM_Hyemin-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Bold.woff2') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'IM_Hyemin-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Regular.woff2') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.writereviewpage{
+    background : url(images/background/cameraandbooks.jpg);
+    min-height: 100vh;
+}
+
+#writereview-content{
+    font-family: 'IM_Hyemin-Regular';
+    width: 100%;
+    min-height: 82.8vh;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#gobackbtn{
+    display: inline-block;
+    height: 54px;
+    width: 100%;
+    text-align: left;
+}
+
+#gobackbtn-icon{
+    display: inline-block;
+    width: 54px;
+    height: 54px;
+    text-align: left;
+    padding-left: 20px;
+    vertical-align: middle;
+    color: white;
+}
+
+.writereview-movieinfo-box{
+    text-align: left;
+    width: 90%;
+    height: 30vh;
+    margin: auto;
+}
+
+    .writereview-movieinfo-poster{
+        display: inline-block;
+        width: 36%;
+        height: 100%;
+        text-align: center;
+        vertical-align: top
+    }
+
+        .writereview-movieinfo-poster-img{
+            text-align: center;
+            margin: auto;
+            width: 40%;
+            min-width: 200px;
+            height: 100%;
+            min-height: 240px;
+            border-radius: 15px;
+            background-color: rgba(255, 255, 255, 0.6);
+        }
+            #writereview-movieinfo-poster-addicon{
+                vertical-align: middle;
+                width: 36px;
+                height: 100%;
+            }
+
+    .writereview-movieinfo-detail{
+        display: inline-block;
+        width: 58%;
+        height: 100%;
+        vertical-align: middle;
+        background-color: rgba(255, 255, 255, 0.6);
+        border-radius: 15px;
+        position: relative;
+        right: 5%;
+    }
+
+        .writereview-movieinfo-detail-title{
+            display: inline-block;
+            font-size: 30px;
+            min-width: 300px;
+            min-height: 40px;
+            font-family: 'IM_Hyemin-Bold';
+            vertical-align: middle;
+            margin: 60px 10px 5px 5%;
+        }
+
+        .writereview-movieinfo-detail-id{
+            display: inline-block;
+            min-width: 100px;
+            min-height: 40px;
+            vertical-align: middle;
+            margin: 60px 10px 5px 10px;
+        }
+
+        .writereview-movieinfo-detail-rate{
+            min-height: 40px;
+            vertical-align: bottom;
+            margin: 20px 10px 5px 5%;
+        }
+
+            .movieinfo-detail-rating{
+                display: inline-block;
+                min-width: 30px;
+                vertical-align: middle;
+                text-align: center;
+            }
+
+            .rate-fillstart{
+                display: inline-block;
+                min-width: 30px;
+                vertical-align: middle;
+                text-align: center;     
+                color: gold;       
+            }
+
+                .movieinfo-detail-rating-icon{
+                    vertical-align: middle;
+                    text-align: center;
+                    font-size: 24px;
+                }
+                
+        .writereview-movieinfo-detail-shortreview{
+            min-height: 40px;
+            vertical-align: middle;
+            margin: 20px 10px 5px 5%;
+        }
+
+            .writereview-movieinfo-detail-shortreview-text{
+                font-family: 'IM_Hyemin-Regular';
+                font-size: 15px;
+                vertical-align: middle;
+                width: 36%;
+                min-height: 24px;
+                border-radius: 5px;
+                padding-left: 10px;
+            }
+
+.writereview-moviereview-box{
+    text-align: center;
+    min-height: 30vh;
+    width: 90%;
+    margin: auto;
+}
+
+    .writereview-moviereview-text-wrap{
+        width: 100%;
+        margin-top: 50px;
+        margin-bottom: 10px;
+    }
+
+        .writereview-moviereview-text{
+            font-family: 'IM_Hyemin-Regular';
+            font-size: 17px;
+            text-align: justify;
+            width: 76%;
+            min-height: 10vh;
+            border-radius: 15px;
+            border: none;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+    .writereview-moviereview-btn-wrap{
+        text-align: right;
+        width: 76%;
+        margin: auto;
+    }
+
+        .writereview-moviereview-btn{
+            display: table-cell;
+            text-align: center;
+            vertical-align: middle;
+            border-radius: 5px;
+            border-width: 1px;
+            margin-left: 20px;
+            min-width: 60px;
+            min-height: 30px;
+            font-size: 15px;
+        }

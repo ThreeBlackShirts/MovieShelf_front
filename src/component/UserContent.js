@@ -1,6 +1,7 @@
 import React, { Component, useEffect, useState } from 'react';
 import UserService from 'service/UserService';
 import { CgProfile } from "react-icons/cg";
+import { MdAdd } from "react-icons/md";
 
 const UserContent = () => {
 
@@ -24,6 +25,15 @@ const UserContent = () => {
                 console.log(error.response)
             });
     }, []);
+
+    function toWriteReview(){
+        window.location.href="/writereview"
+    }
+
+    function toUserSetting(){
+        window.location.href="/usersetting"
+    }
+
     return (
 
         <div className='userinfo-content'>
@@ -42,7 +52,7 @@ const UserContent = () => {
                                     {users.userName}
                                 </div>
                             </td>
-                            <td><a>내 정보 수정</a></td>
+                            <td><a onClick={toUserSetting}>내 정보 수정</a></td>
                         </tr>
                         <tr>
                             <td>내 책장 속 영화: <span>N1</span>개</td>
@@ -60,7 +70,8 @@ const UserContent = () => {
                 <div className="userinfo-content-shelf-contents">
                     <table>
                         <tr>
-                            <td><img id='userinfo-content-shelf-example' src={require('../images/test/test_detail.jpg')} /></td>
+                            <td className='shelf-contents-object'><img id='userinfo-content-shelf-example' src={require('../images/test/test_detail.jpg')} /></td>
+                            <td className='shelf-contents-object'><MdAdd className='shelf-contents-object-add' onClick={toWriteReview}/></td>
                         </tr>
                     </table>
                 </div>

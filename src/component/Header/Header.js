@@ -17,6 +17,14 @@ function toBoardPage(){
     window.location.href="/"
 }
 
+function toUserInfoPage(){
+    window.location.href="/userinfo"
+}
+
+function toListPage(){
+    // parameter : 검색 단어
+}
+
 const Header = () => {
     const [onLogin] = useState(AuthenticationService.isUserLoggedIn);
 
@@ -48,7 +56,7 @@ const Header = () => {
                     <FiSearch className="header-content-userbtn-search-btn-icon"/>
                 </div>
                 <div className="header-content-userbtn-myshelf">
-                    <ImBooks className="header-content-userbtn-myshelf-icon"/>
+                    <ImBooks className="header-content-userbtn-myshelf-icon" onClick={toUserInfoPage}/>
                 </div>
                 <div className="header-content-userbtn-setting">
                     <IoIosSettings className="header-content-userbtn-setting-icon"/>

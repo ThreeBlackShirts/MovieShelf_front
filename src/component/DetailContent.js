@@ -56,7 +56,8 @@ class DetailContent extends Component {
                         <Link to='#detailpage-review-box' className='detailpage-info-anchor-a'>평점/리뷰</Link>
                     </div>
                     <div id='detailpage-info-majorinfo'>
-                        <h4 className='detailpage-box-title'>주요 정보</h4>
+                        
+                        <h4 className='detailpage-box-title'><hr className='detailpage-info-hr-left'/>주요 정보<hr className='detailpage-info-hr-right'/></h4>
                         <div id='detailpage-info-poster-img-wrap'>
                             <img id='detailpage-info-poster-img' src={require('../images/test/test_detail.jpg')} />
                             <div>★ ★ ★ ★ ☆</div>
@@ -79,7 +80,7 @@ class DetailContent extends Component {
                 </div>
                 <div id='detailpage-img-box'>
                     <div id='detailpage-img-trailer'>
-                        <h4 className='detailpage-box-title'>트레일러</h4>
+                        <h4 className='detailpage-box-title'><hr className='detailpage-info-hr-left'/>트레일러<hr className='detailpage-info-hr-right'/></h4>
                         <div className='detailpage-img-table-wrap'>
                             <table className='detailpage-img-table'>
                                 <tr>
@@ -96,7 +97,7 @@ class DetailContent extends Component {
                         </div>
                     </div>
                     <div id='detailpage-img-stillcut'>
-                        <h4 className='detailpage-box-title'>스틸컷</h4>
+                        <h4 className='detailpage-box-title'><hr className='detailpage-info-hr-left'/>스틸컷<hr className='detailpage-info-hr-right'/></h4>
                         <div className='detailpage-img-table-wrap'>
                         <table className='detailpage-img-table'>
                                 <tr>
@@ -116,7 +117,7 @@ class DetailContent extends Component {
                     </div>
                 </div>
                 <div id='detailpage-reviews-box'>
-                    <h4 className='detailpage-box-title'>평점/리뷰</h4>
+                    <h4 className='detailpage-box-title'><hr className='detailpage-info-hr-left'/>평점/리뷰<hr className='detailpage-info-hr-right'/></h4>
                     <div id='detailpage-reviews-review-table-wrap'>
                         <table id='detailpage-reviews-review-table'>
                             <tr>
@@ -190,6 +191,10 @@ class DetailContent extends Component {
                     <br/>
                     <div id='detailpage-reviews-pagecontroller'>페이징? 페이지네이션?</div>
                 </div>
+                <div className='detailpage-blank'>
+                    <br></br>
+                </div>
+
             </div>
     );
     }

@@ -10,6 +10,8 @@ import MainPage from 'component/Pages/MainPage';
 import DetailPage from 'component/Pages/DetailPage';
 import UserInfoPage from 'component/Pages/UserInfoPage';
 import ReviewPage from 'component/Pages/ReviewPage';
+import WriteReviewPage from 'component/Pages/WriteReviewPage';
+import UserSettingPage from 'component/Pages/UserSettingPage';
 
 const App = () => {
 
@@ -29,6 +31,8 @@ const App = () => {
       <Route path="/detail" element={<DetailPage />} />
       <Route path="/userinfo" element={<UserInfoPage />} />
       <Route path="/review" element={<ReviewPage />} />
+      <Route path="/writereview" element={<WriteReviewPage />} />
+      <Route path="/usersetting" element={<UserSettingPage />} />
     </Routes>
   );
 };
