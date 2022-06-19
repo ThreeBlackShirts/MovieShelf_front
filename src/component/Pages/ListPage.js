@@ -24,9 +24,11 @@ const ListPage = () => {
             <Header />
             <div className="listpage-content">
                 <div className="listpage-content-search">
-                    <div className="listpage-content-search-btnwrap">
-                        <input type="text" id="listpage-search-text" placeholder='검색한 단어'></input>
-                        <FiSearch className="listpage-search-btn-icon"/>
+                    <div className='listpage-content-search-boxwrap'>                  
+                        <div className="listpage-content-search-box">
+                            <input type="text" className="listpage-content-search-text" placeholder='검색한 단어'></input>
+                            <FiSearch className="listpage-content-search-btn-icon"/>
+                        </div>
                     </div>
                 </div>
                 <div className="listpage-content-result">
