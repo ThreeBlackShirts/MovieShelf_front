@@ -17,6 +17,7 @@ class ListContent extends Component {
             hasLoginFailed: false,
             showSuccessMessage: false,
         }
+        this.setInput = this.setInput.bind(this)
         this.searchMovie = this.searchMovie.bind(this)
         this.handleChange = this.handleChange.bind(this)
     }
@@ -36,7 +37,7 @@ class ListContent extends Component {
                 .search(this.state.input)
                 .then((response) => {
                     console.log(response.data.data)
-                    localStorage.removeItem("input")
+                    //localStorage.removeItem("input")
                     //this.state.data에 검색된 영화(제목, 포스터url)들 리스트로 담겨있음.
                     //잘 모르겠으면 콘솔 출력된 것 보기!
                     this.state = ({ data: response.data.data })
@@ -49,6 +50,12 @@ class ListContent extends Component {
         }
     }
 
+    setInput() {
+        this.state.input = document.getElementById("listpage-search-text").value
+        localStorage.setItem("input", this.state.input)
+        location.reload()
+    }
+
     targetNameSet() {
         //const target = document.getElementById("").innerText
         //window.localStorage.setItem('target', target)
@@ -57,13 +64,17 @@ class ListContent extends Component {
         location.href = "/detail"
     }
 
+    componentDidMount() {
+        this.searchMovie()
+    }
+
     render() {
         return (
-            <div className="listpage-content" onLoad={this.searchMovie}>
+            <div className="listpage-content">
                 <div className="listpage-content-search">
                     <div className="listpage-content-search-btnwrap">
-                        <input type="text" id="listpage-search-text" placeholder='검색한 단어' value={this.state.input}></input>
-                        <FiSearch className="listpage-search-btn-icon"/>
+                        <input type="text" id="listpage-search-text" placeholder='검색한 단어' defaultValue={this.state.input}></input>
+                        <FiSearch className="listpage-search-btn-icon" onClick={this.setInput}/>
                     </div>
                 </div>
                 <div className="listpage-content-result">
