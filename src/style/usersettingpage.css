@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Noto+Serif+KR:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap');
+
+
+@font-face {
+    font-family: 'IM_Hyemin-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Bold.woff2') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'EliceDigitalBaeum';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_elice@1.0/EliceDigitalBaeum.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.usersettingpage{
+    font-family: 'EliceDigitalBaeum';
+    color: white;
+    width: 100%;
+    height: 100vh;
+}
+
+.usersetting-content{
+    min-height: 82.8vh;
+    text-align: left;
+    margin: auto;
+}
+
+#gobackbtn{
+    display: inline-block;
+    height: 54px;
+    width: 100%;
+    text-align: left;
+}
+
+#gobackbtn-icon{
+    display: inline-block;
+    width: 54px;
+    height: 54px;
+    text-align: left;
+    padding-left: 20px;
+    vertical-align: middle;
+    color: white;
+}
+
+.usersetting-content-container{
+    text-align: center;
+    width: 80%;
+    min-height: 72vh;
+    margin: auto;
+}
+
+.usersetting-content-container h1{
+    text-align: left;
+    margin: 0px;
+    margin-bottom: 50px;
+    font-size: 30px;
+    font-weight: 540;
+}
+
+.usersetting-content-container-box{
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 15px;
+    width: 60%;
+    min-height: 360px;
+    margin: auto;
+    padding: 10px;
+    text-align: left;
+}
+
+    .usersetting-content-obj{
+        font-size: 18px;
+        min-height: 30px;
+        height: 50px;
+        margin: 10px;
+    }
+
+        .usersetting-content-obj-subject{
+            display: inline-block;
+            width: 30%;
+            padding-left: 20px;
+            text-align: left;
+            vertical-align: middle;
+            margin: auto;            
+        }
+
+        .usersetting-content-obj-data{
+            display: inline-block;
+            width: 64%;
+            text-align: left;
+            vertical-align: middle;
+            margin: auto;            
+        }
+
+            .usersetting-content-obj-data input{
+                height: 20px;
+                width: 200px;
+                vertical-align: middle;
+                border-width: 0.5px;
+            }
+            .usersetting-content-obj-data button{
+                width: 80px;
+                margin-left: 20px;
+                border-width: 0.5px;
+                border-radius: 5px;
+                vertical-align: middle;
+            }
+
+        .usersetting-content-obj-notice{
+            visibility: hidden;
+        }
+
+    .usersetting-content-submit{
+        text-align: center;
+        margin: auto;
+    }
+
+        .usersetting-content-submit button{
+            width: 80px;
+            height: 30px;
+            border-radius: 5px;
+            border-width: 0.5px;
+        }

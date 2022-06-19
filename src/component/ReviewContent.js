@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 
-import 'style/detailpage.css';
+import 'style/reviewpage.css';
 
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { MdEdit } from "react-icons/md";

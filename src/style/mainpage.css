@@ -17,3 +17,7 @@ html, body{
     font-family: 'IM_Hyemin-Bold';
 }
 
+.main-content{
+    min-height: 82.8vh;
+}
+
