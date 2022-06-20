@@ -1,36 +1,38 @@
 import axios from "axios";
-import AuthenticationService from "./AuthenticationService";
 
 const MOVIE_API_BASE_URL = "/api/movie"
 
 class MovieService {
 
 	search(input) {
-		let Data = {
-			input : input
-		}
-		return axios.post(MOVIE_API_BASE_URL+"/search", JSON.stringify(Data), {
+		return axios.post(MOVIE_API_BASE_URL+"/search", JSON.stringify(input), {
 			headers: {
 				"Content-Type": 'application/json',
 			},
 		});
 	}
 
-	all() {
-		/*
-		all(movieTitle, moviePoster, movieRank) {
-			
-			let movieData = {
-			movieTitle: movieTitle,
-			moviePoster: moviePoster,
-			movieRank: movieRank
-		}
-			*/
-		
-		return axios.get(MOVIE_API_BASE_URL+"/alllist",{
+	detail(target) {
+		return axios.get(MOVIE_API_BASE_URL+"/detailed/"+target, {
 			headers: {
 				"Content-Type": 'application/json',
-			}
+			},
+		});
+	}
+
+	recommendation(target) {
+		return axios.post(MOVIE_API_BASE_URL+"/recommendation", JSON.stringify(target), {
+			headers: {
+				"Content-Type": 'application/json',
+			},
+		});
+	}
+
+	category() {
+		return axios.post(MOVIE_API_BASE_URL+"/category", {
+			headers: {
+				"Content-Type": 'application/json',
+			},
 		});
 	}
 

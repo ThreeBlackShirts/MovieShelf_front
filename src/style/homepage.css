@@ -141,12 +141,18 @@ html, body{
   vertical-align: middle;
 }
 
+.home-content-main-search-button{
+  background-color: transparent;
+  border-width: 0;
+}
+
 .home-content-main-search-icon{
   display: inline-block;
   vertical-align: middle;
   width: 30px;
   height: 30px;
   padding-left: 10px;
+  color: white;
 }
 
 .home-content-main-login{
