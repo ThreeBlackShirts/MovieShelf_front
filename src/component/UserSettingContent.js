@@ -5,18 +5,26 @@ import 'style/usersettingpage.css';
 import { MdKeyboardArrowLeft } from "react-icons/md";
 
 class UserSettingContent extends Component {
+
     constructor(props) {
         super(props)
 
         this.state = {
             userEmail: localStorage.getItem("authenticatedUser") || '',
+            userPassword: '',
+            userName: '',
+            userNickname: '',
+            userFilename: '',
+            userPasswordCheck: '',
             token: localStorage.getItem("token") || '',
-            testinput: '',
-            hasLoginFailed: false,
+            hasCheckPasswordFailed: false,
             showSuccessMessage: false,
         }
-
+        this.handleChange = this.handleChange.bind(this)
+        this.getUserInfo = this.getUserInfo.bind(this)
         this.editData = this.editData.bind(this)
+
+        this.getUserInfo();
     }
     handleChange = (e) => {
         this.setState(
@@ -27,52 +35,77 @@ class UserSettingContent extends Component {
     }
 
     editData() {
-        alert("수정 완료 *테스트용* ");
+        //alert("수정 완료 *테스트용* ");
+        if (this.state.userPasswordCheck === this.state.userPassword) {
+            UserService.updateUserByEmail(this.state.userPassword, this.state.userNickname, this.state.userFilename)
+                .then((response) => {
+                    alert("수정 완료");
+                    document.location.href = "/userinfo";
+                }).catch((error) => {
+                    console.log(error.response)
+                    this.setState({ hasCheckPasswordFailed: true })
+                });
+        } else {
+            alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.")
+            this.setState({ hasCheckPasswordFailed: true })
+        }
     }
 
+    getUserInfo() {
+        UserService
+            .findUserByEmail(localStorage.getItem("authenticatedUser"))
+            .then((response) => {
+                console.log(response.data)
+                this.state.userEmail = response.data.userEmail;
+                this.state.userName = response.data.userName;
+            }).catch((error) => {
+                console.log(error.response)
+            });
+    }
 
     render() {
         return (
             <div className='usersetting-content'>
-                <div id='gobackbtn'><MdKeyboardArrowLeft id='gobackbtn-icon'/></div>
+                <div id='gobackbtn'><MdKeyboardArrowLeft id='gobackbtn-icon' /></div>
                 <div className='usersetting-content-container'>
                     <h1>개인정보 수정</h1>
                     <div className='usersetting-content-container-box'>
                         <div className='usersetting-content-obj' id='userName'>
                             <div className='usersetting-content-obj-subject'>네임</div>
-                            <div className='usersetting-content-obj-data'>이름/아이디</div>
+                            <div className='usersetting-content-obj-data' id={this.state.userEmail} key={this.state.userEmail}>{this.state.userEmail}</div>/
+                            <div className='usersetting-content-obj-data' id={this.state.userName} key={this.state.userName}>{this.state.userName}</div>
                         </div>
                         <div className='usersetting-content-obj' id='setting-userNickname'>
                             <div className='usersetting-content-obj-subject'>닉네임 변경</div>
-                            <div className='usersetting-content-obj-data'><input/></div>
+                            <div className='usersetting-content-obj-data'><input id="userNickname" name="userNickname" placeholder="별명" type="text" onChange={this.handleChange} /></div>
                         </div>
                         <div className='usersetting-content-obj' id='setting-password'>
                             <div className='usersetting-content-obj-subject'>비밀번호 변경</div>
-                            <div className='usersetting-content-obj-data'><input type="password"/></div>
+                            <div className='usersetting-content-obj-data'><input type="password" id="userPassword" name="userPassword" onChange={this.handleChange} /></div>
                         </div>
                         <div className='usersetting-content-obj'>
                             <div className='usersetting-content-obj-subject'>비밀번호 확인</div>
-                            <div className='usersetting-content-obj-data'><input type="password"/></div>
-                            <div className='usersetting-content-obj-notice'>
+                            <div className='usersetting-content-obj-data'><input id="userPasswordCheck" name="userPasswordCheck" placeholder="비밀번호 확인" type="password" onChange={this.handleChange} autoComplete="off" /></div>
+                            {this.state.hasCheckPasswordFailed && <div className='usersetting-content-obj-notice'>
                                 닉네임 또는 비밀번호 변경을 위해서는 비밀번호 확인이 필요합니다!
-                            </div>
+                            </div>}
                         </div>
                         <div className='usersetting-content-obj'>
                             <div className='usersetting-content-obj-subject'>프로필 사진 변경</div>
                             <div className='usersetting-content-obj-data'>
-                                <input></input>
+                                <input type='file' id="userFilename" name="userFilename" placeholder="프로필 이미지" onChange={this.handleChange} ></input>
                                 <button>찾아보기</button>
                             </div>
                         </div>
                         <div className='usersetting-content-submit'>
-                            <button type='submit' onClick={this.editData}>수정</button>
+                            <button onClick={this.editData}>수정</button>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         );
-    }    
+    }
 }
 
 export default UserSettingContent;
