@@ -78,11 +78,13 @@
         min-height: 30px;
         height: 50px;
         margin: 10px;
+        vertical-align: middle;
     }
 
         .usersetting-content-obj-subject{
             display: inline-block;
             width: 30%;
+            height: 100%;
             padding-left: 20px;
             text-align: left;
             vertical-align: middle;
@@ -92,18 +94,20 @@
         .usersetting-content-obj-data{
             display: inline-block;
             width: 64%;
+            height: 100%;
             text-align: left;
             vertical-align: middle;
             margin: auto;            
         }
 
             .usersetting-content-obj-data input{
-                height: 20px;
+                height: 28px;
                 width: 200px;
                 vertical-align: middle;
                 border-width: 0.5px;
             }
             .usersetting-content-obj-data button{
+                height: 24xp;
                 width: 80px;
                 margin-left: 20px;
                 border-width: 0.5px;

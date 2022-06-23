@@ -23,7 +23,6 @@ class UserSettingContent extends Component {
         this.handleChange = this.handleChange.bind(this)
         this.getUserInfo = this.getUserInfo.bind(this)
         this.editData = this.editData.bind(this)
-
         this.getUserInfo();
     }
     handleChange = (e) => {
@@ -66,13 +65,13 @@ class UserSettingContent extends Component {
     render() {
         return (
             <div className='usersetting-content'>
-                <div id='gobackbtn'><MdKeyboardArrowLeft id='gobackbtn-icon' /></div>
+                <div id='gobackbtn'><MdKeyboardArrowLeft id='gobackbtn-icon'/></div>
                 <div className='usersetting-content-container'>
                     <h1>개인정보 수정</h1>
                     <div className='usersetting-content-container-box'>
                         <div className='usersetting-content-obj' id='userName'>
                             <div className='usersetting-content-obj-subject'>네임</div>
-                            <div className='usersetting-content-obj-data' id={this.state.userEmail} key={this.state.userEmail}>{this.state.userEmail}</div>/
+                            <div className='usersetting-content-obj-data' id={this.state.userEmail} key={this.state.userEmail}>{this.state.userEmail}</div>
                             <div className='usersetting-content-obj-data' id={this.state.userName} key={this.state.userName}>{this.state.userName}</div>
                         </div>
                         <div className='usersetting-content-obj' id='setting-userNickname'>

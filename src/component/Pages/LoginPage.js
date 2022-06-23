@@ -29,6 +29,8 @@ class LoginPage extends Component {
         }
         this.handleChange = this.handleChange.bind(this)
         this.loginClicked = this.loginClicked.bind(this)
+        this.socialLoginGoogle = this.socialLoginGoogle.bind(this)
+        this.socialLoginKakao = this.socialLoginKakao.bind(this)
     }
     handleChange(event) {
         this.setState(
@@ -60,6 +62,15 @@ class LoginPage extends Component {
                 this.setState({ hasLoginFailed: true })
                 alert('Login Failed');
             });
+    }
+
+    socialLoginGoogle() {
+        console.log("google login clicked")
+        AuthenticationService.loginSocialGoogle()
+    }
+    socialLoginKakao() {
+        console.log("kakao login clicked")
+        AuthenticationService.loginSocialKakao()
     }
     render() {
         return (
@@ -102,7 +113,12 @@ class LoginPage extends Component {
                         <div className="login-content-body-main-social">
                             <div>소셜로그인</div>
                             <hr></hr>
-
+                            <div className='login-content-body-main-social-btn'>
+                                <img className='social-login-btn' src={require('../../images/button/btn_google_signin_light_normal_web.png')} onClick={this.socialLoginGoogle} />
+                            </div>
+                            <div className='login-content-body-main-social-btn'>
+                                <img className='social-login-btn' src={require('../../images/button/kakao_login_medium_narrow.png')} onClick={this.socialLoginKakao} />
+                            </div>
                         </div>
 
                         <div className="login-content-body-main-signup">

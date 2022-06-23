@@ -57,6 +57,10 @@ html, body{
   padding-left: 20px;
 }
 
+  #home-content-header-title-logo:hover{
+    cursor: pointer;
+  }
+
 .home-content-header-icon{
   display: inline-block;
   width: 50%;
@@ -79,6 +83,9 @@ html, body{
   padding-right: 30px;
 }
 
+  #home-content-header-myshelf-icon:hover{
+    cursor: pointer;
+  }
 
 .home-content-header-login{
   font-family: 'Roboto Mono', monospace;
@@ -96,6 +103,10 @@ html, body{
   vertical-align: middle;
   margin: auto;
 }
+
+  .home-content-header-login-btn:hover{
+    cursor: pointer;
+  }
 
 /*home content*/
 
@@ -148,6 +159,10 @@ html, body{
   height: 30px;
   padding-left: 10px;
 }
+
+  .home-content-main-search-icon:hover{
+    cursor: pointer;
+  }
 
 .home-content-main-login{
   height: 20%;

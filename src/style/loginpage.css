@@ -10,6 +10,13 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'IM_Hyemin-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Regular.woff2') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 html, body{
     width: 100%;
     height: 100%;
@@ -21,7 +28,7 @@ body{
 }
 
 .login-content {
-    font-family: 'IM_Hyemin-Bold';
+    font-family: 'IM_Hyemin-Regular';
     width: 100%;
     height: 100%;
     align-content: center;
@@ -67,7 +74,7 @@ body{
 
 .login-content-body-main-title {
     margin: auto;
-    height: 15%;
+    height: 12%;
     padding-top: 10%;
     vertical-align: middle;
 }
@@ -142,6 +149,10 @@ body{
     border-radius: 15px;
 }
 
+    .login-content-body-main-btn-login button:hover{
+        cursor: pointer;
+    }
+
 .login-content-body-main-social{
     height: 25%;
     margin-top: 2%;
@@ -157,6 +168,10 @@ body{
     border-style: dashed solid;
 }
 
+    .social-login-btn:hover{
+        cursor: pointer;
+    }
+
 .login-content-body-main-signup {
     height: 12%;
     margin-top: 3px;
@@ -167,6 +182,10 @@ body{
     border-radius: 5px;
     border-color: black;
 }
+
+    .login-content-body-main-signup-btn:hover{
+        cursor: pointer;
+    }
 
 .login-content-body-main-signup-btn a{
     color: black;
