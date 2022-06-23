@@ -20,8 +20,8 @@ class MovieService {
 		});
 	}
 
-	recommendation(target) {
-		return axios.post(MOVIE_API_BASE_URL+"/recommendation", JSON.stringify(target), {
+	recommendation() {
+		return axios.post(MOVIE_API_BASE_URL+"/recommendation", {
 			headers: {
 				"Content-Type": 'application/json',
 			},
