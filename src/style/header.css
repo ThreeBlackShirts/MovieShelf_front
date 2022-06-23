@@ -48,6 +48,10 @@
   font-size: 36px;
 }
 
+  .header-content-title-logo-h1:hover{
+    cursor: pointer;
+  }
+
 .header-content-title-top{
   display: inline-block;
   width: 10%;
@@ -55,12 +59,20 @@
   vertical-align: middle;
 }
 
+  .header-content-title-top:hover{
+    cursor: pointer;
+  }
+
 .header-content-title-genre{
   display: inline-block;
   width: 10%;
   text-align: center;
   vertical-align: middle;
 }
+
+  .header-content-title-genre:hover{
+    cursor: pointer;
+  }
 
 .header-content-title-item{
   font-family: 'Roboto Mono', monospace;
@@ -94,6 +106,10 @@
 #header-content-userbtn-search-btn-subject-wrap input[type=radio]{
   display: none;
 }
+
+  #header-content-userbtn-search-btn-subject-wrap input[type=radio]:hover{
+    cursor: pointer;
+  }
 
 #header-content-userbtn-search-btn-subject-wrap label{
   font-family: 'IM_Hyemin-Regular';
@@ -132,6 +148,10 @@
   vertical-align: middle;
 }
 
+  .header-content-userbtn-search-btn-icon:hover{
+    cursor: pointer;
+  }
+
 .header-content-userbtn-myshelf{
   display: inline-block;
   width: 10%;
@@ -143,6 +163,10 @@
   height: 24px;
   vertical-align: middle;
 }
+
+  .header-content-userbtn-myshelf-icon:hover{
+    cursor: pointer;
+  }
 
 .header-content-userbtn-setting{
   display: inline-block;
@@ -156,6 +180,10 @@
   vertical-align: middle;
 }
 
+  .header-content-userbtn-setting-icon:hover{
+    cursor: pointer;
+  }
+
 .header-content-userbtn-login{
   font-family: 'Roboto Mono', monospace;
   display: inline-block;
@@ -164,8 +192,11 @@
   padding-right: 5%;
 }
 
-
 .header-content-userbtn-login-btn{
   color: white;
   text-decoration: none;
 }
+
+  .header-content-userbtn-login-btn:hover {
+    cursor: pointer;
+  }

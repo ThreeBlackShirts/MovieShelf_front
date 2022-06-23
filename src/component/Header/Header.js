@@ -25,6 +25,10 @@ function toListPage(){
     // parameter : 검색 단어
 }
 
+function toUserSettingPage(){
+    window.location.href="/usersetting"
+}
+
 const Header = () => {
     const [onLogin] = useState(AuthenticationService.isUserLoggedIn);
 
@@ -59,7 +63,7 @@ const Header = () => {
                     <ImBooks className="header-content-userbtn-myshelf-icon" onClick={toUserInfoPage}/>
                 </div>
                 <div className="header-content-userbtn-setting">
-                    <IoIosSettings className="header-content-userbtn-setting-icon"/>
+                    <IoIosSettings className="header-content-userbtn-setting-icon" onClick={toUserSettingPage}/>
                 </div>
                 {onLogin && <div className="header-content-userbtn-login">
                     <h4 className="header-content-userbtn-login-btn" href="/logout">LOGOUT</h4>

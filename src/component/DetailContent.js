@@ -43,10 +43,15 @@ class DetailContent extends Component {
         }
     }
 
+    goBack(){
+        console.log("goback btn clicked!")
+        history.back()
+    }
+
     render() {
         return (
             <div id='detailpage-content' onLoad={this.detailhMovie()}>
-                <div id='gobackbtn'><MdKeyboardArrowLeft id='gobackbtn-icon'/></div>
+                <div id='gobackbtn'><MdKeyboardArrowLeft id='gobackbtn-icon' onClick={goBack()}/></div>
                 <div id='detailpage-info-box'>
                     <div id='detailpage-info-title'>제목</div>
                     <div id='detailpage-info-anchor'>

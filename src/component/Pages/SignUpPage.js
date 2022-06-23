@@ -53,6 +53,15 @@ class SignUpPage extends Component {
         }
     }
 
+    socialLoginGoogle() {
+        console.log("google login clicked")
+        AuthenticationService.loginSocialGoogle()
+    }
+    socialLoginKakao() {
+        console.log("kakao login clicked")
+        AuthenticationService.loginSocialKakao()
+    }
+
     render() {
         return (
             <div className="signup-content">
@@ -95,7 +104,12 @@ class SignUpPage extends Component {
                         <div className="signup-content-body-main-social">
                             <div>소셜로그인</div>
                             <hr></hr>
-
+                            <div className='signup-content-body-main-social-btn'>
+                                <img className='social-signup-btn' src={require('../../images/button/btn_google_signin_light_normal_web.png')} onClick={this.socialLoginGoogle} />
+                            </div>
+                            <div className='signup-content-body-main-social-btn'>
+                                <img className='social-signup-btn' src={require('../../images/button/kakao_login_medium_narrow.png')} onClick={this.socialLoginKakao} />
+                            </div>
                         </div>
 
                         <div className="signup-content-body-main-login">

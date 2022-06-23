@@ -14,6 +14,10 @@ function toHomePage(){
     window.location.href="/"
 }
 
+function toUserInfo(){
+    window.location.href="/userinfo"
+}
+
 function search() {
     const input = document.getElementById("search-input").value
     if(input !== null && input !== ""){
@@ -36,12 +40,12 @@ const HomePage = () => {
                 </div>
                 {onLogin && <div className="home-content-header-login">
                     <div id="home-content-header-myshelf">
-                        <ImBooks id="home-content-header-myshelf-icon" href="/main"/>
+                        <ImBooks id="home-content-header-myshelf-icon" onClick={toUserInfo}/>
                     </div>
                     <a className="home-content-header-login-btn" href="/logout">LOGOUT</a>
                 </div>}
                 {!onLogin && <div className="home-content-header-login">
-                <a className="home-content-header-login-btn" href="/login">LOGIN</a>
+                    <a className="home-content-header-login-btn" href="/login">LOGIN</a>
                 </div>}
             </div>
             <div className="home-content-main">

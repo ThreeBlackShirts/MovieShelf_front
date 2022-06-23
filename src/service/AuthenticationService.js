@@ -79,6 +79,14 @@ class AuthenticationService {
     localStorage.removeItem('authenticatedUser');
     localStorage.removeItem('token');
   }
+
+  loginSocialGoogle() {
+    return axios.get("/api/google/login")
+  }
+
+  loginSocialKakao() {
+    return axios.get("/api/oauth/kakao")
+  }
 }
 
 export default new AuthenticationService()
