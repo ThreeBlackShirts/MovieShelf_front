@@ -9,8 +9,6 @@ class MainContent extends Component {
         this.state = {
             userEmail: localStorage.getItem("authenticatedUser") || '',
             token: localStorage.getItem("token") || '',
-            //target 예시. 나중에 위시리스트 적용되면 변경해야함.
-            target: '범죄도시2',
             recommendData : [],
             categoryData : [],
             hasLoginFailed: false,
@@ -21,9 +19,8 @@ class MainContent extends Component {
     recommendMovieList() {
         console.log("Recommendation Movie")
         if(this.state.target !== null && this.state.target !== ""){
-            console.log(this.state.target +"'s recommnedation")
             MovieService
-                .recommendation(this.state.target)
+                .recommendation()
                 .then((response) => {
                     console.log(response.data.data)
                     this.state = ({ recommendData: response.data.data })
@@ -49,6 +46,11 @@ class MainContent extends Component {
                 alert("category fail");
             });
     }
+
+    componentDidMount() {
+        this.recommendMovieList()
+    }
+
 
     render() {
         return (
