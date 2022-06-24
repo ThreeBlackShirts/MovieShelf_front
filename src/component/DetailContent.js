@@ -14,7 +14,8 @@ class DetailContent extends Component {
             userEmail: localStorage.getItem("authenticatedUser") || '',
             token: localStorage.getItem("token") || '',
             target: localStorage.getItem("target") || '',
-            data: {},
+            isLoading: true,
+            movie: {},
             hasLoginFailed: false,
             showSuccessMessage: false,
         }
@@ -28,11 +29,11 @@ class DetailContent extends Component {
             MovieService
                 .detail(this.state.target)
                 .then((response) => {
-                    console.log(response.data.data)
                     localStorage.removeItem("target")
-                    //this.state.data에 검색된 영화 정보(제목, 포스터url...)들 리스트로 담겨있음.
+                    //this.state.movie 검색된 영화 정보(제목, 포스터url...)들 리스트로 담겨있음.
                     //잘 모르겠으면 콘솔 출력된 것 보기!
-                    this.state = ({ data: response.data.data })
+                    this.setState({ movie: response.data.data, isLoading: false })
+                    console.log(this.state.movie)
                 }).catch(() => {
                     console.log("detail failed")
                     alert("detail fail");
@@ -43,6 +44,10 @@ class DetailContent extends Component {
         }
     }
 
+    componentDidMount() {
+        this.detailhMovie()
+    }
+
     goBackBtn(){
         console.log("goback btn clicked!")
         history.back()
@@ -50,7 +55,7 @@ class DetailContent extends Component {
 
     render() {
         return (
-            <div id='detailpage-content' onLoad={this.detailhMovie()}>
+            <div id='detailpage-content'>
                 <div id='gobackbtn'><MdKeyboardArrowLeft id='gobackbtn-icon' onClick={this.goBackBtn}/></div>
                 <div id='detailpage-info-box'>
                     <div id='detailpage-info-title'>제목</div>

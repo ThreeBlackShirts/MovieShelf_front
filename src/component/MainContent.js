@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import Movie from './MovieContent';
 import MovieService from 'service/MovieService';
 
 class MainContent extends Component {
@@ -9,11 +10,14 @@ class MainContent extends Component {
         this.state = {
             userEmail: localStorage.getItem("authenticatedUser") || '',
             token: localStorage.getItem("token") || '',
+            isLoading: true,
             recommendData : [],
             categoryData : [],
             hasLoginFailed: false,
             showSuccessMessage: false,
         }
+        this.recommendMovieList = this.recommendMovieList.bind(this)
+        this.categoryMovieList = this.categoryMovieList.bind(this)
     }
 
     recommendMovieList() {
@@ -23,7 +27,8 @@ class MainContent extends Component {
                 .recommendation()
                 .then((response) => {
                     console.log(response.data.data)
-                    this.state = ({ recommendData: response.data.data })
+                    this.setState({ recommendData: response.data.data, isLoading: false })
+                    console.log(this.state.recommendData)
                 }).catch(() => {
                     console.log("Recommendation failed")
                     alert("Recommendation fail");
@@ -40,7 +45,8 @@ class MainContent extends Component {
             .category()
             .then((response) => {
                 console.log(response.data.data)
-                this.state = ({ categoryData: response.data.data })
+                this.setState = ({ categoryData: response.data.data, isLoading: false })
+                console.log(this.state.categoryData)
             }).catch(() => {
                 console.log("category failed")
                 alert("category fail");
@@ -53,24 +59,21 @@ class MainContent extends Component {
 
 
     render() {
+        const { isLoading, recommendData, categoryData} = this.state;
         return (
-
             <div className="main-content">
-                <div className="main-content-userpick">
-                    영화 포스터가 나열될 수 있게 리스트 html 작성 필요
+                <div className="main-content-movie">
+                    <div className="main-content-movie-list">
+                        <div className='main-content-list-name'>MovieShelf의 추천 장르 영화</div>
+                        <div>
+                            { isLoading ? "Loading..." : recommendData.map( movie => (
+                                <Movie
+                                    title={movie.movieTitle}
+                                    poster={movie.moviePoster} />
+                        )) }</div>
+                    </div>
                 </div>
-                
             </div>
-    
-            /*
-                    <input type="text" className="header-content-userbtn-search-btn-text" list='header-content-search-list'></input>
-                    <datalist id='header-content-search-list'>
-                        <option value="제목"></option>
-                        <option value="배우"></option>
-                        <option value="장르"></option>
-                    </datalist>
-    
-             */
         );
     }
 }

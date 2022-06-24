@@ -22,8 +22,13 @@ class WriteReviewContent extends Component {
             showSuccessMessage: false,
         }
 
-        this.addImg = this.addImg.bind(this)
     }
+
+    writeReview(){
+        console.log("write review clicked")
+        ReviewService.writeReview()
+    }
+    
     handleChange = (e) => {
         this.setState(
             {
