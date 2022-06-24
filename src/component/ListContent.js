@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Movie from './MovieSearch';
+import Movie from './MovieContent';
 import MovieService from 'service/MovieService';
 import 'style/listpage.css';
 
