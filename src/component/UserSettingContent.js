@@ -62,10 +62,14 @@ class UserSettingContent extends Component {
             });
     }
 
+    goBackBtn(){
+        history.back()
+    }
+
     render() {
         return (
             <div className='usersetting-content'>
-                <div id='gobackbtn'><MdKeyboardArrowLeft id='gobackbtn-icon'/></div>
+                <div id='gobackbtn'><MdKeyboardArrowLeft id='gobackbtn-icon' onClick={this.goBackBtn}/></div>
                 <div className='usersetting-content-container'>
                     <h1>개인정보 수정</h1>
                     <div className='usersetting-content-container-box'>
@@ -93,7 +97,6 @@ class UserSettingContent extends Component {
                             <div className='usersetting-content-obj-subject'>프로필 사진 변경</div>
                             <div className='usersetting-content-obj-data'>
                                 <input type='file' id="userFilename" name="userFilename" placeholder="프로필 이미지" onChange={this.handleChange} ></input>
-                                <button>찾아보기</button>
                             </div>
                         </div>
                         <div className='usersetting-content-submit'>

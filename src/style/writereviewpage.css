@@ -27,7 +27,6 @@
     width: 100%;
     min-height: 82.8vh;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.2);
 }
 
 #gobackbtn{
@@ -70,7 +69,7 @@
             height: 100%;
             min-height: 240px;
             border-radius: 15px;
-            background-color: rgba(255, 255, 255, 0.6);
+            background-color: rgba(211, 211, 211, 0.8);
         }
             #writereview-movieinfo-poster-addicon{
                 vertical-align: middle;
@@ -78,12 +77,16 @@
                 height: 100%;
             }
 
+            .writereview-movieinfo-poster-img:hover{
+                cursor: pointer;
+            }
+
     .writereview-movieinfo-detail{
         display: inline-block;
         width: 58%;
         height: 100%;
         vertical-align: middle;
-        background-color: rgba(255, 255, 255, 0.6);
+        background-color: rgba(211, 211, 211, 0.8);
         border-radius: 15px;
         position: relative;
         right: 5%;
@@ -120,6 +123,11 @@
                 text-align: center;
             }
 
+                
+            .movieinfo-detail-rating .movieinfo-detail-rating-icon:hover{
+                cursor: pointer;
+            }
+
             .rate-fillstart{
                 display: inline-block;
                 min-width: 30px;
@@ -128,11 +136,13 @@
                 color: gold;       
             }
 
+
                 .movieinfo-detail-rating-icon{
                     vertical-align: middle;
                     text-align: center;
                     font-size: 24px;
                 }
+
                 
         .writereview-movieinfo-detail-shortreview{
             min-height: 40px;
@@ -172,7 +182,7 @@
             border-radius: 15px;
             border: none;
             padding: 20px;
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(211, 211, 211, 0.8);
         }
 
     .writereview-moviereview-btn-wrap{
@@ -192,3 +202,7 @@
             min-height: 30px;
             font-size: 15px;
         }
+
+            .writereview-moviereview-btn:hover{
+                cursor: pointer;
+            }

@@ -10,6 +10,10 @@
     font-style: normal;
 }
 
+#detailpage{
+    background : url(images/background/cameraandbooks.jpg);
+}
+
 #detailpage-content{
     font-family: 'IM_Hyemin-Regular';
     width: 100%;
@@ -33,6 +37,10 @@
     padding-left: 20px;
     vertical-align: middle;
     color: white;
+}
+
+#gobackbtn-icon:hover{
+    cursor: pointer;
 }
 
 /* - 제목~정보 상자 */
@@ -71,6 +79,10 @@
         color: black;
     }
 
+        .detailpage-info-anchor-a:hover{
+            cursor: pointer;
+        }
+    
 .detailpage-info-hr-left{
     display: inline-block;
     width: 33%;
@@ -191,6 +203,10 @@
     width: 25%;
 }
 
+    .detailpage-img-stillcut-td:hover{
+        cursor: pointer;
+    }
+
 /* - 평정/리뷰 */
 
 #detailpage-reviews-box{
@@ -232,6 +248,10 @@
     width: 30%;
     vertical-align: middle;
 }
+
+    .detailpage-reviews-review-profile:hover{
+        cursor: pointer;
+    }
 
 .detailpage-reviews-review-profile-img{
     width: 60px;

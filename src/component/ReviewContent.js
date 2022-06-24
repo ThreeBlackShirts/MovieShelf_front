@@ -47,12 +47,16 @@ class ReviewContent extends Component {
     handleEvent = e => {
         alert("like clicked!");
     }
-    
 
+    goBackBtn(){
+        console.log("goback btn clicked!")
+        history.back()
+    }
+    
     render() {
         return (
             <div id='reviewpage-content'>
-                <div id='gobackbtn'><MdKeyboardArrowLeft id='gobackbtn-icon'/></div>
+                <div id='gobackbtn'><MdKeyboardArrowLeft id='gobackbtn-icon'  onClick={this.goBackBtn}/></div>
                 <div id='reviewpage-wrap'>
                     <div id='reviewpage-moviereview'>
                         <div id='reviewpage-moviereview-movieinfo'>
