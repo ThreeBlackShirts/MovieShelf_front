@@ -4,8 +4,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap');
 
 @font-face {
+    font-family: 'IM_Hyemin-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Bold.woff2') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
     font-family: 'IM_Hyemin-Regular';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Regular.woff2') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'EarlyFontDiary';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_220508@1.0/EarlyFontDiary.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
@@ -14,6 +28,10 @@ html, body{
     width: 100%;
     height: 100%;
     align-content: center;
+}
+
+#listpage{
+    background : url(images/background/cameraandbooks.jpg);
 }
 
 .listpage-content{
@@ -31,40 +49,43 @@ html, body{
     vertical-align: middle;
 }
 
-.listpage-content-search-boxwrap{
-    width: 50%;
+.listpage-content-search-btnwrap{
+    width: 60%;
     padding-top: 5vh;
     text-align: center;
     vertical-align: middle;
     margin: auto;
 }
 
-.listpage-content-search-box{
-    width: 50%;
-    height: 4vh;
-    margin: auto;
+#listpage-search-text{
+    width: 180px;
+    height: 30px;
+    font-size: 14px;
+    border-style: none;
     border-radius: 15px;
-    text-align: center;
-    vertical-align: middle;
-    background-color: lightgrey;
-}
-
-.listpage-content-search-text{
-    width: 70%;
-    height: 90%;
-    border-width: 0ch;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-right: 10px;
     text-align: justify;
     vertical-align: middle;
-    background-color: lightgrey;
-    font-family:'IM_Hyemin-Regular';
+    background-color: rgba(211, 211, 211, 0.8);
+    font-family: 'EarlyFontDiary';
 }
 
-.listpage-content-search-btn-icon{
+    #listpage-search-text:hover{
+        cursor: text;
+    }
+
+.listpage-search-btn-icon{
     width: 24px;
     height: 24px;
     text-align: center;
     vertical-align: middle;
 }
+
+    .listpage-search-btn-icon:hover{
+        cursor: pointer;
+    }
 
 .listpage-content-result{
     width: 80%;
@@ -77,12 +98,16 @@ html, body{
     display: inline-block;
     width: 180px;
     height: 240px;
-    background-color: lightgrey;
+    background-color: rgba(211, 211, 211, 0.8);
     margin: 10px;
     margin-left: 20px;
     margin-right: 20px;
     border-radius: 15px;
 }
+
+    .listpage-content-result-item:hover{
+        cursor: pointer;
+    }
 
 .listpage-content-result-item-pic{
     width: 160px;

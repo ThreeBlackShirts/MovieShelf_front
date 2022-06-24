@@ -61,27 +61,25 @@
     display: inline-block;
     width: 25%;
     height: 360px;
-    background-color: gainsboro;
     border-radius: 10px;
 }
 
 #reviewpage-moviereview-img-wrap{
     width: 100%;
     height: 320px;
-    background-color: gainsboro;
-    border-radius: 10px;
+    background-color: rgba(211, 211, 211, 0.8);
+    border-radius: 10px 10px 0 0 ;
 }
 
 #reviewpage-moviereview-img{
     width: 210px;
     height: 320px;
     object-fit: contain;
-    background-color: gainsboro;
 }
 
 #reviewpage-moviereview-rate{
     height: 40px;
-    background-color: darkgray;
+    background-color: rgba(169, 169, 169, 0.8);
     border-radius: 0 0 10px 10px;
 }
 
@@ -98,7 +96,7 @@
     margin-left: 20px;
     padding: 0 1% 0 1%;
     border-radius: 10px;
-    background-color: gainsboro;
+    background-color: rgba(211, 211, 211, 0.8);
 }
 
 #reviewpage-moviereview-detail-header{
@@ -125,6 +123,10 @@
         width: 24px;
         height: 24px;
     }
+
+        .moviereview-content-btn-icon:hover{
+            cursor: pointer;
+        }
 
 #reviewpage-moviereview-detail-content{
     font-size: 16px;
@@ -153,7 +155,7 @@
 .reviewpage-comment{
     height: 60px;
     vertical-align: top;
-    background-color: gainsboro;
+    background-color: rgba(230, 230, 230, 0.8);
     border-radius: 15px;
     border-style: solid;
     border-width: 1px;
@@ -185,11 +187,19 @@
             border-width: 1px;
         }
 
+            .reviewpage-comment-user-profile-img:hover{
+                cursor: pointer;
+            }
+
     .reviewpage-comment-user-id{
         display: inline-block;
         vertical-align: middle;
         width: 50%;
     }
+
+        .reviewpage-comment-user-id:hover{
+            cursor: pointer;
+        }
 
 .reviewpage-comment-content{
     display: inline-block;
@@ -209,4 +219,5 @@
 .reviewpage-comment-content-btn-icon{
     width: 20px;
     height: 20px;
+    visibility: hidden;
 }
