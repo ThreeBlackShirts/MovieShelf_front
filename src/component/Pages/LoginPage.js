@@ -66,11 +66,11 @@ class LoginPage extends Component {
 
     socialLoginGoogle() {
         console.log("google login clicked")
-        AuthenticationService.loginSocialGoogle()
+        AuthenticationService.loginSocialGoogle();
     }
     socialLoginKakao() {
         console.log("kakao login clicked")
-        AuthenticationService.loginSocialKakao()
+        AuthenticationService.loginSocialKakao();
     }
     render() {
         return (
