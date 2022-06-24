@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import ReviewService from 'service/ReviewService';
 
 import 'style/reviewpage.css';
 
@@ -12,6 +13,32 @@ import { BsBookmarkHeart } from "react-icons/bs";
 
 
 class ReviewContent extends Component {
+
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            reviewId: '',
+            reviewContent: '',
+            reviewTitle: '',
+            userEmail: '',
+        }
+
+        this.editReview = this.editReview.bind(this)
+        this.deleteReview = this.deleteReview.bind(this)
+        
+    }
+
+    editReview(){
+        console.log("edit review clicked")
+        ReviewService.editReview(this.state.reviewId)
+    }
+
+    deleteReview(){
+        console.log("delete review clicked")
+        ReviewService.deleteReview()
+    }
+
 
     /*
     constructor(props) {
@@ -44,6 +71,8 @@ class ReviewContent extends Component {
                                     </BsBookmarkHeart>
     */
 
+    
+
     handleEvent = e => {
         alert("like clicked!");
     }
@@ -68,11 +97,12 @@ class ReviewContent extends Component {
                         <div id='reviewpage-moviereview-detail'>
                             <div id='reviewpage-moviereview-detail-header'>
                                 <div id='reviewpage-moviereview-detail-header-title' name="title">영화 제목</div>
+                                <div id='reviewpage-moviereview-detail-header-id' >#id</div>
                                 <div className='moviereview-content-btn'>
-                                    <MdEdit className='moviereview-content-btn-icon' id='moviereview-content-editbtn-icon'/>
+                                    <MdEdit className='moviereview-content-btn-icon' id='moviereview-content-editbtn-icon' onClick={this.editReview}/>
                                 </div>
                                 <div className='moviereview-content-btn'>
-                                    <MdDelete className='moviereview-content-btn-icon' id='moviereview-content-delbtn-icon'/>
+                                    <MdDelete className='moviereview-content-btn-icon' id='moviereview-content-delbtn-icon' onClick={this.deleteReview}/>
                                 </div>
                                 <div className='moviereview-content-btn'>
                                     <BsBookmarkHeart className='moviereview-content-btn-icon' id='moviereview-content-delbtn-icon' onClick={this.handleEvent}/>
@@ -80,9 +110,7 @@ class ReviewContent extends Component {
                                     
                             </div>
                             <div id='reviewpage-moviereview-detail-content' name="content">
-                                <p> 평소에도 비염이 있는데, 봄이 왔는데 온난화 때문에 꽃이 한번에 피니까
-                                    꽃가루 알레르기 때문에 눈도 간지럽고 재채기도 하고 콧물도 나오고, 목도
-                                    간지러운 것 같고.. 너무 힘들어용~~~** 글자 수 제한 하기! **
+                                <p> ...
                                 </p>
                             </div>
                         </div>

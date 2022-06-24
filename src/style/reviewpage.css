@@ -107,9 +107,16 @@
 
     #reviewpage-moviereview-detail-header-title{
         display: inline-block;
-        width: 70%;
+        width: 40%;
         font-size: 30px;
         font-weight: bold;
+        text-align: left;
+    }
+
+    #reviewpage-moviereview-detail-header-id{
+        display: inline-block;
+        width: 20%;
+        font-size: 16px;
         text-align: left;
     }
 
