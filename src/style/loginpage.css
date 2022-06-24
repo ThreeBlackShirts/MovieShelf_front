@@ -24,6 +24,7 @@ html, body{
 }
 
 body{
+    background : url(images/background/cameraandbooks.jpg);
     background-color: rgba(0, 0, 0, 0.55);
 }
 
@@ -69,7 +70,7 @@ body{
     vertical-align: middle;
     align-content: center;
     border-radius: 30px;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 .login-content-body-main-title {

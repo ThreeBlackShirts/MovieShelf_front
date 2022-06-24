@@ -61,12 +61,20 @@
         font-family: 'EliceDigitalBaeum';
     }
 
+        .userinfo-content-info-sub:hover{
+            cursor: default;
+        }
+
     .userinfo-content-info-sub table{
         width: 80%;
         margin: auto;
         align-items: center;
         text-align: justify;
     }
+
+        .userinfo-content-info-sub table a:hover{
+            cursor: pointer;
+        }
 
 .userinfo-content-shelf{
     text-align: center;
@@ -90,6 +98,7 @@
         
         .userinfo-content-shelf-category-sub:hover{
             text-decoration: underline;
+            cursor: pointer;
         }
 
         .userinfo-content-shelf-contents{
@@ -97,7 +106,9 @@
             margin: auto;
             border-radius: 15px;
             padding: 10px;
-            background-color: gainsboro;
+            background-color: rgba(211, 211, 211, 0.8);
+            
+            
         }
 
         .userinfo-content-shelf-contents table{
@@ -107,14 +118,21 @@
             .shelf-contents-object{
                 width: 120px;
                 height: 160px;
-                background-color: #c0c0c0;
+                background-color: rgba(182, 182, 182, 0.5);
+                border-style: inset ;
+                border-width: 1px;
             }
                 .shelf-contents-object-add{
                     width: 30px;
                     height: 30px;
                 }
+
                 #userinfo-content-shelf-example{
                     width: 120px;
                     height: 160px;
                     vertical-align: middle;
+                }
+
+                .shelf-contents-object:hover{
+                    cursor: pointer;
                 }

@@ -10,7 +10,7 @@ import 'style/footer.css'
 const ListPage = () => {
 
     return (
-        <div>
+        <div id='listpage'>
             <Header />
             <ListContent />
             <Footer />

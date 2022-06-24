@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 import { Link } from "react-router-dom";
-
-import 'style/loginpage.css';
-
 import AuthenticationService from 'service/AuthenticationService';
 
+import 'style/loginpage.css';
 
 function toHomePage() { window.location.href="/"    }
 

@@ -64,7 +64,7 @@
 }
 
 .usersetting-content-container-box{
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(211, 211, 211, 0.8);
     border-radius: 15px;
     width: 60%;
     min-height: 360px;
@@ -106,13 +106,8 @@
                 vertical-align: middle;
                 border-width: 0.5px;
             }
-            .usersetting-content-obj-data button{
-                height: 24xp;
-                width: 80px;
-                margin-left: 20px;
-                border-width: 0.5px;
-                border-radius: 5px;
-                vertical-align: middle;
+            #userFilename:hover{
+                cursor: pointer;
             }
 
         .usersetting-content-obj-notice{
@@ -130,3 +125,7 @@
             border-radius: 5px;
             border-width: 0.5px;
         }
+
+            .usersetting-content-submit button:hover{
+                cursor: pointer;
+            }
