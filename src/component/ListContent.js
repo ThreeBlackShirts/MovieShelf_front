@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import Movie from './MovieContent';
 import MovieService from 'service/MovieService';
 import 'style/listpage.css';
 
@@ -13,20 +14,14 @@ class ListContent extends Component {
             userEmail: localStorage.getItem("authenticatedUser") || '',
             token: localStorage.getItem("token") || '',
             input: localStorage.getItem("input") || '',
-            data: [],
+            isLoading: true,
+            movies: [],
             hasLoginFailed: false,
             showSuccessMessage: false,
         }
         this.setInput = this.setInput.bind(this)
         this.searchMovie = this.searchMovie.bind(this)
-        this.handleChange = this.handleChange.bind(this)
-    }
-    handleChange(event) {
-        this.setState(
-            {
-                [event.target.name]: event.target.value
-            }
-        )
+        this.viewMovieList = this.viewMovieList.bind(this)
     }
 
     searchMovie() {
@@ -36,11 +31,10 @@ class ListContent extends Component {
             MovieService
                 .search(this.state.input)
                 .then((response) => {
-                    console.log(response.data.data)
-                    //localStorage.removeItem("input")
-                    //this.state.data에 검색된 영화(제목, 포스터url)들 리스트로 담겨있음.
+                    //this.state.movies에 검색된 영화(제목, 포스터url)들 리스트로 담겨있음.
                     //잘 모르겠으면 콘솔 출력된 것 보기!
-                    this.state = ({ data: response.data.data })
+                    this.setState({ movies: response.data.data, isLoading: false })
+                    console.log(this.state.movies)
                 }).catch(() => {
                     console.log("search failed")
                 });
@@ -56,12 +50,25 @@ class ListContent extends Component {
         location.reload()
     }
 
-    targetNameSet() {
-        //const target = document.getElementById("").innerText
-        //window.localStorage.setItem('target', target)
-        window.localStorage.setItem('target', "범죄도시2")
-        //location.href(`/detail/${target}`)
-        location.href = "/detail"
+    viewMovieList() {
+        console.log("View MovieList")
+        // const target = document.getElementsByClassName("listpage-content-result")
+        // const div = document.createElement("div")
+        for(let moviesLength in this.state.movies){
+            //console.log(this.state.movies[moviesLength])
+        }
+        console.log(this.divSetting(this.state.movies[0]))
+        return divSetting(this.state.movies[0])
+    }
+
+    divSetting(movie){
+        return (
+            
+            <div className="listpage-content-result-item">
+                <div className="listpage-content-result-item-pic"><img src={movie.moviePoster}/></div>
+                <div className="listpage-content-result-item-info">{movie.movieTitle}</div>
+            </div>
+        );
     }
 
     componentDidMount() {
@@ -69,55 +76,22 @@ class ListContent extends Component {
     }
 
     render() {
+        const { isLoading, movies } = this.state;
         return (
             <div className="listpage-content">
                 <div className="listpage-content-search">
                     <div className="listpage-content-search-btnwrap">
-                        <input type="text" id="listpage-search-text" placeholder='검색한 단어' defaultValue={this.state.input}></input>
+                        <input type="text" id="listpage-search-text" placeholder={" '" + this.state.input + "'를 검색한 결과입니다"}></input>
                         <FiSearch className="listpage-search-btn-icon" onClick={this.setInput}/>
                     </div>
                 </div>
                 <div className="listpage-content-result">
-                    <div className="listpage-content-result-item" onClick={this.targetNameSet}>
-                        <div className="listpage-content-result-item-pic"><img/></div>
-                        <div className="listpage-content-result-item-info">영화 이름</div>
-                    </div>
-
-                    <div className="listpage-content-result-item">
-                        <div className="listpage-content-result-item-pic"><img/></div>
-                        <div className="listpage-content-result-item-info">영화 이름</div>
-                    </div>
-
-                    <div className="listpage-content-result-item">
-                        <div className="listpage-content-result-item-pic"><img/></div>
-                        <div className="listpage-content-result-item-info">영화 이름</div>
-                    </div>
-
-                    <div className="listpage-content-result-item">
-                        <div className="listpage-content-result-item-pic"><img/></div>
-                        <div className="listpage-content-result-item-info">영화 이름</div>
-                    </div>
-                </div>
-                <div className="listpage-content-result">
-                    <div className="listpage-content-result-item">
-                        <div className="listpage-content-result-item-pic"><img/></div>
-                        <div className="listpage-content-result-item-info">영화 이름</div>
-                    </div>
-
-                    <div className="listpage-content-result-item">
-                        <div className="listpage-content-result-item-pic"><img/></div>
-                        <div className="listpage-content-result-item-info">영화 이름</div>
-                    </div>
-
-                    <div className="listpage-content-result-item">
-                        <div className="listpage-content-result-item-pic"><img/></div>
-                        <div className="listpage-content-result-item-info">영화 이름</div>
-                    </div>
-
-                    <div className="listpage-content-result-item">
-                        <div className="listpage-content-result-item-pic"><img/></div>
-                        <div className="listpage-content-result-item-info">영화 이름</div>
-                    </div>
+                    <div>
+                        { isLoading ? "Loading..." : movies.map( movie => (
+                            <Movie
+                                title={movie.movieTitle}
+                                poster={movie.moviePoster} />
+                    )) }</div>
                 </div>
             </div>
         );
