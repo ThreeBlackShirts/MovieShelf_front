@@ -156,7 +156,6 @@
 /* - 트레일러, 스틸컷 */
 
 #detailpage-img-box{
-    display: table;
     width: 80%;
     margin: auto;
     text-align: center;
@@ -167,14 +166,19 @@
 }
 
 #detailpage-img-trailer{
-    height: 360px;
+    height: auto;
     width: 100%;
     text-align: center;
     vertical-align: center;
 }
 
+.detailpage-img-trailer ul{
+    padding-left: 0px;
+}
+
+
 .detailpage-img-table-wrap{
-    width: 70%;
+    width: 80%;
     text-align: center;
     align-content: center;
     vertical-align: middle;
@@ -187,20 +191,36 @@
     margin: auto;
 }
 
+.detailpage-img-table ul{
+    padding-left: 0px;
+}
+
 .detailpage-img-trailer-td{
-    display: table-cell;
-    width: 30%;
+    margin: 5px;
+    display: inline-block;
+}
+
+.detailpage-img-trailer-td img{
+    width: 190px;
+    height: 120px;
+    background-size: cover;
 }
 
 #detailpage-img-stillcut{
-    height: 360px;
+    height: auto;
     width: 100%;
     vertical-align: center;
 }
 
 .detailpage-img-stillcut-td{
-    display: table-cell;
-    width: 25%;
+    margin: 5px;
+    display: inline-block;
+}
+
+.detailpage-img-stillcut-td img{
+    width: 190px;
+    height: 120px;
+    background-size: cover;
 }
 
     .detailpage-img-stillcut-td:hover{

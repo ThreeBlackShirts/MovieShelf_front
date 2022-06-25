@@ -98,6 +98,7 @@ class ReviewContent extends Component {
                         <div id='reviewpage-moviereview-detail'>
                             <div id='reviewpage-moviereview-detail-header'>
                                 <div id='reviewpage-moviereview-detail-header-title' name="title">감상 제목</div>
+
                                 <div id='reviewpage-moviereview-detail-header-id' >#id</div>
                                 <div className='moviereview-content-btn'>
                                     <MdEdit className='moviereview-content-btn-icon' id='moviereview-content-editbtn-icon' onClick={this.editReview}/>

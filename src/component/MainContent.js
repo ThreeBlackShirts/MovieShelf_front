@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
-import Movie from './MovieContent';
+import {RecommendMovieList} from './MovieContent';
 import MovieService from 'service/MovieService';
+
+//import 'style/mainpage.css';
 
 class MainContent extends Component {
     constructor(props) {
@@ -67,7 +69,7 @@ class MainContent extends Component {
                         <div className='main-content-list-name'>MovieShelf의 추천 장르 영화</div>
                         <div>
                             { isLoading ? "Loading..." : recommendData.map( movie => (
-                                <Movie
+                                <RecommendMovieList
                                     title={movie.movieTitle}
                                     poster={movie.moviePoster} />
                         )) }</div>
