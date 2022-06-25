@@ -5,19 +5,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Hi+Melody&display=swap');
 
 @font-face {
-  font-family: 'IM_Hyemin-Bold';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Bold.woff2') format('woff');
-  font-weight: normal;
+  font-family: 'EliceDigitalBaeum_Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_220508@1.0/EliceDigitalBaeum_Regular.woff2') format('woff2');
+  font-weight: 400;
   font-style: normal;
 }
-
-@font-face {
-  font-family: 'IM_Hyemin-Regular';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Regular.woff2') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
 /* Header */
 
 .header-container {
@@ -112,7 +104,7 @@
   }
 
 #header-content-userbtn-search-btn-subject-wrap label{
-  font-family: 'IM_Hyemin-Regular';
+  font-family: 'EliceDigitalBaeum_Regular';
 }
 
 #header-content-userbtn-search-btn-subject-wrap input[type=radio]+label{
@@ -132,7 +124,7 @@
 
 .header-content-userbtn-search-btn-text{
   width: 48%;
-  height: 24px;
+  height: 28px;
   margin-right: 3%;
   border: 0;
   border-radius: 15px;

@@ -13,10 +13,6 @@ function toHomePage(){
     window.location.href="/"
 }
 
-function toBoardPage(){
-    window.location.href="/"
-}
-
 function toUserInfoPage(){
     window.location.href="/userinfo"
 }
@@ -27,6 +23,14 @@ function toListPage(){
 
 function toUserSettingPage(){
     window.location.href="/usersetting"
+}
+
+function doLogout(){
+    window.location.href="/logout"
+}
+
+function doLogin(){
+    window.location.href="/login"
 }
 
 const Header = () => {
@@ -66,10 +70,10 @@ const Header = () => {
                     <IoIosSettings className="header-content-userbtn-setting-icon" onClick={toUserSettingPage}/>
                 </div>
                 {onLogin && <div className="header-content-userbtn-login">
-                    <h4 className="header-content-userbtn-login-btn" href="/logout">LOGOUT</h4>
+                    <h4 className="header-content-userbtn-login-btn" onClick={doLogout}>LOGOUT</h4>
                 </div>}
                 {!onLogin && <div className="header-content-userbtn-login">
-                    <h4 className="header-content-userbtn-login-btn" href="/login">LOGIN</h4>
+                    <h4 className="header-content-userbtn-login-btn" onClick={doLogin}>LOGIN</h4>
                 </div>}
                 
             </div>

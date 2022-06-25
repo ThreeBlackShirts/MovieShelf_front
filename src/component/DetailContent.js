@@ -187,7 +187,7 @@ class DetailContent extends Component {
                         </table>
                     </div>
                     <br/>
-                    <div id='detailpage-reviews-pagecontroller'>페이징? 페이지네이션?</div>
+                    <div id='detailpage-reviews-pagecontroller'></div>
                 </div>
                 <div className='detailpage-blank'>
                     <br></br>
