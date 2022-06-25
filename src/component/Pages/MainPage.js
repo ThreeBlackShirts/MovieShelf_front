@@ -6,7 +6,7 @@ import 'style/mainpage.css';
 
 const MainPage = () => {
     return (
-        <div>
+        <div className='mainpage'>
             <Header />
             <MainContent/>
             <Footer />

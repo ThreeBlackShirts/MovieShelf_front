@@ -4,9 +4,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap');
 
 @font-face {
-    font-family: 'IM_Hyemin-Regular';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Regular.woff2') format('woff');
-    font-weight: normal;
+    font-family: 'EliceDigitalBaeum_Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_220508@1.0/EliceDigitalBaeum_Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'EliceDigitalBaeum_Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_220508@1.0/EliceDigitalBaeum_Bold.woff2') format('woff2');
+    font-weight: 700;
     font-style: normal;
 }
 
@@ -15,7 +22,7 @@
 }
 
 #detailpage-content{
-    font-family: 'IM_Hyemin-Regular';
+    font-family: 'EliceDigitalBaeum_Regular';
     width: 100%;
     min-height: 100vh;
     text-align: center;
@@ -53,6 +60,7 @@
     color: black;
     background-color: gainsboro;
     border-radius: 15px 15px 0 0 ;
+    padding-bottom: 10px;
 }
 
 #detailpage-info-title{
@@ -68,6 +76,7 @@
     text-align: center;
     width: 100%;
     height: 4vh;
+    padding-top: 20px;
 }
 
     .detailpage-info-anchor-a{
@@ -107,6 +116,8 @@
 #detailpage-info-majorinfo{
     width: 100%;
     min-height: 40vh;
+    padding-top: 10px;
+    padding-bottom: 10px;
     vertical-align: center;
 }
 
@@ -129,7 +140,7 @@
 
 #detailpage-info-poster-img {
     width: 205px;
-    min-height: 290px;
+    min-height: 300px;
 }
 
 #detailpage-info-majorinfo-basic{
@@ -141,17 +152,21 @@
 }
 
 .detailpage-info-majorinfo-basic-content{
-    font-size: 12px;
+    font-size: 18px;
 }
 
 #detailpage-info-majorinfo-basic p{
     text-align: justify;
 }
 
-#detailpage-info-majorinfo-basic-storyline{
-    font-size: 15px;
+#detailpage-info-majorinfo-storyline{
+    font-size: 18px;
     margin-top: 10px;
 }
+
+    #detailpage-info-majorinfo-bold-storyline{
+        font-family: 'EliceDigitalBaeum_Bold';
+    }
 
 /* - 트레일러, 스틸컷 */
 
@@ -163,6 +178,8 @@
     vertical-align: middle;
     color: black;
     background-color: gainsboro;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 #detailpage-img-trailer{
@@ -210,6 +227,8 @@
     height: auto;
     width: 100%;
     vertical-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .detailpage-img-stillcut-td{
@@ -239,6 +258,8 @@
     color: black;
     background-color: gainsboro;
     border-radius: 0 0 15px 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 #detailpage-reviews-review-table-wrap{

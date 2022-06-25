@@ -5,16 +5,16 @@
 
 
 @font-face {
-  font-family: 'IM_Hyemin-Bold';
-  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2106@1.1/IM_Hyemin-Bold.woff2') format('woff');
-  font-weight: normal;
+  font-family: 'EliceDigitalBaeum_Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_220508@1.0/EliceDigitalBaeum_Regular.woff2') format('woff2');
+  font-weight: 400;
   font-style: normal;
 }
 
 
 /* Footer */
 .footer-wrap {
-  font-family: 'IM_Hyemin-Bold';
+  font-family: 'EliceDigitalBaeum_Regular';
   display: flex;
   font-size: 15px;
   width: 100%;
