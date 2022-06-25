@@ -31,12 +31,13 @@ class ReviewContent extends Component {
 
     editReview(){
         console.log("edit review clicked")
-        ReviewService.editReview(this.state.reviewId)
+        ReviewService
+            .editReview(this.state.reviewId, this.state.reviewContent, this.state.reviewTitle)
     }
 
     deleteReview(){
         console.log("delete review clicked")
-        ReviewService.deleteReview()
+        ReviewService.deleteReview(this.state.reviewId)
     }
 
 
@@ -90,13 +91,14 @@ class ReviewContent extends Component {
                     <div id='reviewpage-moviereview'>
                         <div id='reviewpage-moviereview-movieinfo'>
                             <div id='reviewpage-moviereview-img-wrap'>
-                            <img id='reviewpage-moviereview-img' src={require('../images/test/test_detail.jpg')} />
+                                <img id='reviewpage-moviereview-img' src={require('../images/test/test_detail.jpg')} />
                             </div>
                             <div id='reviewpage-moviereview-rate'><span>★ ★ ★ ★ ★</span></div>
                         </div>
                         <div id='reviewpage-moviereview-detail'>
                             <div id='reviewpage-moviereview-detail-header'>
-                                <div id='reviewpage-moviereview-detail-header-title' name="title">영화 제목</div>
+                                <div id='reviewpage-moviereview-detail-header-title' name="title">감상 제목</div>
+
                                 <div id='reviewpage-moviereview-detail-header-id' >#id</div>
                                 <div className='moviereview-content-btn'>
                                     <MdEdit className='moviereview-content-btn-icon' id='moviereview-content-editbtn-icon' onClick={this.editReview}/>
@@ -105,7 +107,7 @@ class ReviewContent extends Component {
                                     <MdDelete className='moviereview-content-btn-icon' id='moviereview-content-delbtn-icon' onClick={this.deleteReview}/>
                                 </div>
                                 <div className='moviereview-content-btn'>
-                                    <BsBookmarkHeart className='moviereview-content-btn-icon' id='moviereview-content-delbtn-icon' onClick={this.handleEvent}/>
+                                    <BsBookmarkHeart className='moviereview-content-btn-icon' id='moviereview-content-likebtn-icon' onClick={this.handleEvent}/>
                                 </div>
                                     
                             </div>

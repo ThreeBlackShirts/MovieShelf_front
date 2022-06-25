@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import ReviewService from 'service/ReviewService';
 
 import 'style/writereviewpage.css';
 
@@ -20,19 +21,26 @@ class WriteReviewContent extends Component {
             testinput: '',
             hasLoginFailed: false,
             showSuccessMessage: false,
+            reviewId: '',
+            reviewContent: '',
+            reviewTitle: '',
+            userEmail: '',
         }
-
+      
+        this.writeReview = this.writeReview.bind(this)
     }
 
     writeReview(){
         console.log("write review clicked")
-        ReviewService.writeReview()
+        ReviewService
+            .writeReview(this.state.reviewId, this.state.reviewContent, this.state.reviewTitle, this.state.userEmail)
     }
     
-    handleChange = (e) => {
+    handleChange(event) {
+
         this.setState(
             {
-                [e.target.id]: e.target.value
+                [event.target.id]: event.target.value
             }
         )
     }
@@ -54,7 +62,7 @@ class WriteReviewContent extends Component {
                        
                     </div>
                     <div className='writereview-movieinfo-detail'>
-                        <div className='writereview-movieinfo-detail-title'>
+                        <div className='writereview-movieinfo-detail-title' id='reviewTitle' onChange={this.handleChange}>
                             영화 제목
                         </div>
                         <div className='writereview-movieinfo-detail-id'>
@@ -77,14 +85,14 @@ class WriteReviewContent extends Component {
                 </div>
                 <div className='writereview-moviereview-box'>
                     <div className='writereview-moviereview-text-wrap'>
-                        <textarea className='writereview-moviereview-text' placeholder='영화가 어땠나요?' maxLength="300">
+                        <textarea className='writereview-moviereview-text' placeholder='영화가 어땠나요?' maxLength="300" id='reviewContent' onChange={this.handleChange}>
                             
                         </textarea>
                     </div>
 
                     <div className='writereview-moviereview-btn-wrap'>
                         <button type='submit' className='writereview-moviereview-btn'>임시저장</button>
-                        <button type='submit' className='writereview-moviereview-btn'>완료</button>
+                        <button type='submit' className='writereview-moviereview-btn' onClick={this.writeReview}>완료</button>
                     </div>
                 </div>
             </div>

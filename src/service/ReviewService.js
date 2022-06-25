@@ -5,11 +5,8 @@ const REVIEW_API_BASE_URL = "/api/v3";
 
 class ReviewService {
     searchAllReview() {
-        return axios.get(REVIEW_API_BASE_URL + "/review", {
-            headers: {
-                "Content-Type": `application/json`,
-            },
-        });
+        console.log("searchAllReview service")
+        return axios.get(REVIEW_API_BASE_URL + "/review")
     }
 
     writeReview(reviewId, reviewContent, reviewTitle, userEmail) {
@@ -18,6 +15,7 @@ class ReviewService {
             title: reviewTitle,
             userEmail: userEmail
         }
+        console.log("writeReview service")
         return axios.post(REVIEW_API_BASE_URL + "/" + reviewId, JSON.stringify(reviewData), {
             headers: {
                 "Content-Type": `application/json`,
@@ -30,7 +28,8 @@ class ReviewService {
             content: reviewContent,
             title: reviewTitle
         }
-        return axios.put(REVIEW_API_BASE_URL + "/" + reviewId, {
+        console.log("editReview service")
+        return axios.put(REVIEW_API_BASE_URL + "/" + reviewId, JSON.stringify(reviewData), {
             headers: {
                 "Content-Type": `application/json`,
             },
@@ -38,27 +37,18 @@ class ReviewService {
     }
 
     deleteReview(reviewId) {
-        return axios.post(REVIEW_API_BASE_URL + "/" + reviewId, {
-            headers: {
-                "Content-Type": `application/json`,
-            },
-        });
+        console.log("deleteReview service")
+        return axios.delete(REVIEW_API_BASE_URL + "/" + reviewId)
     }
 
     searchReviewById(reviewId) {
-        return axios.get(REVIEW_API_BASE_URL + "/" + reviewId, {
-            headers: {
-                "Content-Type": `application/json`,
-            },
-        });
+        console.log("searchReview service")
+        return axios.get(REVIEW_API_BASE_URL + "/" + reviewId)
     }
 
     searchReviewByUseremail(userEmail) {
-        return axios.get(REVIEW_API_BASE_URL + "/" + userEmail, {
-            headers: {
-                "Content-Type": `application/json`,
-            },
-        });
+        console.log("searchReviewByUseremail service")
+        return axios.get(REVIEW_API_BASE_URL + "/" + userEmail)
     }
 }
 
