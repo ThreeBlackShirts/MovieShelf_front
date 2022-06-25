@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Movie from './MovieContent';
+import {SearchMovieResult} from './MovieContent';
 import MovieService from 'service/MovieService';
 import 'style/listpage.css';
 
@@ -88,7 +88,7 @@ class ListContent extends Component {
                 <div className="listpage-content-result">
                     <div>
                         { isLoading ? "Loading..." : movies.map( movie => (
-                            <Movie
+                            <SearchMovieResult
                                 title={movie.movieTitle}
                                 poster={movie.moviePoster} />
                     )) }</div>
