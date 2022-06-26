@@ -51,7 +51,7 @@ class LoginPage extends Component {
                 AuthenticationService.registerSuccessfulLoginForJwt(this.state.userEmail, this.state.token);
                 
                 // this.props.history.push(`/${this.state.userEmail}`)
-                document.location.href = "/";    
+                document.location.href = "/main";    
                 this.setState({ showSuccessMessage: true })
                 this.setState({ hasLoginFailed: false })
             }).catch(() => {

@@ -17,8 +17,20 @@ function toUserInfoPage(){
     window.location.href="/userinfo"
 }
 
-function toListPage(){
-    // parameter : 검색 단어
+function onKeyPress(e){
+    if(e.key == 'Enter')
+        search()
+}
+
+function search() {
+    const input = document.getElementById("search-input").value
+    if(input !== null && input !== ""){
+        if(window.localStorage.getItem("input") !== null)
+            window.localStorage.removeItem("input")
+        window.localStorage.setItem('input', input)
+        location.href = "/list"
+    }else
+        alert("검색어를 입력해주세요.")
 }
 
 function toUserSettingPage(){
@@ -60,8 +72,8 @@ const Header = () => {
                         <input id='subject-genre' type='radio' name='search-subject'/>
                             <label htmlFor='subject-genre'>장르</label>
                     </div>
-                    <input type="text" className="header-content-userbtn-search-btn-text"></input>
-                    <FiSearch className="header-content-userbtn-search-btn-icon"/>
+                    <input type="text" className="header-content-userbtn-search-btn-text"  id='search-input' placeholder="영화 제목을 입력해주세요" onKeyUp={onKeyPress}></input>
+                    <FiSearch className="header-content-userbtn-search-btn-icon" onClick={search}/>
                 </div>
                 <div className="header-content-userbtn-myshelf">
                     <ImBooks className="header-content-userbtn-myshelf-icon" onClick={toUserInfoPage}/>

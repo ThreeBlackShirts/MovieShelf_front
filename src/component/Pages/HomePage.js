@@ -18,6 +18,11 @@ function toUserInfo(){
     window.location.href="/userinfo"
 }
 
+function onKeyPress(e){
+    if(e.key == 'Enter')
+        search()
+}
+
 function search() {
     const input = document.getElementById("search-input").value
     if(input !== null && input !== ""){
@@ -54,7 +59,7 @@ const HomePage = () => {
                     <div className="home-content-main-title-logo">MovieShelf</div>
                 </div>
                 <div className="home-content-main-search">
-                    <input className="home-content-main-search-text"  id='search-input' placeholder="당신의 영화를 검색해 보세요!" type="text"></input>
+                    <input className="home-content-main-search-text"  id='search-input' placeholder="당신의 영화를 검색해 보세요!" type="text" onKeyUp={onKeyPress}></input>
                     <FiSearch className="home-content-main-search-icon"  onClick={search}/>
                 </div>
                 <div className="home-content-main-login">
