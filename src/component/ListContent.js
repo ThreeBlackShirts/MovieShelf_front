@@ -88,7 +88,7 @@ class ListContent extends Component {
                 <div className="listpage-content-result">
                     <div>
                         { isLoading ? "Loading..." : movies.map( movie => (
-                            <SearchMovieResult
+                            <SearchMovieResult   key={movie.movieTitle}
                                 title={movie.movieTitle}
                                 poster={movie.moviePoster} />
                     )) }</div>

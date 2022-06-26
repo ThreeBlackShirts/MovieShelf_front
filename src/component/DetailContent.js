@@ -68,7 +68,7 @@ class DetailContent extends Component {
                     <div id='detailpage-info-majorinfo'>
                         <h4 className='detailpage-box-title'><hr className='detailpage-info-hr-left'/>주요 정보<hr className='detailpage-info-hr-right'/></h4>
                         { isLoading ? "Loading..." : 
-                                <MovieDetail
+                                <MovieDetail  key={movieDetail.moviePoster}
                                     poster={movieDetail.moviePoster}
                                     director={movieDetail.movieDirector}
                                     nation={movieDetail.movieNation}
@@ -86,29 +86,27 @@ class DetailContent extends Component {
                     <div id='detailpage-img-trailer'>
                         <h4 className='detailpage-box-title'><hr className='detailpage-info-hr-left'/>트레일러<hr className='detailpage-info-hr-right'/></h4>
                         <div className='detailpage-img-table-wrap'>
-                            <table className='detailpage-img-table'>
-                                <thead>
-                                    <ul>
-                                        { isLoading ? "Loading..." : movieDetail.movieTrailer.map( movie => (
-                                                    <MovieDetailTrailer
-                                                        trailer={movie} />
-                                        )) }
-                                    </ul>
-                                </thead>
-                            </table>
+                            <div className='detailpage-img-table'>
+                                <ul>
+                                    { isLoading ? "Loading..." : movieDetail.movieTrailer.map( movie => (
+                                                <MovieDetailTrailer  key={movie}
+                                                    trailer={movie} />
+                                    )) }
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div id='detailpage-img-stillcut'>
                         <h4 className='detailpage-box-title'><hr className='detailpage-info-hr-left'/>스틸컷<hr className='detailpage-info-hr-right'/></h4>
                         <div className='detailpage-img-table-wrap'>
-                            <table className='detailpage-img-table'>
+                            <div className='detailpage-img-table'>
                                 <ul>
                                     { isLoading ? "Loading..." : movieDetail.movieStillcut.map( movie => (
-                                                <MovieDetailStillcut
+                                                <MovieDetailStillcut key={movie}
                                                     stillcut={movie} />
                                     )) }
                                 </ul>
-                            </table>
+                            </div>
                         </div>
                     </div>
                 </div>

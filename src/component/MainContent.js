@@ -69,7 +69,7 @@ class MainContent extends Component {
                         <div className='main-content-list-name'>MovieShelf의 추천 장르 영화</div>
                         <div className='main-content-list-item-wrap'>
                             { isLoading ? "Loading..." : recommendData.map( movie => (
-                                <RecommendMovieList
+                                <RecommendMovieList key={movie.movieTitle}
                                     title={movie.movieTitle}
                                     poster={movie.moviePoster} />
                         )) }</div>

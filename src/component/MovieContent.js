@@ -10,11 +10,6 @@ function setLocation(title) {
     location.href = '/detail'
 }
 
-function trailerUrlSet(trailer){
-    console(`${trailer}#t=0.5`)
-    return `${trailer}#t=0.5`
-}
-
 function SearchMovieResult({title, poster}) {
     return (
         <div className="listpage-content-result-item">
@@ -71,7 +66,7 @@ function MovieDetailTrailer({trailer}) {
             <a href={trailer[2]}>
                 <img src={trailer[1]}></img>
             </a><br></br>
-            <span class="detailpage-img-trailer-td-title">{trailer[0]}</span>
+            <span className="detailpage-img-trailer-td-title">{trailer[0]}</span>
         </li>
     )
 }
@@ -106,9 +101,7 @@ MovieDetail.propTypes = {
 }
 
 MovieDetailTrailer.propTypes = {
-    trailerTitle: PropTypes.string.isRequired,
-    trailerImg: PropTypes.string.isRequired,
-    trailer: PropTypes.string.isRequired
+    trailer: PropTypes.array.isRequired
 }
 
 MovieDetailStillcut.propTypes = {
