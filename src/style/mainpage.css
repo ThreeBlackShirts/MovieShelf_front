@@ -32,7 +32,8 @@
     -webkit-box-pack: center;
     padding: 4rem;
     background-size: cover;
-    box-shadow: 0 4px 30px 10px #000;
+    box-shadow: 0 4px 30px 10px black;
+    background-color: black;
 }
 
 .banner-content-item-info {
@@ -71,7 +72,7 @@
 .main-content-movie-list{
     margin-top: 54px;
     padding: 10px;
-    min-height: 50%;
+    min-height: 360px;
     text-align: justify;
     border-radius: 15px;
     color: white;
@@ -138,3 +139,7 @@
     text-align: center;
     margin: 0 12px 0 12px;
 }
+
+    .main-content-result-item-pic:hover{
+        cursor: pointer;
+    }

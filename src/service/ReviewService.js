@@ -6,29 +6,32 @@ const REVIEW_API_BASE_URL = "/api/v3";
 class ReviewService {
     searchAllReview() {
         console.log("searchAllReview service")
+        AuthenticationService.setupAxiosInterceptors();
         return axios.get(REVIEW_API_BASE_URL + "/review")
     }
 
-    writeReview(reviewId, reviewContent, reviewTitle, userEmail) {
+    writeReview( userEmail, reviewTitle, reviewContent) {
         let reviewData = {
-            content: reviewContent,
+            userEmail: userEmail,
             title: reviewTitle,
-            userEmail: userEmail
+            content: reviewContent
         }
         console.log("writeReview service")
-        return axios.post(REVIEW_API_BASE_URL + "/" + reviewId, JSON.stringify(reviewData), {
+        AuthenticationService.setupAxiosInterceptors();
+        return axios.post(REVIEW_API_BASE_URL + "/", JSON.stringify(reviewData), {
             headers: {
                 "Content-Type": `application/json`,
             },
         });
     }
 
-    editReview(reviewId, reviewContent, reviewTitle) {
+    editReview(reviewId, reviewTitle, reviewContent) {
         let reviewData = {
-            content: reviewContent,
-            title: reviewTitle
+            title: reviewTitle,
+            content: reviewContent
         }
         console.log("editReview service")
+        AuthenticationService.setupAxiosInterceptors();
         return axios.put(REVIEW_API_BASE_URL + "/" + reviewId, JSON.stringify(reviewData), {
             headers: {
                 "Content-Type": `application/json`,
@@ -38,17 +41,20 @@ class ReviewService {
 
     deleteReview(reviewId) {
         console.log("deleteReview service")
-        return axios.delete(REVIEW_API_BASE_URL + "/" + reviewId)
+        AuthenticationService.setupAxiosInterceptors();
+        return axios.delete(REVIEW_API_BASE_URL + "/" + reviewId);
     }
 
     searchReviewById(reviewId) {
         console.log("searchReview service")
-        return axios.get(REVIEW_API_BASE_URL + "/" + reviewId)
+        AuthenticationService.setupAxiosInterceptors();
+        return axios.get(REVIEW_API_BASE_URL + "/" + reviewId);
     }
 
     searchReviewByUseremail(userEmail) {
         console.log("searchReviewByUseremail service")
-        return axios.get(REVIEW_API_BASE_URL + "/" + userEmail)
+        AuthenticationService.setupAxiosInterceptors();
+        return axios.get(REVIEW_API_BASE_URL + "/" + userEmail);
     }
 }
 
