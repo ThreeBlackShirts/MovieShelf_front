@@ -21,7 +21,6 @@ class ListContent extends Component {
         }
         this.setInput = this.setInput.bind(this)
         this.searchMovie = this.searchMovie.bind(this)
-        this.viewMovieList = this.viewMovieList.bind(this)
     }
 
     searchMovie() {
@@ -31,8 +30,11 @@ class ListContent extends Component {
             MovieService
                 .search(this.state.input)
                 .then((response) => {
-                    //this.state.movies에 검색된 영화(제목, 포스터url)들 리스트로 담겨있음.
-                    //잘 모르겠으면 콘솔 출력된 것 보기!
+                    console.log(response.data.data)
+                    if(response.data.data == [] || response.data.data == null || response.data.data.length == 0){
+                        alert("검색 결과가 없습니다. 다시 검색해주세요.")
+                        history.back()
+                    }
                     this.setState({ movies: response.data.data, isLoading: false })
                     console.log(this.state.movies)
                 }).catch(() => {
@@ -43,32 +45,16 @@ class ListContent extends Component {
             history.back()
         }
     }
+    
+    onKeyPress = (e) => {
+        if(e.key == 'Enter')
+            this.setInput()
+    }
 
     setInput() {
         this.state.input = document.getElementById("listpage-search-text").value
         localStorage.setItem("input", this.state.input)
         location.reload()
-    }
-
-    viewMovieList() {
-        console.log("View MovieList")
-        // const target = document.getElementsByClassName("listpage-content-result")
-        // const div = document.createElement("div")
-        for(let moviesLength in this.state.movies){
-            //console.log(this.state.movies[moviesLength])
-        }
-        console.log(this.divSetting(this.state.movies[0]))
-        return divSetting(this.state.movies[0])
-    }
-
-    divSetting(movie){
-        return (
-            
-            <div className="listpage-content-result-item">
-                <div className="listpage-content-result-item-pic"><img src={movie.moviePoster}/></div>
-                <div className="listpage-content-result-item-info">{movie.movieTitle}</div>
-            </div>
-        );
     }
 
     componentDidMount() {
@@ -81,7 +67,7 @@ class ListContent extends Component {
             <div className="listpage-content">
                 <div className="listpage-content-search">
                     <div className="listpage-content-search-btnwrap">
-                        <input type="text" id="listpage-search-text" placeholder={" '" + this.state.input + "'를 검색한 결과입니다"}></input>
+                        <input type="text" id="listpage-search-text" placeholder={" '" + this.state.input + "'를 검색한 결과입니다"} onKeyUp={this.onKeyPress}></input>
                         <FiSearch className="listpage-search-btn-icon" onClick={this.setInput}/>
                     </div>
                 </div>
