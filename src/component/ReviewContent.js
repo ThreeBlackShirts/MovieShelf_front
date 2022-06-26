@@ -18,10 +18,14 @@ class ReviewContent extends Component {
         super(props)
 
         this.state = {
+            userEmail: localStorage.getItem("authenticatedUser") || '',
+            token: localStorage.getItem("token") || '',
+            target: localStorage.getItem("target") || '',
             reviewId: '',
-            reviewContent: '',
+            reviewContent: {},
             reviewTitle: '',
-            userEmail: '',
+            hasLoginFailed: false,
+            showSuccessMessage: false,
         }
 
         this.editReview = this.editReview.bind(this)
@@ -29,15 +33,34 @@ class ReviewContent extends Component {
         
     }
 
+    handleChange = (e) => {
+        this.setState(
+            {
+                [e.target.id]: e.target.value
+            }
+        )
+    }
+
     editReview(){
         console.log("edit review clicked")
-        ReviewService
-            .editReview(this.state.reviewId, this.state.reviewContent, this.state.reviewTitle)
+        ReviewService.editReview(this.state.reviewId, this.state.reviewContent, this.state.reviewTitle)
+            .then((response) => {
+                alert("수정 완료");
+                document.location.href="/review" + reviewId;
+            }).catch((error) => {
+                console.log(error.response)
+            });
     }
 
     deleteReview(){
         console.log("delete review clicked")
         ReviewService.deleteReview(this.state.reviewId)
+            .then((response)=> {
+                alert("삭제 완료");
+                document.location.href="/userinfo";
+            }).catch((error) => {
+                console.log(error.response)
+            });
     }
 
 
@@ -97,7 +120,7 @@ class ReviewContent extends Component {
                         </div>
                         <div id='reviewpage-moviereview-detail'>
                             <div id='reviewpage-moviereview-detail-header'>
-                                <div id='reviewpage-moviereview-detail-header-title' name="title">감상 제목</div>
+                                <div id='reviewpage-moviereview-detail-header-title' name="title">영화 제목</div>
 
                                 <div id='reviewpage-moviereview-detail-header-id' >#id</div>
                                 <div className='moviereview-content-btn'>

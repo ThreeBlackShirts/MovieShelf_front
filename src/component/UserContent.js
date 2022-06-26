@@ -35,7 +35,6 @@ const UserContent = () => {
     }
 
     return (
-
         <div className='userinfo-content'>
             <div className="userinfo-content-info">
                 <div className="userinfo-content-info-profile">
@@ -59,7 +58,6 @@ const UserContent = () => {
                             <td>리뷰한 영화: <span>N2</span>개</td>
                         </tr>
                     </table>
-                    
                 </div>
             </div>
             <div className="userinfo-content-shelf">

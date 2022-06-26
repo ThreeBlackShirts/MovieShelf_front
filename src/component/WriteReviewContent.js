@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { Link ,useParams} from "react-router-dom";
 import ReviewService from 'service/ReviewService';
 
 import 'style/writereviewpage.css';
@@ -22,9 +22,8 @@ class WriteReviewContent extends Component {
             hasLoginFailed: false,
             showSuccessMessage: false,
             reviewId: '',
-            reviewContent: '',
-            reviewTitle: '',
-            userEmail: '',
+            reviewContent: {},
+            //reviewTitle: localStorage.getItem("title"),
         }
       
         this.writeReview = this.writeReview.bind(this)
@@ -66,7 +65,7 @@ class WriteReviewContent extends Component {
                             영화 제목
                         </div>
                         <div className='writereview-movieinfo-detail-id'>
-                            #movie ID
+                            #movie_ID
                         </div>
                         <div className='writereview-movieinfo-detail-rate'>
                             <div className='movieinfo-detail-rating'><RiSubtractFill className='movieinfo-detail-rating-icon'/></div>
