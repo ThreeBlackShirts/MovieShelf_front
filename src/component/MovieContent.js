@@ -1,10 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-//import 'style/mainpage.css';
-import 'style/listpage.css';
-import 'style/detailpage.css';
-
 function setLocation(title) {
     localStorage.setItem('target', title)
     location.href = '/detail'
@@ -21,7 +17,30 @@ function SearchMovieResult({title, poster}) {
     )
 }
 
+function BannerMovieView({title, stillcut, contentBold, contentDetail}) {
+    return (
+        <div className="banner-content-result-item" style={{backgroundImage: `url(${stillcut})`}} onClick={() => setLocation(title)}>
+            <div className="banner-content-item-info">
+                <div className="banner-content-item-title">{title}</div><br></br>
+                <div className="banner-content-item-detail detail-bold">{contentBold}</div>
+                <div className="banner-content-item-detail detail-detail">{contentDetail}</div>
+            </div>
+        </div>
+    )
+}
+
 function RecommendMovieList({title, poster}) {
+    return (
+        <div className="main-content-result-item">
+            <a onClick={() => setLocation(title)}>
+                <div className="main-content-result-item-pic"><img src={poster}/></div>
+                <div className="main-content-result-item-info">{title}</div>
+            </a>
+        </div>
+    )
+}
+
+function CategoryMovieList({title, poster}) {
     return (
         <div className="main-content-result-item">
             <a onClick={() => setLocation(title)}>
@@ -77,9 +96,16 @@ function MovieDetailStillcut({stillcut}) {
     )
 }
 
-SearchMovieResult.propTypes, RecommendMovieList.propTypes = {
+SearchMovieResult.propTypes, RecommendMovieList.propTypes, CategoryMovieList.propTypes = {
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
+}
+
+BannerMovieView.propTypes = {
+    title: PropTypes.string.isRequired,
+    stillcut: PropTypes.string.isRequired,
+    contentBold: PropTypes.string.isRequired,
+    contentDetail: PropTypes.string.isRequired
 }
 
 MovieDetailTitle.propTypes = {
@@ -108,4 +134,4 @@ MovieDetailStillcut.propTypes = {
     stillcut: PropTypes.string.isRequired
 }
   
-export {SearchMovieResult, RecommendMovieList, MovieDetailTitle, MovieDetail, MovieDetailTrailer, MovieDetailStillcut}
+export {SearchMovieResult, BannerMovieView, RecommendMovieList, CategoryMovieList, MovieDetailTitle, MovieDetail, MovieDetailTrailer, MovieDetailStillcut}
