@@ -32,7 +32,7 @@ class WriteReviewContent extends Component {
     writeReview(){
         console.log("write review clicked")
         ReviewService
-            .writeReview(this.state.reviewId, this.state.reviewContent, this.state.reviewTitle, this.state.userEmail)
+            .writeReview(this.state.userEmail, this.state.reviewTitle, this.state.reviewContent)
     }
     
     handleChange(event) {
@@ -44,20 +44,18 @@ class WriteReviewContent extends Component {
         )
     }
 
-    addImg() {
-        alert("이미지를 불러오시겠습니까?*테스트용*");
-    }
-
-
     render() {
         return (
             <div id='writereview-content'>
                 <div id='gobackbtn'><MdKeyboardArrowLeft id='gobackbtn-icon'/></div>
                 <div className='writereview-movieinfo-box'>
                     <div className='writereview-movieinfo-poster'>
-                        <div className='writereview-movieinfo-poster-img' onClick={this.addImg}>
+                        <div className='writereview-movieinfo-poster-img'>
+                            <label htmlFor="writereview-movieinfo-poster-addicon-input">
                             <RiAddFill id='writereview-movieinfo-poster-addicon'/>
+                            </label>
                         </div>
+                       
                        
                     </div>
                     <div className='writereview-movieinfo-detail'>
@@ -65,7 +63,7 @@ class WriteReviewContent extends Component {
                             영화 제목
                         </div>
                         <div className='writereview-movieinfo-detail-id'>
-                            #movie_ID
+                            #review_ID
                         </div>
                         <div className='writereview-movieinfo-detail-rate'>
                             <div className='movieinfo-detail-rating'><RiSubtractFill className='movieinfo-detail-rating-icon'/></div>
