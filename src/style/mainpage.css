@@ -15,10 +15,50 @@
     align-content: center;
 }
 
+.content {
+    font-family: 'EliceDigitalBaeum_Regular';
+}
+
+.banner-content{
+    height: 50vh;
+    background-color: rgb(20, 20, 20);
+}
+
+.banner-content-result-item {
+    display: grid;
+    justify-content: start;
+    align-items: end;
+    height: 40vh;
+    -webkit-box-pack: center;
+    padding: 4rem;
+    background-size: cover;
+    box-shadow: 0 4px 30px 10px #000;
+}
+
+.banner-content-item-info {
+    width: 60%;
+}
+
+.banner-content-item-title {
+    font-weight: bold;
+    color: white;
+    font-size: 1.5em;
+}
+
+.banner-content-item-detail {
+    color: rgba(255, 255, 255, 0.753);
+    font-size: 0.8em;
+}
+
+.detail-bold {
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
 .main-content{
     min-height: 77vh;
     width: 100%;
-    font-family: 'EliceDigitalBaeum_Regular';
+    position: relative;
 }
 
 .main-content-movie{
@@ -34,7 +74,7 @@
     min-height: 50%;
     text-align: justify;
     border-radius: 15px;
-    background-color: rgba(211, 211, 211, 0.8);
+    color: white;
 }
 
 .main-content-list-name{
@@ -47,6 +87,7 @@
 
 .main-content-list-item-wrap{
     overflow-x: auto;
+    position: relative;
 }
     .main-content-list-item-wrap::-webkit-scrollbar{
         height: 10px;
@@ -59,6 +100,22 @@
     .main-content-list-item-wrap::-webkit-scrollbar-thumb{
         background-color: whitesmoke;
         border-radius: 5px;
+    }
+
+    .main-content-list-item-wrap button{
+        margin-top: 10px;
+        width: 80px;
+        height: 220px;
+        border: none;
+        color: white;
+        position: absolute;
+        right: 0px;
+        background: linear-gradient(to right, transparent, rgba(0, 0, 0, 0.5));
+    }
+
+    .main-content-list-item-wrap button:first-child{
+        left: 0px;
+        background: linear-gradient(to left, transparent, rgba(0, 0, 0, 0.5));
     }
 
 .main-content-result-item{

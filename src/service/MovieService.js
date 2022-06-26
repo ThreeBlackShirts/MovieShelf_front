@@ -20,6 +20,14 @@ class MovieService {
 		});
 	}
 
+	bannerMovie() {
+		return axios.post(MOVIE_API_BASE_URL+"/todaybanner", {
+			headers: {
+				"Content-Type": 'application/json',
+			},
+		});
+	}
+
 	recommendation() {
 		return axios.post(MOVIE_API_BASE_URL+"/recommendation", {
 			headers: {
@@ -28,8 +36,16 @@ class MovieService {
 		});
 	}
 
-	category() {
-		return axios.post(MOVIE_API_BASE_URL+"/category", {
+	nationCateory(target) {
+		return axios.post(MOVIE_API_BASE_URL+"/nation", JSON.stringify(target),  {
+			headers: {
+				"Content-Type": 'application/json',
+			},
+		});
+	}
+
+	genreCateory(target) {
+		return axios.post(MOVIE_API_BASE_URL+"/genre", JSON.stringify(target),  {
 			headers: {
 				"Content-Type": 'application/json',
 			},
