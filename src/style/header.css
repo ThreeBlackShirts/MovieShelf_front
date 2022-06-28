@@ -12,10 +12,16 @@
 }
 /* Header */
 
+html{
+  min-width: 1200px;
+  min-height: 900px;
+}
+
 .header-container {
   font-family: 'IM_Hyemin-Bold';
   height: 10vh;
   width: 100%;
+  min-height: 81px;
   vertical-align: middle;
   color: white;
   background-color: rgba(0, 0, 0, 0.4);
@@ -32,6 +38,7 @@
 .header-content-title-logo{
   display: inline-block;
   width: 30%;
+  min-width: 90px;
   vertical-align: middle;
   padding-left: 20px;
 }
@@ -47,6 +54,7 @@
 .header-content-title-top{
   display: inline-block;
   width: 10%;
+  min-width: 63px;
   text-align: center;
   vertical-align: middle;
 }
@@ -58,6 +66,7 @@
 .header-content-title-genre{
   display: inline-block;
   width: 10%;
+  min-width: 63px;
   text-align: center;
   vertical-align: middle;
 }

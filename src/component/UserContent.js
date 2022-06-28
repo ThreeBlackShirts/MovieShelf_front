@@ -62,18 +62,40 @@ const UserContent = () => {
                 </div>
             </div>
             <div className="userinfo-content-shelf">
-                <div className="userinfo-content-shelf-category">
-                    <div className="userinfo-content-shelf-category-sub">나의 영화 책장</div>&nbsp; | &nbsp;
-                    <div className="userinfo-content-shelf-category-sub">내가 찜한 리뷰어</div>
+                <div className="userinfo-content-shelf-list">
+                    <div className='userinfo-content-shelf-list-name'>나의 영화 책장</div>
+                    <div className='userinfo-content-shelf-list-item-wrap'>
+                        <div className='userinfo-content-shelf-list-item'>
+                            <div className='userinfo-content-shelf-list-item-pic'></div>
+                            <div className='userinfo-content-shelf-list-item-info'></div>
+                        </div>
+                        <div className='userinfo-content-shelf-list-item'>
+                            <div className='userinfo-content-shelf-list-item-pic'><MdAdd className='shelf-contents-object-icon' onClick={toWriteReview}/></div>
+                            <div className='userinfo-content-shelf-list-item-info'>추가하기</div>
+                        </div>
+                    </div>
                 </div>
-                <div className="userinfo-content-shelf-contents">
-                    <table>
-                        <tr>
-                            <td className='shelf-contents-object'><img id='userinfo-content-shelf-example' src={require('../images/test/test_detail.jpg')} /></td>
-                            <td className='shelf-contents-object'><MdAdd className='shelf-contents-object-add' onClick={toWriteReview}/></td>
-                        </tr>
-                    </table>
+
+
+                <div className="userinfo-content-shelf-list">
+                    <div className='userinfo-content-shelf-list-name'>나의 영화 책장</div>
+                    <div className='userinfo-content-shelf-list-item-wrap'>
+                        <div className='userinfo-content-shelf-list-item'>
+                            <div className='userinfo-content-shelf-list-item-pic'></div>
+                            <div className='userinfo-content-shelf-list-item-info'></div>
+                        </div>
+                    </div>
                 </div>
+                <div className="userinfo-content-shelf-list">
+                    <div className='userinfo-content-shelf-list-name'>나의 영화 책장</div>
+                    <div className='userinfo-content-shelf-list-item-wrap'>
+                        <div className='userinfo-content-shelf-list-item'>
+                            <div className='userinfo-content-shelf-list-item-pic'></div>
+                            <div className='userinfo-content-shelf-list-item-info'></div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             
         </div>
