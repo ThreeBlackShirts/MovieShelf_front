@@ -1,5 +1,8 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React from "react";
+import PropTypes from "prop-types";
+import { AiFillStar } from "react-icons/ai";
+import { AiOutlineStar } from "react-icons/ai";
+
 
 function setLocation(title) {
     localStorage.setItem('target', title)

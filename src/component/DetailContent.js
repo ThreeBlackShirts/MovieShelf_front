@@ -6,6 +6,8 @@ import MovieService from 'service/MovieService';
 import 'style/detailpage.css';
 
 import { MdKeyboardArrowLeft } from "react-icons/md";
+import { AiFillStar } from "react-icons/ai";
+import { AiOutlineStar } from "react-icons/ai";
 
 class DetailContent extends Component {
     constructor(props) {
@@ -52,6 +54,11 @@ class DetailContent extends Component {
         history.back()
     }
 
+    goWriteReview(){
+        console.log("going to writereview")
+        //무비 정보를 가져오는 기본키 받아서 넘겨주고 writereview에서 영화 정보 기본키로 호출하기
+    }
+
     render() {
         const { isLoading, movieDetail} = this.state;
         return (
@@ -60,10 +67,11 @@ class DetailContent extends Component {
                 <div id='detailpage-info-box'>
                     { isLoading ? "Loading..." : < MovieDetailTitle title={movieDetail.movieTitle} /> }
                     <div id='detailpage-info-anchor'>
-                        <Link to='#detailpage-info-majorinfo' className='detailpage-info-anchor-a'>주요 정보</Link>
-                        <Link to='#detailpage-img-trailer' className='detailpage-info-anchor-a'>트레일러</Link>
-                        <Link to='#detailpage-img-stillcut' className='detailpage-info-anchor-a'>스틸컷</Link>
-                        <Link to='#detailpage-review-box' className='detailpage-info-anchor-a'>평점/리뷰</Link>
+                        <a href='#detailpage-info-majorinfo' className='detailpage-info-anchor-a'>주요 정보</a>
+                        <a href='#detailpage-img-trailer' className='detailpage-info-anchor-a'>트레일러</a>
+                        <a href='#detailpage-img-stillcut' className='detailpage-info-anchor-a'>스틸컷</a>
+                        <a href='#detailpage-review-box' className='detailpage-info-anchor-a'>평점/리뷰</a>
+                        <a onClick={this.goWriteReview} className='detailpage-info-anchor-a'>리뷰 쓰기</a>
                     </div>
                     <div id='detailpage-info-majorinfo'>
                         <h4 className='detailpage-box-title'><hr className='detailpage-info-hr-left'/>주요 정보<hr className='detailpage-info-hr-right'/></h4>
@@ -110,8 +118,12 @@ class DetailContent extends Component {
                         </div>
                     </div>
                 </div>
-                <div id='detailpage-reviews-box'>
-                    <h4 className='detailpage-box-title'><hr className='detailpage-info-hr-left'/>평점/리뷰<hr className='detailpage-info-hr-right'/></h4>
+                <div id='detailpage-review-box'>
+                    <h4 className='detailpage-box-title'>
+                        <hr className='detailpage-info-hr-left'/>
+                        평점/리뷰
+                        <hr className='detailpage-info-hr-right'/>
+                    </h4>
                     <div id='detailpage-reviews-review-table-wrap'>
                         <table id='detailpage-reviews-review-table'>
                             <thead>

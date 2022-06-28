@@ -17,6 +17,10 @@
     font-style: normal;
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 #detailpage{
     background : url(images/background/cameraandbooks.jpg);
 }
@@ -132,6 +136,7 @@
     display: inline-block;
     width: 200px;
     min-height: 280px;
+    max-height: 360px;
     text-align: center;
     vertical-align: middle;
     margin: 0 20px 0 20px;
@@ -248,7 +253,7 @@
 
 /* - 평정/리뷰 */
 
-#detailpage-reviews-box{
+#detailpage-review-box{
     width: 80%;
     height: 450px;
     margin: auto;

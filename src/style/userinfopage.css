@@ -71,61 +71,69 @@
 
 .userinfo-content-shelf{
     text-align: center;
+    width: 90%;
+    margin: auto;
 }
-    .userinfo-content-shelf-category{
-        width: 50%;
-        min-height: 5vh;
-        margin: auto;
-        align-items: center;
+
+.userinfo-content-shelf-list{
+    min-height: 280px;
+    padding: 10px;
+    text-align: justify;
+    border-radius: 15px;
+    color: white;
+    background-color: rgba(211, 211, 211, 0.8);
+    margin: 10px 0 10px 0;
+}
+
+    .userinfo-content-shelf-list-name{
+        width: 100%;
+        font-size: 27px;
         vertical-align: middle;
+        font-family: 'EliceDigitalBaeum_Regular';
     }
 
-        .userinfo-content-shelf-category-sub{
-            display: inline-block;
-            width: 48%;
-            margin: auto;
-            text-align: center;
-            vertical-align: middle;
-            font-size: 18px;
+    .userinfo-content-shelf-list-item-wrap{
+        overflow-x: auto;
+        position: relative;
+        height: 80%;
+    }
+        .userinfo-content-shelf-list-item-wrap::-webkit-scrollbar{
+            height: 10px;
+            background-color: rgba(211, 211, 211, 0);
+
         }
+        .userinfo-content-shelf-list-item-wrap::-webkit-scrollbar-track{
+            background-color: rgba(211, 211, 211, 0);
+        }
+        .userinfo-content-shelf-list-item-wrap::-webkit-scrollbar-thumb{
+            background-color: whitesmoke;
+            border-radius: 5px;
+        }
+
+    .userinfo-content-shelf-result-list-item{
+        display: table-cell;
+    }
+
+        .userinfo-content-shelf-result-list-item-pic{
+            text-align: left;
+            margin: 10px;
+        }
+
+        .userinfo-content-shelf-result-item-pic img{
+            width: 160px;
+            height: 220px;
+            margin: auto;
+            vertical-align: middle;
+        }
+
+            .shelf-contents-object-icon{
+                text-align: center;
+                height: 100%;
+                width: 40px;
+            }
         
-        .userinfo-content-shelf-category-sub:hover{
-            text-decoration: underline;
+        .userinfo-content-shelf-result-list-item-info{
+            text-align: center;
+            margin: 0 12px 0 12px;
             cursor: pointer;
         }
-
-        .userinfo-content-shelf-contents{
-            width: 80%;
-            margin: auto;
-            border-radius: 15px;
-            padding: 10px;
-            background-color: rgba(211, 211, 211, 0.8);
-            
-            
-        }
-
-        .userinfo-content-shelf-contents table{
-            border-spacing: 20px 0;
-            border-collapse: separate;
-        }
-            .shelf-contents-object{
-                width: 120px;
-                height: 160px;
-                background-color: rgba(182, 182, 182, 0.5);
-                border-style: inset ;
-                border-width: 1px;
-            }
-                .shelf-contents-object-add{
-                    width: 30px;
-                    height: 30px;
-                }
-
-                #userinfo-content-shelf-example{
-                    width: 120px;
-                    height: 160px;
-                    vertical-align: middle;
-                }
-
-                .shelf-contents-object:hover{
-                    cursor: pointer;
-                }

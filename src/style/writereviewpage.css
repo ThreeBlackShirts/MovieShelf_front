@@ -70,21 +70,9 @@
                     height: 100%;
                 }
 
-                    #writereview-movieinfo-poster-addicon:hover{
-                        cursor: pointer;
-                    }
-
                 #writereview-movieinfo-poster-addicon-input{
                     display: none;
                 }
-
-                    #writereview-movieinfo-poster-addicon-input:hover{
-                        cursor: pointer;
-                    }
-
-            .writereview-movieinfo-poster-img:hover{
-                cursor: pointer;
-            }
 
     .writereview-movieinfo-detail{
         display: inline-block;

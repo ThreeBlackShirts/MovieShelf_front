@@ -74,10 +74,6 @@ class WriteReviewContent extends Component {
                             <div className='rate-fillstart'><AiFillStar className='movieinfo-detail-rating-icon'/></div>
                             <div className='movieinfo-detail-rating'><RiAddFill className='movieinfo-detail-rating-icon'/></div>
                         </div>
-                        <div className='writereview-movieinfo-detail-shortreview'>
-                            <input type='text' className='writereview-movieinfo-detail-shortreview-text' placeholder='이 영화를 한 줄로 소개한다면?'></input>
-                            <button type='submit' className='writereview-moviereview-btn'>완료</button>
-                        </div>
                     </div>
                 </div>
                 <div className='writereview-moviereview-box'>
@@ -88,7 +84,6 @@ class WriteReviewContent extends Component {
                     </div>
 
                     <div className='writereview-moviereview-btn-wrap'>
-                        <button type='submit' className='writereview-moviereview-btn'>임시저장</button>
                         <button type='submit' className='writereview-moviereview-btn' onClick={this.writeReview}>완료</button>
                     </div>
                 </div>
