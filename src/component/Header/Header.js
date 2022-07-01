@@ -10,7 +10,11 @@ import { IoIosSettings } from "react-icons/io";
 
 
 function toHomePage(){
-    window.location.href="/"
+    window.location.href="/main"
+}
+
+function toGenreListPage(){
+    window.location.href="/genre"
 }
 
 function toUserInfoPage(){
@@ -58,7 +62,7 @@ const Header = () => {
                     <h4 className="header-content-title-item" onClick={toHomePage}>Top 10</h4>
                 </div>
                 <div className="header-content-title-genre">
-                    <h4 className="header-content-title-item">Genre</h4>
+                    <h4 className="header-content-title-item" onClick={toGenreListPage}>Genre</h4>
                 </div>
             </div>
 

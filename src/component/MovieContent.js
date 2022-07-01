@@ -54,6 +54,17 @@ function CategoryMovieList({title, poster}) {
     )
 }
 
+function GenreMovieList({title, poster}) {
+    return (
+        <div className="listpage-content-result-item">
+            <a onClick={() => setLocation(title)}>
+                <div className="listpage-content-result-item-pic"><img src={poster}/></div>
+                <div className="listpage-content-result-item-info">{title}</div>
+            </a>
+        </div>
+    )
+}
+
 function MovieDetailTitle({title}) {
     return (
         <div id='detailpage-info-title'>{title}</div>
@@ -99,7 +110,7 @@ function MovieDetailStillcut({stillcut}) {
     )
 }
 
-SearchMovieResult.propTypes, RecommendMovieList.propTypes, CategoryMovieList.propTypes = {
+SearchMovieResult.propTypes, RecommendMovieList.propTypes, CategoryMovieList.propTypes, GenreMovieList.propTypes = {
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
 }
@@ -137,4 +148,4 @@ MovieDetailStillcut.propTypes = {
     stillcut: PropTypes.string.isRequired
 }
   
-export {SearchMovieResult, BannerMovieView, RecommendMovieList, CategoryMovieList, MovieDetailTitle, MovieDetail, MovieDetailTrailer, MovieDetailStillcut}
+export {SearchMovieResult, BannerMovieView, RecommendMovieList, CategoryMovieList, GenreMovieList, MovieDetailTitle, MovieDetail, MovieDetailTrailer, MovieDetailStillcut}

@@ -12,6 +12,7 @@ import UserInfoPage from 'component/Pages/UserInfoPage';
 import ReviewPage from 'component/Pages/ReviewPage';
 import WriteReviewPage from 'component/Pages/WriteReviewPage';
 import UserSettingPage from 'component/Pages/UserSettingPage';
+import GenreListPage from 'component/Pages/GenreListPage';
 
 const App = () => {
 
@@ -26,8 +27,9 @@ const App = () => {
       <Route path="/logout" element={<LogoutComponent/>} />
       <Route path="/login" exact element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />
-      <Route path="/list" element={<ListPage />} />
       <Route path="/main" element={<MainPage />} />
+      <Route path="/genre" element={<GenreListPage />} />
+      <Route path="/list" element={<ListPage />} />
       <Route path="/detail" element={<DetailPage />} />
       <Route path="/userinfo" element={<UserInfoPage />} />
       <Route path="/review" element={<ReviewPage />} />
