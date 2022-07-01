@@ -58,24 +58,18 @@ const Header = () => {
                 <div className="header-content-title-logo">
                     <h1 className="header-content-title-logo-h1" onClick={toHomePage}>MovieShelf</h1>
                 </div>
-                <div className="header-content-title-top">
-                    <h4 className="header-content-title-item" onClick={toHomePage}>Top 10</h4>
-                </div>
-                <div className="header-content-title-genre">
-                    <h4 className="header-content-title-item" onClick={toGenreListPage}>Genre</h4>
+                <div className="header-content-title-menu">
+                    <div className="header-content-title-top">
+                        <h4 className="header-content-title-item" onClick={toHomePage}>Top20</h4>
+                    </div>
+                    <div className="header-content-title-genre">
+                        <h4 className="header-content-title-item" onClick={toGenreListPage}>Genre</h4>
+                    </div>
                 </div>
             </div>
 
             <div className="header-content-userbtn">
                 <div className="header-content-userbtn-search-btn">
-                    <div id="header-content-userbtn-search-btn-subject-wrap">
-                        <input id='subject-title' type='radio' name='search-subject'/>
-                            <label htmlFor='subject-title'>제목</label>
-                        <input id='subject-actor' type='radio' name='search-subject'/>
-                            <label htmlFor='subject-actor'>배우</label>
-                        <input id='subject-genre' type='radio' name='search-subject'/>
-                            <label htmlFor='subject-genre'>장르</label>
-                    </div>
                     <input type="text" className="header-content-userbtn-search-btn-text"  id='search-input' placeholder="영화 제목을 입력해주세요" onKeyUp={onKeyPress}></input>
                     <FiSearch className="header-content-userbtn-search-btn-icon" onClick={search}/>
                 </div>

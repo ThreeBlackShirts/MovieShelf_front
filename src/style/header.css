@@ -51,12 +51,17 @@ html{
     cursor: pointer;
   }
 
-.header-content-title-top{
-  display: inline-block;
-  width: 10%;
-  min-width: 63px;
+.header-content-title-menu{
+  margin-left: 5%;
+  display: inline-flex;
   text-align: center;
   vertical-align: middle;
+}
+
+.header-content-title-top{
+  margin-right: 5%;
+  width: 10%;
+  min-width: 63px;
 }
 
   .header-content-title-top:hover{
@@ -64,11 +69,9 @@ html{
   }
 
 .header-content-title-genre{
-  display: inline-block;
+  margin-right: 5%;
   width: 10%;
   min-width: 63px;
-  text-align: center;
-  vertical-align: middle;
 }
 
   .header-content-title-genre:hover{
@@ -94,41 +97,6 @@ html{
   width: 64%;
   text-align: right;
   vertical-align: middle;
-}
-
-#header-content-userbtn-search-btn-subject-wrap{
-  display: inline-block;
-  text-align: center;
-  vertical-align: middle;
-  width: 36%;
-  color: black;
-}
-
-#header-content-userbtn-search-btn-subject-wrap input[type=radio]{
-  display: none;
-}
-
-  #header-content-userbtn-search-btn-subject-wrap input[type=radio]:hover{
-    cursor: pointer;
-  }
-
-#header-content-userbtn-search-btn-subject-wrap label{
-  font-family: 'EliceDigitalBaeum_Regular';
-}
-
-#header-content-userbtn-search-btn-subject-wrap input[type=radio]+label{
-  display: inline-block;
-  width: 25%;
-  vertical-align: middle;
-  cursor: pointer;
-  margin-left: 3px;
-  margin-right: 2px;
-  border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.4);
-}
-
-#header-content-userbtn-search-btn-subject-wrap input[type=radio]:checked+label{
-  background-color: gainsboro;
 }
 
 .header-content-userbtn-search-btn-text{
