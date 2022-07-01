@@ -8,6 +8,7 @@ import 'style/detailpage.css';
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { AiFillStar } from "react-icons/ai";
 import { AiOutlineStar } from "react-icons/ai";
+import ReviewContent from './ReviewContent';
 
 class DetailContent extends Component {
     constructor(props) {
@@ -57,6 +58,9 @@ class DetailContent extends Component {
     goWriteReview(){
         console.log("going to writereview")
         //무비 정보를 가져오는 기본키 받아서 넘겨주고 writereview에서 영화 정보 기본키로 호출하기
+        return(
+            <ReviewContent movieId="{}"/>
+        );
     }
 
     render() {
@@ -71,7 +75,6 @@ class DetailContent extends Component {
                         <a href='#detailpage-img-trailer' className='detailpage-info-anchor-a'>트레일러</a>
                         <a href='#detailpage-img-stillcut' className='detailpage-info-anchor-a'>스틸컷</a>
                         <a href='#detailpage-review-box' className='detailpage-info-anchor-a'>평점/리뷰</a>
-                        <a onClick={this.goWriteReview} className='detailpage-info-anchor-a'>리뷰 쓰기</a>
                     </div>
                     <div id='detailpage-info-majorinfo'>
                         <h4 className='detailpage-box-title'><hr className='detailpage-info-hr-left'/>주요 정보<hr className='detailpage-info-hr-right'/></h4>
@@ -138,66 +141,14 @@ class DetailContent extends Component {
                                             <div className='detailpage-reviews-review-content-text'>한줄평</div>
                                         </div>
                                     </td>
-                                    <td className='detailpage-reviews-review'>
-                                        <div className='detailpage-reviews-review-profile'>
-                                            <div className='detailpage-reviews-review-profile-img-wrap'><img className='detailpage-reviews-review-profile-img' src={require('../images/test/testprofile.png')} /> </div>
-                                            <div className='detailpage-reviews-review-profile-name'>이름</div>
-                                        </div>
-                                        <div className='detailpage-reviews-review-content'>
-                                            <div className='detailpage-reviews-review-content-rating'>★★★★★</div>
-                                            <div className='detailpage-reviews-review-content-text'>한줄평</div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className='detailpage-reviews-review'>
-                                        <div className='detailpage-reviews-review-profile'>
-                                            <div className='detailpage-reviews-review-profile-img-wrap'><img className='detailpage-reviews-review-profile-img' src={require('../images/test/testprofile.png')} /> </div>
-                                            <div className='detailpage-reviews-review-profile-name'>이름</div>
-                                        </div>
-                                        <div className='detailpage-reviews-review-content'>
-                                            <div className='detailpage-reviews-review-content-rating'>★★★★★</div>
-                                            <div className='detailpage-reviews-review-content-text'>한줄평</div>
-                                        </div>
-                                    </td>
-                                    <td className='detailpage-reviews-review'>
-                                        <div className='detailpage-reviews-review-profile'>
-                                            <div className='detailpage-reviews-review-profile-img-wrap'><img className='detailpage-reviews-review-profile-img' src={require('../images/test/testprofile.png')} /> </div>
-                                            <div className='detailpage-reviews-review-profile-name'>이름</div>
-                                        </div>
-                                        <div className='detailpage-reviews-review-content'>
-                                            <div className='detailpage-reviews-review-content-rating'>★★★★★</div>
-                                            <div className='detailpage-reviews-review-content-text'>한줄평</div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td className='detailpage-reviews-review'>
-                                        <div className='detailpage-reviews-review-profile'>
-                                            <div className='detailpage-reviews-review-profile-img-wrap'><img className='detailpage-reviews-review-profile-img' src={require('../images/test/testprofile.png')} /> </div>
-                                            <div className='detailpage-reviews-review-profile-name'>이름</div>
-                                        </div>
-                                        <div className='detailpage-reviews-review-content'>
-                                            <div className='detailpage-reviews-review-content-rating'>★★★★★</div>
-                                            <div className='detailpage-reviews-review-content-text'>한줄평</div>
-                                        </div>
-                                    </td>
-                                    <td className='detailpage-reviews-review'>
-                                        <div className='detailpage-reviews-review-profile'>
-                                            <div className='detailpage-reviews-review-profile-img-wrap'><img className='detailpage-reviews-review-profile-img' src={require('../images/test/testprofile.png')} /> </div>
-                                            <div className='detailpage-reviews-review-profile-name'>이름</div>
-                                        </div>
-                                        <div className='detailpage-reviews-review-content'>
-                                            <div className='detailpage-reviews-review-content-rating'>★★★★★</div>
-                                            <div className='detailpage-reviews-review-content-text'>한줄평</div>
-                                        </div>
-                                    </td>
                                 </tr>
                             </thead>
                         </table>
                     </div>
                     <br/>
-                    <div id='detailpage-reviews-pagecontroller'></div>
+                    <div id='detailpage-reviews-pagecontroller'>
+                        <button id='detailpage-reviews-go-review' onClick={this.goWriteReview}>리뷰 쓰기</button>
+                    </div>
                 </div>
                 <div className='detailpage-blank'>
                     <br></br>
