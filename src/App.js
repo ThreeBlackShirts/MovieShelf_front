@@ -12,6 +12,7 @@ import UserInfoPage from 'component/Pages/UserInfoPage';
 import ReviewPage from 'component/Pages/ReviewPage';
 import WriteReviewPage from 'component/Pages/WriteReviewPage';
 import UserSettingPage from 'component/Pages/UserSettingPage';
+import EditReviewPage from 'component/Pages/EditReviewPage';
 
 const App = () => {
 
@@ -33,6 +34,7 @@ const App = () => {
       <Route path="/review" element={<ReviewPage />} />
       <Route path="/writereview" element={<WriteReviewPage />} />
       <Route path="/usersetting" element={<UserSettingPage />} />
+      <Route path="/editreview" element={<EditReviewPage />} />
     </Routes>
   );
 };

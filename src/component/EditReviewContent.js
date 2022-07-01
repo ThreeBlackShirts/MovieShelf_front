@@ -10,7 +10,7 @@ import { RiSubtractFill } from "react-icons/ri";
 import { AiFillStar } from "react-icons/ai";
 import { AiOutlineStar } from "react-icons/ai";
 
-class WriteReviewContent extends Component {
+class EditReviewContent extends Component {
    
     constructor(props) {
         super(props)
@@ -23,21 +23,41 @@ class WriteReviewContent extends Component {
             showSuccessMessage: false,
             movieTitle: '',
             movieId:'',
+            reviewId:'',
             reviewTitle: '',
             reviewContent: {},
             //reviewTitle: localStorage.getItem("title"),
         }
       
-        this.writeReview = this.writeReview.bind(this)
+        this.editReview = this.editReview.bind(this)
         this.handleChange = this.handleChange.bind(this)
     }
 
+    /*
     writeReview(){
         console.log("write review clicked")
         console.log(this.state.userEmail +","+ this.state.movieId +","+  this.state.reviewTitle +","+ this.state.reviewContent)
         //ReviewService
         //    .writeReview(this.state.userEmail, this.state.movieId, this.state.reviewTitle, this.state.reviewContent)
-    }
+    } 
+
+     */
+
+    editReview(){
+        console.log("edit review clicked")
+        console.log(this.state.reviewId +","+ this.state.movieId +","+  this.state.reviewTitle +","+ this.state.reviewContent)
+        
+        ReviewService
+            .editReview(this.state.reviewId, this.state.movieId, this.state.reviewTitle, this.state.reviewContent)
+            .then(() => {
+                alert("수정 완료");
+                document.location.href="/review" + this.reviewId;
+            }).catch((error) => {
+                console.log(error.response)
+            })
+        
+    } 
+    
     
     handleChange(event) {
         this.setState(
@@ -84,7 +104,7 @@ class WriteReviewContent extends Component {
                     </div>
 
                     <div className='writereview-moviereview-btn-wrap'>
-                        <button type='submit' className='writereview-moviereview-btn' onClick={this.writeReview}>완료</button>
+                        <button type='submit' className='writereview-moviereview-btn' onClick={this.editReview}>수정</button>
                     </div>
                 </div>
             </div>
@@ -92,4 +112,6 @@ class WriteReviewContent extends Component {
     }
 }
 
-export default WriteReviewContent;
+export default EditReviewContent;
+
+//onClick={this.writeReview}

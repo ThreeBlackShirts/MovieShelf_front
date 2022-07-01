@@ -41,21 +41,10 @@ class ReviewContent extends Component {
         )
     }
 
-    editReview(){
-        console.log("edit review clicked")
-        ReviewService.editReview(this.state.reviewId, this.state.reviewContent, this.state.reviewTitle)
-            .then((response) => {
-                alert("수정 완료");
-                document.location.href="/review" + reviewId;
-            }).catch((error) => {
-                console.log(error.response)
-            });
-    }
-
     deleteReview(){
         console.log("delete review clicked")
         ReviewService.deleteReview(this.state.reviewId)
-            .then((response)=> {
+            .then(()=> {
                 alert("삭제 완료");
                 document.location.href="/userinfo";
             }).catch((error) => {
@@ -105,6 +94,10 @@ class ReviewContent extends Component {
         console.log("goback btn clicked!")
         history.back()
     }
+
+    toEditReview(){
+        document.location.href = '/editreview' + this.state.reviewId;
+    }
     
     render() {
         return (
@@ -124,7 +117,7 @@ class ReviewContent extends Component {
 
                                 <div id='reviewpage-moviereview-detail-header-id' >#id</div>
                                 <div className='moviereview-content-btn'>
-                                    <MdEdit className='moviereview-content-btn-icon' id='moviereview-content-editbtn-icon' onClick={this.editReview}/>
+                                    <MdEdit className='moviereview-content-btn-icon' id='moviereview-content-editbtn-icon' onClick={this.toEditReview}/>
                                 </div>
                                 <div className='moviereview-content-btn'>
                                     <MdDelete className='moviereview-content-btn-icon' id='moviereview-content-delbtn-icon' onClick={this.deleteReview}/>

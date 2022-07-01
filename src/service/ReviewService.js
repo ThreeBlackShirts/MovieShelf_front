@@ -1,4 +1,5 @@
 import axios from "axios";
+import AuthenticationService from 'service/AuthenticationService';
 
 // const API_URL = "/api/auth/";
 const REVIEW_API_BASE_URL = "/api/v3";
@@ -7,12 +8,13 @@ class ReviewService {
     searchAllReview() {
         console.log("searchAllReview service")
         AuthenticationService.setupAxiosInterceptors();
-        return axios.get(REVIEW_API_BASE_URL + "/review")
+        return axios.get(REVIEW_API_BASE_URL + "/review");
     }
 
-    writeReview( userEmail, reviewTitle, reviewContent) {
+    writeReview( userEmail, movieId, reviewTitle, reviewContent) {
         let reviewData = {
             userEmail: userEmail,
+            movieId: movieId,
             title: reviewTitle,
             content: reviewContent
         }
@@ -25,8 +27,9 @@ class ReviewService {
         });
     }
 
-    editReview(reviewId, reviewTitle, reviewContent) {
+    editReview(reviewId, movieId, reviewTitle, reviewContent) {
         let reviewData = {
+            movieId: movieId,
             title: reviewTitle,
             content: reviewContent
         }
