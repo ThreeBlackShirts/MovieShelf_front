@@ -2,7 +2,7 @@ import axios from "axios";
 import AuthenticationService from 'service/AuthenticationService';
 
 // const API_URL = "/api/auth/";
-const REVIEW_API_BASE_URL = "/api/v3";
+const REVIEW_API_BASE_URL = "/api/v3/review";
 
 class ReviewService {
     searchAllReview() {

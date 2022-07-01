@@ -13,7 +13,7 @@ class MovieService {
 	}
 
 	detail(target) {
-		return axios.get(MOVIE_API_BASE_URL+"/detailed/"+target, {
+		return axios.post(MOVIE_API_BASE_URL+"/detailed", JSON.stringify(target), {
 			headers: {
 				"Content-Type": 'application/json',
 			},
