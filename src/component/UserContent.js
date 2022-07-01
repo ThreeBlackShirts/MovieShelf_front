@@ -2,6 +2,8 @@ import React, { Component, useEffect, useState } from 'react';
 import UserService from 'service/UserService';
 import { CgProfile } from "react-icons/cg";
 import { MdAdd } from "react-icons/md";
+import ReviewService from 'service/ReviewService';
+
 
 const UserContent = () => {
 
@@ -24,7 +26,34 @@ const UserContent = () => {
             }).catch((error) => {
                 console.log(error.response)
             });
-    }, []);
+
+            console.log(users.userEmail)
+            searchMyyReview();
+    },[]);
+
+    function searchAllReview(){
+        ReviewService
+            .searchAllReview()
+            .then((response) => {
+                console.log("success")
+                console.log(response.data)
+            }).catch((error) => {
+                console.log("error")
+                console.log(error.response)
+            })
+    }
+
+    function searchMyyReview(){
+        ReviewService
+            .searchReviewByUseremail(users.userEmail)
+            .then((response) => {
+                console.log("success")
+                console.log(response.data)
+            }).cathch((error) => {
+                console.log("error")
+                console.log(error.response)
+            })        
+    }
 
     function toWriteReview(){
         window.location.href="/writereview"
@@ -63,22 +92,22 @@ const UserContent = () => {
             </div>
             <div className="userinfo-content-shelf">
                 <div className="userinfo-content-shelf-list">
-                    <div className='userinfo-content-shelf-list-name'>나의 영화 책장</div>
+                    <div className='userinfo-content-shelf-list-name'>후기를 작성한 영화</div>
                     <div className='userinfo-content-shelf-list-item-wrap'>
                         <div className='userinfo-content-shelf-list-item'>
                             <div className='userinfo-content-shelf-list-item-pic'></div>
                             <div className='userinfo-content-shelf-list-item-info'></div>
                         </div>
                         <div className='userinfo-content-shelf-list-item'>
-                            <div className='userinfo-content-shelf-list-item-pic'><MdAdd className='shelf-contents-object-icon' onClick={toWriteReview}/></div>
-                            <div className='userinfo-content-shelf-list-item-info'>추가하기</div>
+                            <div className='userinfo-content-shelf-list-item-pic'></div>
+                            <div className='userinfo-content-shelf-list-item-info' onClick={searchMyyReview}>추가하기</div>
                         </div>
                     </div>
                 </div>
 
 
                 <div className="userinfo-content-shelf-list">
-                    <div className='userinfo-content-shelf-list-name'>나의 영화 책장</div>
+                    <div className='userinfo-content-shelf-list-name'>마음에 드는 영화</div>
                     <div className='userinfo-content-shelf-list-item-wrap'>
                         <div className='userinfo-content-shelf-list-item'>
                             <div className='userinfo-content-shelf-list-item-pic'></div>
@@ -87,7 +116,7 @@ const UserContent = () => {
                     </div>
                 </div>
                 <div className="userinfo-content-shelf-list">
-                    <div className='userinfo-content-shelf-list-name'>나의 영화 책장</div>
+                    <div className='userinfo-content-shelf-list-name'>마음에 드는 후기</div>
                     <div className='userinfo-content-shelf-list-item-wrap'>
                         <div className='userinfo-content-shelf-list-item'>
                             <div className='userinfo-content-shelf-list-item-pic'></div>
@@ -103,3 +132,5 @@ const UserContent = () => {
 }
 
 export default UserContent;
+
+//<MdAdd className='shelf-contents-object-icon' onClick={toWriteReview}/>
