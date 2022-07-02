@@ -48,16 +48,16 @@ class ReviewService {
         return axios.delete(REVIEW_API_BASE_URL + "/" + reviewId);
     }
 
-    searchReviewById(reviewId) {
-        console.log("searchReview service")
+    findReviewByMovieId(movieId) {
+        console.log("searchReviewByMovieId service")
         AuthenticationService.setupAxiosInterceptors();
-        return axios.get(REVIEW_API_BASE_URL + "/" + reviewId);
+        return axios.get(REVIEW_API_BASE_URL + "/movie/" + movieId);
     }
 
     searchReviewByUseremail(userEmail) {
         console.log("searchReviewByUseremail service")
         AuthenticationService.setupAxiosInterceptors();
-        return axios.get(REVIEW_API_BASE_URL + "/" + userEmail);
+        return axios.get(REVIEW_API_BASE_URL + "/user/" + userEmail);
     }
 }
 

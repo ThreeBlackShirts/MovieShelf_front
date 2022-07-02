@@ -33,8 +33,8 @@ const App = () => {
       <Route path="/list" element={<ListPage />} />
       <Route path="/detail" element={<DetailPage />} />
       <Route path="/userinfo" element={<UserInfoPage />} />
-      <Route path="/review" element={<ReviewPage />} />
-      <Route path="/writereview" element={<WriteReviewPage />} />
+      <Route path="/review/:movieid" element={<ReviewPage />} />
+      <Route path="/writereview/:movieid" element={<WriteReviewPage />} />
       <Route path="/usersetting" element={<UserSettingPage />} />
       <Route path="/editreview" element={<EditReviewPage />} />
     </Routes>

@@ -47,96 +47,67 @@
 
 #reviewpage-moviereview{
     width: 100%;
-    min-height: 50vh;
 }
 
 #reviewpage-moviereview-movieinfo{
     display: inline-block;
-    width: 25%;
-    height: 360px;
-    border-radius: 10px;
-}
-
-#reviewpage-moviereview-img-wrap{
-    width: 100%;
-    height: 320px;    
-    background-color: rgba(211, 211, 211, 0.8);
-    border-radius: 10px 10px 0 0 ;
-}
-
-#reviewpage-moviereview-img{
-    width: 205px;
-    height: 290px;
-    margin-top: 15px;
-    margin-bottom: 15px;
-    object-fit: contain;
-    vertical-align: middle;
-}
-
-#reviewpage-moviereview-rate{
-    height: 40px;
-    background-color: rgba(169, 169, 169, 0.8);
-    border-radius: 0 0 10px 10px;
-}
-
-    #reviewpage-moviereview-rate span{
-        vertical-align: middle;
-        font-size: 22px;
-    }
-
-#reviewpage-moviereview-detail{
-    display: inline-block;
-    width: 60%;
-    min-height: 360px;
+    width: 80%;
     vertical-align: top;
     margin-left: 20px;
     padding: 0 1% 0 1%;
-    border-radius: 10px;
-    background-color: rgba(211, 211, 211, 0.8);
 }
 
-#reviewpage-moviereview-detail-header{
+#reviewpage-moviereview-movieinfo-header{
     height: 40%;
     text-align: center;
-    margin-top: 1%;
+    padding: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
-    #reviewpage-moviereview-detail-header-title{
-        display: inline-block;
-        width: 40%;
+#reviewpage-moviereview-movieinfo-detail{
+    text-align: left;
+    width: 80%;
+    display: flex;
+    align-items: center;
+}
+
+    #reviewpage-moviereview-movieinfo-header-title{
         font-size: 30px;
         font-family: 'EliceDigitalBaeum_Bold';
-        text-align: left;
+        margin-right: 25px;
+    }
+    
+    #reviewpage-moviereview-rate{
+        height: 40px;
     }
 
-    #reviewpage-moviereview-detail-header-id{
-        display: inline-block;
-        width: 20%;
-        font-size: 16px;
-        text-align: left;
-    }
-
-    .moviereview-content-btn{
-        display: inline-block;
-        width: 10%;
-        text-align: center;
-    }
-
-    .moviereview-content-btn-icon{
-        width: 24px;
-        height: 24px;
-    }
-
-        .moviereview-content-btn-icon:hover{
-            cursor: pointer;
+        #reviewpage-moviereview-rate span{
+            vertical-align: middle;
+            font-size: 22px;
         }
 
-#reviewpage-moviereview-detail-content{
-    font-size: 16px;
-    height: 60%;
-    margin-top: 2%;
-    text-align: justify;
-}
+    .moview-content-btn-div{
+        display: flex;
+        justify-content: space-between;
+        float: right;
+    }
+
+        .moviereview-content-btn{
+            width: 10%;
+            text-align: center;
+            margin-right: 20px;
+        }
+
+        .moviereview-content-btn-icon{
+            width: 24px;
+            height: 24px;
+        }
+
+            .moviereview-content-btn-icon:hover{
+                cursor: pointer;
+            }
 
 #reviewpage-hr{
     width: 90%;
@@ -153,6 +124,11 @@
     width: 80%;
     text-align: center;
     margin: auto;
+}
+
+#reviewpage-comment-nothing{
+    font-size: 20px;
+    font-family: 'EliceDigitalBaeum_Regular';
 }
 
 .reviewpage-comment{
