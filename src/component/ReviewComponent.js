@@ -82,11 +82,20 @@ const ReviewContents = () => {
             });
     }
 
-    function goWriteReview(){
-        console.log("go to writereview")
+    function loginCheck(e) {
+        if(this.state.token == [] || this.state.token == null){
+            const url = `/login`;
+            alert("로그인이 필요합니다")
+            location.href="/login"
+        }
+    }
+
+    function GoWriteReview(){
         const url = `/writereview/${movieId}`;
         return(
-            <Link to={url} className="movie-write-review-link"></Link>
+            <Link to={url} className="movie-write-review-link" onClick={loginCheck}>
+                <MdEdit className='moviereview-content-btn-icon' id='moviereview-content-editbtn-icon'/>
+            </Link>
         );
     }
 
@@ -116,7 +125,7 @@ const ReviewContents = () => {
                             </div>
                             <div className='moview-content-btn-div'>
                                 <div className='moviereview-content-btn'>
-                                    <MdEdit className='moviereview-content-btn-icon' id='moviereview-content-editbtn-icon' onClick={toEditReview}/>
+                                    <GoWriteReview />
                                 </div>
                                 <div className='moviereview-content-btn'>
                                     <MdDelete className='moviereview-content-btn-icon' id='moviereview-content-delbtn-icon' onClick={deleteReview}/>
@@ -131,9 +140,9 @@ const ReviewContents = () => {
                 <hr id='reviewpage-hr'/>
                 <div id='reviewpage-comment-wrap'>
                     {isLoading ? "Loading..." : 
-                        setReviewContent !== null || setReviewContent !== [] ? "등록된 리뷰가 없습니다" : reviewContent.map( review => (
+                        setReviewContent == null || setReviewContent == [] ? "등록된 리뷰가 없습니다" : reviewContent.map( review => (
                             <MovieReview  key={review.title}
-                                userNickname={review.user.userNickname}
+                                userNickname={review.user}
                                 title={review.title}
                                 content={review.content} 
                             />

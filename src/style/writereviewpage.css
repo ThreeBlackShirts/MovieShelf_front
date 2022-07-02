@@ -40,57 +40,23 @@
 }
 
 .writereview-movieinfo-box{
-    text-align: left;
     width: 90%;
-    height: 30vh;
     margin: auto;
+    display: flex;
+    justify-content: center;
 }
 
-    .writereview-movieinfo-poster{
-        display: inline-block;
-        width: 36%;
-        height: 100%;
-        text-align: center;
-        vertical-align: top
-    }
-
-        .writereview-movieinfo-poster-img{
-            text-align: center;
-            margin: auto;
-            width: 40%;
-            min-width: 200px;
-            height: 100%;
-            min-height: 240px;
-            border-radius: 15px;
-            background-color: rgba(211, 211, 211, 0.8);
-        }
-                #writereview-movieinfo-poster-addicon{
-                    vertical-align: middle;
-                    width: 36px;
-                    height: 100%;
-                }
-
-                #writereview-movieinfo-poster-addicon-input{
-                    display: none;
-                }
-
     .writereview-movieinfo-detail{
-        display: inline-block;
-        width: 58%;
+        width: 80%;
         height: 100%;
         vertical-align: middle;
         background-color: rgba(211, 211, 211, 0.8);
         border-radius: 15px;
-        position: relative;
-        right: 5%;
     }
 
         .writereview-movieinfo-detail-title{
-            display: inline-block;
             font-size: 30px;
             min-height: 40px;
-            font-family: 'EliceDigitalBaeum_Bold';
-            vertical-align: middle;
             margin: 60px 10px 5px 5%;
         }
 

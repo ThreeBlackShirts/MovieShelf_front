@@ -200,3 +200,7 @@
     height: 20px;
     visibility: hidden;
 }
+
+.movie-write-review-link{
+    color: inherit;
+}

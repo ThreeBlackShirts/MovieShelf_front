@@ -8,7 +8,7 @@ class ReviewService {
     searchAllReview() {
         console.log("searchAllReview service")
         AuthenticationService.setupAxiosInterceptors();
-        return axios.get(REVIEW_API_BASE_URL + "/review");
+        return axios.get(REVIEW_API_BASE_URL);
     }
 
     writeReview( userEmail, movieId, reviewTitle, reviewContent) {
@@ -20,7 +20,7 @@ class ReviewService {
         }
         console.log("writeReview service")
         AuthenticationService.setupAxiosInterceptors();
-        return axios.post(REVIEW_API_BASE_URL + "/", JSON.stringify(reviewData), {
+        return axios.post(REVIEW_API_BASE_URL, JSON.stringify(reviewData), {
             headers: {
                 "Content-Type": `application/json`,
             },
