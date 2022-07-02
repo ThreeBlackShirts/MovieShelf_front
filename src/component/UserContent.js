@@ -2,35 +2,44 @@ import React, { Component, useEffect, useState } from 'react';
 import UserService from 'service/UserService';
 import { CgProfile } from "react-icons/cg";
 import { MdAdd } from "react-icons/md";
+
 import ReviewService from 'service/ReviewService';
+import {ReviewList} from './UserReviewContent';
+import MovieService from 'service/MovieService';
 
 
 const UserContent = () => {
 
     const [users, setUsers] = useState([]);
+    const [reviewData, setReviewData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [movie, setMovie] = useState([]);
 
     useEffect(() => {
         UserService
             .findUserByEmail(localStorage.getItem("authenticatedUser"))
             .then((response) => {
-                console.log(response.data)
-                // this.setState({
-                //     token: response.data.data
-                // });
-                // this.state.userName = response.data.data.userName
-                // this.state.userNickname = response.data.data.userNickname
-                // console.log(response.data.data.userName)
-                // console.log(this.state.userName)
-                // console.log(this.state.userNickname)
+                console.log(response.data.data)
                 setUsers(response.data.data);
             }).catch((error) => {
                 console.log(error.response)
             });
 
-            console.log(users.userEmail)
-            searchMyyReview();
+        ReviewService
+            .searchReviewByUseremail(localStorage.getItem("authenticatedUser"))
+            .then((response) => {
+                console.log("searchMyReview success")
+                
+                setReviewData(response.data)
+                console.log(reviewData)
+                setIsLoading(false)
+            }).catch((error) => {
+                console.log("error")
+                console.log(error.response)
+            });
     },[]);
 
+    /*
     function searchAllReview(){
         ReviewService
             .searchAllReview()
@@ -43,21 +52,13 @@ const UserContent = () => {
             })
     }
 
-    function searchMyyReview(){
-        ReviewService
-            .searchReviewByUseremail(users.userEmail)
-            .then((response) => {
-                console.log("success")
-                console.log(response.data)
-            }).cathch((error) => {
-                console.log("error")
-                console.log(error.response)
-            })        
-    }
+    */
 
-    function toWriteReview(){
-        window.location.href="/writereview"
-    }
+    /**
+        function toWriteReview(){
+            window.location.href="/writereview"
+        }
+     */
 
     function toUserSetting(){
         window.location.href="/usersetting"
@@ -94,13 +95,16 @@ const UserContent = () => {
                 <div className="userinfo-content-shelf-list">
                     <div className='userinfo-content-shelf-list-name'>후기를 작성한 영화</div>
                     <div className='userinfo-content-shelf-list-item-wrap'>
+
                         <div className='userinfo-content-shelf-list-item'>
-                            <div className='userinfo-content-shelf-list-item-pic'></div>
-                            <div className='userinfo-content-shelf-list-item-info'></div>
-                        </div>
-                        <div className='userinfo-content-shelf-list-item'>
-                            <div className='userinfo-content-shelf-list-item-pic'></div>
-                            <div className='userinfo-content-shelf-list-item-info' onClick={searchMyyReview}>추가하기</div>
+                            {isLoading ? "Loading..." : 
+                            reviewData.length == 0 ? "등록된 리뷰가 없습니다" : reviewData.map( review => (
+                                <ReviewList  key={review.title}
+                                    userNickname={review.user}
+                                    title={review.title}
+                                    content={review.content} 
+                                />
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -115,15 +119,7 @@ const UserContent = () => {
                         </div>
                     </div>
                 </div>
-                <div className="userinfo-content-shelf-list">
-                    <div className='userinfo-content-shelf-list-name'>마음에 드는 후기</div>
-                    <div className='userinfo-content-shelf-list-item-wrap'>
-                        <div className='userinfo-content-shelf-list-item'>
-                            <div className='userinfo-content-shelf-list-item-pic'></div>
-                            <div className='userinfo-content-shelf-list-item-info'></div>
-                        </div>
-                    </div>
-                </div>
+
 
             </div>
             
@@ -134,3 +130,17 @@ const UserContent = () => {
 export default UserContent;
 
 //<MdAdd className='shelf-contents-object-icon' onClick={toWriteReview}/>
+
+/**
+ *                 <div className="userinfo-content-shelf-list">
+                    <div className='userinfo-content-shelf-list-name'>마음에 드는 후기</div>
+                    <div className='userinfo-content-shelf-list-item-wrap'>
+                        <div className='userinfo-content-shelf-list-item'>
+                            <div className='userinfo-content-shelf-list-item-pic'></div>
+                            <div className='userinfo-content-shelf-list-item-info'></div>
+                        </div>
+                    </div>
+                </div>
+ * 
+ * 
+ */
