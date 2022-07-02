@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import ReviewService from 'service/ReviewService';
+import LikeService from 'service/LikeService';
 
 import 'style/reviewpage.css';
 
@@ -13,7 +14,6 @@ import { BsBookmarkHeart } from "react-icons/bs";
 
 
 class ReviewContent extends Component {
-
     constructor(props) {
         super(props)
 
@@ -26,11 +26,32 @@ class ReviewContent extends Component {
             reviewTitle: '',
             hasLoginFailed: false,
             showSuccessMessage: false,
+            bookmark: false,
         }
 
-        this.editReview = this.editReview.bind(this)
         this.deleteReview = this.deleteReview.bind(this)
         
+    }
+
+    reviewMovie(){
+        console.log("movie review loading")
+        if(this.state.target !== null && this.state.target !== ""){
+            console.log(this.state.target +" review")
+            ReviewService
+                .searchReviewById(this.state.reviewId)
+                .then((response) => {
+                    localStorage.removeItem("target")
+                    this.setState({
+                        reviewContent: response.data.data
+                    })
+                    console.log(this.state.reviewContent)
+                }).catch(() => {
+                    console.log("review load failed")
+                })
+        }else{
+            console.log("target error")
+            history.back()
+        }
     }
 
     handleChange = (e) => {
@@ -49,9 +70,38 @@ class ReviewContent extends Component {
                 document.location.href="/userinfo";
             }).catch((error) => {
                 console.log(error.response)
-            });
+            });   
     }
 
+    addLikeReview(){
+        console.log("review liked!")
+        LikeService.addLike(this.state.userEmail, this.state.reviewId)
+            .then(()=> {
+                alert("리뷰 좋아요!");
+            }).catch((error) =>{
+                console.log(error.response)
+            });
+        this.setState(
+            {
+                bookmark : true
+            }
+        )
+    }
+
+    cancelLikeReview(){
+        console.log("review like canceled!")
+        LikeService.deleteLike(this.state.userEmail, this.state.reviewId)
+            .then(()=> {
+                alert("리뷰 좋아요 취소!");
+            }).catch((error) => {
+                console.log(error.response)
+            });
+        this.setState(
+            {
+                bookmark : false
+            }
+        )
+    }
 
     /*
     constructor(props) {
@@ -90,6 +140,31 @@ class ReviewContent extends Component {
         alert("like clicked!");
     }
 
+    /*
+        checkBookmark(checkClicked){
+        if(checkClicked){  
+            
+            this.setState({
+                bookmark:true
+            });
+            console.log("bookmarked!")
+
+        }
+        else{   
+
+             this.setState({               
+                bookmark: false
+            });
+            console.log("bookmark canceled!")
+
+        } 
+           
+    }
+    
+    */
+
+
+
     goBackBtn(){
         console.log("goback btn clicked!")
         history.back()
@@ -100,6 +175,10 @@ class ReviewContent extends Component {
     }
     
     render() {
+        const {bookmark} = this.state;
+        
+
+
         return (
             <div id='reviewpage-content'>
                 <div id='gobackbtn'><MdKeyboardArrowLeft id='gobackbtn-icon'  onClick={this.goBackBtn}/></div>
@@ -117,13 +196,13 @@ class ReviewContent extends Component {
 
                                 <div id='reviewpage-moviereview-detail-header-id' >#id</div>
                                 <div className='moviereview-content-btn'>
-                                    <MdEdit className='moviereview-content-btn-icon' id='moviereview-content-editbtn-icon' onClick={this.toEditReview}/>
+                                    <MdEdit className='moviereview-content-btn-icon' onClick={this.toEditReview}/>
                                 </div>
                                 <div className='moviereview-content-btn'>
-                                    <MdDelete className='moviereview-content-btn-icon' id='moviereview-content-delbtn-icon' onClick={this.deleteReview}/>
+                                    <MdDelete className='moviereview-content-btn-icon' onClick={this.deleteReview}/>
                                 </div>
                                 <div className='moviereview-content-btn'>
-                                    <BsBookmarkHeart className='moviereview-content-btn-icon' id='moviereview-content-likebtn-icon' onClick={this.handleEvent}/>
+                                    <BsBookmarkHeart className='moviereview-content-btn-icon' onClick={this.addLikeReview}/>
                                 </div>
                                     
                             </div>
@@ -178,3 +257,14 @@ class ReviewContent extends Component {
 }
 
 export default ReviewContent;
+
+/*
+
+                                {bookmark && <div className='moviereview-content-btn'>
+                                        <BsBookmarkHeartFill className='moviereview-content-btn-icon' onClick={this.checkBookmark(bookmark)}/>
+                                    </div>}
+                                {!bookmark && <div className='moviereview-content-btn'>
+                                    <BsBookmarkHeart className='moviereview-content-btn-icon' onClick={this.checkBookmark(bookmark)}/>
+                                </div>}
+
+*/

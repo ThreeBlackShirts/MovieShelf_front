@@ -3,11 +3,13 @@ import UserService from 'service/UserService';
 import { CgProfile } from "react-icons/cg";
 import { MdAdd } from "react-icons/md";
 import ReviewService from 'service/ReviewService';
+import {ReviewList} from './ReviewComponent';
 
 
 const UserContent = () => {
 
     const [users, setUsers] = useState([]);
+    const [reviewData, setReviewData] = useState([]);
 
     useEffect(() => {
         UserService
@@ -26,11 +28,10 @@ const UserContent = () => {
             }).catch((error) => {
                 console.log(error.response)
             });
-
-            console.log(users.userEmail)
-            searchMyyReview();
+            searchMyReview()
     },[]);
 
+    /*
     function searchAllReview(){
         ReviewService
             .searchAllReview()
@@ -43,21 +44,27 @@ const UserContent = () => {
             })
     }
 
-    function searchMyyReview(){
+    */
+    function searchMyReview(){
         ReviewService
             .searchReviewByUseremail(users.userEmail)
             .then((response) => {
-                console.log("success")
-                console.log(response.data)
-            }).cathch((error) => {
+                console.log("searchMyReview success")
+                //reviewData(response.data.data)
+                //setUsers(response.data.data);
+                setReviewData(response.data.data)
+                console.log(response.data.data)
+            }).catch((error) => {
                 console.log("error")
                 console.log(error.response)
             })        
     }
 
-    function toWriteReview(){
-        window.location.href="/writereview"
-    }
+    /**
+        function toWriteReview(){
+            window.location.href="/writereview"
+        }
+     */
 
     function toUserSetting(){
         window.location.href="/usersetting"
@@ -94,13 +101,10 @@ const UserContent = () => {
                 <div className="userinfo-content-shelf-list">
                     <div className='userinfo-content-shelf-list-name'>후기를 작성한 영화</div>
                     <div className='userinfo-content-shelf-list-item-wrap'>
+
                         <div className='userinfo-content-shelf-list-item'>
                             <div className='userinfo-content-shelf-list-item-pic'></div>
-                            <div className='userinfo-content-shelf-list-item-info'></div>
-                        </div>
-                        <div className='userinfo-content-shelf-list-item'>
-                            <div className='userinfo-content-shelf-list-item-pic'></div>
-                            <div className='userinfo-content-shelf-list-item-info' onClick={searchMyyReview}>추가하기</div>
+                            <div className='userinfo-content-shelf-list-item-info' id={reviewData.title} key={reviewData.title}>{reviewData.title}</div>
                         </div>
                     </div>
                 </div>
@@ -115,15 +119,7 @@ const UserContent = () => {
                         </div>
                     </div>
                 </div>
-                <div className="userinfo-content-shelf-list">
-                    <div className='userinfo-content-shelf-list-name'>마음에 드는 후기</div>
-                    <div className='userinfo-content-shelf-list-item-wrap'>
-                        <div className='userinfo-content-shelf-list-item'>
-                            <div className='userinfo-content-shelf-list-item-pic'></div>
-                            <div className='userinfo-content-shelf-list-item-info'></div>
-                        </div>
-                    </div>
-                </div>
+
 
             </div>
             
@@ -134,3 +130,17 @@ const UserContent = () => {
 export default UserContent;
 
 //<MdAdd className='shelf-contents-object-icon' onClick={toWriteReview}/>
+
+/**
+ *                 <div className="userinfo-content-shelf-list">
+                    <div className='userinfo-content-shelf-list-name'>마음에 드는 후기</div>
+                    <div className='userinfo-content-shelf-list-item-wrap'>
+                        <div className='userinfo-content-shelf-list-item'>
+                            <div className='userinfo-content-shelf-list-item-pic'></div>
+                            <div className='userinfo-content-shelf-list-item-info'></div>
+                        </div>
+                    </div>
+                </div>
+ * 
+ * 
+ */

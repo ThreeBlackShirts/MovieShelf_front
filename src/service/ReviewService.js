@@ -18,7 +18,7 @@ class ReviewService {
             title: reviewTitle,
             content: reviewContent
         }
-        console.log("writeReview service")
+        console.log("ReviewService Write Review")
         AuthenticationService.setupAxiosInterceptors();
         return axios.post(REVIEW_API_BASE_URL + "/", JSON.stringify(reviewData), {
             headers: {
@@ -33,7 +33,7 @@ class ReviewService {
             title: reviewTitle,
             content: reviewContent
         }
-        console.log("editReview service")
+        console.log("ReviewService Edit")
         AuthenticationService.setupAxiosInterceptors();
         return axios.put(REVIEW_API_BASE_URL + "/" + reviewId, JSON.stringify(reviewData), {
             headers: {
@@ -43,21 +43,21 @@ class ReviewService {
     }
 
     deleteReview(reviewId) {
-        console.log("deleteReview service")
+        console.log("ReviewService Delete")
         AuthenticationService.setupAxiosInterceptors();
         return axios.delete(REVIEW_API_BASE_URL + "/" + reviewId);
     }
 
     searchReviewById(reviewId) {
-        console.log("searchReview service")
+        console.log("ReviewService SearchBy Id")
         AuthenticationService.setupAxiosInterceptors();
         return axios.get(REVIEW_API_BASE_URL + "/" + reviewId);
     }
 
     searchReviewByUseremail(userEmail) {
-        console.log("searchReviewByUseremail service")
+        console.log("ReviewService SearchBy userEmail")
         AuthenticationService.setupAxiosInterceptors();
-        return axios.get(REVIEW_API_BASE_URL + "/" + userEmail);
+        return axios.get(REVIEW_API_BASE_URL + "/user/" + userEmail);
     }
 }
 
