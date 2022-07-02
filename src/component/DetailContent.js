@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 
 import {MovieDetailTitle, MovieDetail, MovieDetailTrailer, MovieDetailStillcut} from './MovieContent';
-import {MovieReview} from './ReviewContents';
+import {MovieTitleReview} from './ReviewContents';
 import MovieService from 'service/MovieService';
 import ReviewService from 'service/ReviewService';
 import 'style/detailpage.css';
@@ -36,8 +36,19 @@ class DetailContent extends Component {
                 .detail(this.state.target)
                 .then((response) => {
                     localStorage.removeItem("target")
-                    this.setState({ movieDetail: response.data.data, isLoading: false})
+                    this.setState({ movieDetail: response.data.data})
                     console.log(this.state.movieDetail)
+
+                    console.log("Movie Review")
+                    ReviewService
+                        .findReviewByMovieId(this.state.movieDetail.movieId)
+                        .then((response) => {
+                            this.setState({ reviewContent: response.data.data, isLoading: false })
+                            console.log(this.state.reviewContent)
+                        }).catch(() => {
+                            console.log("findReviewByMovieId failed")
+                            alert("findReviewByMovieId fail");
+                    }); 
                 }).catch(() => {
                     console.log("detail failed")
                     alert("detail fail");
@@ -46,19 +57,6 @@ class DetailContent extends Component {
             console.log("target error")
             history.back()
         }
-    }
-
-    movieReview() {
-        console.log("Movie Review")
-        ReviewService
-            .findReviewByMovieId(this.state.movieDetail.movieId)
-            .then((response) => {
-                this.setState({ reviewContent: response.data.data, isLoading: false })
-                console.log(this.state.reviewContent)
-            }).catch(() => {
-                console.log("findReviewByMovieId failed")
-                alert("findReviewByMovieId fail");
-        }); 
     }
 
     loginCheck = (e) => {
@@ -79,7 +77,6 @@ class DetailContent extends Component {
     }
 
     goReview(){
-        console.log("go to review")
         const url = `/review/${this.state.movieDetail.movieId}`;
         return(
             <Link to={url} className="movie-review-link" onClick={this.loginCheck}>
@@ -157,9 +154,9 @@ class DetailContent extends Component {
                             <thead>
                                 <tr>
                                     {isLoading ? "Loading..." : 
-                                        reviewContent !== null || reviewContent !== [] ? "등록된 리뷰가 없습니다" : reviewContent.map( review => (
+                                        this.state.reviewContent.length == 0 ? "등록된 리뷰가 없습니다" : reviewContent.map( review => (
                                             <MovieTitleReview  key={review.title}
-                                                userNickname={review.user.userNickname}
+                                                userNickname={review.user}
                                                 title={review.title}
                                             />
                                     ))}

@@ -56,21 +56,6 @@ const ReviewContents = () => {
         }
     },[]);
 
-    function SetReview(){
-        if(setReviewContent !== null && setReviewContent !== []){
-            return <span id='reviewpage-comment-nothing'>등록된 리뷰가 없습니다</span>
-        }
-        else{
-            return (
-                <MovieReview  key={reviewContent.title}
-                    userNickname={reviewContent.user.userNickname}
-                    title={reviewContent.title}
-                    content={reviewContent.content} 
-                />
-            );
-        }
-    }
-
     function deleteReview(){
         console.log("delete review clicked")
         ReviewService.deleteReview(this.state.reviewId)
@@ -140,7 +125,7 @@ const ReviewContents = () => {
                 <hr id='reviewpage-hr'/>
                 <div id='reviewpage-comment-wrap'>
                     {isLoading ? "Loading..." : 
-                        setReviewContent == null || setReviewContent == [] ? "등록된 리뷰가 없습니다" : reviewContent.map( review => (
+                        reviewContent.length == 0 ? "등록된 리뷰가 없습니다" : reviewContent.map( review => (
                             <MovieReview  key={review.title}
                                 userNickname={review.user}
                                 title={review.title}

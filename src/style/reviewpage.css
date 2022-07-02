@@ -139,46 +139,26 @@
     border-style: solid;
     border-width: 1px;
     margin-bottom: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .reviewpage-comment-user{
     display: inline-block;
     height: 60px;
-    width: 15%;
+    width: 35%;
     vertical-align: middle;
-    text-align: justify;
+    text-align: center;
 }
 
-    .reviewpage-comment-user-profile{
-        display: inline-block;
-        vertical-align: middle;
-        width: 40%;
-        height: 60px;
-    }
-
-        .reviewpage-comment-user-profile-img{
-            width: 40px;
-            height: 40px;
-            margin: 10px;
-            padding: 0;
-            object-fit: contain;
-            vertical-align: baseline;
-            border-width: 1px;
-        }
-
-            .reviewpage-comment-user-profile-img:hover{
-                cursor: pointer;
-            }
-
-    .reviewpage-comment-user-id{
-        display: inline-block;
-        vertical-align: middle;
-        width: 50%;
-    }
-
-        .reviewpage-comment-user-id:hover{
-            cursor: pointer;
-        }
+.reviewpage-comment-title{
+    display: inline-block;
+    height: 60px;
+    width: 30%;
+    vertical-align: middle;
+    text-align: justify;
+    line-height: 60px;
+}
 
 .reviewpage-comment-content{
     display: inline-block;

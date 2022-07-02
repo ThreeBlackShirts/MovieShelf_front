@@ -3,6 +3,15 @@ import PropTypes from "prop-types";
 import { AiFillStar } from "react-icons/ai";
 import { AiOutlineStar } from "react-icons/ai";
 
+import { MdKeyboardArrowLeft } from "react-icons/md";
+import { MdEdit } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
+
+import { BsBookmarkHeartFill } from "react-icons/bs";
+import { BsBookmarkHeart } from "react-icons/bs";
+
+import 'style/reviewpage.css';
+
 
 function setLocation(title) {
     localStorage.setItem('target', title)
@@ -57,4 +66,4 @@ MovieReview.propTypes = {
     content: PropTypes.string.isRequired
 }
   
-export {MovieDetailTitle, MovieReview}
+export {MovieTitleReview, MovieDetailTitle, MovieReview}
