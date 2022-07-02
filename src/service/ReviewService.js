@@ -8,7 +8,7 @@ class ReviewService {
     searchAllReview() {
         console.log("searchAllReview service")
         AuthenticationService.setupAxiosInterceptors();
-        return axios.get(REVIEW_API_BASE_URL + "/review");
+        return axios.get(REVIEW_API_BASE_URL);
     }
 
     writeReview( userEmail, movieId, reviewTitle, reviewContent) {
@@ -20,7 +20,7 @@ class ReviewService {
         }
         console.log("ReviewService Write Review")
         AuthenticationService.setupAxiosInterceptors();
-        return axios.post(REVIEW_API_BASE_URL + "/", JSON.stringify(reviewData), {
+        return axios.post(REVIEW_API_BASE_URL, JSON.stringify(reviewData), {
             headers: {
                 "Content-Type": `application/json`,
             },
@@ -51,7 +51,13 @@ class ReviewService {
     searchReviewById(reviewId) {
         console.log("ReviewService SearchBy Id")
         AuthenticationService.setupAxiosInterceptors();
-        return axios.get(REVIEW_API_BASE_URL + "/" + reviewId);
+        return axios.get(REVIEW_API_BASE_URL + "/movie/" + movieId);
+    }
+    
+    findReviewByMovieId(movieId) {
+        console.log("searchReviewByMovieId service")
+        AuthenticationService.setupAxiosInterceptors();
+        return axios.get(REVIEW_API_BASE_URL + "/movie/" + movieId);
     }
 
     searchReviewByUseremail(userEmail) {

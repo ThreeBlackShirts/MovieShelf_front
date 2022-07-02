@@ -2,33 +2,41 @@ import React, { Component, useEffect, useState } from 'react';
 import UserService from 'service/UserService';
 import { CgProfile } from "react-icons/cg";
 import { MdAdd } from "react-icons/md";
+
 import ReviewService from 'service/ReviewService';
-import {ReviewList} from './ReviewComponent';
+import {ReviewList} from './UserReviewContent';
+import MovieService from 'service/MovieService';
 
 
 const UserContent = () => {
 
     const [users, setUsers] = useState([]);
     const [reviewData, setReviewData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [movie, setMovie] = useState([]);
 
     useEffect(() => {
         UserService
             .findUserByEmail(localStorage.getItem("authenticatedUser"))
             .then((response) => {
-                console.log(response.data)
-                // this.setState({
-                //     token: response.data.data
-                // });
-                // this.state.userName = response.data.data.userName
-                // this.state.userNickname = response.data.data.userNickname
-                // console.log(response.data.data.userName)
-                // console.log(this.state.userName)
-                // console.log(this.state.userNickname)
+                console.log(response.data.data)
                 setUsers(response.data.data);
             }).catch((error) => {
                 console.log(error.response)
             });
-            searchMyReview()
+
+        ReviewService
+            .searchReviewByUseremail(localStorage.getItem("authenticatedUser"))
+            .then((response) => {
+                console.log("searchMyReview success")
+                
+                setReviewData(response.data)
+                console.log(reviewData)
+                setIsLoading(false)
+            }).catch((error) => {
+                console.log("error")
+                console.log(error.response)
+            });
     },[]);
 
     /*
@@ -45,20 +53,6 @@ const UserContent = () => {
     }
 
     */
-    function searchMyReview(){
-        ReviewService
-            .searchReviewByUseremail(users.userEmail)
-            .then((response) => {
-                console.log("searchMyReview success")
-                //reviewData(response.data.data)
-                //setUsers(response.data.data);
-                setReviewData(response.data.data)
-                console.log(response.data.data)
-            }).catch((error) => {
-                console.log("error")
-                console.log(error.response)
-            })        
-    }
 
     /**
         function toWriteReview(){
@@ -103,8 +97,14 @@ const UserContent = () => {
                     <div className='userinfo-content-shelf-list-item-wrap'>
 
                         <div className='userinfo-content-shelf-list-item'>
-                            <div className='userinfo-content-shelf-list-item-pic'></div>
-                            <div className='userinfo-content-shelf-list-item-info' id={reviewData.title} key={reviewData.title}>{reviewData.title}</div>
+                            {isLoading ? "Loading..." : 
+                            reviewData.length == 0 ? "등록된 리뷰가 없습니다" : reviewData.map( review => (
+                                <ReviewList  key={review.title}
+                                    userNickname={review.user}
+                                    title={review.title}
+                                    content={review.content} 
+                                />
+                            ))}
                         </div>
                     </div>
                 </div>

@@ -20,6 +20,14 @@ class MovieService {
 		});
 	}
 
+	detailById(movieId) {
+		return axios.get(MOVIE_API_BASE_URL+"/detailed/"+movieId, {
+			headers: {
+				"Content-Type": 'application/json',
+			},
+		});
+	}
+
 	bannerMovie() {
 		return axios.post(MOVIE_API_BASE_URL+"/todaybanner", {
 			headers: {

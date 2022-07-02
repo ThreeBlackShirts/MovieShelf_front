@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 
 import {MovieDetailTitle, MovieDetail, MovieDetailTrailer, MovieDetailStillcut} from './MovieContent';
+import {MovieTitleReview} from './ReviewContents';
 import MovieService from 'service/MovieService';
+import ReviewService from 'service/ReviewService';
 import 'style/detailpage.css';
 
 import { MdKeyboardArrowLeft } from "react-icons/md";
-import { AiFillStar } from "react-icons/ai";
-import { AiOutlineStar } from "react-icons/ai";
-import ReviewContent from './ReviewContent';
 
 class DetailContent extends Component {
     constructor(props) {
@@ -20,10 +19,13 @@ class DetailContent extends Component {
             target: localStorage.getItem("target") || '',
             isLoading: true,
             movieDetail: {},
+            reviewContent: [],
             hasLoginFailed: false,
             showSuccessMessage: false,
         }
         this.detailhMovie = this.detailhMovie.bind(this)
+        this.goReview = this.goReview.bind(this)
+        this.loginCheck = this.loginCheck.bind(this)
     }
 
     detailhMovie() {
@@ -34,8 +36,19 @@ class DetailContent extends Component {
                 .detail(this.state.target)
                 .then((response) => {
                     localStorage.removeItem("target")
-                    this.setState({ movieDetail: response.data.data, isLoading: false })
+                    this.setState({ movieDetail: response.data.data})
                     console.log(this.state.movieDetail)
+
+                    console.log("Movie Review")
+                    ReviewService
+                        .findReviewByMovieId(this.state.movieDetail.movieId)
+                        .then((response) => {
+                            this.setState({ reviewContent: response.data.data, isLoading: false })
+                            console.log(this.state.reviewContent)
+                        }).catch(() => {
+                            console.log("findReviewByMovieId failed")
+                            alert("findReviewByMovieId fail");
+                    }); 
                 }).catch(() => {
                     console.log("detail failed")
                     alert("detail fail");
@@ -43,6 +56,14 @@ class DetailContent extends Component {
         }else{
             console.log("target error")
             history.back()
+        }
+    }
+
+    loginCheck = (e) => {
+        if(this.state.token == [] || this.state.token == ""){
+            const url = `/login`;
+            alert("로그인이 필요합니다")
+            location.href="/login"
         }
     }
 
@@ -55,16 +76,17 @@ class DetailContent extends Component {
         history.back()
     }
 
-    goWriteReview(){
-        console.log("going to writereview")
-        //무비 정보를 가져오는 기본키 받아서 넘겨주고 writereview에서 영화 정보 기본키로 호출하기
+    goReview(){
+        const url = `/review/${this.state.movieDetail.movieId}`;
         return(
-            <ReviewContent movieId="{}"/>
+            <Link to={url} className="movie-review-link" onClick={this.loginCheck}>
+                <button id='detailpage-reviews-go-review'>리뷰 쓰러가기</button>
+            </Link>
         );
     }
 
     render() {
-        const { isLoading, movieDetail} = this.state;
+        const { isLoading, movieDetail, reviewContent} = this.state;
         return (
             <div id='detailpage-content'>
                 <div id='gobackbtn'><MdKeyboardArrowLeft id='gobackbtn-icon' onClick={this.goBackBtn}/></div>
@@ -131,23 +153,20 @@ class DetailContent extends Component {
                         <table id='detailpage-reviews-review-table'>
                             <thead>
                                 <tr>
-                                    <td className='detailpage-reviews-review'>
-                                        <div className='detailpage-reviews-review-profile'>
-                                            <div className='detailpage-reviews-review-profile-img-wrap'><img className='detailpage-reviews-review-profile-img' src={require('../images/test/testprofile.png')} /> </div>
-                                            <div className='detailpage-reviews-review-profile-name'>이름</div>
-                                        </div>
-                                        <div className='detailpage-reviews-review-content'>
-                                            <div className='detailpage-reviews-review-content-rating'>★★★★★</div>
-                                            <div className='detailpage-reviews-review-content-text'>한줄평</div>
-                                        </div>
-                                    </td>
+                                    {isLoading ? "Loading..." : 
+                                        this.state.reviewContent.length == 0 ? "등록된 리뷰가 없습니다" : reviewContent.map( review => (
+                                            <MovieTitleReview  key={review.title}
+                                                userNickname={review.user}
+                                                title={review.title}
+                                            />
+                                    ))}
                                 </tr>
                             </thead>
                         </table>
                     </div>
                     <br/>
                     <div id='detailpage-reviews-pagecontroller'>
-                        <button id='detailpage-reviews-go-review' onClick={this.goWriteReview}>리뷰 쓰기</button>
+                        <this.goReview />
                     </div>
                 </div>
                 <div className='detailpage-blank'>
