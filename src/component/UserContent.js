@@ -4,7 +4,6 @@ import { CgProfile } from "react-icons/cg";
 import { MdAdd } from "react-icons/md";
 
 import ReviewService from 'service/ReviewService';
-
 import {MyReviewList} from './UserReviewContent';
 
 import MovieService from 'service/MovieService';
@@ -22,7 +21,6 @@ const UserContent = () => {
             .findUserByEmail(localStorage.getItem("authenticatedUser"))
             .then((response) => {
                 console.log("userservice: ")
-
                 console.log(response.data.data)
                 setUsers(response.data.data);
             }).catch((error) => {
@@ -51,24 +49,26 @@ const UserContent = () => {
             console.log(reviewData)
 
             
-            for( let i =0;i<reviewData.length;i++)
-            {
-                getMovieById(reviewData[i].movieId);
-            }
-
-            MovieService
-            .detailById(reviewData[0].movieId)
-            .then((response) => {
-                console.log(response.data.data)
-                setMovie(response.data.data)
-            }).catch(() => {
-                console.log("findMovieId failed")
-                alert("findMovieId fail");
-            }); 
+            // for( let i =0;i<reviewData.length;i++)
+            // {
+            //     getMovieById(reviewData[i].movieId);
+            // }
 
             console.log("-------movie data: "+ movie +"-------");
 
     },[]);
+
+    function getMovieById(){
+        MovieService
+        .detailById(reviewData[0].movieId)
+        .then((response) => {
+            console.log(response.data.data)
+            setMovie(response.data.data)
+        }).catch(() => {
+            console.log("findMovieId failed")
+            alert("findMovieId fail");
+        }); 
+    }
 
     function sliceReviewData(data){
         let reviewId={};
@@ -99,7 +99,6 @@ const UserContent = () => {
             alert("findMovieId fail");
         }); 
     }
-
     /*
     function searchAllReview(){
         ReviewService
@@ -162,7 +161,7 @@ const UserContent = () => {
                     <div className='userinfo-content-shelf-list-item-wrap'>
 
                         <div className='userinfo-content-shelf-list-item'>
-                        
+
                         </div>
                     </div>
                 </div>
@@ -209,5 +208,8 @@ export default UserContent;
                                     movieId={review.movieId} 
                                 />
                             ))}
+<<<<<<< HEAD
+=======
 
+>>>>>>> 269ff53542e6d8b55f71dd574d17b421fcb9b96f
  */

@@ -18,7 +18,7 @@ class WishListService {
             },
         })
     }
-    
+
     deleteWishList(userEmail, movieId){
         console.log("wishlistService add wishlist")
         AuthenticationService.setupAxiosInterceptors();
@@ -32,7 +32,6 @@ class WishListService {
             data: {
                 userEmail: userEmail
             }
-
         })
     }
 }
