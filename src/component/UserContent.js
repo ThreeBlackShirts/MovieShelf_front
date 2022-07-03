@@ -4,7 +4,9 @@ import { CgProfile } from "react-icons/cg";
 import { MdAdd } from "react-icons/md";
 
 import ReviewService from 'service/ReviewService';
+
 import {MyReviewList} from './UserReviewContent';
+
 import MovieService from 'service/MovieService';
 
 
@@ -20,6 +22,7 @@ const UserContent = () => {
             .findUserByEmail(localStorage.getItem("authenticatedUser"))
             .then((response) => {
                 console.log("userservice: ")
+
                 console.log(response.data.data)
                 setUsers(response.data.data);
             }).catch((error) => {
@@ -96,6 +99,7 @@ const UserContent = () => {
             alert("findMovieId fail");
         }); 
     }
+
     /*
     function searchAllReview(){
         ReviewService
@@ -158,7 +162,7 @@ const UserContent = () => {
                     <div className='userinfo-content-shelf-list-item-wrap'>
 
                         <div className='userinfo-content-shelf-list-item'>
-
+                        
                         </div>
                     </div>
                 </div>
@@ -205,4 +209,5 @@ export default UserContent;
                                     movieId={review.movieId} 
                                 />
                             ))}
+
  */
