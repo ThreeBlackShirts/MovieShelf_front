@@ -7,6 +7,10 @@ import ReviewService from 'service/ReviewService';
 import {MyReviewList} from './UserReviewContent';
 import MovieService from 'service/MovieService';
 
+import {MyReviewList} from './UserReviewContent';
+
+import MovieService from 'service/MovieService';
+
 
 const UserContent = () => {
 
@@ -20,6 +24,10 @@ const UserContent = () => {
             .findUserByEmail(localStorage.getItem("authenticatedUser"))
             .then((response) => {
                 console.log("userservice: ")
+<<<<<<< HEAD
+=======
+
+>>>>>>> 269ff53542e6d8b55f71dd574d17b421fcb9b96f
                 console.log(response.data.data)
                 setUsers(response.data.data);
             }).catch((error) => {
@@ -96,6 +104,10 @@ const UserContent = () => {
             alert("findMovieId fail");
         }); 
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 269ff53542e6d8b55f71dd574d17b421fcb9b96f
     /*
     function searchAllReview(){
         ReviewService
@@ -205,4 +217,8 @@ export default UserContent;
                                     movieId={review.movieId} 
                                 />
                             ))}
+<<<<<<< HEAD
+=======
+
+>>>>>>> 269ff53542e6d8b55f71dd574d17b421fcb9b96f
  */

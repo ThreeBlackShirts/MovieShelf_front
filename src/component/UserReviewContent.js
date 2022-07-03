@@ -5,11 +5,13 @@ function setLocation(reviewId) {
     location.href = '/review/' + reviewId;
 }
 
+
 function MyReviewList(reviewId,title) {
     return(
         <div className='userinfo-content-shelf-list-item'>
             <a onClick={() => setLocation(reviewId)}>
                 <div className='userinfo-content-shelf-list-item-pic'>{movieId}</div>
+
                 <div className='userinfo-content-shelf-list-item-info'>{title}</div>
             </a>
         </div>
@@ -35,4 +37,9 @@ function Bookmark(props){
     else{   return <EmptyBookmark/>;    }
 }
 */
+<<<<<<< HEAD
 export {MyReviewList}
+=======
+export {MyReviewList}
+
+>>>>>>> 269ff53542e6d8b55f71dd574d17b421fcb9b96f
