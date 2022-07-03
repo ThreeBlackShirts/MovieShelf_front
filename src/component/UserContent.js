@@ -4,7 +4,7 @@ import { CgProfile } from "react-icons/cg";
 import { MdAdd } from "react-icons/md";
 
 import ReviewService from 'service/ReviewService';
-import {ReviewList} from './UserReviewContent';
+import {MyReviewList} from './UserReviewContent';
 import MovieService from 'service/MovieService';
 
 
@@ -19,6 +19,7 @@ const UserContent = () => {
         UserService
             .findUserByEmail(localStorage.getItem("authenticatedUser"))
             .then((response) => {
+                console.log("userservice: ")
                 console.log(response.data.data)
                 setUsers(response.data.data);
             }).catch((error) => {
@@ -29,16 +30,72 @@ const UserContent = () => {
             .searchReviewByUseremail(localStorage.getItem("authenticatedUser"))
             .then((response) => {
                 console.log("searchMyReview success")
-                
-                setReviewData(response.data)
+                setReviewData(response.data.data)
+                console.log("ReviewService: ")
+                console.log(response.data.data)
                 console.log(reviewData)
+//                console.log(reviewData.length)
+//                console.log(reviewData[0].title)
                 setIsLoading(false)
+                sliceReviewData(reviewData)
+
             }).catch((error) => {
-                console.log("error")
-                console.log(error.response)
+                console.log("review error")
+   //             console.log(error.response)
             });
+
+            console.log("getMovieById");
+            console.log(reviewData)
+
+            
+            for( let i =0;i<reviewData.length;i++)
+            {
+                getMovieById(reviewData[i].movieId);
+            }
+
+            MovieService
+            .detailById(reviewData[0].movieId)
+            .then((response) => {
+                console.log(response.data.data)
+                setMovie(response.data.data)
+            }).catch(() => {
+                console.log("findMovieId failed")
+                alert("findMovieId fail");
+            }); 
+
+            console.log("-------movie data: "+ movie +"-------");
+
     },[]);
 
+    function sliceReviewData(data){
+        let reviewId={};
+        let movieId={};
+        let user={};
+        let title={};
+        console.log("sliceReviewData");
+        for(let i = 0; i < data.length; i++)
+        {
+            reviewId[i] = data[i].reviewId;
+            movieId[i] = data[i].movieId;
+            user[i] = data[i].user;
+            title[i] = data[i].title;
+            console.log(reviewId[i]);
+        }
+    }
+
+
+    function getMovieById(movieId){
+        console.log("getMovieById");
+        MovieService
+        .detailById(movieId)
+        .then((response) => {
+            console.log(response.data.data)
+            setMovie(response.data.data)
+        }).catch(() => {
+            console.log("findMovieId failed")
+            alert("findMovieId fail");
+        }); 
+    }
     /*
     function searchAllReview(){
         ReviewService
@@ -75,18 +132,22 @@ const UserContent = () => {
                 </div>
                 <div className="userinfo-content-info-sub">
                     <table>
-                        <tr>
-                            <td>
-                                <div id={users.userName} key={users.userName}>
-                                    {users.userName}
-                                </div>
-                            </td>
-                            <td><a onClick={toUserSetting}>내 정보 수정</a></td>
-                        </tr>
-                        <tr>
-                            <td>내 책장 속 영화: <span>N1</span>개</td>
-                            <td>리뷰한 영화: <span>N2</span>개</td>
-                        </tr>
+                        <thead></thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div id={users.userName} key={users.userName}>
+                                        {users.userName}
+                                    </div>
+                                </td>
+                                <td><a onClick={toUserSetting}>내 정보 수정</a></td>
+                            </tr>
+                            <tr>
+                                <td>내 책장 속 영화: <span>N1</span>개</td>
+                                <td>리뷰한 영화: <span>N2</span>개</td>
+                            </tr>
+                        </tbody>
+                        
                     </table>
                     
                 </div>
@@ -97,14 +158,7 @@ const UserContent = () => {
                     <div className='userinfo-content-shelf-list-item-wrap'>
 
                         <div className='userinfo-content-shelf-list-item'>
-                            {isLoading ? "Loading..." : 
-                            reviewData.length == 0 ? "등록된 리뷰가 없습니다" : reviewData.map( review => (
-                                <ReviewList  key={review.title}
-                                    userNickname={review.user}
-                                    title={review.title}
-                                    content={review.content} 
-                                />
-                            ))}
+
                         </div>
                     </div>
                 </div>
@@ -143,4 +197,12 @@ export default UserContent;
                 </div>
  * 
  * 
+ * 
+ *                             {reviewData.length == 0 
+                                    ? "등록된 리뷰가 없습니다"  : reviewData.map( review => (
+                                <MyReviewList  key={review.reviewId}
+                                    title={review.title}
+                                    movieId={review.movieId} 
+                                />
+                            ))}
  */

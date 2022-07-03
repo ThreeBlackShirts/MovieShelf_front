@@ -95,6 +95,14 @@ html{
         .detailpage-info-anchor-a:hover{
             cursor: pointer;
         }
+
+        #detailpage-info-likebtn-icon{
+            width: 5%;
+            height: 30px;
+            vertical-align: middle;
+            position: relative;
+            left: 20px;
+        }
     
 .detailpage-info-hr-left{
     display: inline-block;

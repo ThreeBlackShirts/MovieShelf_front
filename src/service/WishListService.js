@@ -8,20 +8,42 @@ class WishListService {
     addWishList(userEmail, movieId){
         console.log("wishlistService add wishlist")
         AuthenticationService.setupAxiosInterceptors();
-        return axios.post(WISHLIST_API_BASE_URL + "/" + movieId, JSON.stringify(userEmail),{
+        let data = {
+            userEmail: userEmail
+        }
+        return axios.post(WISHLIST_API_BASE_URL + "/" + movieId, JSON.stringify(data),{
             headers: {
                 "Content-Type": `application/json`,
             },
         })
     }
 
-    deleteWishList(userEmail, movieId) {
-        console.log("wishlistSerivce delete wishlist")
+    // deleteWishList(userEmail, movieId) {
+    //     console.log("wishlistSerivce delete wishlist")
+    //     AuthenticationService.setupAxiosInterceptors();
+    //     let data2 = {
+    //         userEmail: userEmail
+    //     }
+    //     return axios.delete(WISHLIST_API_BASE_URL + "/" + movieId, JSON.stringify(data2),{
+    //         headers: {
+    //             "Content-Type": `application/json`,
+    //         },
+    //     })
+    // }
+
+    deleteWishList(userEmail, movieId){
+        console.log("wishlistService add wishlist")
         AuthenticationService.setupAxiosInterceptors();
-        return axios.delete(WISHLIST_API_BASE_URL + "/" + movieId, JSON.stringify(userEmail),{
+        let data = {
+            userEmail: userEmail
+        }
+        return axios.delete(WISHLIST_API_BASE_URL + "/" + movieId,{
             headers: {
                 "Content-Type": `application/json`,
             },
+            data: {
+                userEmail: userEmail
+            }
         })
     }
 }

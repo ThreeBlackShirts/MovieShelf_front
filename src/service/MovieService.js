@@ -21,7 +21,7 @@ class MovieService {
 	}
 
 	detailById(movieId) {
-		return axios.get(MOVIE_API_BASE_URL+"/detailed/"+movieId, {
+		return axios.get(MOVIE_API_BASE_URL+"/detailed/movieId/" + movieId , {
 			headers: {
 				"Content-Type": 'application/json',
 			},
