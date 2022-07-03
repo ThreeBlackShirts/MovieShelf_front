@@ -37,9 +37,5 @@ function Bookmark(props){
     else{   return <EmptyBookmark/>;    }
 }
 */
-<<<<<<< HEAD
-export {MyReviewList}
-=======
-export {MyReviewList}
 
->>>>>>> 269ff53542e6d8b55f71dd574d17b421fcb9b96f
+export {MyReviewList}
