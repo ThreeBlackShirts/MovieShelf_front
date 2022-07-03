@@ -10,7 +10,7 @@ class UserSettingContent extends Component {
         super(props)
 
         this.state = {
-            userEmail: localStorage.getItem("authenticatedUser") || '',
+            userEmail: localStorage.getItem("authenticatedUser"), //|| '',
             userPassword: '',
             userName: '',
             userNickname: '',
@@ -23,6 +23,7 @@ class UserSettingContent extends Component {
         this.handleChange = this.handleChange.bind(this)
         this.getUserInfo = this.getUserInfo.bind(this)
         this.editData = this.editData.bind(this)
+        this.deleteUser = this.deleteUser.bind(this)
         this.getUserInfo();
     }
     handleChange = (e) => {
@@ -35,7 +36,7 @@ class UserSettingContent extends Component {
 
     editData() {
         //alert("수정 완료 *테스트용* ");
-        if (this.state.userPasswordCheck === this.state.userPassword) {
+        if (this.state.userPasswordCheck == this.state.userPassword) {
             UserService.updateUserByEmail(this.state.userPassword, this.state.userNickname, this.state.userFilename)
                 .then((response) => {
                     alert("수정 완료");
@@ -62,14 +63,23 @@ class UserSettingContent extends Component {
             });
     }
 
-    goBackBtn(){
+    goBackBtn() {
         history.back()
     }
+
+    deleteUser() {
+
+        console.log("UserSetting: deleteUser")
+        this.state.userEmail = localStorage.getItem("authenticatedUser")
+        console.log(this.state.userEmail)
+        UserService.deleteUser(this.state.userEmail)
+    }
+
 
     render() {
         return (
             <div className='usersetting-content'>
-                <div id='gobackbtn'><MdKeyboardArrowLeft id='gobackbtn-icon' onClick={this.goBackBtn}/></div>
+                <div id='gobackbtn'><MdKeyboardArrowLeft id='gobackbtn-icon' onClick={this.goBackBtn} /></div>
                 <div className='usersetting-content-container'>
                     <h1>개인정보 수정</h1>
                     <div className='usersetting-content-container-box'>
@@ -101,6 +111,9 @@ class UserSettingContent extends Component {
                         </div>
                         <div className='usersetting-content-submit'>
                             <button onClick={this.editData}>수정</button>
+                        </div>
+                        <div className='usersetting-content-submit'>
+                            <button onClick={this.deleteUser}>회원 탈퇴</button>
                         </div>
                     </div>
 

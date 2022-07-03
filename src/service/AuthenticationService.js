@@ -51,7 +51,7 @@ class AuthenticationService {
         const token = localStorage.getItem('token');
         if (token) {
           config.headers['X-AUTH-TOKEN'] = token;
-           //X-AUTH-TOKEN으로 다른 url 이용할 때 헤더로 넣어줘야한다.
+          //X-AUTH-TOKEN으로 다른 url 이용할 때 헤더로 넣어줘야한다.
         }
         // config.headers['Content-Type'] = 'application/json';
         return config;
@@ -74,7 +74,7 @@ class AuthenticationService {
     //if(user===null) return false
     return false;
   }
-  
+
   logout() {
     localStorage.removeItem('authenticatedUser');
     localStorage.removeItem('token');
@@ -87,6 +87,19 @@ class AuthenticationService {
   loginSocialKakao() {
     return axios.get("/api/oauth/kakao")
   }
+
+  withdrawal(userEmail) {
+    let data = {
+      userEmail: userEmail
+    }
+    // console.log(data);
+    return axios.delete(USER_API_BASE_URL + "/userEmail/" + userEmail, {
+      headers: {
+        "Content-Type": `application/json`,
+      }
+    })
+  }
+
 }
 
 export default new AuthenticationService()
