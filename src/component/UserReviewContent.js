@@ -10,7 +10,7 @@ function MyReviewList(reviewId,title) {
     return(
         <div className='userinfo-content-shelf-list-item'>
             <a onClick={() => setLocation(reviewId)}>
-                <div className='userinfo-content-shelf-list-item-pic'>{movieId}</div>
+                <div className='userinfo-content-shelf-list-item-pic'>영화 아이디</div>
 
                 <div className='userinfo-content-shelf-list-item-info'>{title}</div>
             </a>

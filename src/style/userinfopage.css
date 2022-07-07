@@ -93,6 +93,7 @@
     }
 
     .userinfo-content-shelf-list-item-wrap{
+        text-align: left;
         overflow-x: auto;
         position: relative;
         height: 80%;
@@ -110,18 +111,18 @@
             border-radius: 5px;
         }
 
-    .userinfo-content-shelf-result-list-item{
-        display: table-cell;
+    .userinfo-content-shelf-list-item{
+        display: inline-block;
     }
 
-        .userinfo-content-shelf-result-list-item-pic{
+        .userinfo-content-shelf-list-item-pic{
             text-align: left;
             margin: 10px;
         }
 
-        .userinfo-content-shelf-result-item-pic img{
-            width: 160px;
-            height: 220px;
+        .userinfo-content-shelf-list-item-pic img{
+            width: 120px;
+            height: 180px;
             margin: auto;
             vertical-align: middle;
         }
@@ -132,7 +133,7 @@
                 width: 40px;
             }
         
-        .userinfo-content-shelf-result-list-item-info{
+        .userinfo-content-shelf-list-item-info{
             text-align: center;
             margin: 0 12px 0 12px;
             cursor: pointer;

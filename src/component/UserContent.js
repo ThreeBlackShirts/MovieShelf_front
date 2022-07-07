@@ -14,7 +14,12 @@ const UserContent = () => {
     const [users, setUsers] = useState([]);
     const [reviewData, setReviewData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [movie, setMovie] = useState([]);
+    const [moviePoster, setMoviePoster] = useState([]);
+
+    const [reviewIdList,setReviewIdList] = useState([]);
+    const [movieIdList,setMovieIdList] = useState([]);
+    const [userList,setUserList] = useState([]);
+    const [titleList,setTitleList] = useState([]);
 
     useEffect(() => {
         UserService
@@ -33,10 +38,9 @@ const UserContent = () => {
                 console.log("searchMyReview success")
                 setReviewData(response.data.data)
                 console.log("ReviewService: ")
-                console.log(response.data.data)
                 console.log(reviewData)
-//                console.log(reviewData.length)
-//                console.log(reviewData[0].title)
+
+                
                 setIsLoading(false)
                 sliceReviewData(reviewData)
 
@@ -45,60 +49,13 @@ const UserContent = () => {
    //             console.log(error.response)
             });
 
-            console.log("getMovieById");
-            console.log(reviewData)
-
-            
             // for( let i =0;i<reviewData.length;i++)
             // {
             //     getMovieById(reviewData[i].movieId);
             // }
 
-            console.log("-------movie data: "+ movie +"-------");
-
     },[]);
-
-    function getMovieById(){
-        MovieService
-        .detailById(reviewData[0].movieId)
-        .then((response) => {
-            console.log(response.data.data)
-            setMovie(response.data.data)
-        }).catch(() => {
-            console.log("findMovieId failed")
-            alert("findMovieId fail");
-        }); 
-    }
-
-    function sliceReviewData(data){
-        let reviewId={};
-        let movieId={};
-        let user={};
-        let title={};
-        console.log("sliceReviewData");
-        for(let i = 0; i < data.length; i++)
-        {
-            reviewId[i] = data[i].reviewId;
-            movieId[i] = data[i].movieId;
-            user[i] = data[i].user;
-            title[i] = data[i].title;
-            console.log(reviewId[i]);
-        }
-    }
-
-
-    function getMovieById(movieId){
-        console.log("getMovieById");
-        MovieService
-        .detailById(movieId)
-        .then((response) => {
-            console.log(response.data.data)
-            setMovie(response.data.data)
-        }).catch(() => {
-            console.log("findMovieId failed")
-            alert("findMovieId fail");
-        }); 
-    }
+    
     /*
     function searchAllReview(){
         ReviewService
@@ -111,14 +68,46 @@ const UserContent = () => {
                 console.log(error.response)
             })
     }
-
     */
 
-    /**
-        function toWriteReview(){
-            window.location.href="/writereview"
+    function sliceReviewData(data){
+        // setReviewData(response.data.data)
+        console.log("sliceReviewData");
+        for(var i = 0; i < data.length; i++)
+        {
+            reviewIdList[i] = data[i].reviewId;
+            movieIdList[i] = data[i].movieId;
+            userList[i] = data[i].user;
+            titleList[i] = data[i].title;
+            moviePoster[i] = getMovieById(movieIdList[i]);
+            // getMovieById(movieIdList[i]);
+            // console.log(titleList[i] + "(" +reviewIdList[i]+ ")" + ":" + movieIdList[i], );
+            console.log("moviePoster :")
+            console.log(moviePoster[i]);
+
         }
-     */
+    }
+
+    function getMovieById(movieId){
+        // var temp;
+        // console.log("getMovieById");
+        MovieService
+        .detailById(movieId)
+        .then((response) => {
+            // console.log(response.data.data)
+            console.log(response.data.data.moviePoster)
+            // temp = response.data.data.moviePoster
+            // console.log("moviePoster : " + temp)
+            return response.data.data.moviePoster;
+        }).catch(() => {
+            console.log("findMovieId failed")
+            alert("findMovieId fail");
+        }); 
+    }    
+
+    function setLocation(reviewId) {
+        location.href = '/review/' + reviewId;
+    }
 
     function toUserSetting(){
         window.location.href="/usersetting"
@@ -147,25 +136,34 @@ const UserContent = () => {
                             </tr>
                             <tr>
                                 <td>내 책장 속 영화: <span>N1</span>개</td>
-                                <td>리뷰한 영화: <span>N2</span>개</td>
+                                <td>리뷰한 영화: <span id={reviewData.length} key={reviewData.length}>{reviewData.length}</span>개</td>
                             </tr>
                         </tbody>
-                        
                     </table>
-                    
                 </div>
+
             </div>
             <div className="userinfo-content-shelf">
                 <div className="userinfo-content-shelf-list">
                     <div className='userinfo-content-shelf-list-name'>후기를 작성한 영화</div>
                     <div className='userinfo-content-shelf-list-item-wrap'>
-
                         <div className='userinfo-content-shelf-list-item'>
-
+                            <div className='userinfo-content-shelf-list-item-pic' id={moviePoster[0]} key={moviePoster[0]}> {moviePoster[0]}    
+                                <img src={moviePoster}/></div>
+                            <div className='userinfo-content-shelf-list-item-info'>{titleList[0]}    </div>
+                        </div>
+                        <div className='userinfo-content-shelf-list-item'>
+                            <div className='userinfo-content-shelf-list-item-pic' id={moviePoster[1]} key={moviePoster[1]}>  {moviePoster[1]}    </div>
+                            <div className='userinfo-content-shelf-list-item-info'>{titleList[1]}    </div>
+                        </div>
+                        <div className="userinfo-content-shelf-list-item">
+                            <a onClick={() => setLocation(reviewIdList[0])}>
+                                <div className="userinfo-content-shelf-list-item-pic"><img src={moviePoster[0]}/></div>
+                                <div className="userinfo-content-shelf-list-item-info">{titleList[0]}</div>
+                            </a>
                         </div>
                     </div>
                 </div>
-
 
                 <div className="userinfo-content-shelf-list">
                     <div className='userinfo-content-shelf-list-name'>마음에 드는 영화</div>
@@ -176,7 +174,6 @@ const UserContent = () => {
                         </div>
                     </div>
                 </div>
-
 
             </div>
             
@@ -208,8 +205,4 @@ export default UserContent;
                                     movieId={review.movieId} 
                                 />
                             ))}
-<<<<<<< HEAD
-=======
-
->>>>>>> 269ff53542e6d8b55f71dd574d17b421fcb9b96f
  */
