@@ -34,6 +34,12 @@ class WishListService {
             }
         })
     }
+
+    searchWishListByUserEmail(userEmail) {
+        console.log("이메일로 위시리스트 찾기 service")
+        AuthenticationService.setupAxiosInterceptors();
+        return axios.get(WISHLIST_API_BASE_URL + "/list/" + userEmail);
+    }
 }
 
 export default new WishListService();

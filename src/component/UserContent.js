@@ -4,7 +4,8 @@ import { CgProfile } from "react-icons/cg";
 import { MdAdd } from "react-icons/md";
 
 import ReviewService from 'service/ReviewService';
-import {MyReviewList} from './UserReviewContent';
+import WishListService from 'service/WishListService';
+import {MyMovieReview, MyWishList} from './UserReviewContent';
 
 import MovieService from 'service/MovieService';
 
@@ -13,13 +14,13 @@ const UserContent = () => {
 
     const [users, setUsers] = useState([]);
     const [reviewData, setReviewData] = useState([]);
+    const [wishListData, setWishListData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [moviePoster, setMoviePoster] = useState([]);
 
-    const [reviewIdList,setReviewIdList] = useState([]);
-    const [movieIdList,setMovieIdList] = useState([]);
-    const [userList,setUserList] = useState([]);
-    const [titleList,setTitleList] = useState([]);
+    const [movieData, setMovieData] = useState([]);
+    // const [reviewIdList,setReviewIdList] = useState([]);
+    // const [movieIdList,setMovieIdList] = useState([]);
+    // const [titleList,setTitleList] = useState([]);
 
     useEffect(() => {
         UserService
@@ -31,83 +32,84 @@ const UserContent = () => {
             }).catch((error) => {
                 console.log(error.response)
             });
-
+            searchAllReview();
+            searchAllWishList();
+    },[]);
+    
+    
+    function searchAllReview(){
         ReviewService
             .searchReviewByUseremail(localStorage.getItem("authenticatedUser"))
             .then((response) => {
                 console.log("searchMyReview success")
                 setReviewData(response.data.data)
+
                 console.log("ReviewService: ")
                 console.log(reviewData)
-
-                
                 setIsLoading(false)
-                sliceReviewData(reviewData)
-
+                // sliceReviewData(reviewData)
             }).catch((error) => {
                 console.log("review error")
-   //             console.log(error.response)
             });
-
-            // for( let i =0;i<reviewData.length;i++)
-            // {
-            //     getMovieById(reviewData[i].movieId);
-            // }
-
-    },[]);
-    
-    /*
-    function searchAllReview(){
-        ReviewService
-            .searchAllReview()
-            .then((response) => {
-                console.log("success")
-                console.log(response.data)
-            }).catch((error) => {
-                console.log("error")
-                console.log(error.response)
-            })
     }
-    */
 
-    function sliceReviewData(data){
+    function searchAllWishList(){
+       WishListService
+            .searchWishListByUserEmail(localStorage.getItem("authenticatedUser"))
+            .then((response) => {
+                // console.log("searchMyWishList success")
+                // console.log(response.data.data)
+                setWishListData(response.data.data)
+                console.log("WishListService: ")
+                console.log(wishListData)
+                setIsLoading(false)
+            }).catch((error) => {
+                console.log("review error")
+            });
+    }
+    
+
+    /**
+        function sliceReviewData(data){
         // setReviewData(response.data.data)
         console.log("sliceReviewData");
         for(var i = 0; i < data.length; i++)
         {
             reviewIdList[i] = data[i].reviewId;
             movieIdList[i] = data[i].movieId;
-            userList[i] = data[i].user;
+            
             titleList[i] = data[i].title;
-            moviePoster[i] = getMovieById(movieIdList[i]);
-            // getMovieById(movieIdList[i]);
-            // console.log(titleList[i] + "(" +reviewIdList[i]+ ")" + ":" + movieIdList[i], );
-            console.log("moviePoster :")
-            console.log(moviePoster[i]);
-
+            // moviePoster[i] = getMovieById(movieIdList[i]);
+            getMovieById(movieIdList[i],i);
+            console.log(titleList[i] + "(" +reviewIdList[i]+ ")" + ":" + movieIdList[i], );
+            // console.log("moviePoster :")
+            // console.log(moviePoster[i]);
         }
     }
 
     function getMovieById(movieId){
-        // var temp;
-        // console.log("getMovieById");
         MovieService
         .detailById(movieId)
         .then((response) => {
-            // console.log(response.data.data)
-            console.log(response.data.data.moviePoster)
-            // temp = response.data.data.moviePoster
-            // console.log("moviePoster : " + temp)
-            return response.data.data.moviePoster;
+            console.log(response.data.data)
+            setMovieData(response.data.data)
         }).catch(() => {
             console.log("findMovieId failed")
             alert("findMovieId fail");
         }); 
-    }    
-
-    function setLocation(reviewId) {
-        location.href = '/review/' + reviewId;
     }
+
+    function getMoviePosterById(movieId){
+        MovieService
+            .detailById(movieId)
+            .then((response) => {
+                console.log("getting movie poster")
+                return response.data.data.moviePoster;
+            }).catch(() => {
+                console.log("getmoviePosterById error")
+            })
+    }
+     */
 
     function toUserSetting(){
         window.location.href="/usersetting"
@@ -147,31 +149,26 @@ const UserContent = () => {
                 <div className="userinfo-content-shelf-list">
                     <div className='userinfo-content-shelf-list-name'>후기를 작성한 영화</div>
                     <div className='userinfo-content-shelf-list-item-wrap'>
-                        <div className='userinfo-content-shelf-list-item'>
-                            <div className='userinfo-content-shelf-list-item-pic' id={moviePoster[0]} key={moviePoster[0]}> {moviePoster[0]}    
-                                <img src={moviePoster}/></div>
-                            <div className='userinfo-content-shelf-list-item-info'>{titleList[0]}    </div>
-                        </div>
-                        <div className='userinfo-content-shelf-list-item'>
-                            <div className='userinfo-content-shelf-list-item-pic' id={moviePoster[1]} key={moviePoster[1]}>  {moviePoster[1]}    </div>
-                            <div className='userinfo-content-shelf-list-item-info'>{titleList[1]}    </div>
-                        </div>
-                        <div className="userinfo-content-shelf-list-item">
-                            <a onClick={() => setLocation(reviewIdList[0])}>
-                                <div className="userinfo-content-shelf-list-item-pic"><img src={moviePoster[0]}/></div>
-                                <div className="userinfo-content-shelf-list-item-info">{titleList[0]}</div>
-                            </a>
-                        </div>
+                        {isLoading ? "Loading..." : 
+                        reviewData.length == 0 ? "찜한 영화가 없습니다" : reviewData.map( review => (
+                            <MyMovieReview  key={review.reviewId}
+                                title={review.title}
+                                movieId={review.movieId} 
+                            />
+                        ))}
+
                     </div>
                 </div>
 
                 <div className="userinfo-content-shelf-list">
                     <div className='userinfo-content-shelf-list-name'>마음에 드는 영화</div>
                     <div className='userinfo-content-shelf-list-item-wrap'>
-                        <div className='userinfo-content-shelf-list-item'>
-                            <div className='userinfo-content-shelf-list-item-pic'></div>
-                            <div className='userinfo-content-shelf-list-item-info'></div>
-                        </div>
+                    {isLoading ? "Loading..." : 
+                        wishListData.length == 0 ? "등록된 리뷰가 없습니다" : wishListData.map( wishlist => (
+                            <MyWishList  key={wishlist.movieId}
+                                movieId={wishlist.movieId}
+                            />
+                        ))}
                     </div>
                 </div>
 
@@ -183,18 +180,20 @@ const UserContent = () => {
 
 export default UserContent;
 
-//<MdAdd className='shelf-contents-object-icon' onClick={toWriteReview}/>
 
 /**
- *                 <div className="userinfo-content-shelf-list">
-                    <div className='userinfo-content-shelf-list-name'>마음에 드는 후기</div>
-                    <div className='userinfo-content-shelf-list-item-wrap'>
+
+
                         <div className='userinfo-content-shelf-list-item'>
-                            <div className='userinfo-content-shelf-list-item-pic'></div>
-                            <div className='userinfo-content-shelf-list-item-info'></div>
+                            <div className='userinfo-content-shelf-list-item-pic' id={moviePoster[0]} key={moviePoster[0]}>    
+                                <img src={moviePoster[0]}/></div>
+                            <div className='userinfo-content-shelf-list-item-info'>{titleList[0]}    </div>
                         </div>
-                    </div>
-                </div>
+                        <div className='userinfo-content-shelf-list-item'>
+                            <div className='userinfo-content-shelf-list-item-pic' id={moviePoster[1]} key={moviePoster[1]}>
+                            <img src={moviePoster[1]}/></div>
+                            <div className='userinfo-content-shelf-list-item-info'>{titleList[1]}    </div>
+                        </div>
  * 
  * 
  * 
@@ -204,5 +203,12 @@ export default UserContent;
                                     title={review.title}
                                     movieId={review.movieId} 
                                 />
+                            ))}
+
+                                {reviewData.length = 0  ? "등록된 리뷰가 없습니다" : reviewData.data.map(reviews => (
+                                    <MyReviewList key = {reviews.reviewId}
+                                    reviewId={reviews.reviewId}
+                                    title={reviews.title}
+                                    />
                             ))}
  */
