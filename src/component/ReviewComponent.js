@@ -76,7 +76,7 @@ const ReviewContents = () => {
     }
 
     function GoWriteReview(){
-        const url = `/writereview/${movieId}`;
+        const url = `/review/write/${movieId}`;
         return(
             <Link to={url} className="movie-write-review-link" onClick={loginCheck}>
                 <MdEdit className='moviereview-content-btn-icon' id='moviereview-content-editbtn-icon'/>
