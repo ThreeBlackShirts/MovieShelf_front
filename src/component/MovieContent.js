@@ -11,7 +11,7 @@ function setLocation(id) {
 function SearchMovieResult({id, title, poster}) {
     return (
         <div className="listpage-content-result-item">
-            <a onClick={() => setLocation(title)}>
+            <a onClick={() => setLocation(id)}>
                 <div className="listpage-content-result-item-pic"><img src={poster}/></div>
                 <div className="listpage-content-result-item-info">{title}</div>
             </a>
