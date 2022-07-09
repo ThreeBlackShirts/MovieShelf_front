@@ -36,7 +36,7 @@ const DetailContent = () => {
                     ReviewService
                         .findReviewByMovieId(movieId)
                         .then((response) => {
-                            setReviewContent(response.data.data)
+                            setReviewContent(response.data.data.slice(0, 6))
                             setIsLoading(false)
                             console.log(reviewContent)
                         }).catch(() => {
@@ -66,13 +66,21 @@ const DetailContent = () => {
         console.log("goback btn clicked!")
         history.back()
     }
-
     
     function GoReview(){
         const url = `/review/${movieId}`;
         return(
             <Link to={url} className="movie-review-link" onClick={loginCheck}>
-                <button id='detailpage-reviews-go-review'>리뷰 쓰러가기</button>
+                <button id='detailpage-reviews-go-review'>리뷰 더보기</button>
+            </Link>
+        );
+    }
+
+    function GoWriteReview(){
+        const url = `/review/write/${movieId}`;
+        return(
+            <Link to={url} className="movie-write-review-link" onClick={loginCheck}>
+            <button id='detailpage-reviews-go-write-review'>리뷰 쓰러가기</button>
             </Link>
         );
     }
@@ -188,7 +196,7 @@ const DetailContent = () => {
                 </div>
                 <br/>
                 <div id='detailpage-reviews-pagecontroller'>
-                    <GoReview />
+                    <GoReview /> <GoWriteReview />
                 </div>
             </div>
             <div className='detailpage-blank'>
