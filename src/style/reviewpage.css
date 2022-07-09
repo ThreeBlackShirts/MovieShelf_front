@@ -169,16 +169,30 @@
     line-height: 60px;
 }
 
-.reviewpage-comment-content-btn{
+.reviewpage-comment-content-btn-div{
     display: inline-block;
-    width: 5%;
+    margin-right: 2%;
+    width: 13%;
     text-align: center;
 }
 
+.reviewpage-comment-content-btn{
+    display: inline-block;
+    width: 35%;
+    text-align: center;
+}
+
+.reviewpage-comment-content-btn:first-child{
+    margin-right: 15%;
+}
+
 .reviewpage-comment-content-btn-icon{
-    width: 20px;
-    height: 20px;
-    visibility: hidden;
+    width: 100%;
+    height: auto;
+}
+
+.reviewpage-comment-content-btn-icon:hover{
+    cursor: pointer;
 }
 
 .movie-write-review-link{
