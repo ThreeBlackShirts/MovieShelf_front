@@ -83,6 +83,7 @@ class GenreListContent extends Component {
                     {/* <div className="listpage-content-result-target">장르 : {this.state.targetGenre}</div> */}
                     { isLoading ? "Loading..." : genreData.map( movie => (
                         <GenreMovieList key={movie.movieTitle}
+                            id={movie.movieId}
                             title={movie.movieTitle}
                             poster={movie.moviePoster} />
                     )) }
