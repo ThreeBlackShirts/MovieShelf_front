@@ -4,12 +4,11 @@ import { AiFillStar } from "react-icons/ai";
 import { AiOutlineStar } from "react-icons/ai";
 
 
-function setLocation(title) {
-    localStorage.setItem('target', title)
-    location.href = '/detail'
+function setLocation(id) {
+    location.href = `/detail/${id}`
 }
 
-function SearchMovieResult({title, poster}) {
+function SearchMovieResult({id, title, poster}) {
     return (
         <div className="listpage-content-result-item">
             <a onClick={() => setLocation(title)}>
@@ -20,9 +19,9 @@ function SearchMovieResult({title, poster}) {
     )
 }
 
-function BannerMovieView({title, stillcut, contentBold, contentDetail}) {
+function BannerMovieView({id, title, stillcut, contentBold, contentDetail}) {
     return (
-        <div className="banner-content-result-item" style={{backgroundImage: `url(${stillcut})`}} onClick={() => setLocation(title)}>
+        <div className="banner-content-result-item" style={{backgroundImage: `url(${stillcut})`}} onClick={() => setLocation(id)}>
             <div className="banner-content-item-info">
                 <div className="banner-content-item-title">{title}</div><br></br>
                 <div className="banner-content-item-detail detail-bold">{contentBold}</div>
@@ -32,10 +31,10 @@ function BannerMovieView({title, stillcut, contentBold, contentDetail}) {
     )
 }
 
-function RecommendMovieList({title, poster}) {
+function RecommendMovieList({id, title, poster}) {
     return (
         <div className="main-content-result-item">
-            <a onClick={() => setLocation(title)}>
+            <a onClick={() => setLocation(id)}>
                 <div className="main-content-result-item-pic"><img src={poster}/></div>
                 <div className="main-content-result-item-info">{title}</div>
             </a>
@@ -43,10 +42,10 @@ function RecommendMovieList({title, poster}) {
     )
 }
 
-function CategoryMovieList({title, poster}) {
+function CategoryMovieList({id, title, poster}) {
     return (
         <div className="main-content-result-item">
-            <a onClick={() => setLocation(title)}>
+            <a onClick={() => setLocation(id)}>
                 <div className="main-content-result-item-pic"><img src={poster}/></div>
                 <div className="main-content-result-item-info">{title}</div>
             </a>
@@ -54,10 +53,10 @@ function CategoryMovieList({title, poster}) {
     )
 }
 
-function GenreMovieList({title, poster}) {
+function GenreMovieList({id, title, poster}) {
     return (
         <div className="listpage-content-result-item">
-            <a onClick={() => setLocation(title)}>
+            <a onClick={() => setLocation(id)}>
                 <div className="listpage-content-result-item-pic"><img src={poster}/></div>
                 <div className="listpage-content-result-item-info">{title}</div>
             </a>
@@ -111,11 +110,13 @@ function MovieDetailStillcut({stillcut}) {
 }
 
 SearchMovieResult.propTypes, RecommendMovieList.propTypes, CategoryMovieList.propTypes, GenreMovieList.propTypes = {
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
 }
 
 BannerMovieView.propTypes = {
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     stillcut: PropTypes.string.isRequired,
     contentBold: PropTypes.string.isRequired,

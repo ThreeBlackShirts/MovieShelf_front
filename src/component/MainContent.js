@@ -102,7 +102,8 @@ class MainContent extends Component {
             <div className='content'>
                 <div className='banner-content'>
                     { isLoading ? "Loading..." : 
-                        <BannerMovieView key={bannerData.movieTitle}
+                        <BannerMovieView key={bannerData.movieId}
+                            id={bannerData.movieId}
                             title={bannerData.movieTitle}
                             stillcut={bannerData.movieStillcut}
                             contentBold={bannerData.movieContentBold}
@@ -115,7 +116,8 @@ class MainContent extends Component {
                             <div className='main-content-list-name'>MovieShelf의 추천 장르 영화</div>
                             <div className='main-content-list-item-wrap'>
                                 { isLoading ? "Loading..." : recommendData.map( movie => (
-                                    <RecommendMovieList key={movie.movieTitle}
+                                    <RecommendMovieList key={movie.movieId}
+                                        id={movie.movieId}
                                         title={movie.movieTitle}
                                         poster={movie.moviePoster} />
                             )) }</div>
@@ -124,7 +126,8 @@ class MainContent extends Component {
                             <div className='main-content-list-name'>한국 영화</div>
                             <div className='main-content-list-item-wrap'>
                                 { isLoading ? "Loading..." : nationData.map( movie => (
-                                    <CategoryMovieList key={movie.movieTitle}
+                                    <CategoryMovieList  key={movie.movieId}
+                                        id={movie.movieId}
                                         title={movie.movieTitle}
                                         poster={movie.moviePoster} />
                             )) }</div>
@@ -133,7 +136,8 @@ class MainContent extends Component {
                             <div className='main-content-list-name'>'액션' 영화</div>
                             <div className='main-content-list-item-wrap'>
                                 { isLoading ? "Loading..." : genreData1.map( movie => (
-                                    <CategoryMovieList key={movie.movieTitle}
+                                    <CategoryMovieList  key={movie.movieId}
+                                        id={movie.movieId}
                                         title={movie.movieTitle}
                                         poster={movie.moviePoster} />
                             )) }</div>
@@ -142,7 +146,8 @@ class MainContent extends Component {
                             <div className='main-content-list-name'>'로맨스' 영화</div>
                             <div className='main-content-list-item-wrap'>
                                 { isLoading ? "Loading..." : genreData2.map( movie => (
-                                    <CategoryMovieList key={movie.movieTitle}
+                                    <CategoryMovieList  key={movie.movieId}
+                                        id={movie.movieId}
                                         title={movie.movieTitle}
                                         poster={movie.moviePoster} />
                             )) }</div>
