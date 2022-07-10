@@ -34,8 +34,7 @@ const UserContent = () => {
             });
             searchAllReview();
             searchAllWishList();
-    },[]);
-    
+    },[]);    
     
     function searchAllReview(){
         ReviewService
@@ -51,6 +50,7 @@ const UserContent = () => {
             }).catch((error) => {
                 console.log("review error")
             });
+
     }
 
     function searchAllWishList(){
