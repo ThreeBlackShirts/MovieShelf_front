@@ -10,9 +10,9 @@ import MainPage from 'component/Pages/MainPage';
 import DetailPage from 'component/Pages/DetailPage';
 import UserInfoPage from 'component/Pages/UserInfoPage';
 import ReviewPage from 'component/Pages/ReviewPage';
-import WriteReviewPage from 'component/Pages/WriteReviewPage';
+import WriteReviewPage from 'component/Pages/ReviewWritePage';
 import UserSettingPage from 'component/Pages/UserSettingPage';
-import EditReviewPage from 'component/Pages/EditReviewPage';
+import EditReviewPage from 'component/Pages/ReviewEditPage';
 import GenreListPage from 'component/Pages/GenreListPage';
 
 const App = () => {
