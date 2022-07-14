@@ -23,7 +23,7 @@ const DetailContent = () => {
     const [hasLoginFailed, setHasLoginFailed] = useState(false);
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
-    var wishlistcheck = false;
+    let wishlistcheck = false;
         
     useEffect(() => {
         console.log("detail Movie")
