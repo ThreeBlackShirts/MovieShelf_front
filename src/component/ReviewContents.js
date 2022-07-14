@@ -3,16 +3,8 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import ReviewService from 'service/ReviewService';
-
-import { AiFillStar } from "react-icons/ai";
-import { AiOutlineStar } from "react-icons/ai";
-
-import { MdKeyboardArrowLeft } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
-
-import { BsBookmarkHeartFill } from "react-icons/bs";
-import { BsBookmarkHeart } from "react-icons/bs";
 
 import 'style/reviewpage.css';
 
@@ -20,7 +12,7 @@ function GoEditReview(data){
     const url = `/review/edit/${data.reviewId}`;
     return(
         <Link to={url} className="movie-edit-review-link">
-            <MdEdit className='reviewpage-comment-content-btn-icon' id='moviereview-content-editbtn-icon'/>
+            <MdEdit className='reviewpage-comment-content-btn-icon' id='moviereview-content-editbtn-icon' title="후기 수정"/>
         </Link>
     );
 }
@@ -64,7 +56,7 @@ function WriterCheck(info){
                     reviewId={info.reviewId}/>
             </div>
             <div className='reviewpage-comment-content-btn'>
-                <MdDelete className='reviewpage-comment-content-btn-icon' onClick={() => DeleteReview(info.reviewId)}/>
+                <MdDelete className='reviewpage-comment-content-btn-icon' title="후기 삭제" onClick={() => DeleteReview(info.reviewId)}/>
             </div>
         </div>
     )

@@ -8,11 +8,7 @@ import {MovieDetailTitle, MovieReview} from './ReviewContents';
 import 'style/reviewpage.css';
 
 import { MdKeyboardArrowLeft } from "react-icons/md";
-import { MdEdit } from "react-icons/md";
-import { MdDelete } from "react-icons/md";
-
-import { BsBookmarkHeartFill } from "react-icons/bs";
-import { BsBookmarkHeart } from "react-icons/bs";
+import { BsFileEarmarkPlus } from "react-icons/bs";
 
 
 const ReviewContents = () => {
@@ -68,7 +64,7 @@ const ReviewContents = () => {
         const url = `/review/write/${movieId}`;
         return(
             <Link to={url} className="movie-write-review-link" onClick={loginCheck}>
-                <MdEdit className='moviereview-content-btn-icon' id='moviereview-content-editbtn-icon'/>
+                <BsFileEarmarkPlus className='moviereview-content-btn-icon' id='moviereview-content-editbtn-icon' title='후기 작성하기'/>
             </Link>
         );
     }
@@ -96,9 +92,6 @@ const ReviewContents = () => {
                             <div className='moview-content-btn-div'>
                                 <div className='moviereview-content-btn'>
                                     <GoWriteReview />
-                                </div>
-                                <div className='moviereview-content-btn'>
-                                    <BsBookmarkHeart className='moviereview-content-btn-icon' id='moviereview-content-likebtn-icon'/>
                                 </div>
                             </div>
                         </div>

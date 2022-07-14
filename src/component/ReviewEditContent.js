@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import ReviewService from 'service/ReviewService';
-import MovieService from 'service/MovieService';
 
 import 'style/writereviewpage.css';
 
