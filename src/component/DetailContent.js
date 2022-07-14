@@ -63,6 +63,29 @@ const DetailContent = () => {
         }
     }
 
+    function loginAndReviewCheck(e) {
+        if(token == [] || token == null){
+            const url = `/login`;
+            alert("로그인이 필요합니다")
+            location.href="/login"
+        }else{
+            ReviewService
+                .searchReviewByUseremail(userEmail)
+                .then((response) => {
+                    if(response.data.data !== [] || response.data.data !== null){
+                        response.data.data.map( data => {
+                            if(data.movieId == movieId){
+                                alert("작성한 리뷰가 존재합니다. 수정 페이지로 이동합니다.")
+                                location.href=`/review/edit/${data.reviewId}`
+                            }
+                        })
+                    }
+                }).catch(() => {
+                    console.log("searchReviewByUseremail failed")
+                    alert("searchReviewByUseremail fail");
+                }); 
+        }
+    }
 
     function goBackBtn(){
         console.log("goback btn clicked!")
@@ -81,7 +104,7 @@ const DetailContent = () => {
     function GoWriteReview(){
         const url = `/review/write/${movieId}`;
         return(
-            <Link to={url} className="movie-write-review-link" onClick={loginCheck}>
+            <Link to={url} className="movie-write-review-link" onClick={loginAndReviewCheck}>
             <button id='detailpage-reviews-go-write-review'>리뷰 쓰러가기</button>
             </Link>
         );

@@ -45,25 +45,41 @@ const ReviewContents = () => {
                 }).catch(() => {
                     console.log("findReviewByMovieId failed")
                     alert("findReviewByMovieId fail");
-            });       
+                });       
         } else {
             console.log("movieId error")
             history.back()
         }
     },[]);
 
-    function loginCheck(e) {
-        if(this.state.token == [] || this.state.token == null){
+    function loginAndReviewCheck(e) {
+        if(token == [] || token == null){
             const url = `/login`;
             alert("로그인이 필요합니다")
             location.href="/login"
+        }else{
+            ReviewService
+                .searchReviewByUseremail(userEmail)
+                .then((response) => {
+                    if(response.data.data !== [] || response.data.data !== null){
+                        response.data.data.map( data => {
+                            if(data.movieId == movieId){
+                                alert("작성한 리뷰가 존재합니다. 수정 페이지로 이동합니다.")
+                                location.href=`/review/edit/${data.reviewId}`
+                            }
+                        })
+                    }
+                }).catch(() => {
+                    console.log("searchReviewByUseremail failed")
+                    alert("searchReviewByUseremail fail");
+                }); 
         }
     }
 
     function GoWriteReview(){
         const url = `/review/write/${movieId}`;
         return(
-            <Link to={url} className="movie-write-review-link" onClick={loginCheck}>
+            <Link to={url} className="movie-write-review-link" onClick={loginAndReviewCheck}>
                 <BsFileEarmarkPlus className='moviereview-content-btn-icon' id='moviereview-content-editbtn-icon' title='후기 작성하기'/>
             </Link>
         );

@@ -45,6 +45,11 @@
     margin: auto;
 }
 
+    #reviewpage-wrap a:visited{
+        text-decoration: none;
+        color: black;
+    }
+
 #reviewpage-moviereview{
     width: 100%;
 }
