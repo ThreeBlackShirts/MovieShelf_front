@@ -54,30 +54,38 @@ const WriteReviewComponent = () => {
         <div id='writereview-content'>
             <div id='gobackbtn'><MdKeyboardArrowLeft id='gobackbtn-icon' onClick={goBackBtn}/></div>
             <div className='writereview-movieinfo-box'>
-                <div className='writereview-movieinfo-detail'>
-                    <div className='writereview-movieinfo-detail-title'>
-                        <input id='reviewTitle' name='reviewTitle' value={reviewTitle} placeholder='한줄 후기' type='text' onChange={handleTitleChange}></input>
-                    </div>
-                    <div className='writereview-movieinfo-detail-rate'>
-                        <div className='movieinfo-detail-rating'><RiSubtractFill className='movieinfo-detail-rating-icon'/></div>
-                        <div className='rate-fillstart'><AiFillStar className='movieinfo-detail-rating-icon'/></div>
-                        <div className='rate-fillstart'><AiFillStar className='movieinfo-detail-rating-icon'/></div>
-                        <div className='rate-fillstart'><AiFillStar className='movieinfo-detail-rating-icon'/></div>
-                        <div className='rate-fillstart'><AiFillStar className='movieinfo-detail-rating-icon'/></div>
-                        <div className='rate-fillstart'><AiFillStar className='movieinfo-detail-rating-icon'/></div>
-                        <div className='movieinfo-detail-rating'><RiAddFill className='movieinfo-detail-rating-icon'/></div>
+                <div className='writereview-movieinfo-info'>
+                    <h2>영화 리뷰 작성</h2>
+                </div>
+                <div className='writereview-movieinfo-div'>
+                    <div className='writereview-movieinfo-detail-div'>
+                        <div className='writereview-movieinfo-detail'>
+                            <div className='writereview-movieinfo-detail-title'>
+                                <input id='reviewTitle' name='reviewTitle' value={reviewTitle} placeholder='한줄 후기' type='text' onChange={handleTitleChange}></input>
+                            </div>
+                            <div className='writereview-movieinfo-detail-rate'>
+                                <div className='movieinfo-detail-rating'><RiSubtractFill className='movieinfo-detail-rating-icon'/></div>
+                                <div className='rate-fillstart'><AiFillStar className='movieinfo-detail-rating-icon'/></div>
+                                <div className='rate-fillstart'><AiFillStar className='movieinfo-detail-rating-icon'/></div>
+                                <div className='rate-fillstart'><AiFillStar className='movieinfo-detail-rating-icon'/></div>
+                                <div className='rate-fillstart'><AiFillStar className='movieinfo-detail-rating-icon'/></div>
+                                <div className='rate-fillstart'><AiFillStar className='movieinfo-detail-rating-icon'/></div>
+                                <div className='movieinfo-detail-rating'><RiAddFill className='movieinfo-detail-rating-icon'/></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className='writereview-moviereview-box'>
-                <div className='writereview-moviereview-text-wrap'>
-                    <textarea className='writereview-moviereview-text' placeholder='영화가 어땠나요?' maxLength="300" name='reviewContent' value={reviewContent} onChange={handleContentChange}>
-                        
-                    </textarea>
-                </div>
+                
+                <div className='writereview-moviereview-box'>
+                    <div className='writereview-moviereview-text-wrap'>
+                        <textarea className='writereview-moviereview-text' placeholder='영화가 어땠나요?' maxLength="300" name='reviewContent' value={reviewContent} onChange={handleContentChange}>
+                            
+                        </textarea>
+                    </div>
 
-                <div className='writereview-moviereview-btn-wrap'>
-                    <button type='submit' className='writereview-moviereview-btn' onClick={writeReview}>저장</button>
+                    <div className='writereview-moviereview-btn-wrap'>
+                        <button type='submit' className='writereview-moviereview-btn' onClick={writeReview}>저장</button>
+                    </div>
                 </div>
             </div>
         </div>

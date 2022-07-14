@@ -65,7 +65,6 @@ function WriterCheck(info){
             </div>
             <div className='reviewpage-comment-content-btn'>
                 <MdDelete className='reviewpage-comment-content-btn-icon' onClick={() => DeleteReview(info.reviewId)}/>
-                {/* <button className='reviewpage-comment-content-btn-icon' onClick={() => DeleteReview(info.reviewId)}>x</button> */}
             </div>
         </div>
     )
