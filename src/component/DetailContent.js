@@ -22,6 +22,8 @@ const DetailContent = () => {
     const [checkwish, setCheckwish] = useState(true);
     const [hasLoginFailed, setHasLoginFailed] = useState(false);
     const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
+    var wishlistcheck = false;
         
     useEffect(() => {
         console.log("detail Movie")
@@ -87,10 +89,12 @@ const DetailContent = () => {
     
     function handleLWishList(){
         // let wishlist = document.getElementById('detailpage-info-likebtn-icon');
-        console.log("current this.state.checkwish1:" + checkwish)
-        if(checkwish){
+        console.log("current this.state.checkwish:" + checkwish)
+        // if(checkwish){
+        if(wishlistcheck){
             // wishlist.classList.add("background-color: pink");
-            setCheckwish(false)
+            // setCheckwish(false)
+            wishlistcheck = false
             console.log("찜 취소")
 
             WishListService.deleteWishList(userEmail, movieId)
@@ -103,7 +107,8 @@ const DetailContent = () => {
                 })
         }
         else{
-            checkwish = true;
+            // checkwish = true;
+            wishlistcheck = true;
             console.log("찜")
 
             WishListService.addWishList(userEmail,movieId)
