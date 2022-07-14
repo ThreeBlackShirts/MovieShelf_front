@@ -113,6 +113,7 @@
 
     .userinfo-content-shelf-list-item{
         display: inline-block;
+        vertical-align: top;
     }
 
         .userinfo-content-shelf-list-item-pic{
@@ -137,4 +138,10 @@
             text-align: center;
             margin: 0 12px 0 12px;
             cursor: pointer;
+            width: 120px;
+            height: 24px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space:nowrap;
+
         }

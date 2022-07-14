@@ -1,7 +1,6 @@
 import React, { Component, useEffect, useState } from 'react';
 import UserService from 'service/UserService';
 import { CgProfile } from "react-icons/cg";
-import { MdAdd } from "react-icons/md";
 
 import ReviewService from 'service/ReviewService';
 import WishListService from 'service/WishListService';
@@ -16,11 +15,6 @@ const UserContent = () => {
     const [reviewData, setReviewData] = useState([]);
     const [wishListData, setWishListData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-
-    const [movieData, setMovieData] = useState([]);
-    // const [reviewIdList,setReviewIdList] = useState([]);
-    // const [movieIdList,setMovieIdList] = useState([]);
-    // const [titleList,setTitleList] = useState([]);
 
     useEffect(() => {
         UserService
@@ -42,32 +36,28 @@ const UserContent = () => {
             .then((response) => {
                 console.log("searchMyReview success")
                 setReviewData(response.data.data)
-
-                console.log("ReviewService: ")
+                console.log("ReviewService")
                 console.log(reviewData)
+
                 setIsLoading(false)
-                // sliceReviewData(reviewData)
             }).catch((error) => {
                 console.log("review error")
             });
-
     }
 
     function searchAllWishList(){
        WishListService
             .searchWishListByUserEmail(localStorage.getItem("authenticatedUser"))
             .then((response) => {
-                // console.log("searchMyWishList success")
-                // console.log(response.data.data)
                 setWishListData(response.data.data)
                 console.log("WishListService: ")
                 console.log(wishListData)
+
                 setIsLoading(false)
             }).catch((error) => {
                 console.log("review error")
             });
     }
-    
 
     /**
         function sliceReviewData(data){
@@ -86,7 +76,7 @@ const UserContent = () => {
             // console.log(moviePoster[i]);
         }
     }
-
+    
     function getMovieById(movieId){
         MovieService
         .detailById(movieId)
@@ -137,8 +127,8 @@ const UserContent = () => {
                                 <td><a onClick={toUserSetting}>내 정보 수정</a></td>
                             </tr>
                             <tr>
-                                <td>내 책장 속 영화: <span>N1</span>개</td>
-                                <td>리뷰한 영화: <span id={reviewData.length} key={reviewData.length}>{reviewData.length}</span>개</td>
+                                <td>내 책장 속 영화: <span id={reviewData.length} key={reviewData.length}>{reviewData.length}</span>개</td>
+                                <td>찜한 영화: <span id={wishListData.length} key={wishListData.length}>{wishListData.length}</span>개</td>
                             </tr>
                         </tbody>
                     </table>
@@ -150,10 +140,11 @@ const UserContent = () => {
                     <div className='userinfo-content-shelf-list-name'>후기를 작성한 영화</div>
                     <div className='userinfo-content-shelf-list-item-wrap'>
                         {isLoading ? "Loading..." : 
-                        reviewData.length == 0 ? "찜한 영화가 없습니다" : reviewData.map( review => (
+                        reviewData.length == 0 ? "등록된 후기가 없습니다." : reviewData.map( review => (
                             <MyMovieReview  key={review.reviewId}
+                                movieId={review.movieId}
                                 title={review.title}
-                                movieId={review.movieId} 
+                                moviePoster={review.moviePoster} 
                             />
                         ))}
 
@@ -166,9 +157,13 @@ const UserContent = () => {
                     {isLoading ? "Loading..." : 
                         wishListData.length == 0 ? "등록된 리뷰가 없습니다" : wishListData.map( wishlist => (
                             <MyWishList  key={wishlist.movieId}
-                                movieId={wishlist.movieId}
+                                movieId ={wishlist.movieId}
+                                movieTitle ={wishlist.movieTitle}
+                                moviePoster = {wishlist.moviePoster}
                             />
                         ))}
+
+                        
                     </div>
                 </div>
 
