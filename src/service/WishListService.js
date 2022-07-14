@@ -22,9 +22,7 @@ class WishListService {
     deleteWishList(userEmail, movieId){
         console.log("wishlistService add wishlist")
         AuthenticationService.setupAxiosInterceptors();
-        let data = {
-            userEmail: userEmail
-        }
+
         return axios.delete(WISHLIST_API_BASE_URL + "/" + movieId,{
             headers: {
                 "Content-Type": `application/json`,
