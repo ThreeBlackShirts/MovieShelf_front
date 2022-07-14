@@ -1,10 +1,10 @@
 import React, { Component, useEffect, useState } from 'react';
 import UserService from 'service/UserService';
 import { CgProfile } from "react-icons/cg";
-import { MdAdd } from "react-icons/md";
 
 import ReviewService from 'service/ReviewService';
-import {MyReviewList} from './UserReviewContent';
+import WishListService from 'service/WishListService';
+import {MyMovieReview, MyWishList} from './UserReviewContent';
 
 import MovieService from 'service/MovieService';
 
@@ -13,8 +13,8 @@ const UserContent = () => {
 
     const [users, setUsers] = useState([]);
     const [reviewData, setReviewData] = useState([]);
+    const [wishListData, setWishListData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [movie, setMovie] = useState([]);
 
     useEffect(() => {
         UserService
@@ -26,98 +26,79 @@ const UserContent = () => {
             }).catch((error) => {
                 console.log(error.response)
             });
-
+            searchAllReview();
+            searchAllWishList();
+    },[]);    
+    
+    function searchAllReview(){
         ReviewService
             .searchReviewByUseremail(localStorage.getItem("authenticatedUser"))
             .then((response) => {
                 console.log("searchMyReview success")
                 setReviewData(response.data.data)
-                console.log("ReviewService: ")
-                console.log(response.data.data)
+                console.log("ReviewService")
                 console.log(reviewData)
-//                console.log(reviewData.length)
-//                console.log(reviewData[0].title)
-                setIsLoading(false)
-                sliceReviewData(reviewData)
 
+                setIsLoading(false)
             }).catch((error) => {
                 console.log("review error")
-   //             console.log(error.response)
             });
-
-            console.log("getMovieById");
-            console.log(reviewData)
-
-            
-            // for( let i =0;i<reviewData.length;i++)
-            // {
-            //     getMovieById(reviewData[i].movieId);
-            // }
-
-            console.log("-------movie data: "+ movie +"-------");
-
-    },[]);
-
-    function getMovieById(){
-        MovieService
-        .detailById(reviewData[0].movieId)
-        .then((response) => {
-            console.log(response.data.data)
-            setMovie(response.data.data)
-        }).catch(() => {
-            console.log("findMovieId failed")
-            alert("findMovieId fail");
-        }); 
     }
 
-    function sliceReviewData(data){
-        let reviewId={};
-        let movieId={};
-        let user={};
-        let title={};
+    function searchAllWishList(){
+       WishListService
+            .searchWishListByUserEmail(localStorage.getItem("authenticatedUser"))
+            .then((response) => {
+                setWishListData(response.data.data)
+                console.log("WishListService: ")
+                console.log(wishListData)
+
+                setIsLoading(false)
+            }).catch((error) => {
+                console.log("review error")
+            });
+    }
+
+    /**
+        function sliceReviewData(data){
+        // setReviewData(response.data.data)
         console.log("sliceReviewData");
-        for(let i = 0; i < data.length; i++)
+        for(var i = 0; i < data.length; i++)
         {
-            reviewId[i] = data[i].reviewId;
-            movieId[i] = data[i].movieId;
-            user[i] = data[i].user;
-            title[i] = data[i].title;
-            console.log(reviewId[i]);
+            reviewIdList[i] = data[i].reviewId;
+            movieIdList[i] = data[i].movieId;
+            
+            titleList[i] = data[i].title;
+            // moviePoster[i] = getMovieById(movieIdList[i]);
+            getMovieById(movieIdList[i],i);
+            console.log(titleList[i] + "(" +reviewIdList[i]+ ")" + ":" + movieIdList[i], );
+            // console.log("moviePoster :")
+            // console.log(moviePoster[i]);
         }
     }
-
-
+    
     function getMovieById(movieId){
-        console.log("getMovieById");
         MovieService
         .detailById(movieId)
         .then((response) => {
             console.log(response.data.data)
-            setMovie(response.data.data)
+            setMovieData(response.data.data)
         }).catch(() => {
             console.log("findMovieId failed")
             alert("findMovieId fail");
         }); 
     }
-    /*
-    function searchAllReview(){
-        ReviewService
-            .searchAllReview()
+
+    function getMoviePosterById(movieId){
+        MovieService
+            .detailById(movieId)
             .then((response) => {
-                console.log("success")
-                console.log(response.data)
-            }).catch((error) => {
-                console.log("error")
-                console.log(error.response)
+                console.log("getting movie poster")
+                return response.data.data.moviePoster;
+            }).catch(() => {
+                console.log("getmoviePosterById error")
             })
     }
-
-    */
-
-    /**
-        function toWriteReview(){
-            window.location.href="/writereview"
-        }
      */
 
     function toUserSetting(){
@@ -146,37 +127,45 @@ const UserContent = () => {
                                 <td><a onClick={toUserSetting}>내 정보 수정</a></td>
                             </tr>
                             <tr>
-                                <td>내 책장 속 영화: <span>N1</span>개</td>
-                                <td>리뷰한 영화: <span>N2</span>개</td>
+                                <td>내 책장 속 영화: <span id={reviewData.length} key={reviewData.length}>{reviewData.length}</span>개</td>
+                                <td>찜한 영화: <span id={wishListData.length} key={wishListData.length}>{wishListData.length}</span>개</td>
                             </tr>
                         </tbody>
-                        
                     </table>
-                    
                 </div>
+
             </div>
             <div className="userinfo-content-shelf">
                 <div className="userinfo-content-shelf-list">
                     <div className='userinfo-content-shelf-list-name'>후기를 작성한 영화</div>
                     <div className='userinfo-content-shelf-list-item-wrap'>
+                        {isLoading ? "Loading..." : 
+                        reviewData.length == 0 ? "등록된 후기가 없습니다." : reviewData.map( review => (
+                            <MyMovieReview  key={review.reviewId}
+                                movieId={review.movieId}
+                                title={review.title}
+                                moviePoster={review.moviePoster} 
+                            />
+                        ))}
 
-                        <div className='userinfo-content-shelf-list-item'>
-
-                        </div>
                     </div>
                 </div>
-
 
                 <div className="userinfo-content-shelf-list">
                     <div className='userinfo-content-shelf-list-name'>마음에 드는 영화</div>
                     <div className='userinfo-content-shelf-list-item-wrap'>
-                        <div className='userinfo-content-shelf-list-item'>
-                            <div className='userinfo-content-shelf-list-item-pic'></div>
-                            <div className='userinfo-content-shelf-list-item-info'></div>
-                        </div>
+                    {isLoading ? "Loading..." : 
+                        wishListData.length == 0 ? "등록된 리뷰가 없습니다" : wishListData.map( wishlist => (
+                            <MyWishList  key={wishlist.movieId}
+                                movieId ={wishlist.movieId}
+                                movieTitle ={wishlist.movieTitle}
+                                moviePoster = {wishlist.moviePoster}
+                            />
+                        ))}
+
+                        
                     </div>
                 </div>
-
 
             </div>
             
@@ -186,18 +175,20 @@ const UserContent = () => {
 
 export default UserContent;
 
-//<MdAdd className='shelf-contents-object-icon' onClick={toWriteReview}/>
 
 /**
- *                 <div className="userinfo-content-shelf-list">
-                    <div className='userinfo-content-shelf-list-name'>마음에 드는 후기</div>
-                    <div className='userinfo-content-shelf-list-item-wrap'>
+
+
                         <div className='userinfo-content-shelf-list-item'>
-                            <div className='userinfo-content-shelf-list-item-pic'></div>
-                            <div className='userinfo-content-shelf-list-item-info'></div>
+                            <div className='userinfo-content-shelf-list-item-pic' id={moviePoster[0]} key={moviePoster[0]}>    
+                                <img src={moviePoster[0]}/></div>
+                            <div className='userinfo-content-shelf-list-item-info'>{titleList[0]}    </div>
                         </div>
-                    </div>
-                </div>
+                        <div className='userinfo-content-shelf-list-item'>
+                            <div className='userinfo-content-shelf-list-item-pic' id={moviePoster[1]} key={moviePoster[1]}>
+                            <img src={moviePoster[1]}/></div>
+                            <div className='userinfo-content-shelf-list-item-info'>{titleList[1]}    </div>
+                        </div>
  * 
  * 
  * 
@@ -208,8 +199,11 @@ export default UserContent;
                                     movieId={review.movieId} 
                                 />
                             ))}
-<<<<<<< HEAD
-=======
 
->>>>>>> 269ff53542e6d8b55f71dd574d17b421fcb9b96f
+                                {reviewData.length = 0  ? "등록된 리뷰가 없습니다" : reviewData.data.map(reviews => (
+                                    <MyReviewList key = {reviews.reviewId}
+                                    reviewId={reviews.reviewId}
+                                    title={reviews.title}
+                                    />
+                            ))}
  */
