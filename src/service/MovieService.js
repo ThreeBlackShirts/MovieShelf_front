@@ -12,16 +12,8 @@ class MovieService {
 		});
 	}
 
-	detail(target) {
-		return axios.post(MOVIE_API_BASE_URL+"/detailed", JSON.stringify(target), {
-			headers: {
-				"Content-Type": 'application/json',
-			},
-		});
-	}
-
 	detailById(movieId) {
-		return axios.get(MOVIE_API_BASE_URL+"/detailed/movieId/" + movieId , {
+		return axios.post(MOVIE_API_BASE_URL+"/detailed/" + movieId, {
 			headers: {
 				"Content-Type": 'application/json',
 			},

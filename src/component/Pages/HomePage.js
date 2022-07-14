@@ -26,10 +26,7 @@ function onKeyPress(e){
 function search() {
     const input = document.getElementById("search-input").value
     if(input !== null && input !== ""){
-        if(window.localStorage.getItem("input") !== null)
-            window.localStorage.removeItem("input")
-        window.localStorage.setItem('input', input)
-        location.href = "/list"
+        location.href = `/list/?search=${input}`
     }else
         alert("검색어를 입력해주세요.")
 }

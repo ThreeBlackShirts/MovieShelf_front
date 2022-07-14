@@ -1,5 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+
+import ReviewService from 'service/ReviewService';
+
 import { AiFillStar } from "react-icons/ai";
 import { AiOutlineStar } from "react-icons/ai";
 
@@ -12,10 +16,24 @@ import { BsBookmarkHeart } from "react-icons/bs";
 
 import 'style/reviewpage.css';
 
+function GoEditReview(data){
+    const url = `/review/edit/${data.reviewId}`;
+    return(
+        <Link to={url} className="movie-edit-review-link">
+            <MdEdit className='reviewpage-comment-content-btn-icon' id='moviereview-content-editbtn-icon'/>
+        </Link>
+    );
+}
 
-function setLocation(title) {
-    localStorage.setItem('target', title)
-    location.href = '/detail'
+function DeleteReview(reviewId){
+    console.log("delete review clicked")
+    ReviewService.deleteReview(reviewId)
+        .then(()=> {
+            alert("리뷰가 삭제되었습니다.");
+            location.reload()
+        }).catch((error) => {
+            console.log(error.response)
+        });
 }
 
 function MovieTitleReview({userNickname, title}) {
@@ -38,7 +56,22 @@ function MovieDetailTitle({title}) {
     )
 }
 
-function MovieReview({userNickname, title, content}) {
+function WriterCheck(info){
+    return(            
+        <div className='reviewpage-comment-content-btn-div'>                
+            <div className='reviewpage-comment-content-btn'>
+                <GoEditReview 
+                    reviewId={info.reviewId}/>
+            </div>
+            <div className='reviewpage-comment-content-btn'>
+                <MdDelete className='reviewpage-comment-content-btn-icon' onClick={() => DeleteReview(info.reviewId)}/>
+                {/* <button className='reviewpage-comment-content-btn-icon' onClick={() => DeleteReview(info.reviewId)}>x</button> */}
+            </div>
+        </div>
+    )
+}
+
+function MovieReview({reviewId, writer, user, userNickname, title, content}) {
     return (
         <div className='reviewpage-comment'>
             <div className='reviewpage-comment-user'>
@@ -46,12 +79,7 @@ function MovieReview({userNickname, title, content}) {
             </div>
             <div className='reviewpage-comment-title'>{title}</div>
             <div className='reviewpage-comment-content'>{content}</div>
-            <div className='reviewpage-comment-content-btn'>
-                <MdEdit className='reviewpage-comment-content-btn-icon'/>
-            </div>
-            <div className='reviewpage-comment-content-btn'>
-                <MdDelete className='reviewpage-comment-content-btn-icon'/>
-            </div>
+            {writer !== user ? "" : <WriterCheck reviewId={reviewId} /> }
         </div>
     )
 }

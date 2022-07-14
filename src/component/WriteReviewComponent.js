@@ -56,7 +56,7 @@ const WriteReviewComponent = () => {
             <div className='writereview-movieinfo-box'>
                 <div className='writereview-movieinfo-detail'>
                     <div className='writereview-movieinfo-detail-title'>
-                        <input id='reviewTitle' name='reviewTitle' value={reviewTitle} placeholder='후기 제목' type='text' onChange={handleTitleChange}></input>
+                        <input id='reviewTitle' name='reviewTitle' value={reviewTitle} placeholder='한줄 후기' type='text' onChange={handleTitleChange}></input>
                     </div>
                     <div className='writereview-movieinfo-detail-rate'>
                         <div className='movieinfo-detail-rating'><RiSubtractFill className='movieinfo-detail-rating-icon'/></div>

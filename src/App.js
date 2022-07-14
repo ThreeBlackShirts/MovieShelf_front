@@ -31,12 +31,12 @@ const App = () => {
       <Route path="/main" element={<MainPage />} />
       <Route path="/genre" element={<GenreListPage />} />
       <Route path="/list" element={<ListPage />} />
-      <Route path="/detail" element={<DetailPage />} />
+      <Route path="/detail/:movieid" element={<DetailPage />} />
       <Route path="/userinfo" element={<UserInfoPage />} />
       <Route path="/review/:movieid" element={<ReviewPage />} />
-      <Route path="/writereview/:movieid" element={<WriteReviewPage />} />
+      <Route path="/review/write/:movieid" element={<WriteReviewPage />} />
+      <Route path="/reivew/edit/:reviewid" element={<EditReviewPage />} />
       <Route path="/usersetting" element={<UserSettingPage />} />
-      <Route path="/editreview" element={<EditReviewPage />} />
     </Routes>
   );
 };

@@ -56,17 +56,6 @@ const ReviewContents = () => {
         }
     },[]);
 
-    function deleteReview(){
-        console.log("delete review clicked")
-        ReviewService.deleteReview(this.state.reviewId)
-            .then(()=> {
-                alert("삭제 완료");
-                document.location.href="/userinfo";
-            }).catch((error) => {
-                console.log(error.response)
-            });
-    }
-
     function loginCheck(e) {
         if(this.state.token == [] || this.state.token == null){
             const url = `/login`;
@@ -76,16 +65,12 @@ const ReviewContents = () => {
     }
 
     function GoWriteReview(){
-        const url = `/writereview/${movieId}`;
+        const url = `/review/write/${movieId}`;
         return(
             <Link to={url} className="movie-write-review-link" onClick={loginCheck}>
                 <MdEdit className='moviereview-content-btn-icon' id='moviereview-content-editbtn-icon'/>
             </Link>
         );
-    }
-
-    function toEditReview(){
-        //document.location.href = '/editreview' + this.state.reviewId;
     }
 
     function goBackBtn(){
@@ -113,9 +98,6 @@ const ReviewContents = () => {
                                     <GoWriteReview />
                                 </div>
                                 <div className='moviereview-content-btn'>
-                                    <MdDelete className='moviereview-content-btn-icon' id='moviereview-content-delbtn-icon' onClick={deleteReview}/>
-                                </div>
-                                <div className='moviereview-content-btn'>
                                     <BsBookmarkHeart className='moviereview-content-btn-icon' id='moviereview-content-likebtn-icon'/>
                                 </div>
                             </div>
@@ -126,7 +108,10 @@ const ReviewContents = () => {
                 <div id='reviewpage-comment-wrap'>
                     {isLoading ? "Loading..." : 
                         reviewContent.length == 0 ? "등록된 리뷰가 없습니다" : reviewContent.map( review => (
-                            <MovieReview  key={review.title}
+                            <MovieReview  key={review.reviewId}
+                                reviewId={review.reviewId}
+                                user={userEmail}
+                                writer={review.writer}
                                 userNickname={review.user}
                                 title={review.title}
                                 content={review.content} 
