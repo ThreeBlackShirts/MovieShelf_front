@@ -1,5 +1,5 @@
-import React, { Component, useEffect, useState } from 'react';
-import { useParams } from "react-router-dom";
+import React, { useState } from 'react';
+import { useParams, useNavigate } from "react-router-dom";
 import ReviewService from 'service/ReviewService';
 
 import 'style/writereviewpage.css';
@@ -8,13 +8,11 @@ import { MdKeyboardArrowLeft } from "react-icons/md";
 import { RiAddFill } from "react-icons/ri";
 import { RiSubtractFill } from "react-icons/ri";
 import { AiFillStar } from "react-icons/ai";
-import { AiOutlineStar } from "react-icons/ai";
 
 
 const WriteReviewComponent = () => {
-
+    let navigate = useNavigate();
     const [userEmail, setUserEmail] = useState(localStorage.getItem("authenticatedUser") || '');
-    const [token, setToken] = useState(localStorage.getItem("token") || '');
     const [movieId, setMovieId] = useState(useParams().movieid);
     const [reviewTitle, setReviewTitle] = useState("");
     const [reviewContent, setReviewContent] = useState("");
@@ -33,20 +31,20 @@ const WriteReviewComponent = () => {
                 .writeReview(userEmail, movieId, reviewTitle, reviewContent)
                 .then(() => {
                     alert("리뷰가 등록되었습니다!")
-                    history.back()
+                    navigate(-1)
                 }).catch(() => {
                     console.log("writeReview failed")
                     alert("writeReview fail");
             });       
         } else {
             console.log("movieId error")
-            history.back()
+            navigate(-1)
         }
     }
 
     function goBackBtn(){
         console.log("goback btn clicked!")
-        history.back()
+        navigate(-1)
     }
 
 

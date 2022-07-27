@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { Component } from 'react';
 import UserService from 'service/UserService';
 
 import 'style/usersettingpage.css';
@@ -68,7 +68,6 @@ class UserSettingContent extends Component {
     }
 
     deleteUser() {
-
         console.log("UserSetting: deleteUser")
         this.state.userEmail = localStorage.getItem("authenticatedUser")
         console.log(this.state.userEmail)

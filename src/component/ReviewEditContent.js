@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import ReviewService from 'service/ReviewService';
 
 import 'style/writereviewpage.css';
@@ -11,7 +11,7 @@ import { AiFillStar } from "react-icons/ai";
 import { AiOutlineStar } from "react-icons/ai";
 
 const EditReviewContent = () => {
-
+    let navigate = useNavigate();
     const [userEmail, setUserEmail] = useState(localStorage.getItem("authenticatedUser") || '');
     const [token, setToken] = useState(localStorage.getItem("token") || '');
     const [reviewId, setReviewId] = useState(useParams().reviewid);
@@ -32,7 +32,7 @@ const EditReviewContent = () => {
             });    
         } else {
             console.log("reviewId error")
-            history.back()
+            navigate(-1)
         }
     },[]);
 
@@ -50,8 +50,7 @@ const EditReviewContent = () => {
             .editReview(reviewId, reviewTitle, reviewContent)
             .then(() => {
                 alert("수정 완료");
-                // location.href=`/review/${movieId}`
-                history.back()
+                navigate(-1)
             }).catch((error) => {
                 console.log("edit error")
             })

@@ -1,16 +1,13 @@
 import React, { Component, useEffect, useState } from 'react';
-import UserService from 'service/UserService';
+import { useNavigate } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
 
+import UserService from 'service/UserService';
 import ReviewService from 'service/ReviewService';
 import WishListService from 'service/WishListService';
-import {MyMovieReview, MyWishList} from './UserReviewContent';
-
-import MovieService from 'service/MovieService';
-
 
 const UserContent = () => {
-
+    let navigate = useNavigate();
     const [users, setUsers] = useState([]);
     const [reviewData, setReviewData] = useState([]);
     const [wishListData, setWishListData] = useState([]);
@@ -59,50 +56,38 @@ const UserContent = () => {
             });
     }
 
-    /**
-        function sliceReviewData(data){
-        // setReviewData(response.data.data)
-        console.log("sliceReviewData");
-        for(var i = 0; i < data.length; i++)
-        {
-            reviewIdList[i] = data[i].reviewId;
-            movieIdList[i] = data[i].movieId;
-            
-            titleList[i] = data[i].title;
-            // moviePoster[i] = getMovieById(movieIdList[i]);
-            getMovieById(movieIdList[i],i);
-            console.log(titleList[i] + "(" +reviewIdList[i]+ ")" + ":" + movieIdList[i], );
-            // console.log("moviePoster :")
-            // console.log(moviePoster[i]);
-        }
+    function toUserSetting(){
+        navigate("/usersetting")
     }
     
-    function getMovieById(movieId){
-        MovieService
-        .detailById(movieId)
-        .then((response) => {
-            console.log(response.data.data)
-            setMovieData(response.data.data)
-        }).catch(() => {
-            console.log("findMovieId failed")
-            alert("findMovieId fail");
-        }); 
+    function setReviewLocation(movieId) {
+        navigate(`/review/${movieId}`)
     }
-
-    function getMoviePosterById(movieId){
-        MovieService
-            .detailById(movieId)
-            .then((response) => {
-                console.log("getting movie poster")
-                return response.data.data.moviePoster;
-            }).catch(() => {
-                console.log("getmoviePosterById error")
-            })
+    
+    function setWishListLocation(movieId) {
+        navigate(`/detail/${movieId}`)
+    } 
+    
+    function MyMovieReview({movieId, title, moviePoster}) {
+        return (
+            <div className='userinfo-content-shelf-list-item'>
+                <a onClick={() => setReviewLocation(movieId)}>
+                    <div className="userinfo-content-shelf-list-item-pic"><img src={moviePoster}/></div>
+                    <div className="userinfo-content-shelf-list-item-info">{title}</div>
+                </a>
+            </div>
+        )
     }
-     */
-
-    function toUserSetting(){
-        window.location.href="/usersetting"
+    
+    function MyWishList({movieId, movieTitle, moviePoster}) {
+        return (
+            <div className='userinfo-content-shelf-list-item'>
+                <a onClick={() => setWishListLocation(movieId)}>
+                    <div className="userinfo-content-shelf-list-item-pic"><img src={moviePoster}/></div>
+                    <div className="userinfo-content-shelf-list-item-info">{movieTitle}</div>
+                </a>
+            </div>
+        )
     }
 
     return (

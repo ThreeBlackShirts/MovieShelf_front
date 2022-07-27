@@ -51,7 +51,6 @@ class MainContent extends Component {
                 });
         }else{
             console.log("target error")
-            history.back()
         }
     }
 

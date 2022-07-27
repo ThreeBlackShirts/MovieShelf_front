@@ -1,5 +1,5 @@
-import React, { Component, useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 
 import {SearchMovieResult} from './MovieContent';
 import MovieService from 'service/MovieService';
@@ -8,12 +8,14 @@ import 'style/listpage.css';
 import { FiSearch } from "react-icons/fi";
 
 const ListContent = () => {
-    const [searchParams, setSearchParams] = useSearchParams();
-    const [searchInput, serSearchInput] = useState(searchParams.get('search'));
+    let navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+    const [searchInput, setSearchInput] = useState(searchParams.get('search'));
     const [isLoading, setIsLoading] = useState(true);
     const [movie, setMovie] = useState([]);
-    const [hasLoginFailed, setHasLoginFailed] = useState(false);
-    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+    const [isNull, setIsNull] = useState(false);
+
+    const onChangeInput = e => setSearchInput(e.target.value);
         
     useEffect(() => {
         console.log("search start")
@@ -24,21 +26,20 @@ const ListContent = () => {
                 .then((response) => {
                     console.log(response.data.data)
                     if(response.data.data == [] || response.data.data == null || response.data.data.length == 0){
-                        alert("검색 결과가 없습니다. 다시 검색해주세요.")
-                        history.back()
+                        setIsNull(true)
+                    } else {
+                        setMovie(response.data.data)
+                        console.log(movie)
                     }
-                    setMovie(response.data.data)
                     setIsLoading(false)
-                    console.log(movie)
                 }).catch(() => {
                     console.log("search failed")
                 });
         }else{
             console.log("input to listpage error")
-            history.back()
+            navigate(-1)
         }
     },[]);
-    
     
     function onKeyPress(e) {
         if(e.key == 'Enter')
@@ -46,20 +47,26 @@ const ListContent = () => {
     }
 
     function setInput() {
-        let url = `/list/?search=${document.getElementById("listpage-search-text").value}`
-        location.href = url
+        location.href = `/list/?search=${searchInput}`
+    }
+
+    function SearchNull() {
+        return (
+            <div id='listpage-content-search-null'>'{searchInput}'에 대한검색 결과가 없습니다.</div>
+        )
     }
 
     return (
         <div className="listpage-content">
             <div className="listpage-content-search">
                 <div className="listpage-content-search-btnwrap">
-                    <input type="text" id="listpage-search-text" placeholder={" '" + searchInput + "'를 검색한 결과입니다"} onKeyUp={onKeyPress}></input>
+                    <input type="text" id="listpage-search-text" placeholder={" '" + searchInput + "'를 검색한 결과입니다"} onKeyUp={onKeyPress} onChange={onChangeInput}></input>
                     <FiSearch className="listpage-search-btn-icon" onClick={setInput}/>
                 </div>
             </div>
             <div className="listpage-content-result">
                 <div>
+                    { isNull ? SearchNull() : null}
                     { isLoading ? "Loading..." : movie.map( movie => (
                         <SearchMovieResult   key={movie.movieId}
                             id = {movie.movieId}

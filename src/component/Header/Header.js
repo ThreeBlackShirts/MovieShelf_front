@@ -1,6 +1,7 @@
 import React from 'react';
 import AuthenticationService from 'service/AuthenticationService';
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 
 import 'style/header.css'
 
@@ -8,46 +9,48 @@ import { FiSearch } from "react-icons/fi";
 import { ImBooks } from "react-icons/im";
 import { IoIosSettings } from "react-icons/io";
 
-
-function toHomePage(){
-    window.location.href="/main"
-}
-
-function toGenreListPage(){
-    window.location.href="/genre"
-}
-
-function toUserInfoPage(){
-    window.location.href="/userinfo"
-}
-
-function onKeyPress(e){
-    if(e.key == 'Enter')
-        search()
-}
-
-function search() {
-    const input = document.getElementById("search-input").value
-    if(input !== null && input !== ""){
-        location.href = `/list/?search=${input}`
-    }else
-        alert("검색어를 입력해주세요.")
-}
-
-function toUserSettingPage(){
-    window.location.href="/usersetting"
-}
-
-function doLogout(){
-    window.location.href="/logout"
-}
-
-function doLogin(){
-    window.location.href="/login"
-}
-
 const Header = () => {
-    const [onLogin] = useState(AuthenticationService.isUserLoggedIn);
+    let navigate = useNavigate();
+    const [onLogin, setOnLogin] = useState(AuthenticationService.isUserLoggedIn);
+
+    function toHomePage(){
+        navigate("/main")
+    }
+    
+    function toGenreListPage(){
+        navigate("/genre")
+    }
+    
+    function toUserInfoPage(){
+        navigate("/userinfo")
+    }
+
+    function onKeyPress(e){
+        if(e.key == 'Enter')
+            search()
+    }
+    
+    function toUserSettingPage(){
+        navigate("/usersetting")
+    }
+    
+    function doLogout(){
+        AuthenticationService.logout()
+        alert("로그아웃 되었습니다.")
+        setOnLogin(false);
+    }
+    
+    function doLogin(){
+        navigate("/login")
+    }
+    
+    function search() {
+        const input = document.getElementById("search-input").value
+        if(input !== null && input !== ""){
+            location.href = `/list/?search=${input}`
+        }else
+            alert("검색어를 입력해주세요.")
+    }
 
     return (
         <div className="header-container">

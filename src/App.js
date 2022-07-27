@@ -5,7 +5,6 @@ import HomePage from 'component/Pages/HomePage';
 import LoginPage from 'component/Pages/LoginPage';
 import SignUpPage from 'component/Pages/SignUpPage';
 import ListPage from 'component/Pages/ListPage';
-import LogoutComponent from 'component/LogoutComponent';
 import MainPage from 'component/Pages/MainPage';
 import DetailPage from 'component/Pages/DetailPage';
 import UserInfoPage from 'component/Pages/UserInfoPage';
@@ -25,7 +24,6 @@ const App = () => {
       </Route> */}
       <Route index element={<HomePage/>} />
       <Route path="/*" element={<HomePage/>} />
-      <Route path="/logout" element={<LogoutComponent/>} />
       <Route path="/login" exact element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/main" element={<MainPage />} />

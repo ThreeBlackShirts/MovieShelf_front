@@ -1,5 +1,6 @@
-import React, { Component, useEffect, useState } from 'react';
-import { Link, useParams } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from "react-router-dom";
+import AuthenticationService from 'service/AuthenticationService';
 import MovieService from 'service/MovieService';
 import ReviewService from 'service/ReviewService';
 import {MovieDetailTitle, MovieReview} from './ReviewContents';
@@ -12,19 +13,13 @@ import { BsFileEarmarkPlus } from "react-icons/bs";
 
 
 const ReviewContents = () => {
-
+    let navigate = useNavigate();
     const [userEmail, setUserEmail] = useState(localStorage.getItem("authenticatedUser") || '');
-    const [token, setToken] = useState(localStorage.getItem("token") || '');
+    const [onLogin] = useState(AuthenticationService.isUserLoggedIn);
     const [isLoading, setIsLoading] = useState(true);
     const [movieId, setMovieId] = useState(useParams().movieid);
     const [movie, setMovie] = useState([]);
     const [reviewContent, setReviewContent] = useState([]);
-    const [hasLoginFailed, setHasLoginFailed] = useState(false);
-    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-
-    const onClick = () => {
-        setReviewContent()
-    }
 
     useEffect(() => {
         if(movieId !== null && movieId !== ""){
@@ -53,21 +48,27 @@ const ReviewContents = () => {
     },[]);
 
     function loginAndReviewCheck(e) {
-        if(token == [] || token == null){
-            const url = `/login`;
+        if(!onLogin){
             alert("로그인이 필요합니다")
-            location.href="/login"
+            navigate("/login")
         }else{
             ReviewService
                 .searchReviewByUseremail(userEmail)
                 .then((response) => {
                     if(response.data.data !== [] || response.data.data !== null){
+                        let isWrited = false
                         response.data.data.map( data => {
                             if(data.movieId == movieId){
+                                isWrited = true
                                 alert("작성한 리뷰가 존재합니다. 수정 페이지로 이동합니다.")
-                                location.href=`/review/edit/${data.reviewId}`
+                                navigate(`/review/edit/${data.reviewId}`)
                             }
                         })
+                        if(!isWrited){
+                            navigate(`/review/write/${movieId}`)
+                        }
+                    } else {
+                        navigate(`/review/write/${movieId}`)
                     }
                 }).catch(() => {
                     console.log("searchReviewByUseremail failed")
@@ -77,11 +78,8 @@ const ReviewContents = () => {
     }
 
     function GoWriteReview(){
-        const url = `/review/write/${movieId}`;
         return(
-            <Link to={url} className="movie-write-review-link" onClick={loginAndReviewCheck}>
-                <BsFileEarmarkPlus className='moviereview-content-btn-icon' id='moviereview-content-editbtn-icon' title='후기 작성하기'/>
-            </Link>
+            <BsFileEarmarkPlus className='moviereview-content-btn-icon' id='moviereview-content-editbtn-icon' title='후기 작성하기' onClick={loginAndReviewCheck}/>
         );
     }
 

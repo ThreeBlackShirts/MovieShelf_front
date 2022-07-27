@@ -1,8 +1,9 @@
-import React, { Component, useEffect, useState } from 'react';
-import { Link, useParams } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from "react-router-dom";
 
 import {MovieDetailTitle, MovieDetail, MovieDetailTrailer, MovieDetailStillcut} from './MovieContent';
 import {MovieTitleReview} from './ReviewContents';
+import AuthenticationService from 'service/AuthenticationService';
 import MovieService from 'service/MovieService';
 import ReviewService from 'service/ReviewService';
 import WishListService from 'service/WishListService';
@@ -14,16 +15,15 @@ import { BsBookmarkHeartFill } from "react-icons/bs";
 const DetailContent = () => {
 
     const [userEmail, setUserEmail] = useState(localStorage.getItem("authenticatedUser") || '');
-    const [token, setToken] = useState(localStorage.getItem("token") || '');
+    const [onLogin] = useState(AuthenticationService.isUserLoggedIn);
     const [isLoading, setIsLoading] = useState(true);
     const [movieId, setMovieId] = useState(useParams().movieid);
     const [movie, setMovie] = useState([]);
     const [reviewContent, setReviewContent] = useState([]);
     const [checkwish, setCheckwish] = useState(true);
-    const [hasLoginFailed, setHasLoginFailed] = useState(false);
-    const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
     let wishlistcheck = false;
+    let navigate = useNavigate();
         
     useEffect(() => {
         console.log("detail Movie")
@@ -51,34 +51,41 @@ const DetailContent = () => {
                 });
         }else{
             console.log("target error")
-            history.back()
+            navigate(-1)
         }
     },[]);
 
-    function loginCheck(e) {
-        if(token == [] || token == ""){
-            const url = `/login`;
+    function loginCheck() {
+        if(!onLogin){
             alert("로그인이 필요합니다")
-            location.href="/login"
+            navigate("/login")
+        } else {
+            navigate(`/review/${movieId}`)
         }
     }
 
-    function loginAndReviewCheck(e) {
-        if(token == [] || token == null){
-            const url = `/login`;
+    function loginAndReviewCheck() {
+        if(!onLogin){
             alert("로그인이 필요합니다")
-            location.href="/login"
+            navigate("/login")
         }else{
             ReviewService
                 .searchReviewByUseremail(userEmail)
                 .then((response) => {
                     if(response.data.data !== [] || response.data.data !== null){
+                        let isWrited = false
                         response.data.data.map( data => {
                             if(data.movieId == movieId){
+                                isWrited = true
                                 alert("작성한 리뷰가 존재합니다. 수정 페이지로 이동합니다.")
-                                location.href=`/review/edit/${data.reviewId}`
+                                navigate(`/review/edit/${data.reviewId}`)
                             }
                         })
+                        if(!isWrited){
+                            navigate(`/review/write/${movieId}`)
+                        }
+                    } else {
+                        navigate(`/review/write/${movieId}`)
                     }
                 }).catch(() => {
                     console.log("searchReviewByUseremail failed")
@@ -89,24 +96,18 @@ const DetailContent = () => {
 
     function goBackBtn(){
         console.log("goback btn clicked!")
-        history.back()
+        navigate(-1)
     }
     
     function GoReview(){
-        const url = `/review/${movieId}`;
         return(
-            <Link to={url} className="movie-review-link" onClick={loginCheck}>
-                <button id='detailpage-reviews-go-review'>리뷰 더보기</button>
-            </Link>
+            <button id='detailpage-reviews-go-review' onClick={loginCheck}>리뷰 더보기</button>
         );
     }
 
     function GoWriteReview(){
-        const url = `/review/write/${movieId}`;
         return(
-            <Link to={url} className="movie-write-review-link" onClick={loginAndReviewCheck}>
-            <button id='detailpage-reviews-go-write-review'>리뷰 쓰러가기</button>
-            </Link>
+            <button id='detailpage-reviews-go-write-review' onClick={loginAndReviewCheck}>리뷰 쓰러가기</button>
         );
     }
     
