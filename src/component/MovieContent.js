@@ -1,7 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { AiFillStar } from "react-icons/ai";
-import { AiOutlineStar } from "react-icons/ai";
 
 
 function setLocation(id) {
@@ -24,8 +22,12 @@ function BannerMovieView({id, title, stillcut, contentBold, contentDetail}) {
         <div className="banner-content-result-item" style={{backgroundImage: `url(${stillcut})`}} onClick={() => setLocation(id)}>
             <div className="banner-content-item-info">
                 <div className="banner-content-item-title">{title}</div><br></br>
-                <div className="banner-content-item-detail detail-bold">{contentBold}</div>
-                <div className="banner-content-item-detail detail-detail">{contentDetail}</div>
+                { contentBold == '' ? null :
+                    <div className="banner-content-item-detail detail-bold">{contentBold}</div>
+                }
+                { contentDetail == '' ? null :
+                    <div className="banner-content-item-detail detail-detail">{contentDetail}</div>
+                }
             </div>
         </div>
     )
