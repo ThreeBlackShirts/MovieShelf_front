@@ -77,6 +77,14 @@ const ReviewContents = () => {
         }
     }
 
+    function handelNull(data) {
+        if(data == null){
+            return('')
+        } else {
+            return(data)
+        }
+    }
+
     function GoWriteReview(){
         return(
             <BsFileEarmarkPlus className='moviereview-content-btn-icon' id='moviereview-content-editbtn-icon' title='후기 작성하기' onClick={loginAndReviewCheck}/>
@@ -99,7 +107,7 @@ const ReviewContents = () => {
                             <div id='reviewpage-moviereview-movieinfo-detail'>
                                 { isLoading ? "Loading..." : 
                                         <MovieDetailTitle  key={movie.movieTitle}
-                                            title={movie.movieTitle} />
+                                            title={handelNull(movie.movieTitle)} />
                                 }
                                 <div id='reviewpage-moviereview-rate'><span>★ ★ ★ ★ ★</span></div>
                             </div>
@@ -120,8 +128,8 @@ const ReviewContents = () => {
                                 user={userEmail}
                                 writer={review.writer}
                                 userNickname={review.user}
-                                title={review.title}
-                                content={review.content} 
+                                title={handelNull(review.title)}
+                                content={handelNull(review.content)} 
                             />
                     ))}
                 </div>

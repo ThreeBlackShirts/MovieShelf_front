@@ -19,6 +19,7 @@ function GoEditReview(data){
 
 function DeleteReview(reviewId){
     console.log("delete review clicked")
+    if(confirm("리뷰를 삭제하시겠습니까?") == true) {
     ReviewService.deleteReview(reviewId)
         .then(()=> {
             alert("리뷰가 삭제되었습니다.");
@@ -26,6 +27,7 @@ function DeleteReview(reviewId){
         }).catch((error) => {
             console.log(error.response)
         });
+    }
 }
 
 function MovieTitleReview({userNickname, title}) {
@@ -67,9 +69,10 @@ function MovieReview({reviewId, writer, user, userNickname, title, content}) {
         <div className='reviewpage-comment'>
             <div className='reviewpage-comment-user'>
                 <div className='reviewpage-comment-user-id'>{userNickname}</div>
+                <div className='reviewpage-comment-user-rating'>★★★★★</div>
             </div>
-            <div className='reviewpage-comment-title'>{title}</div>
-            <div className='reviewpage-comment-content'>{content}</div>
+            <div className='reviewpage-comment-title'>{ title == '' ? "제목 없음" : title }</div>
+            <div className='reviewpage-comment-content'>{ content == '' ? "작성된 내용이 없습니다." : content }</div>
             {writer !== user ? "" : <WriterCheck reviewId={reviewId} /> }
         </div>
     )
