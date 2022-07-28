@@ -10,6 +10,7 @@ import { FiSearch } from "react-icons/fi";
 const ListContent = () => {
     let navigate = useNavigate();
     const [searchParams] = useSearchParams();
+    const [input] = useState(searchParams.get('search'));
     const [searchInput, setSearchInput] = useState(searchParams.get('search'));
     const [isLoading, setIsLoading] = useState(true);
     const [movie, setMovie] = useState([]);
@@ -52,7 +53,7 @@ const ListContent = () => {
 
     function SearchNull() {
         return (
-            <div id='listpage-content-search-null'>'{searchInput}'에 대한검색 결과가 없습니다.</div>
+            <div id='listpage-content-search-null'>'{input}'에 대한검색 결과가 없습니다.</div>
         )
     }
 
@@ -60,7 +61,7 @@ const ListContent = () => {
         <div className="listpage-content">
             <div className="listpage-content-search">
                 <div className="listpage-content-search-btnwrap">
-                    <input type="text" id="listpage-search-text" placeholder={" '" + searchInput + "'를 검색한 결과입니다"} onKeyUp={onKeyPress} onChange={onChangeInput}></input>
+                    <input type="text" id="listpage-search-text" placeholder={" '" + input + "'를 검색한 결과입니다"} onKeyUp={onKeyPress} onChange={onChangeInput}></input>
                     <FiSearch className="listpage-search-btn-icon" onClick={setInput}/>
                 </div>
             </div>
