@@ -59,7 +59,7 @@
 .usersetting-content-container-box{
     background-color: rgba(211, 211, 211, 0.8);
     border-radius: 15px;
-    width: 60%;
+    width: 800px;
     min-height: 360px;
     margin: auto;
     padding: 10px;
@@ -97,7 +97,7 @@
                 height: 28px;
                 width: 200px;
                 vertical-align: middle;
-                border-width: 0.5px;
+                border-style: none;
             }
             #userFilename:hover{
                 cursor: pointer;
@@ -107,9 +107,16 @@
             visibility: hidden;
         }
 
+    .usersetting-content-btn{
+        text-align: right;
+        vertical-align: middle;
+    }
+
     .usersetting-content-submit{
+        display: inline-block;
         text-align: center;
         margin: auto;
+        min-width: 100px;
     }
 
         .usersetting-content-submit button{
@@ -117,6 +124,7 @@
             height: 30px;
             border-radius: 5px;
             border-width: 0.5px;
+            font-weight: bold;
         }
 
             .usersetting-content-submit button:hover{

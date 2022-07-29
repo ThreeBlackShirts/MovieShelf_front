@@ -315,16 +315,54 @@ html{
 .detailpage-reviews-review-content{
     display: inline-block;
     text-align: justify;
-    width: 70%;
+    width: 325px;
 }
+
+    .detailpage-reviews-review-content-text{
+        width: 325px;
+        height: 30px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
 #detailpage-reviews-pagecontroller{
-    height: 60px;
+    height: 100px;
     width: 60%;
     text-align: center;
     vertical-align: middle;
     margin: auto;
 }
 
+    #detailpage-reviews-go-review{
+        margin-top: 20px;
+        margin-right: 20px;
+        width: 120px;
+        height: 30px;
+        vertical-align: middle;
+        background-color: whitesmoke;
+        border-radius: 15px;
+        border-style: none;
+    }
+
+        #detailpage-reviews-go-review:hover{
+            background-color: silver;
+        }
+
+    #detailpage-reviews-go-write-review{
+        margin-top: 20px;
+        margin-left: 20px;
+        width: 120px;
+        height: 30px;
+        vertical-align: middle;
+        background-color: whitesmoke;
+        border-radius: 15px;
+        border-style: none;
+    }
+
+        #detailpage-reviews-go-write-review:hover{
+            background-color: silver;
+        }
 
 .detailpage-blank{
     height: 50px;
