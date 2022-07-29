@@ -1,18 +1,18 @@
 import React from 'react';
 import Footer from '../Footer/Footer';
 import Header from 'component/Header/Header';
-import WriteReviewContent from 'component/WriteReviewComponent';
+import EditReviewContent from 'component/ReviewEditContent';
 import 'style/writereviewpage.css';
 
-const WriteReviewPage = () => {
+const EditReviewPage = () => {
     return (
         <div className='writereviewpage'>
             <Header />
-            <WriteReviewContent />
+            <EditReviewContent />
             <Footer />
         </div>
     );
 };
 
 
-export default WriteReviewPage;
+export default EditReviewPage;

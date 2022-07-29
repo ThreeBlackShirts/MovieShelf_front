@@ -45,6 +45,11 @@
     margin: auto;
 }
 
+    #reviewpage-wrap a:visited{
+        text-decoration: none;
+        color: black;
+    }
+
 #reviewpage-moviereview{
     width: 100%;
 }
@@ -77,6 +82,7 @@
         font-size: 30px;
         font-family: 'EliceDigitalBaeum_Bold';
         margin-right: 25px;
+        color: white;
     }
     
     #reviewpage-moviereview-rate{
@@ -85,7 +91,8 @@
 
         #reviewpage-moviereview-rate span{
             vertical-align: middle;
-            font-size: 22px;
+            font-size: 24px;
+            color: gold;
         }
 
     .moview-content-btn-div{
@@ -101,8 +108,10 @@
         }
 
         .moviereview-content-btn-icon{
-            width: 24px;
-            height: 24px;
+            width: 28px;
+            height: 28px;
+            color: gainsboro;
+            vertical-align: middle;
         }
 
             .moviereview-content-btn-icon:hover{
@@ -132,69 +141,90 @@
 }
 
 .reviewpage-comment{
-    height: 60px;
+    min-height: 120px;
     vertical-align: top;
     background-color: rgba(230, 230, 230, 0.8);
     border-radius: 15px;
     border-style: solid;
     border-width: 1px;
     margin-bottom: 10px;
-    display: flex;
     align-items: center;
 }
 
-.reviewpage-comment-user{
-    display: inline-block;
-    height: 60px;
-    width: 35%;
-    vertical-align: middle;
+.reviewpage-comment-header{
+    min-height: 60px;
+    text-align: left;
+    font-weight: bold;
+}
+
+    .reviewpage-comment-user{
+        display: inline-block;
+        width: 15%;
+        text-align: center;
+        
+    }
+        .reviewpage-comment-user-id{
+            display: inline;
+            vertical-align: middle;
+        }
+
+    .reviewpage-comment-title{
+        display: inline-block;
+        height: 60px;
+        width: 65%;
+        vertical-align: middle;
+        text-align: justify;
+        line-height: 60px;
+    }
+        
+    .reviewpage-comment-content-btn-div{
+        display: inline-block;
+        width: 10%;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .reviewpage-comment-content-btn{
+        display: inline-block;
+        width: 28px;
+        height: 28px;
+        text-align: center;
+        vertical-align: middle;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .reviewpage-comment-content-btn:first-child{
+        margin-right: 15px;
+    }
+
+    .reviewpage-comment-content-btn-icon{
+        width: 100%;
+        height: auto;
+    }
+
+    .reviewpage-comment-content-btn-icon:hover{
+        cursor: pointer;
+    }
+
+    .movie-write-review-link{
+        color: black;
+    }
+
+    .movie-edit-review-link{
+        color: black;
+    }
+
+.reviewpage-comment-main{
     text-align: center;
+    min-height: 120px;
 }
-
-.reviewpage-comment-title{
-    display: inline-block;
-    height: 60px;
-    width: 30%;
-    vertical-align: middle;
-    text-align: justify;
-    line-height: 60px;
-}
-
-.reviewpage-comment-content{
-    display: inline-block;
-    height: 60px;
-    width: 70%;
-    vertical-align: middle;
-    text-align: justify;
-    line-height: 60px;
-}
-
-.reviewpage-comment-content-btn-div{
-    display: inline-block;
-    margin-right: 2%;
-    width: 13%;
-    text-align: center;
-}
-
-.reviewpage-comment-content-btn{
-    display: inline-block;
-    width: 35%;
-    text-align: center;
-}
-
-.reviewpage-comment-content-btn:first-child{
-    margin-right: 15%;
-}
-
-.reviewpage-comment-content-btn-icon{
-    width: 100%;
-    height: auto;
-}
-
-.reviewpage-comment-content-btn-icon:hover{
-    cursor: pointer;
-}
-
-.movie-write-review-link{
-    color: inherit;
-}
+    .reviewpage-comment-content{
+        display: block;    
+        width: 80%;
+        margin: auto;
+        text-align: justify;
+        padding-left: 10%;
+        padding-bottom: 20px;
+        line-height: 40px;
+    }

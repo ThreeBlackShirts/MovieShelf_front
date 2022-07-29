@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { Component } from 'react';
 import UserService from 'service/UserService';
 
 import 'style/usersettingpage.css';
@@ -68,7 +68,6 @@ class UserSettingContent extends Component {
     }
 
     deleteUser() {
-
         console.log("UserSetting: deleteUser")
         this.state.userEmail = localStorage.getItem("authenticatedUser")
         console.log(this.state.userEmail)
@@ -94,7 +93,7 @@ class UserSettingContent extends Component {
                         </div>
                         <div className='usersetting-content-obj' id='setting-password'>
                             <div className='usersetting-content-obj-subject'>비밀번호 변경</div>
-                            <div className='usersetting-content-obj-data'><input type="password" id="userPassword" name="userPassword" onChange={this.handleChange} /></div>
+                            <div className='usersetting-content-obj-data'><input type="password" id="userPassword" name="userPassword" placeholder="*****" onChange={this.handleChange} /></div>
                         </div>
                         <div className='usersetting-content-obj'>
                             <div className='usersetting-content-obj-subject'>비밀번호 확인</div>
@@ -109,11 +108,13 @@ class UserSettingContent extends Component {
                                 <input type='file' id="userFilename" name="userFilename" placeholder="프로필 이미지" onChange={this.handleChange} ></input>
                             </div>
                         </div>
-                        <div className='usersetting-content-submit'>
-                            <button onClick={this.editData}>수정</button>
-                        </div>
-                        <div className='usersetting-content-submit'>
-                            <button onClick={this.deleteUser}>회원 탈퇴</button>
+                        <div className='usersetting-content-btn'>
+                            <div className='usersetting-content-submit'>
+                                <button onClick={this.editData}>수정</button>
+                            </div>
+                            <div className='usersetting-content-submit'>
+                                <button onClick={this.deleteUser}>회원 탈퇴</button>
+                            </div>
                         </div>
                     </div>
 

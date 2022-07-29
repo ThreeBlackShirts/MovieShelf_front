@@ -23,12 +23,12 @@
 }
 
 .userinfo-content-info{
-    min-height: 12vh;
+    min-height: 11vh;
     width: 60%;
     margin: auto;
     text-align: center;
     vertical-align: middle;
-    padding-top: 5vh;
+    padding-top: 4vh;
 }
 
     .userinfo-content-info-profile{

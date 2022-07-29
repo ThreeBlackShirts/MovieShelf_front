@@ -5,14 +5,13 @@ import HomePage from 'component/Pages/HomePage';
 import LoginPage from 'component/Pages/LoginPage';
 import SignUpPage from 'component/Pages/SignUpPage';
 import ListPage from 'component/Pages/ListPage';
-import LogoutComponent from 'component/LogoutComponent';
 import MainPage from 'component/Pages/MainPage';
 import DetailPage from 'component/Pages/DetailPage';
 import UserInfoPage from 'component/Pages/UserInfoPage';
 import ReviewPage from 'component/Pages/ReviewPage';
-import WriteReviewPage from 'component/Pages/WriteReviewPage';
+import WriteReviewPage from 'component/Pages/ReviewWritePage';
 import UserSettingPage from 'component/Pages/UserSettingPage';
-import EditReviewPage from 'component/Pages/EditReviewPage';
+import EditReviewPage from 'component/Pages/ReviewEditPage';
 import GenreListPage from 'component/Pages/GenreListPage';
 
 const App = () => {
@@ -25,7 +24,6 @@ const App = () => {
       </Route> */}
       <Route index element={<HomePage/>} />
       <Route path="/*" element={<HomePage/>} />
-      <Route path="/logout" element={<LogoutComponent/>} />
       <Route path="/login" exact element={<LoginPage />} />
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/main" element={<MainPage />} />
@@ -35,7 +33,7 @@ const App = () => {
       <Route path="/userinfo" element={<UserInfoPage />} />
       <Route path="/review/:movieid" element={<ReviewPage />} />
       <Route path="/review/write/:movieid" element={<WriteReviewPage />} />
-      <Route path="/reivew/edit/:reviewid" element={<EditReviewPage />} />
+      <Route path="/review/edit/:reviewid" element={<EditReviewPage />} />
       <Route path="/usersetting" element={<UserSettingPage />} />
     </Routes>
   );

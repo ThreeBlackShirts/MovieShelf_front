@@ -79,14 +79,16 @@ class GenreListContent extends Component {
                         <FiSearch className="listpage-search-btn-icon" onClick={this.changeGenreList}/>                        
                     </div>
                 </div>
-                <div className="listpage-content-result">
-                    {/* <div className="listpage-content-result-target">장르 : {this.state.targetGenre}</div> */}
-                    { isLoading ? "Loading..." : genreData.map( movie => (
-                        <GenreMovieList key={movie.movieTitle}
-                            id={movie.movieId}
-                            title={movie.movieTitle}
-                            poster={movie.moviePoster} />
-                    )) }
+                <div className='listpage-content-result-wrap'>  
+                    <div className="listpage-content-result">
+                        {/* <div className="listpage-content-result-target">장르 : {this.state.targetGenre}</div> */}
+                        { isLoading ? "Loading..." : genreData.map( movie => (
+                            <GenreMovieList key={movie.movieTitle}
+                                id={movie.movieId}
+                                title={movie.movieTitle}
+                                poster={movie.moviePoster} />
+                        )) }
+                    </div>
                 </div>
             </div>
         );

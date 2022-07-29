@@ -27,9 +27,8 @@ class ReviewService {
         });
     }
 
-    editReview(reviewId, movieId, reviewTitle, reviewContent) {
+    editReview(reviewId, reviewTitle, reviewContent) {
         let reviewData = {
-            movieId: movieId,
             title: reviewTitle,
             content: reviewContent
         }
@@ -51,7 +50,7 @@ class ReviewService {
     searchReviewById(reviewId) {
         console.log("ReviewService SearchBy Id")
         AuthenticationService.setupAxiosInterceptors();
-        return axios.get(REVIEW_API_BASE_URL + "/movie/" + movieId);
+        return axios.get(REVIEW_API_BASE_URL + "/" + reviewId);
     }
     
     findReviewByMovieId(movieId) {

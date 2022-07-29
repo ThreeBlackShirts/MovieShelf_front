@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import { Link } from "react-router-dom";
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { Link, useNavigate } from "react-router-dom";
 
 import 'style/homepage.css';
 import AuthenticationService from 'service/AuthenticationService';
@@ -10,29 +9,30 @@ import Footer from '../Footer/Footer';
 import { FiSearch } from "react-icons/fi";
 import { ImBooks } from "react-icons/im";
 
-function toHomePage(){
-    window.location.href="/"
-}
-
-function toUserInfo(){
-    window.location.href="/userinfo"
-}
-
-function onKeyPress(e){
-    if(e.key == 'Enter')
-        search()
-}
-
-function search() {
-    const input = document.getElementById("search-input").value
-    if(input !== null && input !== ""){
-        location.href = `/list/?search=${input}`
-    }else
-        alert("검색어를 입력해주세요.")
-}
-
 const HomePage = () => {
     const [onLogin] = useState(AuthenticationService.isUserLoggedIn);
+    let navigate = useNavigate();
+
+    function toHomePage(){
+        navigate("/")
+    }
+    
+    function toUserInfo(){
+        navigate("/userinfo")
+    }
+    
+    function search() {
+        const input = document.getElementById("search-input").value
+        if(input !== null && input !== ""){
+            navigate(`/list/?search=${input}`)
+        }else
+            alert("검색어를 입력해주세요.")
+    }
+    
+    function onKeyPress(e){
+        if(e.key == 'Enter')
+            search()
+    }
 
     return (
         <div className="home-content">
