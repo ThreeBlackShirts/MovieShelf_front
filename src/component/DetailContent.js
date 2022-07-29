@@ -95,6 +95,14 @@ const DetailContent = () => {
         }
     }
 
+    function handelNull(data) {
+        if(data == null){
+            return('')
+        } else {
+            return(data)
+        }
+    }
+
     function goBackBtn(){
         console.log("goback btn clicked!")
         navigate(-1)
@@ -162,46 +170,50 @@ const DetailContent = () => {
                     <h4 className='detailpage-box-title'><hr className='detailpage-info-hr-left'/>주요 정보<hr className='detailpage-info-hr-right'/></h4>
                     { isLoading ? "Loading..." : 
                             <MovieDetail  key={movie.moviePoster}
-                                poster={movie.moviePoster}
-                                director={movie.movieDirector}
-                                nation={movie.movieNation}
-                                actor={movie.movieActor}
-                                releaseDate={movie.movieReleaseDate}
-                                filmrate={movie.movieFilmrate}
-                                runningTime={movie.movieRunningTime}
-                                genres={movie.movieGenres}
-                                contentBold={movie.movieContentBold}
-                                contentDetail={movie.movieContentDetail} />
+                                poster={handelNull(movie.moviePoster)}
+                                director={handelNull(movie.movieDirector)}
+                                nation={handelNull(movie.movieNation)}
+                                actor={handelNull(movie.movieActor)}
+                                releaseDate={handelNull(movie.movieReleaseDate)}
+                                filmrate={handelNull(movie.movieFilmrate)}
+                                runningTime={handelNull(movie.movieRunningTime)}
+                                genres={handelNull(movie.movieGenres)}
+                                contentBold={handelNull(movie.movieContentBold)}
+                                contentDetail={handelNull(movie.movieContentDetail)} />
                     }
                 </div>
             </div>
             <div id='detailpage-img-box'>
-                <div id='detailpage-img-trailer'>
-                    <h4 className='detailpage-box-title'><hr className='detailpage-info-hr-left'/>트레일러<hr className='detailpage-info-hr-right'/></h4>
-                    <div className='detailpage-img-table-wrap'>
-                        <div className='detailpage-img-table'>
-                            <ul>
-                                { isLoading ? "Loading..." : movie.movieTrailer.map( movie => (
+                { isLoading ? "Loading..." : movie.movieTrailer.length===0 ? null : (
+                    <div id='detailpage-img-trailer'>
+                        <h4 className='detailpage-box-title'><hr className='detailpage-info-hr-left'/>트레일러<hr className='detailpage-info-hr-right'/></h4>
+                        <div className='detailpage-img-table-wrap'>
+                            <div className='detailpage-img-table'>
+                                <ul>
+                                { movie.movieTrailer.map( movie => (
                                             <MovieDetailTrailer  key={movie}
                                                 trailer={movie} />
                                 )) }
-                            </ul>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div id='detailpage-img-stillcut'>
-                    <h4 className='detailpage-box-title'><hr className='detailpage-info-hr-left'/>스틸컷<hr className='detailpage-info-hr-right'/></h4>
-                    <div className='detailpage-img-table-wrap'>
-                        <div className='detailpage-img-table'>
-                            <ul>
-                                { isLoading ? "Loading..." : movie.movieStillcut.map( movie => (
+                ) }
+                { isLoading ? "Loading..." : movie.movieTrailer.length===0 ? null : (
+                    <div id='detailpage-img-stillcut'>
+                        <h4 className='detailpage-box-title'><hr className='detailpage-info-hr-left'/>스틸컷<hr className='detailpage-info-hr-right'/></h4>
+                        <div className='detailpage-img-table-wrap'>
+                            <div className='detailpage-img-table'>
+                                <ul>
+                                    { movie.movieStillcut.map( movie => (
                                             <MovieDetailStillcut key={movie}
                                                 stillcut={movie} />
-                                )) }
-                            </ul>
+                                    )) }
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
+                ) }
             </div>
             <div id='detailpage-review-box'>
                 <h4 className='detailpage-box-title'>

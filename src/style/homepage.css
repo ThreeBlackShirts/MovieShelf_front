@@ -168,3 +168,11 @@ html, body{
   color: white;
   font-size: 18px;
 }
+
+#home-content-main-userinfo-Link{
+  font-family: 'EliceDigitalBaeum_Regular';
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  margin-left: -6%;
+}

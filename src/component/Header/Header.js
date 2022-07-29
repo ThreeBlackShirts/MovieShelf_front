@@ -85,7 +85,6 @@ const Header = () => {
                 {!onLogin && <div className="header-content-userbtn-login">
                     <h4 className="header-content-userbtn-login-btn" onClick={doLogin}>LOGIN</h4>
                 </div>}
-                
             </div>
         </div>
     );

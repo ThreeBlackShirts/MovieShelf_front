@@ -1,7 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { AiFillStar } from "react-icons/ai";
-import { AiOutlineStar } from "react-icons/ai";
 
 
 function setLocation(id) {
@@ -24,8 +22,12 @@ function BannerMovieView({id, title, stillcut, contentBold, contentDetail}) {
         <div className="banner-content-result-item" style={{backgroundImage: `url(${stillcut})`}} onClick={() => setLocation(id)}>
             <div className="banner-content-item-info">
                 <div className="banner-content-item-title">{title}</div><br></br>
-                <div className="banner-content-item-detail detail-bold">{contentBold}</div>
-                <div className="banner-content-item-detail detail-detail">{contentDetail}</div>
+                { contentBold == '' ? null :
+                    <div className="banner-content-item-detail detail-bold">{contentBold}</div>
+                }
+                { contentDetail == '' ? null :
+                    <div className="banner-content-item-detail detail-detail">{contentDetail}</div>
+                }
             </div>
         </div>
     )
@@ -78,15 +80,40 @@ function MovieDetail({poster, director, nation, actor, releaseDate, filmrate, ru
                 <div>★ ★ ★ ★ ☆</div>
             </div>
             <div id='detailpage-info-majorinfo-basic'>
-                <div className='detailpage-info-majorinfo-basic-content' id='basic-release'>개봉: <span>{releaseDate}</span></div>
-                <div className='detailpage-info-majorinfo-basic-content' id='basic-genre'>기본정보: <span>{filmrate}</span> | <span>{runningTime}</span>| <span>{nation}</span></div>
-                <div className='detailpage-info-majorinfo-basic-content' id='basic-genre'>장르: <span>{genres}</span></div>
-                <div className='detailpage-info-majorinfo-basic-content' id='basic-director'>감독/연출진: <span>{director}</span></div>
-                <div className='detailpage-info-majorinfo-basic-content' id='basic-actor'>배우: <span>{actor}</span></div>
-                <div id='detailpage-info-majorinfo-storyline'>
-                    <p id='detailpage-info-majorinfo-bold-storyline'>{contentBold}</p>
-                    <p id='detailpage-info-majorinfo-detail-storyline'>{contentDetail}</p>
-                </div>
+                    { contentBold == '' ? null :
+                        <div className='detailpage-info-majorinfo-basic-content' id='basic-release'>
+                            <span>개봉일: {releaseDate}</span>
+                        </div>
+                    }
+                    { filmrate != '' || runningTime != '' || nation != '' ? 
+                        <div className='detailpage-info-majorinfo-basic-content' id='basic-release'>
+                            기본정보: 
+                            {filmrate == '' ? null : <span> {filmrate} |</span> }
+                            {runningTime == '' ? null : <span> {runningTime} |</span> }
+                            {nation == '' ? null : <span> {nation}</span> }
+                        </div> : null
+                    }
+                    { genres == '' ? null :
+                        <div className='detailpage-info-majorinfo-basic-content' id='basic-release'>
+                            <span>장르: {genres}</span>
+                        </div>
+                    }
+                    { director == '' ? null :
+                        <div className='detailpage-info-majorinfo-basic-content' id='basic-release'>
+                            <span>감독/연출진: {director}</span>
+                        </div>
+                    }
+                    { actor == '' ? null :
+                        <div className='detailpage-info-majorinfo-basic-content' id='basic-release'>
+                            <span>배우: {actor}</span>
+                        </div>
+                    }
+                    { contentBold != '' || contentDetail != '' ? 
+                        <div id='detailpage-info-majorinfo-storyline'>
+                            {contentBold == '' ? null : <p id='detailpage-info-majorinfo-bold-storyline'>{contentBold}</p> }
+                            {contentDetail == '' ? null : <p id='detailpage-info-majorinfo-detail-storyline'>{contentDetail}</p> }
+                        </div> : null
+                    }
             </div>
         </div>
     )

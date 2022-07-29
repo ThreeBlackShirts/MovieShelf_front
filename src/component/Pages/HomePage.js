@@ -10,15 +10,17 @@ import { FiSearch } from "react-icons/fi";
 import { ImBooks } from "react-icons/im";
 
 const HomePage = () => {
-    const [onLogin] = useState(AuthenticationService.isUserLoggedIn);
+    const [onLogin, setOnLogin] = useState(AuthenticationService.isUserLoggedIn);
     let navigate = useNavigate();
 
     function toHomePage(){
         navigate("/")
     }
     
-    function toUserInfo(){
-        navigate("/userinfo")
+    function doLogout(){
+        AuthenticationService.logout()
+        alert("로그아웃 되었습니다.")
+        setOnLogin(false);
     }
     
     function search() {
@@ -41,13 +43,10 @@ const HomePage = () => {
                     <h1 id="home-content-header-title-logo" onClick={toHomePage}>MovieShelf</h1>
                 </div>
                 {onLogin && <div className="home-content-header-login">
-                    <div id="home-content-header-myshelf">
-                        <ImBooks id="home-content-header-myshelf-icon" onClick={toUserInfo}/>
-                    </div>
-                    <a className="home-content-header-login-btn" href="/logout">LOGOUT</a>
+                    <span className="home-content-header-login-btn" onClick={doLogout}>LOGOUT</span>
                 </div>}
                 {!onLogin && <div className="home-content-header-login">
-                    <a className="home-content-header-login-btn" href="/login">LOGIN</a>
+                    <Link className="home-content-header-login-btn" to="/login">LOGIN</Link>
                 </div>}
             </div>
             <div className="home-content-main">
@@ -60,7 +59,8 @@ const HomePage = () => {
                     <FiSearch className="home-content-main-search-icon"  onClick={search}/>
                 </div>
                 <div className="home-content-main-login">
-                    {!onLogin && <Link id='home-content-main-login-Link' to='/login'>로그인하여 나만의 영화책장만들기</Link>}                    
+                    {!onLogin && <Link id='home-content-main-login-Link' to='/login'>로그인하여 나만의 영화책장만들기</Link>}   
+                    {onLogin && <Link id='home-content-main-userinfo-Link' to='/userinfo'>나만의 영화책장으로 가기</Link>}                   
                 </div>
             </div>
             <Footer />

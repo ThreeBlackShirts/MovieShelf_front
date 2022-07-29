@@ -45,15 +45,19 @@ const EditReviewContent = () => {
     };
 
     function editReview(){
-        console.log("edit review clicked")        
-        ReviewService
-            .editReview(reviewId, reviewTitle, reviewContent)
-            .then(() => {
-                alert("수정 완료");
-                navigate(-1)
-            }).catch((error) => {
-                console.log("edit error")
-            })
+        if(reviewTitle == "" || reviewContent == "") {
+            alert("리뷰 제목과 내용 모두 입력해주세요!")
+        } else {
+            console.log("edit review clicked")        
+            ReviewService
+                .editReview(reviewId, reviewTitle, reviewContent)
+                .then(() => {
+                    alert("수정 완료");
+                    navigate(-1)
+                }).catch((error) => {
+                    console.log("edit error")
+                })
+        }
         
     } 
 

@@ -26,19 +26,23 @@ const WriteReviewComponent = () => {
     };
 
     function writeReview(){
-        if(movieId !== null && movieId !== ""){
-            ReviewService
-                .writeReview(userEmail, movieId, reviewTitle, reviewContent)
-                .then(() => {
-                    alert("리뷰가 등록되었습니다!")
-                    navigate(-1)
-                }).catch(() => {
-                    console.log("writeReview failed")
-                    alert("writeReview fail");
-            });       
+        if(reviewTitle == "" || reviewContent == "") {
+            alert("리뷰 제목과 내용 모두 입력해주세요!")
         } else {
-            console.log("movieId error")
-            navigate(-1)
+            if(movieId !== null && movieId !== ""){
+                ReviewService
+                    .writeReview(userEmail, movieId, reviewTitle, reviewContent)
+                    .then(() => {
+                        alert("리뷰가 등록되었습니다!")
+                        navigate(-1)
+                    }).catch(() => {
+                        console.log("writeReview failed")
+                        alert("writeReview fail");
+                });       
+            } else {
+                console.log("movieId error")
+                navigate(-1)
+            }
         }
     }
 

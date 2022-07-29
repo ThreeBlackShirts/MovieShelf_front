@@ -22,6 +22,7 @@ class MainContent extends Component {
         this.recommendMovieList = this.recommendMovieList.bind(this)
         this.nationMovieList = this.nationMovieList.bind(this)
         this.genreMovieList = this.genreMovieList.bind(this)
+        this.handelNull = this.handelNull.bind(this)
     }
 
     bannerMovie() {
@@ -86,6 +87,14 @@ class MainContent extends Component {
             });
     }
 
+    handelNull(data) {
+        if(data == null){
+            return('')
+        } else {
+            return(data)
+        }
+    }
+
     componentDidMount() {
         this.bannerMovie()
         this.recommendMovieList()
@@ -100,57 +109,69 @@ class MainContent extends Component {
         return (
             <div className='content'>
                 <div className='banner-content'>
-                    { isLoading ? "Loading..." : 
+                    { isLoading ? "Loading..." :                         
                         <BannerMovieView key={bannerData.movieId}
                             id={bannerData.movieId}
                             title={bannerData.movieTitle}
                             stillcut={bannerData.movieStillcut}
-                            contentBold={bannerData.movieContentBold}
-                            contentDetail={bannerData.movieContentDetail} />
+                            contentBold={this.handelNull(bannerData.movieContentBold)}
+                            contentDetail={this.handelNull(bannerData.movieContentDetail)} />
                     }
                 </div>
                 <div className="main-content">
                     <div className="main-content-movie">
-                        <div className="main-content-movie-list">
-                            <div className='main-content-list-name'>MovieShelf의 추천 장르 영화</div>
-                            <div className='main-content-list-item-wrap'>
-                                { isLoading ? "Loading..." : recommendData.map( movie => (
-                                    <RecommendMovieList key={movie.movieId}
-                                        id={movie.movieId}
-                                        title={movie.movieTitle}
-                                        poster={movie.moviePoster} />
-                            )) }</div>
-                        </div>
-                        <div className="main-content-movie-list">
-                            <div className='main-content-list-name'>한국 영화</div>
-                            <div className='main-content-list-item-wrap'>
-                                { isLoading ? "Loading..." : nationData.map( movie => (
+                        { isLoading ? "Loading..." : recommendData.length===0 ? null : (
+                            <div className="main-content-movie-list">
+                                <div className='main-content-list-name'>MovieShelf의 추천 장르 영화</div>
+                                <div className='main-content-list-item-wrap'>
+                                    { recommendData.map( movie => (
+                                        <RecommendMovieList key={movie.movieId}
+                                            id={movie.movieId}
+                                            title={movie.movieTitle}
+                                            poster={movie.moviePoster} />
+                                    )) }
+                                </div>
+                            </div>
+                        ) }
+                        { isLoading ? "Loading..." : nationData.length===0 ? null : (
+                            <div className="main-content-movie-list">
+                                <div className='main-content-list-name'>한국 영화</div>
+                                <div className='main-content-list-item-wrap'>
+                                    { nationData.map( movie => (
                                     <CategoryMovieList  key={movie.movieId}
                                         id={movie.movieId}
                                         title={movie.movieTitle}
                                         poster={movie.moviePoster} />
-                            )) }</div>
-                        </div>
-                        <div className="main-content-movie-list">
-                            <div className='main-content-list-name'>'액션' 영화</div>
-                            <div className='main-content-list-item-wrap'>
-                                { isLoading ? "Loading..." : genreData1.map( movie => (
+                                    )) }
+                                </div>
+                            </div>
+                        ) }
+                        { isLoading ? "Loading..." : genreData1.length===0 ? null : (
+                            <div className="main-content-movie-list">
+                                <div className='main-content-list-name'>'액션' 영화</div>
+                                <div className='main-content-list-item-wrap'>
+                                    { genreData1.map( movie => (
                                     <CategoryMovieList  key={movie.movieId}
                                         id={movie.movieId}
                                         title={movie.movieTitle}
                                         poster={movie.moviePoster} />
-                            )) }</div>
-                        </div>
-                        <div className="main-content-movie-list">
-                            <div className='main-content-list-name'>'로맨스' 영화</div>
-                            <div className='main-content-list-item-wrap'>
-                                { isLoading ? "Loading..." : genreData2.map( movie => (
+                                    )) }
+                                </div>
+                            </div>
+                        ) }
+                        { isLoading ? "Loading..." : genreData2.length===0 ? null : (
+                            <div className="main-content-movie-list">
+                                <div className='main-content-list-name'>'로맨스' 영화</div>
+                                <div className='main-content-list-item-wrap'>
+                                    { genreData2.map( movie => (
                                     <CategoryMovieList  key={movie.movieId}
                                         id={movie.movieId}
                                         title={movie.movieTitle}
                                         poster={movie.moviePoster} />
-                            )) }</div>
-                        </div>
+                                    )) }
+                                </div>
+                            </div>
+                        ) }
                     </div>
                 </div>
             </div>
