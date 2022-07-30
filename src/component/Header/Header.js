@@ -53,8 +53,10 @@ const Header = () => {
         AuthenticationService.logout()
         alert("로그아웃 되었습니다.")
         setOnLogin(false);
-        if(location.pathname.includes("/review/write/") || location.pathname.includes("/review/edit/*")){
+        if(location.pathname.includes("/review/write/") || location.pathname.includes("/review/edit/")){
             navigate(-1)
+        } else if (location.pathname.includes("/usersetting") || location.pathname.includes("/userinfo")) {
+            navigate("/main")
         }
     }
 
