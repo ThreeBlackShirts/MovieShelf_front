@@ -1,7 +1,7 @@
 import React from 'react';
 import AuthenticationService from 'service/AuthenticationService';
 import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import 'style/header.css'
 
@@ -11,6 +11,7 @@ import { IoIosSettings } from "react-icons/io";
 
 const Header = () => {
     let navigate = useNavigate();
+    let lcation = useLocation();
     const [onLogin, setOnLogin] = useState(AuthenticationService.isUserLoggedIn);
 
     function toHomePage(){
@@ -38,6 +39,9 @@ const Header = () => {
         AuthenticationService.logout()
         alert("로그아웃 되었습니다.")
         setOnLogin(false);
+        if(location.pathname.includes("/review/write/") || location.pathname.includes("/review/edit/*")){
+            navigate(-1)
+        }
     }
     
     function doLogin(){

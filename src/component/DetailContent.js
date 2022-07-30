@@ -55,13 +55,8 @@ const DetailContent = () => {
         }
     },[]);
 
-    function loginCheck() {
-        if(!onLogin){
-            alert("로그인이 필요합니다")
-            navigate("/login")
-        } else {
-            navigate(`/review/${movieId}`)
-        }
+    function goReview() {
+        navigate(`/review/${movieId}`)
     }
 
     function loginAndReviewCheck() {
@@ -109,7 +104,7 @@ const DetailContent = () => {
     
     function GoReview(){
         return(
-            <button id='detailpage-reviews-go-review' onClick={loginCheck}>리뷰 더보기</button>
+            <button id='detailpage-reviews-go-review' onClick={goReview}>리뷰 더보기</button>
         );
     }
 
