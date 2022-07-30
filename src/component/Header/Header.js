@@ -23,16 +23,30 @@ const Header = () => {
     }
     
     function toUserInfoPage(){
-        navigate("/userinfo")
-    }
-
-    function onKeyPress(e){
-        if(e.key == 'Enter')
-            search()
+        if(loginCheck())
+            navigate("/userinfo")
+        else
+            navigate("/login")
     }
     
     function toUserSettingPage(){
-        navigate("/usersetting")
+        if(loginCheck())
+            navigate("/usersetting")
+        else
+            navigate("/login")
+    }
+    
+    function doLogin(){
+        navigate("/login")
+    }
+
+    function loginCheck() {
+        if(!onLogin){
+            alert("로그인이 필요합니다.")
+            return 0;
+        } else {
+            return 1;
+        }
     }
     
     function doLogout(){
@@ -43,9 +57,10 @@ const Header = () => {
             navigate(-1)
         }
     }
-    
-    function doLogin(){
-        navigate("/login")
+
+    function onKeyPress(e){
+        if(e.key == 'Enter')
+            search()
     }
     
     function search() {
