@@ -7,6 +7,7 @@ import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 
 import 'style/reviewpage.css';
+import 'style/detailpage.css';
 
 function GoEditReview(data){
     const url = `/review/edit/${data.reviewId}`;
@@ -67,13 +68,20 @@ function WriterCheck(info){
 function MovieReview({reviewId, writer, user, userNickname, title, content}) {
     return (
         <div className='reviewpage-comment'>
-            <div className='reviewpage-comment-user'>
-                <div className='reviewpage-comment-user-id'>{userNickname}</div>
-                <div className='reviewpage-comment-user-rating'>★★★★★</div>
+
+            <div className="reviewpage-comment-header">
+                <div className='reviewpage-comment-user'>
+                    <div className='reviewpage-comment-user-id'>{userNickname}</div>
+                    <div className='reviewpage-comment-user-rating'>★★★★★</div>
+                </div>
+                <div className='reviewpage-comment-title'>{ title == '' ? "제목 없음" : title }</div>
+                
+                {writer !== user ? "" : <WriterCheck reviewId={reviewId} /> }
             </div>
-            <div className='reviewpage-comment-title'>{ title == '' ? "제목 없음" : title }</div>
-            <div className='reviewpage-comment-content'>{ content == '' ? "작성된 내용이 없습니다." : content }</div>
-            {writer !== user ? "" : <WriterCheck reviewId={reviewId} /> }
+            <div className="reviewpage-comment-main">
+                <div className='reviewpage-comment-content'>{ content == '' ? "작성된 내용이 없습니다." : content }</div>
+            </div>
+
         </div>
     )
 }

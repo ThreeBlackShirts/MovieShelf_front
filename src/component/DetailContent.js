@@ -24,6 +24,7 @@ const DetailContent = () => {
 
     let wishlistcheck = false;
     let navigate = useNavigate();
+
         
     useEffect(() => {
         console.log("detail Movie")
