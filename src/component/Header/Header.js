@@ -1,7 +1,7 @@
 import React from 'react';
 import AuthenticationService from 'service/AuthenticationService';
 import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import 'style/header.css'
 
@@ -11,6 +11,7 @@ import { IoIosSettings } from "react-icons/io";
 
 const Header = () => {
     let navigate = useNavigate();
+    let lcation = useLocation();
     const [onLogin, setOnLogin] = useState(AuthenticationService.isUserLoggedIn);
 
     function toHomePage(){
@@ -22,26 +23,46 @@ const Header = () => {
     }
     
     function toUserInfoPage(){
-        navigate("/userinfo")
-    }
-
-    function onKeyPress(e){
-        if(e.key == 'Enter')
-            search()
+        if(loginCheck())
+            navigate("/userinfo")
+        else
+            navigate("/login")
     }
     
     function toUserSettingPage(){
-        navigate("/usersetting")
+        if(loginCheck())
+            navigate("/usersetting")
+        else
+            navigate("/login")
+    }
+    
+    function doLogin(){
+        navigate("/login")
+    }
+
+    function loginCheck() {
+        if(!onLogin){
+            alert("로그인이 필요합니다.")
+            return 0;
+        } else {
+            return 1;
+        }
     }
     
     function doLogout(){
         AuthenticationService.logout()
         alert("로그아웃 되었습니다.")
         setOnLogin(false);
+        if(location.pathname.includes("/review/write/") || location.pathname.includes("/review/edit/")){
+            navigate(-1)
+        } else if (location.pathname.includes("/usersetting") || location.pathname.includes("/userinfo")) {
+            navigate("/main")
+        }
     }
-    
-    function doLogin(){
-        navigate("/login")
+
+    function onKeyPress(e){
+        if(e.key == 'Enter')
+            search()
     }
     
     function search() {
