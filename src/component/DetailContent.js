@@ -11,6 +11,7 @@ import 'style/detailpage.css';
 
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { BsBookmarkHeartFill } from "react-icons/bs";
+import { BsBookmarkHeart } from "react-icons/bs";
 
 const DetailContent = () => {
 
@@ -22,10 +23,8 @@ const DetailContent = () => {
     const [reviewContent, setReviewContent] = useState([]);
     const [checkwish, setCheckwish] = useState(true);
 
-    let wishlistcheck = false;
     let navigate = useNavigate();
 
-        
     useEffect(() => {
         console.log("detail Movie")
         if(movieId !== null && movieId !== ""){
@@ -45,6 +44,18 @@ const DetailContent = () => {
                         }).catch(() => {
                             console.log("findReviewByMovieId failed")
                             alert("findReviewByMovieId fail");
+                    }); 
+                    WishListService
+                        .isWhishBtUserEmail(movieId, userEmail)
+                        .then((response) => {
+                            console.log(response)
+                            if(response.data.data === true)
+                                setCheckwish(true)
+                            else
+                                setCheckwish(false)
+                        }).catch(() => {
+                            console.log("isWhishBtUserEmail failed")
+                            alert("isWhishBtUserEmail fail");
                     }); 
                 }).catch(() => {
                     console.log("detail failed")
@@ -116,13 +127,10 @@ const DetailContent = () => {
     }
     
     function handleLWishList(){
-        // let wishlist = document.getElementById('detailpage-info-likebtn-icon');
         console.log("current this.state.checkwish:" + checkwish)
-        // if(checkwish){
-        if(wishlistcheck){
+        if(checkwish){
             // wishlist.classList.add("background-color: pink");
-            // setCheckwish(false)
-            wishlistcheck = false
+            setCheckwish(false)
             console.log("찜 취소")
 
             WishListService.deleteWishList(userEmail, movieId)
@@ -135,8 +143,7 @@ const DetailContent = () => {
                 })
         }
         else{
-            // checkwish = true;
-            wishlistcheck = true;
+            setCheckwish(true)
             console.log("찜")
 
             WishListService.addWishList(userEmail,movieId)
@@ -159,7 +166,8 @@ const DetailContent = () => {
                     <a href='#detailpage-img-trailer' className='detailpage-info-anchor-a'>트레일러</a>
                     <a href='#detailpage-img-stillcut' className='detailpage-info-anchor-a'>스틸컷</a>
                     <a href='#detailpage-review-box' className='detailpage-info-anchor-a'>평점/리뷰</a>
-                    <BsBookmarkHeartFill className='detailpage-info-anchor-a' id='detailpage-info-likebtn-icon' onClick={handleLWishList}/>
+                    {checkwish && <BsBookmarkHeartFill className='detailpage-info-anchor-a' id='detailpage-info-likebtn-icon' onClick={handleLWishList}/>}
+                    {!checkwish && <BsBookmarkHeart className='detailpage-info-anchor-a' id='detailpage-info-likebtn-icon' onClick={handleLWishList}/>}
                 </div>
                 <div id='detailpage-info-majorinfo'>
                     <h4 className='detailpage-box-title'><hr className='detailpage-info-hr-left'/>주요 정보<hr className='detailpage-info-hr-right'/></h4>
