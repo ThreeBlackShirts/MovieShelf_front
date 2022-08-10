@@ -225,19 +225,15 @@ const DetailContent = () => {
                     <hr className='detailpage-info-hr-right'/>
                 </h4>
                 <div id='detailpage-reviews-review-table-wrap'>
-                    <table id='detailpage-reviews-review-table'>
-                        <thead>
-                            <tr>
-                                {isLoading ? "Loading..." : 
+                    <div id='detailpage-reviews-review-table'>
+                        {isLoading ? "Loading..." : 
                                     reviewContent.length == 0 ? "등록된 리뷰가 없습니다" : reviewContent.map( review => (
                                         <MovieTitleReview  key={review.title}
                                             userNickname={review.user}
                                             title={review.title}
                                         />
                                 ))}
-                            </tr>
-                        </thead>
-                    </table>
+                    </div>
                 </div>
                 <br/>
                 <div id='detailpage-reviews-pagecontroller'>

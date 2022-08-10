@@ -57,9 +57,11 @@
 }
 
 .usersetting-content-container-box{
+    color: #080808;
+    font-weight: bolder;
     background-color: rgba(211, 211, 211, 0.8);
     border-radius: 15px;
-    width: 800px;
+    width: 60vh;
     min-height: 360px;
     margin: auto;
     padding: 10px;
@@ -73,6 +75,10 @@
         margin: 10px;
         vertical-align: middle;
     }
+
+        .usersetting-content-container-box #userName{
+            margin-top: 15px;
+        }
 
         .usersetting-content-obj-subject{
             display: inline-block;
@@ -108,7 +114,7 @@
         }
 
     .usersetting-content-btn{
-        text-align: right;
+        text-align: center;
         vertical-align: middle;
     }
 
@@ -123,7 +129,8 @@
             width: 80px;
             height: 30px;
             border-radius: 5px;
-            border-width: 0.5px;
+            border-style: none;
+            box-shadow: 1px 1px 3px;
             font-weight: bold;
         }
 

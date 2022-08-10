@@ -140,7 +140,7 @@ const UserContent = () => {
                     <div className='userinfo-content-shelf-list-name'>마음에 드는 영화</div>
                     <div className='userinfo-content-shelf-list-item-wrap'>
                     {isLoading ? "Loading..." : 
-                        wishListData.length == 0 ? "등록된 리뷰가 없습니다" : wishListData.map( wishlist => (
+                        wishListData.length == 0 ? "찜한 영화가 없습니다" : wishListData.map( wishlist => (
                             <MyWishList  key={wishlist.movieId}
                                 movieId ={wishlist.movieId}
                                 movieTitle ={wishlist.movieTitle}

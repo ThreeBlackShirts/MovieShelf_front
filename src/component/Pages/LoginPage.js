@@ -92,7 +92,8 @@ const LoginPage = () => {
                     
 
                     <div className="login-content-body-main-social">
-                        <div>소셜로그인</div>
+                        <hr></hr>
+                        <div id='login-content-body-main-social-text'>소셜로그인</div>
                         <hr></hr>
                         <div className='login-content-body-main-social-btn'>
                             <img className='social-login-btn' src={require('../../images/button/btn_google_signin_light_normal_web.png')} onClick={socialLoginGoogle} />

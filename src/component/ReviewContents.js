@@ -33,7 +33,7 @@ function DeleteReview(reviewId){
 
 function MovieTitleReview({userNickname, title}) {
     return (
-        <td className='detailpage-reviews-review'>
+        <div className='detailpage-reviews-review'>
             <div className='detailpage-reviews-review-profile'>
                 <div className='detailpage-reviews-review-profile-name'>{userNickname}</div>
                 <div className='detailpage-reviews-review-content-rating'>★★★★★</div>
@@ -41,7 +41,7 @@ function MovieTitleReview({userNickname, title}) {
             <div className='detailpage-reviews-review-content'>
                 <div className='detailpage-reviews-review-content-text'>{title}</div>
             </div>
-        </td>
+        </div>
     )
 }
 

@@ -21,10 +21,6 @@ html{
     scroll-behavior: smooth;
 }
 
-#detailpage{
-    background : url(images/background/cameraandbooks.jpg);
-}
-
 #detailpage-content{
     font-family: 'EliceDigitalBaeum_Regular';
     width: 100%;
@@ -277,24 +273,25 @@ html{
 
 #detailpage-reviews-review-table-wrap{
     width: 90%;
+    height: 280px;
     text-align: center;
     align-content: center;
     vertical-align: middle;
     margin: auto;
+    padding-top: 20px;
 }
 
 #detailpage-reviews-review-table{
-    width: 100%;
-    text-align: center;
+    width: 80%;
+    text-align: justify;
     margin: auto;
 }
 
-
 .detailpage-reviews-review{
-    display: table-cell;
-    width: 50%;
-    height: 100px;
-    text-align: center;
+    display: block;
+    width: 96%;
+    height: 60px;
+    text-align: justify;
 }
 
 .detailpage-reviews-review-profile{
@@ -302,6 +299,16 @@ html{
     width: 30%;
     vertical-align: middle;
 }
+    .detailpage-reviews-review-profile-name{
+        display: inline-block;
+        width: 40%;
+        vertical-align: top;
+    }
+
+    .detailpage-reviews-review-content-rating{
+        display: inline-block;
+        vertical-align: top;
+    }
 
     .detailpage-reviews-review-profile:hover{
         cursor: pointer;
@@ -315,11 +322,12 @@ html{
 .detailpage-reviews-review-content{
     display: inline-block;
     text-align: justify;
-    width: 325px;
+    width:70%;
+    vertical-align: middle;
 }
 
     .detailpage-reviews-review-content-text{
-        width: 325px;
+        width: 90%;
         height: 30px;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -341,12 +349,14 @@ html{
         height: 30px;
         vertical-align: middle;
         background-color: whitesmoke;
-        border-radius: 15px;
+        border-radius: 5px;
         border-style: none;
+        box-shadow: 1px 1px 3px;
     }
 
         #detailpage-reviews-go-review:hover{
             background-color: silver;
+            cursor: pointer;
         }
 
     #detailpage-reviews-go-write-review{
@@ -356,12 +366,14 @@ html{
         height: 30px;
         vertical-align: middle;
         background-color: whitesmoke;
-        border-radius: 15px;
+        border-radius: 5px;
         border-style: none;
+        box-shadow: 1px 1px 3px;
     }
 
         #detailpage-reviews-go-write-review:hover{
             background-color: silver;
+            cursor: pointer;
         }
 
 .detailpage-blank{

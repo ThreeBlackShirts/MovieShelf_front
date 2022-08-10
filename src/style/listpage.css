@@ -16,10 +16,6 @@ html, body{
     align-content: center;
 }
 
-#listpage{
-    background : url(images/background/cameraandbooks.jpg);
-}
-
 .listpage-content{
     font-family: 'EliceDigitalBaeum_Regular';
     width: 100%;
