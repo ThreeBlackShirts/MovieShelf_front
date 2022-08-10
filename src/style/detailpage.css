@@ -322,7 +322,7 @@ html{
 .detailpage-reviews-review-content{
     display: inline-block;
     text-align: justify;
-    width:70%;
+    width:65%;
     vertical-align: middle;
 }
 
@@ -333,6 +333,12 @@ html{
         text-overflow: ellipsis;
         white-space: nowrap;
     }
+
+.detailpage-reviews-review-like {
+    display: inline-block;
+    width:5%;
+    vertical-align: middle;
+}
 
 #detailpage-reviews-pagecontroller{
     height: 100px;

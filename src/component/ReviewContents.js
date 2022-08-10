@@ -5,6 +5,8 @@ import PropTypes from "prop-types";
 import ReviewService from 'service/ReviewService';
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
+import { FaHeart } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
 
 import 'style/reviewpage.css';
 import 'style/detailpage.css';
@@ -31,7 +33,7 @@ function DeleteReview(reviewId){
     }
 }
 
-function MovieTitleReview({userNickname, title}) {
+function MovieTitleReview({reviewId, userNickname, title, isheart, handleLReviewLike}) {
     return (
         <div className='detailpage-reviews-review'>
             <div className='detailpage-reviews-review-profile'>
@@ -40,6 +42,11 @@ function MovieTitleReview({userNickname, title}) {
             </div>
             <div className='detailpage-reviews-review-content'>
                 <div className='detailpage-reviews-review-content-text'>{title}</div>
+            </div>
+            <div className='detailpage-reviews-review-like'>
+                {/* <div className='detailpage-reviews-review-content-like'>{likeCount}</div> */}
+                {isheart && <FaHeart className='detailpage-reviews-review-content-like' title="리뷰 좋아요" onClick={() => handleLReviewLike(reviewId)}/>}
+                {!isheart && <FaRegHeart className='detailpage-reviews-review-content-like' title="리뷰 좋아요 취소" onClick={() => handleLReviewLike(reviewId)}/>}
             </div>
         </div>
     )
