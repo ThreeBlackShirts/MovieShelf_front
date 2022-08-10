@@ -46,7 +46,7 @@ const DetailContent = () => {
                             alert("findReviewByMovieId fail");
                     }); 
                     WishListService
-                        .isWhishBtUserEmail(movieId, userEmail)
+                        .isWishBtUserEmail(movieId, userEmail)
                         .then((response) => {
                             console.log(response)
                             if(response.data.data === true)
@@ -54,8 +54,8 @@ const DetailContent = () => {
                             else
                                 setCheckwish(false)
                         }).catch(() => {
-                            console.log("isWhishBtUserEmail failed")
-                            alert("isWhishBtUserEmail fail");
+                            console.log("isWishBtUserEmail failed")
+                            alert("isWishBtUserEmail fail");
                     }); 
                 }).catch(() => {
                     console.log("detail failed")
