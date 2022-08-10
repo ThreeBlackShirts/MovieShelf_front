@@ -16,16 +16,12 @@ html, body{
     align-content: center;
 }
 
-body{
-    background : url(images/background/cameraandbooks.jpg);
-    background-color: rgba(0, 0, 0, 0.55);
-}
-
 .login-content {
     font-family: 'EliceDigitalBaeum_Regular';
     width: 100%;
-    height: 100%;
+    height: 100vh;
     align-content: center;
+    background : url(images/background/cameraandbooks.jpg);
 }
 
 /* header : title*/
@@ -55,8 +51,8 @@ body{
 }
 
 .login-content-body-main {
-    width: 480px;
-    height: 600px;
+    width: 50vh;
+    height: 70vh;
     margin: auto;
     margin-top: 60px;
     margin-bottom: 60px;
@@ -69,7 +65,7 @@ body{
 .login-content-body-main-title {
     margin: auto;
     height: 12%;
-    padding-top: 10%;
+    padding-top: 5vh;
     vertical-align: middle;
 }
 
@@ -81,13 +77,13 @@ body{
 
 .login-content-body-main-info {
     width: 360px;
-    height: 16%;
+    height: 30%;
     align-content: center;
     vertical-align: middle;
     margin: auto;
     margin-top: 3px;
     margin-bottom: 3px;
-    padding-top: 8%;
+    padding-top: 10%;
 }
 
 .login-content-body-main-info-id {
@@ -100,10 +96,12 @@ body{
 
 .login-content-body-main-info input{
     width: 300px;
-    height: 30px;
+    height: 32px;
     margin: 3px;
     border-radius: 15px;
     padding-left: 10px;
+    border-style: none;
+    margin-bottom: 5px;
 }
 
 .login-content-body-main-btn {
@@ -111,6 +109,7 @@ body{
     margin-top: 3px;
     margin-bottom: 3px;
     vertical-align: middle;
+    padding-top: 1vh;
 }
 
 .login-content-body-main-btn-remeberme {
@@ -133,14 +132,17 @@ body{
     text-align: center;
     vertical-align: middle;
     margin: 1%;
+    padding-top: 1vh;
 }
 
 .login-content-body-main-btn-login button {
     text-align: center;
     vertical-align: middle;
     height: 36px;
-    width: 240px;
-    border-radius: 15px;
+    width: 200px;
+    border-radius: 5px;
+    border-style: none;
+    box-shadow: 1px 1px 3px;
 }
 
     .login-content-body-main-btn-login button:hover{
@@ -148,7 +150,7 @@ body{
     }
 
 .login-content-body-main-social{
-    height: 25%;
+    height: 24%;
     margin-top: 2%;
     margin-bottom: 3px;
 }
@@ -157,11 +159,21 @@ body{
     font-weight: bold;
 }
 
-.login-content-body-main-social hr {
-    width: 360px;
-    border-style: dashed solid;
+#login-content-body-main-social-text{
+    display: inline-block;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
+.login-content-body-main-social hr {
+    display: inline-block;
+    width: 100px;
+    vertical-align: middle;
+}
+
+.login-content-body-main-social-btn{
+    display: block
+}
     .social-login-btn:hover{
         cursor: pointer;
     }
