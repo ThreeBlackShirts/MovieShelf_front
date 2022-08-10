@@ -33,7 +33,7 @@ function DeleteReview(reviewId){
     }
 }
 
-function MovieTitleReview({reviewId, userNickname, title, isheart, handleLReviewLike}) {
+function MovieTitleReview({reviewId, userNickname, title, likeCount, isheart, handleLReviewLike}) {
     return (
         <div className='detailpage-reviews-review'>
             <div className='detailpage-reviews-review-profile'>
@@ -44,9 +44,9 @@ function MovieTitleReview({reviewId, userNickname, title, isheart, handleLReview
                 <div className='detailpage-reviews-review-content-text'>{title}</div>
             </div>
             <div className='detailpage-reviews-review-like'>
-                {/* <div className='detailpage-reviews-review-content-like'>{likeCount}</div> */}
-                {isheart && <FaHeart className='detailpage-reviews-review-content-like' title="리뷰 좋아요" onClick={() => handleLReviewLike(reviewId)}/>}
-                {!isheart && <FaRegHeart className='detailpage-reviews-review-content-like' title="리뷰 좋아요 취소" onClick={() => handleLReviewLike(reviewId)}/>}
+                {isheart && <FaHeart className='detailpage-reviews-review-content-like' title="리뷰 좋아요 취소" onClick={() => handleLReviewLike(reviewId)}/>}
+                {!isheart && <FaRegHeart className='detailpage-reviews-review-content-like' title="리뷰 좋아요" onClick={() => handleLReviewLike(reviewId)}/>}
+                {/* <div className='detailpage-reviews-review-content-like-count'>{likeCount}</div> */}
             </div>
         </div>
     )

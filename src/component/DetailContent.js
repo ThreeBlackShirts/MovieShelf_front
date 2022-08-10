@@ -23,7 +23,7 @@ const DetailContent = () => {
     const [movie, setMovie] = useState([]);
     const [reviewContent, setReviewContent] = useState([]);
     const [checkwish, setCheckwish] = useState(false);
-    const [isheart, setIsheart] = useState(false);
+    const [reviewHeart, setReviewHeart] = useState([]);
 
     let navigate = useNavigate();
 
@@ -41,8 +41,21 @@ const DetailContent = () => {
                         .findReviewByMovieId(movieId)
                         .then((response) => {
                             setReviewContent(response.data.data.slice(0, 6))
-                            setIsLoading(false)
-                            console.log(reviewContent)
+                            response.data.data.length == 0 ? null : response.data.data.map( review => (
+                                LikeService.isLike(userEmail, review.reviewId)
+                                    .then((response)=>{
+                                        if(response.data.data === true){
+                                            setReviewHeart([...reviewHeart, {reviewId: review.reviewId, isheart: true}]);
+                                        }
+                                        else{
+                                            setReviewHeart(reviewHeart.concat({reviewId: review.reviewId, isheart: false}));
+                                        }
+                                        setIsLoading(false)
+                                    }).catch((error) => {
+                                        console.log("wishlist error :")
+                                        console.log(error)
+                                    })
+                            ))
                         }).catch(() => {
                             console.log("findReviewByMovieId failed")
                             alert("findReviewByMovieId fail");
@@ -170,25 +183,37 @@ const DetailContent = () => {
             alert("로그인이 필요합니다")
             navigate("/login")
         }else{
-            if(isheart){
-                setIsheart(false)
+            let heart = false
+            reviewHeart.map( data =>
+                data.reviewId === reviewId ? data.isheart === true ? heart = true : null : console.log("오류: 해당하는 리뷰 없음")
+            )
+            if(heart){
                 console.log("리뷰 좋아요 취소")
         
                 LikeService.deleteLike(userEmail, reviewId)
                     .then((response)=>{
                         console.log("deleteReviewLike service :")
+                        setReviewHeart(
+                            reviewHeart.map( data =>
+                                data.reviewId === reviewId ? { ...data, isheart: !data.isheart } : data
+                            )
+                        )
                     }).catch((error) => {
                         console.log("wishlist error :")
                         console.log(error)
                     })
             }
             else{
-                setIsheart(true)
                 console.log("리뷰 좋아요")
         
                 LikeService.addLike(userEmail, reviewId)
                     .then((response)=>{
                         console.log("addReviewLike service :")
+                        setReviewHeart(
+                            reviewHeart.map( data =>
+                                data.reviewId === reviewId ? { ...data, isheart: !data.isheart } : data
+                            )
+                        )
                     }).catch((error) => {
                         console.log("wishlist error :")
                         console.log(error)
@@ -198,19 +223,11 @@ const DetailContent = () => {
     }
 
     function isheartCheck(reviewId) {
+        console.log(reviewHeart)
         let heart = false
-        if(onLogin) {
-            LikeService.isLike(userEmail, reviewId)
-                .then((response)=>{
-                    if(response.data.data === true)
-                        heart = true
-                    else
-                        heart = false
-                }).catch((error) => {
-                    console.log("wishlist error :")
-                    console.log(error)
-                })
-        }
+        reviewHeart.map( data =>
+            data.reviewId === reviewId ? data.isheart === true ? heart = true : null : console.log("오류: 해당하는 리뷰 없음")
+        )
         return heart
     }
 
@@ -290,6 +307,7 @@ const DetailContent = () => {
                                             reviewId={review.reviewId}
                                             userNickname={review.user}
                                             title={review.title}
+                                            likeCount={review.like}
                                             isheart={isheartCheck(review.reviewId)}
                                             handleLReviewLike={handleLReviewLike}
                                         />

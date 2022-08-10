@@ -335,10 +335,15 @@ html{
     }
 
 .detailpage-reviews-review-like {
+    text-align: center;
     display: inline-block;
     width:5%;
     vertical-align: middle;
 }
+
+    .detailpage-reviews-review-content-like-count{
+        font-size: 0.7em;
+    }
 
 #detailpage-reviews-pagecontroller{
     height: 100px;
