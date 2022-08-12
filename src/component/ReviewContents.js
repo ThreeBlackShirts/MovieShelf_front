@@ -46,7 +46,7 @@ function MovieTitleReview({reviewId, userNickname, title, likeCount, isheart, ha
             <div className='detailpage-reviews-review-like'>
                 {isheart && <FaHeart className='detailpage-reviews-review-content-like' title="리뷰 좋아요 취소" onClick={() => handleLReviewLike(reviewId)}/>}
                 {!isheart && <FaRegHeart className='detailpage-reviews-review-content-like' title="리뷰 좋아요" onClick={() => handleLReviewLike(reviewId)}/>}
-                {/* <div className='detailpage-reviews-review-content-like-count'>{likeCount}</div> */}
+                <div className='detailpage-reviews-review-content-like-count'>{likeCount}</div>
             </div>
         </div>
     )
@@ -88,7 +88,7 @@ function MovieReview({reviewId, writer, user, userNickname, title, content, like
                     <div className='reviewpage-comment-content-btn'>
                         {isheart && <FaHeart className='detailpage-reviews-review-content-like' title="리뷰 좋아요 취소" onClick={() => handleLReviewLike(reviewId)}/>}
                         {!isheart && <FaRegHeart className='detailpage-reviews-review-content-like' title="리뷰 좋아요" onClick={() => handleLReviewLike(reviewId)}/>}
-                        {/* <div className='detailpage-reviews-review-content-like-count'>{likeCount}</div> */}
+                        <div className='detailpage-reviews-review-content-like-count'>{likeCount}</div>
                     </div>
                 </div>
             </div>

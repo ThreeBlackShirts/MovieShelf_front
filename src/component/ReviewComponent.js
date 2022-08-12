@@ -118,6 +118,11 @@ const ReviewContents = () => {
                                 data.reviewId === reviewId ? { ...data, isheart: !data.isheart } : data
                             )
                         )
+                        setReviewContent(
+                            reviewContent.map( data =>
+                                data.reviewId === reviewId ? { ...data, like: data.like-1 } : data
+                            )
+                        )
                     }).catch((error) => {
                         console.log("wishlist error :")
                         console.log(error)
@@ -132,6 +137,11 @@ const ReviewContents = () => {
                         setReviewHeart(
                             reviewHeart.map( data =>
                                 data.reviewId === reviewId ? { ...data, isheart: !data.isheart } : data
+                            )
+                        )
+                        setReviewContent(
+                            reviewContent.map( data =>
+                                data.reviewId === reviewId ? { ...data, like: data.like+1 } : data
                             )
                         )
                     }).catch((error) => {

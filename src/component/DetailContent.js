@@ -7,12 +7,12 @@ import AuthenticationService from 'service/AuthenticationService';
 import MovieService from 'service/MovieService';
 import ReviewService from 'service/ReviewService';
 import WishListService from 'service/WishListService';
+import LikeService from 'service/LikeService';
 import 'style/detailpage.css';
 
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { BsBookmarkHeartFill } from "react-icons/bs";
 import { BsBookmarkHeart } from "react-icons/bs";
-import LikeService from 'service/LikeService';
 
 const DetailContent = () => {
 
@@ -57,7 +57,7 @@ const DetailContent = () => {
                                             setIsLoading(false)
                                         }
                                     }).catch((error) => {
-                                        console.log("wishlist error :")
+                                        console.log("like error")
                                         console.log(error)
                                     })
                             ))
@@ -189,7 +189,7 @@ const DetailContent = () => {
         }else{
             let heart = false
             reviewHeart.map( data =>
-                data.reviewId === reviewId ? data.isheart === true ? heart = true : null : console.log("오류: 해당하는 리뷰 없음")
+                data.reviewId === reviewId ? data.isheart === true ? heart = true : null : null
             )
             if(heart){
                 console.log("리뷰 좋아요 취소")
@@ -200,6 +200,11 @@ const DetailContent = () => {
                         setReviewHeart(
                             reviewHeart.map( data =>
                                 data.reviewId === reviewId ? { ...data, isheart: !data.isheart } : data
+                            )
+                        )
+                        setReviewContent(
+                            reviewContent.map( data =>
+                                data.reviewId === reviewId ? { ...data, like: data.like-1 } : data
                             )
                         )
                     }).catch((error) => {
@@ -216,6 +221,11 @@ const DetailContent = () => {
                         setReviewHeart(
                             reviewHeart.map( data =>
                                 data.reviewId === reviewId ? { ...data, isheart: !data.isheart } : data
+                            )
+                        )
+                        setReviewContent(
+                            reviewContent.map( data =>
+                                data.reviewId === reviewId ? { ...data, like: data.like+1 } : data
                             )
                         )
                     }).catch((error) => {
