@@ -35,22 +35,27 @@ const DetailContent = () => {
                 .detailById(movieId)
                 .then((response) => {
                     setMovie(response.data.data)
-                    console.log(movie)
                     console.log("Movie Review")
                     ReviewService
                         .findReviewByMovieId(movieId)
                         .then((response) => {
-                            setReviewContent(response.data.data.slice(0, 6))
-                            response.data.data.length == 0 ? null : response.data.data.map( review => (
+                            setReviewContent(response.data.data.slice(0, 5))
+                            let dataLength = response.data.data.length
+                            dataLength > 5 ? dataLength = 5 : null
+                            let data = []
+                            !onLogin ? setIsLoading(false) : response.data.data.length == 0 ? setIsLoading(false) : response.data.data.slice(0, 5).map( review => (
                                 LikeService.isLike(userEmail, review.reviewId)
                                     .then((response)=>{
                                         if(response.data.data === true){
-                                            setReviewHeart([...reviewHeart, {reviewId: review.reviewId, isheart: true}]);
+                                            data.push({reviewId: review.reviewId, isheart: true})
                                         }
                                         else{
-                                            setReviewHeart(reviewHeart.concat({reviewId: review.reviewId, isheart: false}));
+                                            data.push({reviewId: review.reviewId, isheart: false})
                                         }
-                                        setIsLoading(false)
+                                        if(dataLength === data.length){
+                                            setReviewHeart(data)
+                                            setIsLoading(false)
+                                        }
                                     }).catch((error) => {
                                         console.log("wishlist error :")
                                         console.log(error)
@@ -64,7 +69,6 @@ const DetailContent = () => {
                         WishListService
                             .isWishBtUserEmail(movieId, userEmail)
                             .then((response) => {
-                                console.log(response)
                                 if(response.data.data === true)
                                     setCheckwish(true)
                                 else
@@ -223,10 +227,9 @@ const DetailContent = () => {
     }
 
     function isheartCheck(reviewId) {
-        console.log(reviewHeart)
-        let heart = false
+        let heart = false 
         reviewHeart.map( data =>
-            data.reviewId === reviewId ? data.isheart === true ? heart = true : null : console.log("오류: 해당하는 리뷰 없음")
+            data.reviewId === reviewId ? data.isheart === true ? heart = true : null : null
         )
         return heart
     }
