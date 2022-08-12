@@ -72,7 +72,7 @@ function WriterCheck(info){
     )
 }
 
-function MovieReview({reviewId, writer, user, userNickname, title, content}) {
+function MovieReview({reviewId, writer, user, userNickname, title, content, likeCount, isheart, handleLReviewLike}) {
     return (
         <div className='reviewpage-comment'>
 
@@ -84,6 +84,13 @@ function MovieReview({reviewId, writer, user, userNickname, title, content}) {
                 <div className='reviewpage-comment-title'>{ title == '' ? "제목 없음" : title }</div>
                 
                 {writer !== user ? "" : <WriterCheck reviewId={reviewId} /> }
+                <div className='reviewpage-comment-content-btn-div'> 
+                    <div className='reviewpage-comment-content-btn'>
+                        {isheart && <FaHeart className='detailpage-reviews-review-content-like' title="리뷰 좋아요 취소" onClick={() => handleLReviewLike(reviewId)}/>}
+                        {!isheart && <FaRegHeart className='detailpage-reviews-review-content-like' title="리뷰 좋아요" onClick={() => handleLReviewLike(reviewId)}/>}
+                        {/* <div className='detailpage-reviews-review-content-like-count'>{likeCount}</div> */}
+                    </div>
+                </div>
             </div>
             <div className="reviewpage-comment-main">
                 <div className='reviewpage-comment-content'>{ content == '' ? "작성된 내용이 없습니다." : content }</div>
