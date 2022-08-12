@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import AuthenticationService from 'service/AuthenticationService';
 import MovieService from 'service/MovieService';
 import ReviewService from 'service/ReviewService';
+import LikeService from 'service/LikeService';
 import {MovieDetailTitle, MovieReview} from './ReviewContents';
 
 
@@ -20,6 +21,7 @@ const ReviewContents = () => {
     const [movieId, setMovieId] = useState(useParams().movieid);
     const [movie, setMovie] = useState([]);
     const [reviewContent, setReviewContent] = useState([]);
+    const [reviewHeart, setReviewHeart] = useState([]);
 
     useEffect(() => {
         if(movieId !== null && movieId !== ""){
@@ -36,7 +38,26 @@ const ReviewContents = () => {
                 .then((response) => {
                     console.log(response.data.data)
                     setReviewContent(response.data.data)
-                    setIsLoading(false)
+                    let dataLength = response.data.data.length
+                    let data = []
+                    !onLogin ? setIsLoading(false) : response.data.data.length == 0 ? setIsLoading(false) : response.data.data.map( review => (
+                        LikeService.isLike(userEmail, review.reviewId)
+                            .then((response)=>{
+                                if(response.data.data === true){
+                                    data.push({reviewId: review.reviewId, isheart: true})
+                                }
+                                else{
+                                    data.push({reviewId: review.reviewId, isheart: false})
+                                }
+                                if(dataLength === data.length){
+                                    setReviewHeart(data)
+                                    setIsLoading(false)
+                                }
+                            }).catch((error) => {
+                                console.log("like error")
+                                console.log(error)
+                            })
+                    ))
                 }).catch(() => {
                     console.log("findReviewByMovieId failed")
                     alert("findReviewByMovieId fail");
@@ -75,6 +96,68 @@ const ReviewContents = () => {
                     alert("searchReviewByUseremail fail");
                 }); 
         }
+    }
+
+    function handleLReviewLike(reviewId) {
+        if(!onLogin){
+            alert("로그인이 필요합니다")
+            navigate("/login")
+        }else{
+            let heart = false
+            reviewHeart.map( data =>
+                data.reviewId === reviewId ? data.isheart === true ? heart = true : null : console.log("오류: 해당하는 리뷰 없음")
+            )
+            if(heart){
+                console.log("리뷰 좋아요 취소")
+        
+                LikeService.deleteLike(userEmail, reviewId)
+                    .then((response)=>{
+                        console.log("deleteReviewLike service :")
+                        setReviewHeart(
+                            reviewHeart.map( data =>
+                                data.reviewId === reviewId ? { ...data, isheart: !data.isheart } : data
+                            )
+                        )
+                        setReviewContent(
+                            reviewContent.map( data =>
+                                data.reviewId === reviewId ? { ...data, like: data.like-1 } : data
+                            )
+                        )
+                    }).catch((error) => {
+                        console.log("wishlist error :")
+                        console.log(error)
+                    })
+            }
+            else{
+                console.log("리뷰 좋아요")
+        
+                LikeService.addLike(userEmail, reviewId)
+                    .then((response)=>{
+                        console.log("addReviewLike service :")
+                        setReviewHeart(
+                            reviewHeart.map( data =>
+                                data.reviewId === reviewId ? { ...data, isheart: !data.isheart } : data
+                            )
+                        )
+                        setReviewContent(
+                            reviewContent.map( data =>
+                                data.reviewId === reviewId ? { ...data, like: data.like+1 } : data
+                            )
+                        )
+                    }).catch((error) => {
+                        console.log("wishlist error :")
+                        console.log(error)
+                    })
+            }
+        }
+    }
+
+    function isheartCheck(reviewId) {
+        let heart = false 
+        reviewHeart.map( data =>
+            data.reviewId === reviewId ? data.isheart === true ? heart = true : null : null
+        )
+        return heart
     }
 
     function handelNull(data) {
@@ -130,6 +213,9 @@ const ReviewContents = () => {
                                 userNickname={review.user}
                                 title={handelNull(review.title)}
                                 content={handelNull(review.content)} 
+                                likeCount={review.like}
+                                isheart={isheartCheck(review.reviewId)}
+                                handleLReviewLike={handleLReviewLike}
                             />
                     ))}
                 </div>

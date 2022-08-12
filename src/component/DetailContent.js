@@ -7,6 +7,7 @@ import AuthenticationService from 'service/AuthenticationService';
 import MovieService from 'service/MovieService';
 import ReviewService from 'service/ReviewService';
 import WishListService from 'service/WishListService';
+import LikeService from 'service/LikeService';
 import 'style/detailpage.css';
 
 import { MdKeyboardArrowLeft } from "react-icons/md";
@@ -21,7 +22,8 @@ const DetailContent = () => {
     const [movieId, setMovieId] = useState(useParams().movieid);
     const [movie, setMovie] = useState([]);
     const [reviewContent, setReviewContent] = useState([]);
-    const [checkwish, setCheckwish] = useState(true);
+    const [checkwish, setCheckwish] = useState(false);
+    const [reviewHeart, setReviewHeart] = useState([]);
 
     let navigate = useNavigate();
 
@@ -33,30 +35,49 @@ const DetailContent = () => {
                 .detailById(movieId)
                 .then((response) => {
                     setMovie(response.data.data)
-                    console.log(movie)
                     console.log("Movie Review")
                     ReviewService
                         .findReviewByMovieId(movieId)
                         .then((response) => {
-                            setReviewContent(response.data.data.slice(0, 6))
-                            setIsLoading(false)
-                            console.log(reviewContent)
+                            setReviewContent(response.data.data.slice(0, 5))
+                            let dataLength = response.data.data.length
+                            dataLength > 5 ? dataLength = 5 : null
+                            let data = []
+                            !onLogin ? setIsLoading(false) : response.data.data.length == 0 ? setIsLoading(false) : response.data.data.slice(0, 5).map( review => (
+                                LikeService.isLike(userEmail, review.reviewId)
+                                    .then((response)=>{
+                                        if(response.data.data === true){
+                                            data.push({reviewId: review.reviewId, isheart: true})
+                                        }
+                                        else{
+                                            data.push({reviewId: review.reviewId, isheart: false})
+                                        }
+                                        if(dataLength === data.length){
+                                            setReviewHeart(data)
+                                            setIsLoading(false)
+                                        }
+                                    }).catch((error) => {
+                                        console.log("like error")
+                                        console.log(error)
+                                    })
+                            ))
                         }).catch(() => {
                             console.log("findReviewByMovieId failed")
                             alert("findReviewByMovieId fail");
-                    }); 
-                    WishListService
-                        .isWishBtUserEmail(movieId, userEmail)
-                        .then((response) => {
-                            console.log(response)
-                            if(response.data.data === true)
-                                setCheckwish(true)
-                            else
-                                setCheckwish(false)
-                        }).catch(() => {
-                            console.log("isWishBtUserEmail failed")
-                            alert("isWishBtUserEmail fail");
-                    }); 
+                    });
+                    if(onLogin) {
+                        WishListService
+                            .isWishBtUserEmail(movieId, userEmail)
+                            .then((response) => {
+                                if(response.data.data === true)
+                                    setCheckwish(true)
+                                else
+                                    setCheckwish(false)
+                            }).catch(() => {
+                                console.log("isWishBtUserEmail failed")
+                                alert("isWishBtUserEmail fail");
+                        }); 
+                    }
                 }).catch(() => {
                     console.log("detail failed")
                     alert("detail fail");
@@ -127,33 +148,100 @@ const DetailContent = () => {
     }
     
     function handleLWishList(){
-        console.log("current this.state.checkwish:" + checkwish)
-        if(checkwish){
-            // wishlist.classList.add("background-color: pink");
-            setCheckwish(false)
-            console.log("찜 취소")
+        if(!onLogin){
+            alert("로그인이 필요합니다")
+            navigate("/login")
+        }else{
+            console.log("current this.state.checkwish:" + checkwish)
+            if(checkwish){
+                // wishlist.classList.add("background-color: pink");
+                setCheckwish(false)
+                console.log("찜 취소")
 
-            WishListService.deleteWishList(userEmail, movieId)
-                .then((response)=>{
-                    console.log("wishlist service :")
-                    alert('찜 취소')
-                }).catch((error) => {
-                    console.log("wishlist error :")
-                    console.log(error)
-                })
-        }
-        else{
-            setCheckwish(true)
-            console.log("찜")
+                WishListService.deleteWishList(userEmail, movieId)
+                    .then((response)=>{
+                        console.log("wishlist service :")
+                        alert('찜 취소')
+                    }).catch((error) => {
+                        console.log("wishlist error :")
+                        console.log(error)
+                    })
+            }
+            else{
+                setCheckwish(true)
+                console.log("찜")
 
-            WishListService.addWishList(userEmail,movieId)
-                .then((response)=>{
-                    console.log("wishlist service :")
-                    alert("찜꽁")
-                }).catch((error) => {
-                    console.log("wishlist error :")
-                })
+                WishListService.addWishList(userEmail,movieId)
+                    .then((response)=>{
+                        console.log("wishlist service :")
+                        alert("찜꽁")
+                    }).catch((error) => {
+                        console.log("wishlist error :")
+                    })
+            }
         }
+    }
+
+    function handleLReviewLike(reviewId) {
+        if(!onLogin){
+            alert("로그인이 필요합니다")
+            navigate("/login")
+        }else{
+            let heart = false
+            reviewHeart.map( data =>
+                data.reviewId === reviewId ? data.isheart === true ? heart = true : null : null
+            )
+            if(heart){
+                console.log("리뷰 좋아요 취소")
+        
+                LikeService.deleteLike(userEmail, reviewId)
+                    .then((response)=>{
+                        console.log("deleteReviewLike service :")
+                        setReviewHeart(
+                            reviewHeart.map( data =>
+                                data.reviewId === reviewId ? { ...data, isheart: !data.isheart } : data
+                            )
+                        )
+                        setReviewContent(
+                            reviewContent.map( data =>
+                                data.reviewId === reviewId ? { ...data, like: data.like-1 } : data
+                            )
+                        )
+                    }).catch((error) => {
+                        console.log("wishlist error :")
+                        console.log(error)
+                    })
+            }
+            else{
+                console.log("리뷰 좋아요")
+        
+                LikeService.addLike(userEmail, reviewId)
+                    .then((response)=>{
+                        console.log("addReviewLike service :")
+                        setReviewHeart(
+                            reviewHeart.map( data =>
+                                data.reviewId === reviewId ? { ...data, isheart: !data.isheart } : data
+                            )
+                        )
+                        setReviewContent(
+                            reviewContent.map( data =>
+                                data.reviewId === reviewId ? { ...data, like: data.like+1 } : data
+                            )
+                        )
+                    }).catch((error) => {
+                        console.log("wishlist error :")
+                        console.log(error)
+                    })
+            }
+        }
+    }
+
+    function isheartCheck(reviewId) {
+        let heart = false 
+        reviewHeart.map( data =>
+            data.reviewId === reviewId ? data.isheart === true ? heart = true : null : null
+        )
+        return heart
     }
 
     return (
@@ -229,10 +317,14 @@ const DetailContent = () => {
                         {isLoading ? "Loading..." : 
                                     reviewContent.length == 0 ? "등록된 리뷰가 없습니다" : reviewContent.map( review => (
                                         <MovieTitleReview  key={review.title}
+                                            reviewId={review.reviewId}
                                             userNickname={review.user}
                                             title={review.title}
+                                            likeCount={review.like}
+                                            isheart={isheartCheck(review.reviewId)}
+                                            handleLReviewLike={handleLReviewLike}
                                         />
-                                ))}
+                                    ))}
                     </div>
                 </div>
                 <br/>
