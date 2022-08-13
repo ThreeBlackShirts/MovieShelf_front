@@ -12,7 +12,7 @@ import 'style/reviewpage.css';
 import 'style/detailpage.css';
 
 function GoEditReview(data){
-    const url = `/review/edit/${data.reviewId}`;
+    const url = `/review/edit/${data.movieId}/${data.reviewId}`;
     return(
         <Link to={url} className="movie-edit-review-link">
             <MdEdit className='reviewpage-comment-content-btn-icon' id='moviereview-content-editbtn-icon' title="후기 수정"/>
@@ -63,7 +63,7 @@ function WriterCheck(info){
         <div className='reviewpage-comment-content-btn-div'>                
             <div className='reviewpage-comment-content-btn'>
                 <GoEditReview 
-                    reviewId={info.reviewId}/>
+                    reviewId={info.reviewId} movieId={info.movieId}/>
             </div>
             <div className='reviewpage-comment-content-btn'>
                 <MdDelete className='reviewpage-comment-content-btn-icon' title="후기 삭제" onClick={() => DeleteReview(info.reviewId)}/>
@@ -72,7 +72,7 @@ function WriterCheck(info){
     )
 }
 
-function MovieReview({reviewId, writer, user, userNickname, title, content, likeCount, isheart, handleLReviewLike}) {
+function MovieReview({reviewId, movieId, writer, user, userNickname, title, content, likeCount, isheart, handleLReviewLike}) {
     return (
         <div className='reviewpage-comment'>
 
@@ -83,7 +83,7 @@ function MovieReview({reviewId, writer, user, userNickname, title, content, like
                 </div>
                 <div className='reviewpage-comment-title'>{ title == '' ? "제목 없음" : title }</div>
                 
-                {writer !== user ? "" : <WriterCheck reviewId={reviewId} /> }
+                {writer !== user ? "" : <WriterCheck reviewId={reviewId} movieId={movieId} /> }
                 <div className='reviewpage-comment-content-btn-div'> 
                     <div className='reviewpage-comment-content-btn'>
                         {isheart && <FaHeart className='detailpage-reviews-review-content-like' title="리뷰 좋아요 취소" onClick={() => handleLReviewLike(reviewId)}/>}

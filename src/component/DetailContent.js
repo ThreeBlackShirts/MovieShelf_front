@@ -106,7 +106,7 @@ const DetailContent = () => {
                             if(data.movieId == movieId){
                                 isWrited = true
                                 alert("작성한 리뷰가 존재합니다. 수정 페이지로 이동합니다.")
-                                navigate(`/review/edit/${data.reviewId}`)
+                                navigate(`/review/edit/${movieId}/${data.reviewId}`)
                             }
                         })
                         if(!isWrited){
