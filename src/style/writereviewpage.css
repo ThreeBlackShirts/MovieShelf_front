@@ -132,13 +132,17 @@
                 min-width: 30px;
                 vertical-align: middle;
                 text-align: center;     
-                color: gold;       
+                color: gray;       
             }
 
                 .movieinfo-detail-rating-icon{
                     vertical-align: middle;
                     text-align: center;
                     font-size: 24px;
+                }
+
+                .rate-fillstart-yellow {
+                    color: gold;
                 }
 
 .writereview-moviereview-box{

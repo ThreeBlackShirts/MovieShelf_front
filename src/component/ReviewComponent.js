@@ -208,6 +208,7 @@ const ReviewContents = () => {
                         reviewContent.length == 0 ? "등록된 리뷰가 없습니다" : reviewContent.map( review => (
                             <MovieReview  key={review.reviewId}
                                 reviewId={review.reviewId}
+                                movieId={movieId}
                                 user={userEmail}
                                 writer={review.writer}
                                 userNickname={review.user}

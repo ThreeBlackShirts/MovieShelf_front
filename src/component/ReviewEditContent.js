@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import ReviewService from 'service/ReviewService';
+import MovieRatingService from 'service/MovieRatingService';
 
 import 'style/writereviewpage.css';
 
 import { MdKeyboardArrowLeft } from "react-icons/md";
-import { RiAddFill } from "react-icons/ri";
-import { RiSubtractFill } from "react-icons/ri";
 import { AiFillStar } from "react-icons/ai";
-import { AiOutlineStar } from "react-icons/ai";
 
 const EditReviewContent = () => {
     let navigate = useNavigate();
-    const [userEmail, setUserEmail] = useState(localStorage.getItem("authenticatedUser") || '');
-    const [token, setToken] = useState(localStorage.getItem("token") || '');
-    const [reviewId, setReviewId] = useState(useParams().reviewid);
+    const [userEmail] = useState(localStorage.getItem("authenticatedUser") || '');
+    const [reviewId] = useState(useParams().reviewid);
+    const [movieId] = useState(useParams().movieid);
     const [reviewTitle, setReviewTitle] = useState("");
     const [reviewContent, setReviewContent] = useState("");
+    const [movieRate, setMovieRate] = useState(0);
+    const [clicked, setClicked] = useState([false, false, false, false, false]);
 
     useEffect(() => {
         if(reviewId !== null && reviewId !== ""){
@@ -44,6 +44,15 @@ const EditReviewContent = () => {
         setReviewContent(e.target.value)
     };
 
+    function handleRateChange(rateData){
+        let clickStates = [...clicked]
+        for (let i = 0; i < 5; i++) {
+          clickStates[i] = i <= rateData ? true : false;
+        }
+        setClicked(clickStates)
+        setMovieRate(rateData+1)
+    }
+
     function editReview(){
         if(reviewTitle == "" || reviewContent == "") {
             alert("리뷰 제목과 내용 모두 입력해주세요!")
@@ -52,8 +61,14 @@ const EditReviewContent = () => {
             ReviewService
                 .editReview(reviewId, reviewTitle, reviewContent)
                 .then(() => {
-                    alert("수정 완료");
-                    navigate(-1)
+                    MovieRatingService.updateRate(userEmail, movieId, movieRate)
+                        .then(() => {
+                            alert("리뷰 수정이 완료되었습니다.")
+                            navigate(-1)
+                        }).catch(() => {
+                            console.log("editRate failed")
+                            alert("editRate fail")
+                    });
                 }).catch((error) => {
                     console.log("edit error")
                 })
@@ -75,13 +90,14 @@ const EditReviewContent = () => {
                                 <input id='reviewTitle' placeholder='후기 제목' type='text' value={reviewTitle}  onChange={handleTitleChange}></input>
                             </div>
                             <div className='writereview-movieinfo-detail-rate'>
-                                <div className='movieinfo-detail-rating'><RiSubtractFill className='movieinfo-detail-rating-icon'/></div>
-                                <div className='rate-fillstart'><AiFillStar className='movieinfo-detail-rating-icon'/></div>
-                                <div className='rate-fillstart'><AiFillStar className='movieinfo-detail-rating-icon'/></div>
-                                <div className='rate-fillstart'><AiFillStar className='movieinfo-detail-rating-icon'/></div>
-                                <div className='rate-fillstart'><AiFillStar className='movieinfo-detail-rating-icon'/></div>
-                                <div className='rate-fillstart'><AiFillStar className='movieinfo-detail-rating-icon'/></div>
-                                <div className='movieinfo-detail-rating'><RiAddFill className='movieinfo-detail-rating-icon'/></div>
+                                {[0,1,2,3,4].map((el) => (
+                                    <AiFillStar
+                                        key={el}
+                                        onClick={() => handleRateChange(el)}
+                                        className={`rate-fillstart movieinfo-detail-rating-icon ${clicked[el] && 'rate-fillstart-yellow'}`}
+                                        size="30"
+                                    />
+                                ))}
                             </div>
                         </div>
                     </div>
