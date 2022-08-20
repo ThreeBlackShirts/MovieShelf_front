@@ -18,6 +18,10 @@ const Header = () => {
         navigate("/main")
     }
     
+    function toTop20Page(){
+        navigate("/top20")
+    }
+    
     function toGenreListPage(){
         navigate("/genre")
     }
@@ -81,7 +85,7 @@ const Header = () => {
                 </div>
                 <div className="header-content-title-menu">
                     <div className="header-content-title-top">
-                        <h4 className="header-content-title-item" onClick={toHomePage}>Top20</h4>
+                        <h4 className="header-content-title-item" onClick={toTop20Page}>Top20</h4>
                     </div>
                     <div className="header-content-title-genre">
                         <h4 className="header-content-title-item" onClick={toGenreListPage}>Genre</h4>
