@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import ReviewService from 'service/ReviewService';
+import * as MovieRateUtil from "./MovieRateUtil";
+
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 import { FaHeart } from "react-icons/fa";
@@ -33,12 +35,12 @@ function DeleteReview(reviewId){
     }
 }
 
-function MovieTitleReview({reviewId, userNickname, title, likeCount, isheart, handleLReviewLike}) {
+function MovieTitleReview({reviewId, userNickname, title, rate, likeCount, isheart, handleLReviewLike}) {
     return (
         <div className='detailpage-reviews-review'>
             <div className='detailpage-reviews-review-profile'>
                 <div className='detailpage-reviews-review-profile-name'>{userNickname}</div>
-                <div className='detailpage-reviews-review-content-rating'>★★★★★</div>
+                <div className='detailpage-reviews-review-content-rating'><MovieRateUtil.MovieRateView rate={rate}/></div>
             </div>
             <div className='detailpage-reviews-review-content'>
                 <div className='detailpage-reviews-review-content-text'>{title}</div>
@@ -72,14 +74,14 @@ function WriterCheck(info){
     )
 }
 
-function MovieReview({reviewId, movieId, writer, user, userNickname, title, content, likeCount, isheart, handleLReviewLike}) {
+function MovieReview({reviewId, movieId, writer, user, userNickname, title, rate, content, likeCount, isheart, handleLReviewLike}) {
     return (
         <div className='reviewpage-comment'>
 
             <div className="reviewpage-comment-header">
                 <div className='reviewpage-comment-user'>
                     <div className='reviewpage-comment-user-id'>{userNickname}</div>
-                    <div className='reviewpage-comment-user-rating'>★★★★★</div>
+                    <div className='reviewpage-comment-user-rating'><MovieRateUtil.MovieRateView rate={rate}/></div>
                 </div>
                 <div className='reviewpage-comment-title'>{ title == '' ? "제목 없음" : title }</div>
                 

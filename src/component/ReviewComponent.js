@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
+
 import AuthenticationService from 'service/AuthenticationService';
 import MovieService from 'service/MovieService';
 import ReviewService from 'service/ReviewService';
 import LikeService from 'service/LikeService';
+import MovieRatingService from 'service/MovieRatingService';
 import {MovieDetailTitle, MovieReview} from './ReviewContents';
+import * as MovieRateUtil from "./MovieRateUtil";
 
 
 import 'style/reviewpage.css';
@@ -22,6 +25,7 @@ const ReviewContents = () => {
     const [movie, setMovie] = useState([]);
     const [reviewContent, setReviewContent] = useState([]);
     const [reviewHeart, setReviewHeart] = useState([]);
+    const [reviewRate, setReviewRate] = useState([]);
 
     useEffect(() => {
         if(movieId !== null && movieId !== ""){
@@ -39,6 +43,20 @@ const ReviewContents = () => {
                     console.log(response.data.data)
                     setReviewContent(response.data.data)
                     let dataLength = response.data.data.length
+                    let rateData = []
+                    response.data.data.length == 0 ? setIsLoading(false) : response.data.data.map( review => (
+                        MovieRatingService.findRate(review.writer, movieId)
+                            .then((response) => {
+                                rateData.push({reviewWriter: review.writer, rate: response.data.data.movieRate})
+                                
+                                if(dataLength === rateData.length){
+                                    setReviewRate(rateData)
+                                }
+                            }).catch((error) => {
+                                console.log("rate error")
+                                console.log(error)
+                            })
+                    ))
                     let data = []
                     !onLogin ? setIsLoading(false) : response.data.data.length == 0 ? setIsLoading(false) : response.data.data.map( review => (
                         LikeService.isLike(userEmail, review.reviewId)
@@ -82,7 +100,7 @@ const ReviewContents = () => {
                             if(data.movieId == movieId){
                                 isWrited = true
                                 alert("작성한 리뷰가 존재합니다. 수정 페이지로 이동합니다.")
-                                navigate(`/review/edit/${data.reviewId}`)
+                                navigate(`/review/edit/${movieId}/${data.reviewId}`)
                             }
                         })
                         if(!isWrited){
@@ -160,6 +178,14 @@ const ReviewContents = () => {
         return heart
     }
 
+    function reviewRateCheck(reviewWriter) {
+        let rate = 0;
+        reviewRate.map( data =>
+            data.reviewWriter === reviewWriter ? rate = data.rate : null
+        )
+        return rate
+    }
+
     function handelNull(data) {
         if(data == null){
             return('')
@@ -192,7 +218,7 @@ const ReviewContents = () => {
                                         <MovieDetailTitle  key={movie.movieTitle}
                                             title={handelNull(movie.movieTitle)} />
                                 }
-                                <div id='reviewpage-moviereview-rate'><span>★ ★ ★ ★ ★</span></div>
+                                <div id='reviewpage-moviereview-rate'><span><MovieRateUtil.MovieRateView rate={movie.movieRate}/></span></div>
                             </div>
                             <div className='moview-content-btn-div'>
                                 <div className='moviereview-content-btn'>
@@ -213,6 +239,7 @@ const ReviewContents = () => {
                                 writer={review.writer}
                                 userNickname={review.user}
                                 title={handelNull(review.title)}
+                                rate={reviewRateCheck(review.writer)}
                                 content={handelNull(review.content)} 
                                 likeCount={review.like}
                                 isheart={isheartCheck(review.reviewId)}

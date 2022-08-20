@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import * as MovieRateUtil from "./MovieRateUtil";
 
 function setLocation(id) {
     location.href = `/detail/${id}`
@@ -66,18 +67,29 @@ function GenreMovieList({id, title, poster}) {
     )
 }
 
+function TopRankMovieList({id, title, poster}) {
+    return (
+        <div className="listpage-content-result-item">
+            <a onClick={() => setLocation(id)}>
+                <div className="listpage-content-result-item-pic"><img src={poster}/></div>
+                <div className="listpage-content-result-item-info">{title}</div>
+            </a>
+        </div>
+    )
+}
+
 function MovieDetailTitle({title}) {
     return (
         <div id='detailpage-info-title'>{title}</div>
     )
 }
 
-function MovieDetail({poster, director, nation, actor, releaseDate, filmrate, runningTime, genres, contentBold, contentDetail}) {
+function MovieDetail({poster, rate, director, nation, actor, releaseDate, filmrate, runningTime, genres, contentBold, contentDetail}) {
     return (
         <div id="detailpage-info-major-data">
             <div id='detailpage-info-poster-img-wrap'>
                 <img id='detailpage-info-poster-img' src={poster} />
-                <div>★ ★ ★ ★ ☆</div>
+                <div><MovieRateUtil.MovieRateView rate={rate}/></div>
             </div>
             <div id='detailpage-info-majorinfo-basic'>
                     { contentBold == '' ? null :
@@ -176,4 +188,4 @@ MovieDetailStillcut.propTypes = {
     stillcut: PropTypes.string.isRequired
 }
   
-export {SearchMovieResult, BannerMovieView, RecommendMovieList, CategoryMovieList, GenreMovieList, MovieDetailTitle, MovieDetail, MovieDetailTrailer, MovieDetailStillcut}
+export {SearchMovieResult, BannerMovieView, RecommendMovieList, CategoryMovieList, GenreMovieList, TopRankMovieList, MovieDetailTitle, MovieDetail, MovieDetailTrailer, MovieDetailStillcut}
