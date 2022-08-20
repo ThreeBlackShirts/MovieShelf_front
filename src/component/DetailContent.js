@@ -13,6 +13,7 @@ import 'style/detailpage.css';
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { BsBookmarkHeartFill } from "react-icons/bs";
 import { BsBookmarkHeart } from "react-icons/bs";
+import MovieRatingService from 'service/MovieRatingService';
 
 const DetailContent = () => {
 
@@ -24,6 +25,7 @@ const DetailContent = () => {
     const [reviewContent, setReviewContent] = useState([]);
     const [checkwish, setCheckwish] = useState(false);
     const [reviewHeart, setReviewHeart] = useState([]);
+    const [reviewRate, setReviewRate] = useState([]);
 
     let navigate = useNavigate();
 
@@ -42,18 +44,32 @@ const DetailContent = () => {
                             setReviewContent(response.data.data.slice(0, 5))
                             let dataLength = response.data.data.length
                             dataLength > 5 ? dataLength = 5 : null
-                            let data = []
+                            let rateData = []
+                            response.data.data.length == 0 ? null : response.data.data.slice(0, 5).map( review => (
+                                MovieRatingService.findRate(review.writer, movieId)
+                                    .then((response) => {
+                                        rateData.push({reviewWriter: review.writer, rate: response.data.data.movieRate})
+                                        
+                                        if(dataLength === rateData.length){
+                                            setReviewRate(rateData)
+                                        }
+                                    }).catch((error) => {
+                                        console.log("rate error")
+                                        console.log(error)
+                                    })
+                            ))
+                            let likeData = []
                             !onLogin ? setIsLoading(false) : response.data.data.length == 0 ? setIsLoading(false) : response.data.data.slice(0, 5).map( review => (
                                 LikeService.isLike(userEmail, review.reviewId)
                                     .then((response)=>{
                                         if(response.data.data === true){
-                                            data.push({reviewId: review.reviewId, isheart: true})
+                                            likeData.push({reviewId: review.reviewId, isheart: true})
                                         }
                                         else{
-                                            data.push({reviewId: review.reviewId, isheart: false})
+                                            likeData.push({reviewId: review.reviewId, isheart: false})
                                         }
-                                        if(dataLength === data.length){
-                                            setReviewHeart(data)
+                                        if(dataLength === likeData.length){
+                                            setReviewHeart(likeData)
                                             setIsLoading(false)
                                         }
                                     }).catch((error) => {
@@ -244,6 +260,14 @@ const DetailContent = () => {
         return heart
     }
 
+    function reviewRateCheck(reviewWriter) {
+        let rate = 0;
+        reviewRate.map( data =>
+            data.reviewWriter === reviewWriter ? rate = data.rate : null
+        )
+        return rate
+    }
+
     return (
         <div id='detailpage-content'>
             <div id='gobackbtn'><MdKeyboardArrowLeft id='gobackbtn-icon' onClick={goBackBtn}/></div>
@@ -262,6 +286,7 @@ const DetailContent = () => {
                     { isLoading ? "Loading..." : 
                             <MovieDetail  key={movie.moviePoster}
                                 poster={handelNull(movie.moviePoster)}
+                                rate={handelNull(movie.movieRate)}
                                 director={handelNull(movie.movieDirector)}
                                 nation={handelNull(movie.movieNation)}
                                 actor={handelNull(movie.movieActor)}
@@ -320,6 +345,7 @@ const DetailContent = () => {
                                             reviewId={review.reviewId}
                                             userNickname={review.user}
                                             title={review.title}
+                                            rate={reviewRateCheck(review.writer)}
                                             likeCount={review.like}
                                             isheart={isheartCheck(review.reviewId)}
                                             handleLReviewLike={handleLReviewLike}
