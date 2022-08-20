@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import * as MovieRateUtil from "./MovieRateUtil";
 
 function setLocation(id) {
     location.href = `/detail/${id}`
@@ -72,12 +73,12 @@ function MovieDetailTitle({title}) {
     )
 }
 
-function MovieDetail({poster, director, nation, actor, releaseDate, filmrate, runningTime, genres, contentBold, contentDetail}) {
+function MovieDetail({poster, rate, director, nation, actor, releaseDate, filmrate, runningTime, genres, contentBold, contentDetail}) {
     return (
         <div id="detailpage-info-major-data">
             <div id='detailpage-info-poster-img-wrap'>
                 <img id='detailpage-info-poster-img' src={poster} />
-                <div>★ ★ ★ ★ ☆</div>
+                <div><MovieRateUtil.MovieRateView rate={rate}/></div>
             </div>
             <div id='detailpage-info-majorinfo-basic'>
                     { contentBold == '' ? null :
