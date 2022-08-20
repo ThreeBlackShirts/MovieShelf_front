@@ -13,7 +13,7 @@ import WriteReviewPage from 'component/Pages/ReviewWritePage';
 import UserSettingPage from 'component/Pages/UserSettingPage';
 import EditReviewPage from 'component/Pages/ReviewEditPage';
 import GenreListPage from 'component/Pages/GenreListPage';
-import OAuth2RedirectHandler from 'service/OAuth2RedirectHandeler';
+import OAuth2RedirectHandler from 'service/OAuth2RedirectHandler';
 import MovieTopRankPage from 'component/Pages/MovieTopRankPage';
 
 const App = () => {
