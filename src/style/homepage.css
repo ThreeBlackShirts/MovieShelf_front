@@ -30,7 +30,7 @@ html, body{
 }
 
 .home-content-header {
-  height: 90px;
+  height: 10vh;
   width: 100%;
   flex-direction: column;
 }
@@ -106,15 +106,17 @@ html, body{
 
 .home-content-main{
   width: 600px;
-  height: 480px;
-  margin: 140px auto 160px auto;
+  height: 62.8vh;
+  margin: 10vh auto 10vh auto;
+  
   text-align: center;
   vertical-align: middle;
   border-radius: 30px;
 }
 
 .home-content-main-title{
-  height: 55%;
+  height: 200px;
+  padding-top: 100px;
 }
 
 .home-content-main-title-intro{
@@ -131,7 +133,7 @@ html, body{
 }
 
 .home-content-main-search{
-  height: 20%;
+  height: 100px;
 }
 
 .home-content-main-search-text{

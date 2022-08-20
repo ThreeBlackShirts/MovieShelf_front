@@ -52,6 +52,14 @@ class MovieService {
 		});
 	}
 
+	topRank(){
+		return axios.get(MOVIE_API_BASE_URL+"/rank",  {
+			headers: {
+				"Content-Type": 'application/json',
+			},
+		});
+	}
+
 }
 
 export default new MovieService()

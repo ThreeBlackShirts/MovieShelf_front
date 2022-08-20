@@ -11,7 +11,6 @@
 }
 
 .writereviewpage{
-    background : url(images/background/cameraandbooks.jpg);
     min-height: 100vh;
 }
 
@@ -45,39 +44,51 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: left;
 }
+
+    .writereview-movieinfo-info{
+        text-align: left;
+        width: 64%;
+    }
+        .writereview-movieinfo-info h2{
+            font-size: 30px;
+            color: white;
+        }
 
     .writereview-movieinfo-div{
         text-align: center;
         width: 90%;
-        align-items: center;
     }
 
     .writereview-movieinfo-detail-div{
-        width: 100%;
-        flex-direction: column;
-        margin-left: 10%;
+        text-align: center;
+        margin-left: auto;
     }
 
     .writereview-movieinfo-detail{
         width: 76%;
         height: 100%;
+        margin: auto;
         border-radius: 15px;
         padding: 20px;
         background-color: rgba(211, 211, 211, 0.8);
+        text-align: left;
     }
 
         .writereview-movieinfo-detail-title{
             font-size: 30px;
             min-height: 40px;
-            margin: 15px 5px 15px 5px;
+            display: inline-block;
+            width:70%;
         }
 
             .writereview-movieinfo-detail-title #reviewTitle{
                 display: inline-block;
-                text-align: center;
+                text-align: left;
                 min-width: 150px;
                 min-height: 30px;
+                width: 80%;
                 font-family: 'EliceDigitalBaeum_Bold';
                 font-size: 20px;
                 vertical-align: middle;
@@ -85,6 +96,8 @@
                 border-style: solid;
                 border-radius: 5px;
                 border-width: 0 0 1px 0;
+                position: relative;
+                left: 10px;
             }
 
         .writereview-movieinfo-detail-id{
@@ -92,13 +105,14 @@
             min-width: 100px;
             min-height: 40px;
             vertical-align: middle;
-            margin: 60px 10px 5px 10px;
+        
         }
 
         .writereview-movieinfo-detail-rate{
+            display: inline-block;
             min-height: 40px;
             vertical-align: bottom;
-            margin: 20px 10px 5px 5%;
+            width: 30%;
         }
 
             .movieinfo-detail-rating{
@@ -118,9 +132,8 @@
                 min-width: 30px;
                 vertical-align: middle;
                 text-align: center;     
-                color: gold;       
+                color: gray;       
             }
-
 
                 .movieinfo-detail-rating-icon{
                     vertical-align: middle;
@@ -128,22 +141,9 @@
                     font-size: 24px;
                 }
 
-                
-        .writereview-movieinfo-detail-shortreview{
-            min-height: 40px;
-            vertical-align: middle;
-            margin: 20px 10px 5px 5%;
-        }
-
-            .writereview-movieinfo-detail-shortreview-text{
-                font-family: 'EliceDigitalBaeum_Regular';
-                font-size: 15px;
-                vertical-align: middle;
-                width: 36%;
-                min-height: 24px;
-                border-radius: 5px;
-                padding-left: 10px;
-            }
+                .rate-fillstart-yellow {
+                    color: gold;
+                }
 
 .writereview-moviereview-box{
     text-align: center;
@@ -154,7 +154,7 @@
 
     .writereview-moviereview-text-wrap{
         width: 100%;
-        margin-top: 50px;
+        margin-top: 10px;
         margin-bottom: 10px;
     }
 
@@ -163,7 +163,7 @@
             font-size: 17px;
             text-align: justify;
             width: 76%;
-            min-height: 15vh;
+            min-height: 24vh;
             border-radius: 15px;
             border: none;
             padding: 20px;

@@ -3,13 +3,18 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import ReviewService from 'service/ReviewService';
+import * as MovieRateUtil from "./MovieRateUtil";
+
 import { MdEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
+import { FaHeart } from "react-icons/fa";
+import { FaRegHeart } from "react-icons/fa";
 
 import 'style/reviewpage.css';
+import 'style/detailpage.css';
 
 function GoEditReview(data){
-    const url = `/review/edit/${data.reviewId}`;
+    const url = `/review/edit/${data.movieId}/${data.reviewId}`;
     return(
         <Link to={url} className="movie-edit-review-link">
             <MdEdit className='reviewpage-comment-content-btn-icon' id='moviereview-content-editbtn-icon' title="후기 수정"/>
@@ -30,17 +35,22 @@ function DeleteReview(reviewId){
     }
 }
 
-function MovieTitleReview({userNickname, title}) {
+function MovieTitleReview({reviewId, userNickname, title, rate, likeCount, isheart, handleLReviewLike}) {
     return (
-        <td className='detailpage-reviews-review'>
+        <div className='detailpage-reviews-review'>
             <div className='detailpage-reviews-review-profile'>
                 <div className='detailpage-reviews-review-profile-name'>{userNickname}</div>
-                <div className='detailpage-reviews-review-content-rating'>★★★★★</div>
+                <div className='detailpage-reviews-review-content-rating'><MovieRateUtil.MovieRateView rate={rate}/></div>
             </div>
             <div className='detailpage-reviews-review-content'>
                 <div className='detailpage-reviews-review-content-text'>{title}</div>
             </div>
-        </td>
+            <div className='detailpage-reviews-review-like'>
+                {isheart && <FaHeart className='detailpage-reviews-review-content-like' title="리뷰 좋아요 취소" onClick={() => handleLReviewLike(reviewId)}/>}
+                {!isheart && <FaRegHeart className='detailpage-reviews-review-content-like' title="리뷰 좋아요" onClick={() => handleLReviewLike(reviewId)}/>}
+                <div className='detailpage-reviews-review-content-like-count'>{likeCount}</div>
+            </div>
+        </div>
     )
 }
 
@@ -55,7 +65,7 @@ function WriterCheck(info){
         <div className='reviewpage-comment-content-btn-div'>                
             <div className='reviewpage-comment-content-btn'>
                 <GoEditReview 
-                    reviewId={info.reviewId}/>
+                    reviewId={info.reviewId} movieId={info.movieId}/>
             </div>
             <div className='reviewpage-comment-content-btn'>
                 <MdDelete className='reviewpage-comment-content-btn-icon' title="후기 삭제" onClick={() => DeleteReview(info.reviewId)}/>
@@ -64,16 +74,30 @@ function WriterCheck(info){
     )
 }
 
-function MovieReview({reviewId, writer, user, userNickname, title, content}) {
+function MovieReview({reviewId, movieId, writer, user, userNickname, title, rate, content, likeCount, isheart, handleLReviewLike}) {
     return (
         <div className='reviewpage-comment'>
-            <div className='reviewpage-comment-user'>
-                <div className='reviewpage-comment-user-id'>{userNickname}</div>
-                <div className='reviewpage-comment-user-rating'>★★★★★</div>
+
+            <div className="reviewpage-comment-header">
+                <div className='reviewpage-comment-user'>
+                    <div className='reviewpage-comment-user-id'>{userNickname}</div>
+                    <div className='reviewpage-comment-user-rating'><MovieRateUtil.MovieRateView rate={rate}/></div>
+                </div>
+                <div className='reviewpage-comment-title'>{ title == '' ? "제목 없음" : title }</div>
+                
+                {writer !== user ? "" : <WriterCheck reviewId={reviewId} movieId={movieId} /> }
+                <div className='reviewpage-comment-content-btn-div'> 
+                    <div className='reviewpage-comment-content-btn'>
+                        {isheart && <FaHeart className='detailpage-reviews-review-content-like' title="리뷰 좋아요 취소" onClick={() => handleLReviewLike(reviewId)}/>}
+                        {!isheart && <FaRegHeart className='detailpage-reviews-review-content-like' title="리뷰 좋아요" onClick={() => handleLReviewLike(reviewId)}/>}
+                        <div className='detailpage-reviews-review-content-like-count'>{likeCount}</div>
+                    </div>
+                </div>
             </div>
-            <div className='reviewpage-comment-title'>{ title == '' ? "제목 없음" : title }</div>
-            <div className='reviewpage-comment-content'>{ content == '' ? "작성된 내용이 없습니다." : content }</div>
-            {writer !== user ? "" : <WriterCheck reviewId={reviewId} /> }
+            <div className="reviewpage-comment-main">
+                <div className='reviewpage-comment-content'>{ content == '' ? "작성된 내용이 없습니다." : content }</div>
+            </div>
+
         </div>
     )
 }

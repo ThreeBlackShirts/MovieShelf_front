@@ -17,31 +17,50 @@ const Header = () => {
 		navigate('/main');
 	}
 
+	function toTop20Page() {
+		navigate('/top20');
+	}
+
 	function toGenreListPage() {
 		navigate('/genre');
 	}
 
 	function toUserInfoPage() {
-		navigate('/userinfo');
-	}
-
-	function onKeyPress(e) {
-		if (e.key == 'Enter') search();
+		if (loginCheck()) navigate('/userinfo');
+		else navigate('/login');
 	}
 
 	function toUserSettingPage() {
-		navigate('/usersetting');
+		if (loginCheck()) navigate('/usersetting');
+		else navigate('/login');
+	}
+
+	function doLogin() {
+		navigate('/login');
+	}
+
+	function loginCheck() {
+		if (!onLogin) {
+			alert('로그인이 필요합니다.');
+			return 0;
+		} else {
+			return 1;
+		}
 	}
 
 	function doLogout() {
 		AuthenticationService.logout();
 		alert('로그아웃 되었습니다.');
 		setOnLogin(false);
-		navigate('/main');
+		if (location.pathname.includes('/review/write/') || location.pathname.includes('/review/edit/')) {
+			navigate(-1);
+		} else if (location.pathname.includes('/usersetting') || location.pathname.includes('/userinfo')) {
+			navigate('/main');
+		}
 	}
 
-	function doLogin() {
-		navigate('/login');
+	function onKeyPress(e) {
+		if (e.key == 'Enter') search();
 	}
 
 	function search() {
@@ -61,7 +80,7 @@ const Header = () => {
 				</div>
 				<div className="header-content-title-menu">
 					<div className="header-content-title-top">
-						<h4 className="header-content-title-item" onClick={toHomePage}>
+						<h4 className="header-content-title-item" onClick={toTop20Page}>
 							Top20
 						</h4>
 					</div>

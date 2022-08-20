@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import ReviewService from 'service/ReviewService';
+import MovieRatingService from 'service/MovieRatingService';
 
 import 'style/writereviewpage.css';
 
 import { MdKeyboardArrowLeft } from "react-icons/md";
-import { RiAddFill } from "react-icons/ri";
-import { RiSubtractFill } from "react-icons/ri";
 import { AiFillStar } from "react-icons/ai";
 
 
 const WriteReviewComponent = () => {
     let navigate = useNavigate();
-    const [userEmail, setUserEmail] = useState(localStorage.getItem("authenticatedUser") || '');
-    const [movieId, setMovieId] = useState(useParams().movieid);
+    const [userEmail] = useState(localStorage.getItem("authenticatedUser") || '');
+    const [movieId] = useState(useParams().movieid);
     const [reviewTitle, setReviewTitle] = useState("");
     const [reviewContent, setReviewContent] = useState("");
+    const [movieRate, setMovieRate] = useState(0);
+    const [clicked, setClicked] = useState([false, false, false, false, false]);
 
     const handleTitleChange = (e) => {
         setReviewTitle(e.target.value)
@@ -25,6 +26,15 @@ const WriteReviewComponent = () => {
         setReviewContent(e.target.value)
     };
 
+    function handleRateChange(rateData){
+        let clickStates = [...clicked];
+        for (let i = 0; i < 5; i++) {
+          clickStates[i] = i <= rateData ? true : false;
+        }
+        setClicked(clickStates);
+        setMovieRate(rateData+1)
+    }
+
     function writeReview(){
         if(reviewTitle == "" || reviewContent == "") {
             alert("리뷰 제목과 내용 모두 입력해주세요!")
@@ -33,8 +43,14 @@ const WriteReviewComponent = () => {
                 ReviewService
                     .writeReview(userEmail, movieId, reviewTitle, reviewContent)
                     .then(() => {
-                        alert("리뷰가 등록되었습니다!")
-                        navigate(-1)
+                        MovieRatingService.addRate(userEmail, movieId, movieRate)
+                            .then(() => {
+                                alert("리뷰가 등록되었습니다!")
+                                navigate(-1)
+                            }).catch(() => {
+                                console.log("addRate failed")
+                                alert("addRate fail");
+                        });
                     }).catch(() => {
                         console.log("writeReview failed")
                         alert("writeReview fail");
@@ -66,13 +82,14 @@ const WriteReviewComponent = () => {
                                 <input id='reviewTitle' name='reviewTitle' value={reviewTitle} placeholder='한줄 후기' type='text' onChange={handleTitleChange}></input>
                             </div>
                             <div className='writereview-movieinfo-detail-rate'>
-                                <div className='movieinfo-detail-rating'><RiSubtractFill className='movieinfo-detail-rating-icon'/></div>
-                                <div className='rate-fillstart'><AiFillStar className='movieinfo-detail-rating-icon'/></div>
-                                <div className='rate-fillstart'><AiFillStar className='movieinfo-detail-rating-icon'/></div>
-                                <div className='rate-fillstart'><AiFillStar className='movieinfo-detail-rating-icon'/></div>
-                                <div className='rate-fillstart'><AiFillStar className='movieinfo-detail-rating-icon'/></div>
-                                <div className='rate-fillstart'><AiFillStar className='movieinfo-detail-rating-icon'/></div>
-                                <div className='movieinfo-detail-rating'><RiAddFill className='movieinfo-detail-rating-icon'/></div>
+                                {[0,1,2,3,4].map((el) => (
+                                    <AiFillStar
+                                        key={el}
+                                        onClick={() => handleRateChange(el)}
+                                        className={`rate-fillstart movieinfo-detail-rating-icon ${clicked[el] && 'rate-fillstart-yellow'}`}
+                                        size="30"
+                                    />
+                                ))}
                             </div>
                         </div>
                     </div>

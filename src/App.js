@@ -14,6 +14,7 @@ import UserSettingPage from 'component/Pages/UserSettingPage';
 import EditReviewPage from 'component/Pages/ReviewEditPage';
 import GenreListPage from 'component/Pages/GenreListPage';
 import OAuth2RedirectHandler from 'service/OAuth2RedirectHandeler';
+import MovieTopRankPage from 'component/Pages/MovieTopRankPage';
 
 const App = () => {
 	return (
@@ -27,6 +28,7 @@ const App = () => {
 			<Route path="/login" exact element={<LoginPage />} />
 			<Route path="/signup" element={<SignUpPage />} />
 			<Route path="/main" element={<MainPage />} />
+			<Route path="/top20" element={<MovieTopRankPage />} />
 			<Route path="/genre" element={<GenreListPage />} />
 			<Route path="/list" element={<ListPage />} />
 			<Route path="/detail/:movieid" element={<DetailPage />} />

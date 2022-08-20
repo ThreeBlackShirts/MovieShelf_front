@@ -23,12 +23,12 @@
 }
 
 .userinfo-content-info{
-    min-height: 12vh;
+    min-height: 11vh;
     width: 60%;
     margin: auto;
     text-align: center;
     vertical-align: middle;
-    padding-top: 5vh;
+    padding-top: 4vh;
 }
 
     .userinfo-content-info-profile{
@@ -80,23 +80,27 @@
     padding: 10px;
     text-align: justify;
     border-radius: 15px;
-    color: white;
+    color: #080808;
+    font-weight: bolder;
     background-color: rgba(211, 211, 211, 0.8);
     margin: 10px 0 10px 0;
 }
 
     .userinfo-content-shelf-list-name{
-        width: 100%;
+        width: 96%;
         font-size: 27px;
         vertical-align: middle;
         font-family: 'EliceDigitalBaeum_Regular';
+        margin: auto;
     }
 
     .userinfo-content-shelf-list-item-wrap{
         text-align: left;
         overflow-x: auto;
         position: relative;
+        width: 96%;
         height: 80%;
+        margin: auto;
     }
         .userinfo-content-shelf-list-item-wrap::-webkit-scrollbar{
             height: 10px;
@@ -107,12 +111,12 @@
             background-color: rgba(211, 211, 211, 0);
         }
         .userinfo-content-shelf-list-item-wrap::-webkit-scrollbar-thumb{
-            background-color: whitesmoke;
+            background-color: #bebebe;
             border-radius: 5px;
         }
 
     .userinfo-content-shelf-list-item{
-        display: inline-block;
+        display: table-cell;
         vertical-align: top;
     }
 
