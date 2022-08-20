@@ -1,6 +1,6 @@
 // 리다이렉트될 화면
 // OAuth2RedirectHandeler.js
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Oval } from 'react-loader-spinner';
 import { useNavigate } from 'react-router-dom';
 import AuthenticationService from 'service/AuthenticationService';
@@ -9,9 +9,6 @@ const OAuth2RedirectHandler = (props) => {
 	let params = new URL(document.URL).searchParams;
 	let code = params.get('code');
 	let navigate = useNavigate();
-
-	// const [token, setToken] = useState('');
-	// const [userEmail, setUserEmail] = useState('');
 
 	useEffect(async () => {
 		await AuthenticationService.kakaoLogin(code)
@@ -25,8 +22,6 @@ const OAuth2RedirectHandler = (props) => {
 				console.log('kakaoLogin Failed');
 			});
 		navigate('/main');
-
-		// return () => AuthenticationService.registerSuccessfulLoginForJwt(userEmail, token);
 	}, []);
 
 	return (
