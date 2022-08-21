@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Noto+Serif+KR:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Parisienne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@500&display=swap');
+
+@font-face {
+    font-family: 'EliceDigitalBaeum_Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_220508@1.0/EliceDigitalBaeum_Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+html, body{
+    width: 100%;
+    height: 100%;
+    align-content: center;
+}
+
+.rank-listpage-content{
+    font-family: 'EliceDigitalBaeum_Regular';
+    width: 100%;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    min-height: 82.8vh;
+    text-align: center;
+}
+
+.rank-listpage-content-result-wrap{
+    width: 100%;
+    text-align: center;
+}
+
+.rank-listpage-content-result{
+    display: inline-block;
+    width: 80%;
+    margin: auto;
+    border-radius: 15px;
+    text-align: justify;
+}
+
+.rank-listpage-content-result-item{
+    vertical-align: top;
+    align-items: center;
+    background-color: rgba(230, 230, 230, 0.8);
+    border-radius: 15px;
+    border-width: 1px;
+    margin-bottom: 10px;
+}
+
+    .rank-listpage-content-result-item a {
+        padding: 3%;
+        padding-right: 5%;
+        display: flex;
+        align-content: center;
+        align-items: center;
+    }
+
+.rank-listpage-content-result-item-rank{
+    width: 10%;
+    text-align: center;
+    font-size: 2.5em;
+    color: white;
+    text-shadow: 3px 3px 3px gray;
+}
+
+.rank-listpage-content-result-item:hover{
+    cursor: pointer;
+}
+
+.rank-listpage-content-result-item-pic{
+    width: 23%;
+    object-fit: contain;
+    text-align: center;
+}
+
+    .rank-listpage-content-result-item-pic img{
+        width: 165px;
+        height: 220px;
+    }
+
+.rank-listpage-content-result-item-info{
+    width: 67%;
+    margin-left: 4%;
+    color: black;
+}
+
+#rank-listpage-content-result-item-info-title{
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.rank-listpage-content-result-item-info-content{
+    font-size: 12px;
+}
+
+.rank-listpage-content-result-item-info p{
+    font-size: 14px;
+    text-align: justify;
+    margin-bottom: 0px;
+}
+
+#rank-listpage-content-result-item-info-storyline{
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+    #bold-storyline{
+        font-family: 'EliceDigitalBaeum_Bold';
+    }

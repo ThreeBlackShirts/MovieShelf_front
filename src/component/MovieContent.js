@@ -67,12 +67,31 @@ function GenreMovieList({id, title, poster}) {
     )
 }
 
-function TopRankMovieList({id, title, poster}) {
+function TopRankMovieList({id, rank, title, poster, nation, releaseDate, filmrate, runningTime, genres, contentBold, contentDetail}) {
     return (
-        <div className="listpage-content-result-item">
+        <div className="rank-listpage-content-result-item">
             <a onClick={() => setLocation(id)}>
-                <div className="listpage-content-result-item-pic"><img src={poster}/></div>
-                <div className="listpage-content-result-item-info">{title}</div>
+                <div className="rank-listpage-content-result-item-rank">{rank}</div>
+                <div className="rank-listpage-content-result-item-pic"><img src={poster}/></div>
+                <div className="rank-listpage-content-result-item-info">
+                    <div id="rank-listpage-content-result-item-info-title">
+                        <span>{title}</span>
+                    </div>
+                    <div className='rank-listpage-content-result-item-info-content'>
+                        { contentBold == '' ? null :
+                                <span>개봉일: {releaseDate}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        }
+                        { genres == '' ? null :
+                                <span>장르: {genres}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                        }
+                    </div>
+                    { contentBold != '' || contentDetail != '' ? 
+                        <div id='rank-listpage-content-result-item-info-storyline'>
+                            {contentBold == '' ? null : <p id='bold-storyline'>{contentBold}</p> }
+                            {contentDetail == '' ? null : <p id='detail-storyline'>{contentDetail}</p> }
+                        </div> : null
+                    }
+                </div>
             </a>
         </div>
     )
