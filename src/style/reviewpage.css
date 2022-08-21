@@ -185,23 +185,54 @@
         line-height: 60px;
     }
         
-    .reviewpage-comment-content-btn-div{
+    .reviewpage-comment-content-userbtn-div{
         display: inline-block;
-        width: 10%;
+        width: 12%;
+        height: 100%;
         text-align: right;
         vertical-align: middle;
     }
+        .reviewpage-comment-content-btn-wrap{
+            display: inline-block;
+        }
+
+    .reviewpage-comment-content-likebtn-div{
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        width: 6%;
+        height: 100%;
+    }
+
+        .detailpage-reviews-review-content-like{
+            text-align: center;
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+        }
+
+        .detailpage-reviews-review-content-like-count{
+            display: inline-block;
+            text-align: center;
+            vertical-align: bottom;
+        }
 
     .reviewpage-comment-content-btn{
         display: inline-block;
-        width: 28px;
-        height: 28px;
-        text-align: center;
         vertical-align: middle;
-        margin-left: 5px;
-        margin-right: 5px;
+        width: 30px;
+        height: 30px;
+        margin-left: 3px;
     }
-    
+
+    #moviereview-content-editbtn-icon, #moviereview-content-deletebtn-icon{
+        width: 24px;
+        height: 24px;
+        margin-left: 6px;
+        vertical-align: middle;
+        font-weight: lighter;
+    }
+
     .reviewpage-comment-content-btn-icon{
         width: 100%;
         height: auto;
