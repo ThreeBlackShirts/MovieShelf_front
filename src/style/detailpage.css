@@ -322,8 +322,8 @@ html{
 .detailpage-reviews-review-content{
     display: inline-block;
     text-align: justify;
-    width:70%;
     vertical-align: middle;
+    width:65%;
 }
 
     .detailpage-reviews-review-content-text{
@@ -332,6 +332,17 @@ html{
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+    }
+
+.detailpage-reviews-review-like {
+    text-align: center;
+    display: inline-block;
+    width:5%;
+    vertical-align: middle;
+}
+
+    .detailpage-reviews-review-content-like-count{
+        font-size: 0.7em;
     }
 
 #detailpage-reviews-pagecontroller{

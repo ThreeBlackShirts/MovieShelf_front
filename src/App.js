@@ -13,30 +13,33 @@ import WriteReviewPage from 'component/Pages/ReviewWritePage';
 import UserSettingPage from 'component/Pages/UserSettingPage';
 import EditReviewPage from 'component/Pages/ReviewEditPage';
 import GenreListPage from 'component/Pages/GenreListPage';
+import OAuth2RedirectHandler from 'service/OAuth2RedirectHandler';
+import MovieTopRankPage from 'component/Pages/MovieTopRankPage';
 
 const App = () => {
-
-  return (
-    <Routes>
-      {/* <Route element={<AuthLayout />}>
+	return (
+		<Routes>
+			{/* <Route element={<AuthLayout />}>
         <Route path="/*" element={<HomePage />} />
         <Route path="/logout" element={<LogoutComponent />} />
       </Route> */}
-      <Route index element={<HomePage/>} />
-      <Route path="/*" element={<HomePage/>} />
-      <Route path="/login" exact element={<LoginPage />} />
-      <Route path="/signup" element={<SignUpPage />} />
-      <Route path="/main" element={<MainPage />} />
-      <Route path="/genre" element={<GenreListPage />} />
-      <Route path="/list" element={<ListPage />} />
-      <Route path="/detail/:movieid" element={<DetailPage />} />
-      <Route path="/userinfo" element={<UserInfoPage />} />
-      <Route path="/review/:movieid" element={<ReviewPage />} />
-      <Route path="/review/write/:movieid" element={<WriteReviewPage />} />
-      <Route path="/review/edit/:reviewid" element={<EditReviewPage />} />
-      <Route path="/usersetting" element={<UserSettingPage />} />
-    </Routes>
-  );
+			<Route index element={<HomePage />} />
+			<Route path="/*" element={<HomePage />} />
+			<Route path="/login" exact element={<LoginPage />} />
+			<Route path="/signup" element={<SignUpPage />} />
+			<Route path="/main" element={<MainPage />} />
+			<Route path="/top20" element={<MovieTopRankPage />} />
+			<Route path="/genre" element={<GenreListPage />} />
+			<Route path="/list" element={<ListPage />} />
+			<Route path="/detail/:movieid" element={<DetailPage />} />
+			<Route path="/userinfo" element={<UserInfoPage />} />
+			<Route path="/review/:movieid" element={<ReviewPage />} />
+			<Route path="/review/write/:movieid" element={<WriteReviewPage />} />
+			<Route path="/review/edit/:reviewid" element={<EditReviewPage />} />
+			<Route path="/usersetting" element={<UserSettingPage />} />
+			<Route path="/oauth/callback/kakao" element={<OAuth2RedirectHandler />} />
+		</Routes>
+	);
 };
 
 export default App;

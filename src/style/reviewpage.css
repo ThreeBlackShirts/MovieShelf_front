@@ -141,7 +141,7 @@
 }
 
 .reviewpage-comment{
-    min-height: 120px;
+    min-height: 140px;
     vertical-align: top;
     background-color: rgba(230, 230, 230, 0.8);
     border-radius: 15px;
@@ -155,20 +155,25 @@
     min-height: 60px;
     text-align: left;
     font-weight: bold;
+    vertical-align: middle;
+    width: 100%;
+    margin: auto;
 }
 
     .reviewpage-comment-user{
         display: inline-block;
         width: 15%;
         text-align: center;
-        vertical-align: middle;
+        vertical-align: bottom;
     }
         .reviewpage-comment-user-id{
             vertical-align: middle;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .reviewpage-comment-user-rating{
-            vertical-align: bottom;
+            position: relative;
         }
 
     .reviewpage-comment-title{
@@ -183,7 +188,7 @@
     .reviewpage-comment-content-btn-div{
         display: inline-block;
         width: 10%;
-        text-align: center;
+        text-align: right;
         vertical-align: middle;
     }
 
@@ -196,11 +201,7 @@
         margin-left: 5px;
         margin-right: 5px;
     }
-
-    .reviewpage-comment-content-btn:first-child{
-        margin-right: 15px;
-    }
-
+    
     .reviewpage-comment-content-btn-icon{
         width: 100%;
         height: auto;
@@ -220,7 +221,7 @@
 
 .reviewpage-comment-main{
     text-align: center;
-    min-height: 120px;
+    min-height: 80px;
 }
     .reviewpage-comment-content{
         display: block;    

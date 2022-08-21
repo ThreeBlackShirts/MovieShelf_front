@@ -39,16 +39,16 @@ class WishListService {
         return axios.get(WISHLIST_API_BASE_URL + "/list/" + userEmail);
     }
 
-    isWhishBtUserEmail(movieId, userEmail) {
+    isWishBtUserEmail(movieId, userEmail) {
         console.log("이메일로 위시리스트 등록여부 확인")
         AuthenticationService.setupAxiosInterceptors();
-        return axios.post(WISHLIST_API_BASE_URL + "/validate/" + movieId,{
+        let data = {
+            userEmail: userEmail
+        }
+        return axios.post(WISHLIST_API_BASE_URL + "/validate/" + movieId, JSON.stringify(data),{
             headers: {
                 "Content-Type": `application/json`,
             },
-            data: {
-                userEmail: userEmail
-            }
         })
     }
 }
