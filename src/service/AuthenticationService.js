@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { KAKAO_AUTH_URL } from './OAuth';
-// const API_URL = "/api/auth/";
+
 const USER_API_BASE_URL = '/api/v1';
 
 class AuthenticationService {
@@ -22,7 +22,6 @@ class AuthenticationService {
 			userEmail: userEmail,
 			userPassword: userPassword,
 		};
-		// console.log(data);
 		return axios.post(USER_API_BASE_URL + '/login', JSON.stringify(data), {
 			headers: {
 				'Content-Type': `application/json`,
@@ -33,13 +32,8 @@ class AuthenticationService {
 		return token; // 'Bearer ' + , 'X-AUTH-TOKEN'
 	}
 	registerSuccessfulLoginForJwt(userEmail, token) {
-		console.log('===registerSuccessfulLoginForJwt===');
 		localStorage.setItem('authenticatedUser', userEmail);
 		localStorage.setItem('token', token);
-		console.log(userEmail);
-		console.log(token);
-		// sessionStorage.setItem('authenticatedUser', userEmail)
-		// this.setupAxiosInterceptors(this.createJWTToken(token))
 		this.setupAxiosInterceptors();
 	}
 
@@ -53,9 +47,7 @@ class AuthenticationService {
 				const token = localStorage.getItem('token');
 				if (token) {
 					config.headers['X-AUTH-TOKEN'] = token;
-					//X-AUTH-TOKEN으로 다른 url 이용할 때 헤더로 넣어줘야한다.
 				}
-				// config.headers['Content-Type'] = 'application/json';
 				return config;
 			},
 			(error) => {
@@ -65,15 +57,12 @@ class AuthenticationService {
 	}
 
 	isUserLoggedIn() {
-		//let user = sessionStorage.getItem('authenticatedUser')
 		const token = localStorage.getItem('token');
-		console.log('===UserloggedInCheck===');
-		console.log(token);
 
 		if (token) {
 			return true;
 		}
-		//if(user===null) return false
+
 		return false;
 	}
 
@@ -94,7 +83,6 @@ class AuthenticationService {
 		let data = {
 			userEmail: userEmail,
 		};
-		// console.log(data);
 		return axios.delete(USER_API_BASE_URL + '/userEmail/' + userEmail, {
 			headers: {
 				'Content-Type': `application/json`,

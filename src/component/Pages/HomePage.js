@@ -3,11 +3,9 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 import 'style/homepage.css';
 import AuthenticationService from 'service/AuthenticationService';
-import ListContent from 'component/ListContent';
 import Footer from '../Footer/Footer';
 
 import { FiSearch } from 'react-icons/fi';
-import { ImBooks } from 'react-icons/im';
 
 const HomePage = () => {
 	const [onLogin, setOnLogin] = useState(AuthenticationService.isUserLoggedIn);

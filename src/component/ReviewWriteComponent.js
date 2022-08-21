@@ -48,22 +48,18 @@ const WriteReviewComponent = () => {
                                 alert("리뷰가 등록되었습니다!")
                                 navigate(-1)
                             }).catch(() => {
-                                console.log("addRate failed")
                                 alert("addRate fail");
                         });
                     }).catch(() => {
-                        console.log("writeReview failed")
                         alert("writeReview fail");
                 });       
             } else {
-                console.log("movieId error")
                 navigate(-1)
             }
         }
     }
 
     function goBackBtn(){
-        console.log("goback btn clicked!")
         navigate(-1)
     }
 

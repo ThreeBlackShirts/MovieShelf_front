@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
 
@@ -17,8 +17,6 @@ const UserContent = () => {
         UserService
             .findUserByEmail(localStorage.getItem("authenticatedUser"))
             .then((response) => {
-                console.log("userservice: ")
-                console.log(response.data.data)
                 setUsers(response.data.data);
             }).catch((error) => {
                 console.log(error.response)
@@ -31,14 +29,11 @@ const UserContent = () => {
         ReviewService
             .searchReviewByUseremail(localStorage.getItem("authenticatedUser"))
             .then((response) => {
-                console.log("searchMyReview success")
                 setReviewData(response.data.data)
-                console.log("ReviewService")
-                console.log(reviewData)
 
                 setIsLoading(false)
             }).catch((error) => {
-                console.log("review error")
+                console.log(error)
             });
     }
 
@@ -47,12 +42,9 @@ const UserContent = () => {
             .searchWishListByUserEmail(localStorage.getItem("authenticatedUser"))
             .then((response) => {
                 setWishListData(response.data.data)
-                console.log("WishListService: ")
-                console.log(wishListData)
-
                 setIsLoading(false)
             }).catch((error) => {
-                console.log("review error")
+                console.log(error)
             });
     }
 

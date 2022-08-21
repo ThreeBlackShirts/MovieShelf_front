@@ -29,7 +29,6 @@ const LoginPage = () => {
 	}
 
 	function toBack() {
-		console.log(prevLocation)
 		if(prevLocation === "/" || prevLocation === "/signup"){
 			navigate("/main")
 		} else {
@@ -49,14 +48,12 @@ const LoginPage = () => {
 	function loginClicked() {
 		AuthenticationService.login(userEmail, userPassword)
 			.then((response) => {
-				console.log('loginClicked');
 				setToken(response.data.data);
 
 				AuthenticationService.registerSuccessfulLoginForJwt(userEmail, response.data.data);
 				setShowSuccessMessage(true);
 				setHasLoginFailed(false);
 
-				//현재 위치가 "/" 였으면, "/main"으로, 아니라면, -1
 				toBack();
 			})
 			.catch(() => {
@@ -67,11 +64,9 @@ const LoginPage = () => {
 	}
 
 	function socialLoginGoogle() {
-		console.log('google login clicked');
 		AuthenticationService.loginSocialGoogle();
 	}
 	function socialLoginKakao() {
-		console.log('kakao login clicked');
 		AuthenticationService.loginSocialKakao();
 	}
 

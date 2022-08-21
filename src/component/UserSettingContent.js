@@ -42,7 +42,6 @@ class UserSettingContent extends Component {
                     alert("수정 완료");
                     document.location.href = "/userinfo";
                 }).catch((error) => {
-                    console.log(error.response)
                     this.setState({ hasCheckPasswordFailed: true })
                 });
         } else {
@@ -55,7 +54,6 @@ class UserSettingContent extends Component {
         UserService
             .findUserByEmail(localStorage.getItem("authenticatedUser"))
             .then((response) => {
-                console.log(response.data)
                 this.state.userEmail = response.data.userEmail;
                 this.state.userName = response.data.userName;
             }).catch((error) => {
@@ -68,9 +66,7 @@ class UserSettingContent extends Component {
     }
 
     deleteUser() {
-        console.log("UserSetting: deleteUser")
         this.state.userEmail = localStorage.getItem("authenticatedUser")
-        console.log(this.state.userEmail)
         UserService.deleteUser(this.state.userEmail)
     }
 

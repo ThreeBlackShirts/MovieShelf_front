@@ -10,7 +10,6 @@ class MovieRatingService {
             movieId: movieId,
             movieRate: movieRate
         }
-        console.log("MovieRatingService: Add Rate")
         AuthenticationService.setupAxiosInterceptors();
         return axios.post(RATE_API_BASE_URL + "/add", JSON.stringify(rateData), {
             headers: {
@@ -24,7 +23,6 @@ class MovieRatingService {
             movieId: movieId,
             userEmail: userEmail
         }
-        console.log("MovieRatingService: Find Rate")
         AuthenticationService.setupAxiosInterceptors();
         return axios.post(RATE_API_BASE_URL + "/find", JSON.stringify(data), {
             headers: {
@@ -39,7 +37,6 @@ class MovieRatingService {
             movieId: movieId,
             movieRate: movieRate
         }
-        console.log("MovieRatingService: Update Rate")
         AuthenticationService.setupAxiosInterceptors();
         return axios.post(RATE_API_BASE_URL + "/update", JSON.stringify(rateData), {
             headers: {
@@ -53,7 +50,6 @@ class MovieRatingService {
             movieId: movieId,
             userEmail: userEmail
         }
-        console.log("MovieRatingService: Delete Rate")
         AuthenticationService.setupAxiosInterceptors();
         return axios.post(RATE_API_BASE_URL + "/delete", JSON.stringify(data), {
             headers: {

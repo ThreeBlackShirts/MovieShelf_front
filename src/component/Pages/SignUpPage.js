@@ -28,7 +28,7 @@ const SignUpPage = () => {
     function signUpClicked() {
         if (userPasswordCheck === userPassword) {
             AuthenticationService.register(userEmail, userName, userPassword, userNickname)
-                .then((response) => {
+                .then(() => {
                     alert('회원가입 성공! 로그인 창으로 이동합니다.');
                     navigate('/login', { state: { preLocation : location } })
                 }).catch(() => {
@@ -41,11 +41,9 @@ const SignUpPage = () => {
     }
 
     function socialLoginGoogle() {
-        console.log("google login clicked")
         AuthenticationService.loginSocialGoogle()
     }
     function socialLoginKakao() {
-        console.log("kakao login clicked")
         AuthenticationService.loginSocialKakao()
     }
 
