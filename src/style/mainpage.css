@@ -42,17 +42,20 @@ body{
 
 .banner-content-item-info {
     width: 60%;
+    margin-left: 2vw;
 }
 
 .banner-content-item-title {
     font-weight: bold;
     color: white;
     font-size: 1.5em;
+    text-shadow: 3px 3px 3px rgb(34, 34, 34);
 }
 
 .banner-content-item-detail {
     color: rgba(255, 255, 255, 0.753);
     font-size: 0.8em;
+    text-shadow: 2px 2px 2px rgb(34, 34, 34);
 }
 
 .detail-bold {

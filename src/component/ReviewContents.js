@@ -12,6 +12,7 @@ import { FaRegHeart } from "react-icons/fa";
 
 import 'style/reviewpage.css';
 import 'style/detailpage.css';
+import MovieRatingService from "service/MovieRatingService";
 
 function GoEditReview(data){
     const url = `/review/edit/${data.movieId}/${data.reviewId}`;
@@ -22,13 +23,18 @@ function GoEditReview(data){
     );
 }
 
-function DeleteReview(reviewId){
+function DeleteReview(info){
     console.log("delete review clicked")
     if(confirm("리뷰를 삭제하시겠습니까?") == true) {
-    ReviewService.deleteReview(reviewId)
+    ReviewService.deleteReview(info.reviewId)
         .then(()=> {
-            alert("리뷰가 삭제되었습니다.");
-            location.reload()
+            MovieRatingService.deleteRate(info.userEmail, info.movieId)
+                .then(()=> {
+                    alert("리뷰가 삭제되었습니다.");
+                    location.reload()
+                }).catch((error) => {
+                    console.log(error.response)
+                });
         }).catch((error) => {
             console.log(error.response)
         });
@@ -68,7 +74,7 @@ function WriterCheck(info){
                     reviewId={info.reviewId} movieId={info.movieId}/>
             </div>
             <div className='reviewpage-comment-content-btn'>
-                <MdDelete className='reviewpage-comment-content-btn-icon' id="moviereview-content-deletebtn-icon" title="후기 삭제" onClick={() => DeleteReview(info.reviewId)}/>
+                <MdDelete className='reviewpage-comment-content-btn-icon' id="moviereview-content-deletebtn-icon" title="후기 삭제" onClick={() => DeleteReview(info)}/>
             </div>
         </div>
     )
@@ -86,7 +92,7 @@ function MovieReview({reviewId, movieId, writer, user, userNickname, title, rate
                 <div className='reviewpage-comment-title'>{ title == '' ? "제목 없음" : title }</div>
                 
                 <div className="reviewpage-comment-content-userbtn-div">
-                    {writer !== user ? "" : <WriterCheck reviewId={reviewId} movieId={movieId} /> }
+                    {writer !== user ? "" : <WriterCheck reviewId={reviewId} movieId={movieId} userEmail={writer} /> }
                 </div>
                 <div className='reviewpage-comment-content-likebtn-div'> 
                     <div className='reviewpage-comment-content-btn'>

@@ -21,11 +21,12 @@ class MovieRatingService {
 
     findRate(userEmail, movieId) {
         let data = {
+            movieId: movieId,
             userEmail: userEmail
         }
         console.log("MovieRatingService: Find Rate")
         AuthenticationService.setupAxiosInterceptors();
-        return axios.post(RATE_API_BASE_URL + "/find/" + movieId, JSON.stringify(data), {
+        return axios.post(RATE_API_BASE_URL + "/find", JSON.stringify(data), {
             headers: {
                 "Content-Type": `application/json`,
             },
@@ -47,10 +48,18 @@ class MovieRatingService {
         });
     }
 
-    deleteRate(rateId) {
+    deleteRate(userEmail, movieId) {
+        let data = {
+            movieId: movieId,
+            userEmail: userEmail
+        }
         console.log("MovieRatingService: Delete Rate")
         AuthenticationService.setupAxiosInterceptors();
-        return axios.delete(RATE_API_BASE_URL + "/" + rateId);
+        return axios.post(RATE_API_BASE_URL + "/delete", JSON.stringify(data), {
+            headers: {
+                "Content-Type": `application/json`,
+            },
+        });
     }
 
 }

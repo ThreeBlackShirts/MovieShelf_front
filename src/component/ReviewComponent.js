@@ -231,7 +231,7 @@ const ReviewContents = () => {
                 <hr id='reviewpage-hr'/>
                 <div id='reviewpage-comment-wrap'>
                     {isLoading ? "Loading..." : 
-                        reviewContent.length == 0 ? "등록된 리뷰가 없습니다" : reviewContent.map( review => (
+                        reviewContent.length == 0 ? <div id='reviewpage-comment-none'>등록된 리뷰가 없습니다</div> : reviewContent.map( review => (
                             <MovieReview  key={review.reviewId}
                                 reviewId={review.reviewId}
                                 movieId={movieId}

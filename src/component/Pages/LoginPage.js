@@ -1,18 +1,40 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import AuthenticationService from 'service/AuthenticationService';
 
 import 'style/loginpage.css';
 
+const usePrevLocation = (location) => {
+	const prevLocRef = useRef(location)
+	
+	useEffect(()=>{
+		prevLocRef.current = location
+	},[location])
+	
+	if(prevLocRef.current.state !== null){
+		return prevLocRef.current.state.preLocation.pathname
+	} else {
+		return ""
+	}
+}
+
 const LoginPage = () => {
 	let navigate = useNavigate();
+
+	let location = useLocation();
+	let prevLocation = usePrevLocation(location)
 
 	function toHomePage() {
 		navigate('/');
 	}
 
 	function toBack() {
-		navigate(-1);
+		console.log(prevLocation)
+		if(prevLocation === "/" || prevLocation === "/signup"){
+			navigate("/main")
+		} else {
+			navigate(-1);
+		}
 	}
 
 	const [userEmail, setUserEmail] = useState(localStorage.getItem('authenticatedUser') || '');

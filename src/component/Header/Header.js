@@ -36,7 +36,7 @@ const Header = () => {
 	}
 
 	function doLogin() {
-		navigate('/login');
+		navigate('/login', { state: { preLocation : location } })
 	}
 
 	function loginCheck() {
@@ -72,51 +72,53 @@ const Header = () => {
 
 	return (
 		<div className="header-container">
-			<div className="header-content-title">
-				<div className="header-content-title-logo">
-					<h1 className="header-content-title-logo-h1" onClick={toHomePage}>
-						MovieShelf
-					</h1>
-				</div>
-				<div className="header-content-title-menu">
-					<div className="header-content-title-top">
-						<h4 className="header-content-title-item" onClick={toTop20Page}>
-							Top20
-						</h4>
+			<div className="header-container-contents">
+				<div className="header-content-title">
+					<div className="header-content-title-logo">
+						<h1 className="header-content-title-logo-h1" onClick={toHomePage}>
+							MovieShelf
+						</h1>
 					</div>
-					<div className="header-content-title-genre">
-						<h4 className="header-content-title-item" onClick={toGenreListPage}>
-							Genre
-						</h4>
+					<div className="header-content-title-menu">
+						<div className="header-content-title-top">
+							<h4 className="header-content-title-item" onClick={toTop20Page}>
+								Top20
+							</h4>
+						</div>
+						<div className="header-content-title-genre">
+							<h4 className="header-content-title-item" onClick={toGenreListPage}>
+								Genre
+							</h4>
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<div className="header-content-userbtn">
-				<div className="header-content-userbtn-search-btn">
-					<input type="text" className="header-content-userbtn-search-btn-text" id="search-input" placeholder="영화 제목을 입력해주세요" onKeyUp={onKeyPress}></input>
-					<FiSearch className="header-content-userbtn-search-btn-icon" onClick={search} />
-				</div>
-				<div className="header-content-userbtn-myshelf">
-					<ImBooks className="header-content-userbtn-myshelf-icon" onClick={toUserInfoPage} />
-				</div>
-				<div className="header-content-userbtn-setting">
-					<IoIosSettings className="header-content-userbtn-setting-icon" onClick={toUserSettingPage} />
-				</div>
-				{onLogin && (
-					<div className="header-content-userbtn-login">
-						<h4 className="header-content-userbtn-login-btn" onClick={doLogout}>
-							LOGOUT
-						</h4>
+				<div className="header-content-userbtn">
+					<div className="header-content-userbtn-search-btn">
+						<input type="text" className="header-content-userbtn-search-btn-text" id="search-input" placeholder="영화 제목을 입력해주세요" onKeyUp={onKeyPress}></input>
+						<FiSearch className="header-content-userbtn-search-btn-icon" onClick={search} />
 					</div>
-				)}
-				{!onLogin && (
-					<div className="header-content-userbtn-login">
-						<h4 className="header-content-userbtn-login-btn" onClick={doLogin}>
-							LOGIN
-						</h4>
+					<div className="header-content-userbtn-myshelf">
+						<ImBooks className="header-content-userbtn-myshelf-icon" onClick={toUserInfoPage} />
 					</div>
-				)}
+					<div className="header-content-userbtn-setting">
+						<IoIosSettings className="header-content-userbtn-setting-icon" onClick={toUserSettingPage} />
+					</div>
+					{onLogin && (
+						<div className="header-content-userbtn-login">
+							<h4 className="header-content-userbtn-login-btn" onClick={doLogout}>
+								LOGOUT
+							</h4>
+						</div>
+					)}
+					{!onLogin && (
+						<div className="header-content-userbtn-login">
+							<h4 className="header-content-userbtn-login-btn" onClick={doLogin}>
+								LOGIN
+							</h4>
+						</div>
+					)}
+				</div>
 			</div>
 		</div>
 	);

@@ -135,6 +135,11 @@
     margin: auto;
 }
 
+#reviewpage-comment-none{
+    padding-top: 20vh;
+    color: gray;
+}
+
 #reviewpage-comment-nothing{
     font-size: 20px;
     font-family: 'EliceDigitalBaeum_Regular';
@@ -145,7 +150,6 @@
     vertical-align: top;
     background-color: rgba(230, 230, 230, 0.8);
     border-radius: 15px;
-    border-style: solid;
     border-width: 1px;
     margin-bottom: 10px;
     align-items: center;

@@ -27,6 +27,11 @@ html{
   background-color: rgba(0, 0, 0, 0.4);
 }
 
+.header-container-contents{
+  padding-left: 3vw;
+  padding-right: 3vw;
+}
+
 .header-content-title{
   font-family: 'Parisienne', cursive;
   display: inline-block;
@@ -94,13 +99,13 @@ html{
 
 .header-content-userbtn-search-btn{
   display: inline-block;
-  width: 64%;
+  width: 50%;
   text-align: right;
   vertical-align: middle;
 }
 
 .header-content-userbtn-search-btn-text{
-  width: 48%;
+  width: 60%;
   height: 28px;
   margin-right: 3%;
   border: 0;
@@ -140,6 +145,7 @@ html{
 .header-content-userbtn-setting{
   display: inline-block;
   width: 10%;
+  margin-right: 5%;
   vertical-align: middle;
 }
 
