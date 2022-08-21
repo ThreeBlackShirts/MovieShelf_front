@@ -36,7 +36,7 @@ const Header = () => {
 	}
 
 	function doLogin() {
-		navigate('/login');
+		navigate('/login', { state: { preLocation : location } })
 	}
 
 	function loginCheck() {

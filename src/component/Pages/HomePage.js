@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 import 'style/homepage.css';
 import AuthenticationService from 'service/AuthenticationService';
@@ -12,9 +12,14 @@ import { ImBooks } from 'react-icons/im';
 const HomePage = () => {
 	const [onLogin, setOnLogin] = useState(AuthenticationService.isUserLoggedIn);
 	let navigate = useNavigate();
+	const location = useLocation();
 
 	function toHomePage() {
 		navigate('/');
+	}
+
+	function toLogin() {
+		navigate('/login', { state: { preLocation : location } })
 	}
 
 	function doLogout() {
@@ -52,9 +57,9 @@ const HomePage = () => {
 				)}
 				{!onLogin && (
 					<div className="home-content-header-login">
-						<Link className="home-content-header-login-btn" to="/login">
+						<div className="home-content-header-login-btn" onClick={toLogin}>
 							LOGIN
-						</Link>
+						</div>
 					</div>
 				)}
 			</div>
@@ -69,9 +74,9 @@ const HomePage = () => {
 				</div>
 				<div className="home-content-main-login">
 					{!onLogin && (
-						<Link id="home-content-main-login-Link" to="/login">
+						<div id="home-content-main-login-Link" onClick={toLogin}>
 							로그인하여 나만의 영화책장만들기
-						</Link>
+						</div>
 					)}
 					{onLogin && (
 						<Link id="home-content-main-userinfo-Link" to="/userinfo">
