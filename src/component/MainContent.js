@@ -95,7 +95,7 @@ class MainContent extends Component {
             <div className='content'>
                 <div className='banner-content'>
                     { isLoading ? "Loading..." :                         
-                        <BannerMovieView key={bannerData.movieId}
+                        <BannerMovieView
                             id={this.handelNull(bannerData.movieId)}
                             title={this.handelNull(bannerData.movieTitle)}
                             stillcut={this.handelNull(bannerData.movieStillcut)}

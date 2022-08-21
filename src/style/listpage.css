@@ -83,6 +83,11 @@ html, body{
     text-align: justify;
 }
 
+#listpage-content-search-null{
+    margin-top: 5%;
+    text-align: center;
+}
+
 .listpage-content-result-item{
     display: inline-block;
     width: 220px;
