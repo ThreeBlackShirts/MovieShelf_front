@@ -141,7 +141,7 @@
 }
 
 .reviewpage-comment{
-    min-height: 120px;
+    min-height: 140px;
     vertical-align: top;
     background-color: rgba(230, 230, 230, 0.8);
     border-radius: 15px;
@@ -155,20 +155,25 @@
     min-height: 60px;
     text-align: left;
     font-weight: bold;
+    vertical-align: middle;
+    width: 100%;
+    margin: auto;
 }
 
     .reviewpage-comment-user{
         display: inline-block;
         width: 15%;
         text-align: center;
-        vertical-align: middle;
+        vertical-align: bottom;
     }
         .reviewpage-comment-user-id{
             vertical-align: middle;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .reviewpage-comment-user-rating{
-            vertical-align: bottom;
+            position: relative;
         }
 
     .reviewpage-comment-title{
@@ -180,25 +185,52 @@
         line-height: 60px;
     }
         
-    .reviewpage-comment-content-btn-div{
+    .reviewpage-comment-content-userbtn-div{
         display: inline-block;
-        width: 10%;
-        text-align: center;
+        width: 12%;
+        height: 100%;
+        text-align: right;
         vertical-align: middle;
     }
+        .reviewpage-comment-content-btn-wrap{
+            display: inline-block;
+        }
+
+    .reviewpage-comment-content-likebtn-div{
+        display: inline-block;
+        text-align: center;
+        vertical-align: middle;
+        width: 6%;
+        height: 100%;
+    }
+
+        .detailpage-reviews-review-content-like{
+            text-align: center;
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+        }
+
+        .detailpage-reviews-review-content-like-count{
+            display: inline-block;
+            text-align: center;
+            vertical-align: bottom;
+        }
 
     .reviewpage-comment-content-btn{
         display: inline-block;
-        width: 28px;
-        height: 28px;
-        text-align: center;
         vertical-align: middle;
-        margin-left: 5px;
-        margin-right: 5px;
+        width: 30px;
+        height: 30px;
+        margin-left: 3px;
     }
 
-    .reviewpage-comment-content-btn:first-child{
-        margin-right: 15px;
+    #moviereview-content-editbtn-icon, #moviereview-content-deletebtn-icon{
+        width: 24px;
+        height: 24px;
+        margin-left: 6px;
+        vertical-align: middle;
+        font-weight: lighter;
     }
 
     .reviewpage-comment-content-btn-icon{
@@ -220,7 +252,7 @@
 
 .reviewpage-comment-main{
     text-align: center;
-    min-height: 120px;
+    min-height: 80px;
 }
     .reviewpage-comment-content{
         display: block;    

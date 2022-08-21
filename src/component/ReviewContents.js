@@ -62,13 +62,13 @@ function MovieDetailTitle({title}) {
 
 function WriterCheck(info){
     return(            
-        <div className='reviewpage-comment-content-btn-div'>                
+        <div className='reviewpage-comment-content-btn-wrap'>                
             <div className='reviewpage-comment-content-btn'>
                 <GoEditReview 
                     reviewId={info.reviewId} movieId={info.movieId}/>
             </div>
             <div className='reviewpage-comment-content-btn'>
-                <MdDelete className='reviewpage-comment-content-btn-icon' title="후기 삭제" onClick={() => DeleteReview(info.reviewId)}/>
+                <MdDelete className='reviewpage-comment-content-btn-icon' id="moviereview-content-deletebtn-icon" title="후기 삭제" onClick={() => DeleteReview(info.reviewId)}/>
             </div>
         </div>
     )
@@ -85,8 +85,10 @@ function MovieReview({reviewId, movieId, writer, user, userNickname, title, rate
                 </div>
                 <div className='reviewpage-comment-title'>{ title == '' ? "제목 없음" : title }</div>
                 
-                {writer !== user ? "" : <WriterCheck reviewId={reviewId} movieId={movieId} /> }
-                <div className='reviewpage-comment-content-btn-div'> 
+                <div className="reviewpage-comment-content-userbtn-div">
+                    {writer !== user ? "" : <WriterCheck reviewId={reviewId} movieId={movieId} /> }
+                </div>
+                <div className='reviewpage-comment-content-likebtn-div'> 
                     <div className='reviewpage-comment-content-btn'>
                         {isheart && <FaHeart className='detailpage-reviews-review-content-like' title="리뷰 좋아요 취소" onClick={() => handleLReviewLike(reviewId)}/>}
                         {!isheart && <FaRegHeart className='detailpage-reviews-review-content-like' title="리뷰 좋아요" onClick={() => handleLReviewLike(reviewId)}/>}

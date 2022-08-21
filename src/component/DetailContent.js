@@ -351,6 +351,7 @@ const DetailContent = () => {
                                             handleLReviewLike={handleLReviewLike}
                                         />
                                     ))}
+
                     </div>
                 </div>
                 <br/>

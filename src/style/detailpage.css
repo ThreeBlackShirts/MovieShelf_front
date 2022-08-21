@@ -322,8 +322,8 @@ html{
 .detailpage-reviews-review-content{
     display: inline-block;
     text-align: justify;
-    width:65%;
     vertical-align: middle;
+    width:65%;
 }
 
     .detailpage-reviews-review-content-text{
