@@ -63,13 +63,29 @@ html{
     padding-bottom: 10px;
 }
 
+#detailpage-info-box-title-content{
+    display: inline-block;
+    width: 100%;
+}
+
 #detailpage-info-title{
+    width: 70%;
     min-height: 5vh;
+    float: left;
     font-size: 30px;
     font-weight: bold;
     text-align: left;
-    padding-left: 20px;
-    padding-top: 10px;
+    padding-left: 8vw;
+    padding-top: 5vh;
+    padding-bottom: 1vh;
+    text-shadow: 3px 3px 3px gray;
+}
+
+.detailpage-info-wish-btn{
+    padding-right: 12vw;
+    padding-top: 6vh;
+    padding-bottom: 1vh;
+    float: right;
 }
 
 #detailpage-info-anchor{
@@ -82,7 +98,7 @@ html{
     .detailpage-info-anchor-a{
         display: inline-block;
         width: 15%;
-        font-size: 18px;
+        font-size: 16px;
         font-weight: bold;
         text-decoration: underline;
         color: black;
@@ -102,7 +118,7 @@ html{
     
 .detailpage-info-hr-left{
     display: inline-block;
-    width: 33%;
+    width: 35%;
     height: 1px;
     background-color: black;
     vertical-align: middle;
@@ -112,7 +128,7 @@ html{
 
 .detailpage-info-hr-right{
     display: inline-block;
-    width: 33%;
+    width: 35%;
     height: 1px;
     background-color: black;
     vertical-align: middle;
@@ -154,17 +170,18 @@ html{
 
 #detailpage-info-majorinfo-basic{
     display: inline-block;
-    width: 64%;
+    width: 55%;
     text-align: left;
     vertical-align: middle;
     margin: 10px 20px 10px 20px;
 }
 
 .detailpage-info-majorinfo-basic-content{
-    font-size: 18px;
+    font-size: 14px;
 }
 
 #detailpage-info-majorinfo-basic p{
+    font-size: 16px;
     text-align: justify;
 }
 
@@ -285,6 +302,11 @@ html{
     width: 80%;
     text-align: justify;
     margin: auto;
+}
+
+#detailpage-reviews-review-none{
+    padding-top: 12vh;
+    text-align: center;
 }
 
 .detailpage-reviews-review{

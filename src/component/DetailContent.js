@@ -272,14 +272,16 @@ const DetailContent = () => {
         <div id='detailpage-content'>
             <div id='gobackbtn'><MdKeyboardArrowLeft id='gobackbtn-icon' onClick={goBackBtn}/></div>
             <div id='detailpage-info-box'>
-                { isLoading ? "Loading..." : < MovieDetailTitle title={movie.movieTitle} /> }
+                <div id='detailpage-info-box-title-content'>
+                    { isLoading ? "Loading..." : < MovieDetailTitle title={movie.movieTitle} /> }
+                    {checkwish && <BsBookmarkHeartFill className='detailpage-info-wish-btn' id='detailpage-info-likebtn-icon' onClick={handleLWishList}/>}
+                    {!checkwish && <BsBookmarkHeart className='detailpage-info-wish-btn' id='detailpage-info-likebtn-icon' onClick={handleLWishList}/>}
+                </div>
                 <div id='detailpage-info-anchor'>
                     <a href='#detailpage-info-majorinfo' className='detailpage-info-anchor-a'>주요 정보</a>
                     <a href='#detailpage-img-trailer' className='detailpage-info-anchor-a'>트레일러</a>
                     <a href='#detailpage-img-stillcut' className='detailpage-info-anchor-a'>스틸컷</a>
                     <a href='#detailpage-review-box' className='detailpage-info-anchor-a'>평점/리뷰</a>
-                    {checkwish && <BsBookmarkHeartFill className='detailpage-info-anchor-a' id='detailpage-info-likebtn-icon' onClick={handleLWishList}/>}
-                    {!checkwish && <BsBookmarkHeart className='detailpage-info-anchor-a' id='detailpage-info-likebtn-icon' onClick={handleLWishList}/>}
                 </div>
                 <div id='detailpage-info-majorinfo'>
                     <h4 className='detailpage-box-title'><hr className='detailpage-info-hr-left'/>주요 정보<hr className='detailpage-info-hr-right'/></h4>
@@ -340,7 +342,7 @@ const DetailContent = () => {
                 <div id='detailpage-reviews-review-table-wrap'>
                     <div id='detailpage-reviews-review-table'>
                         {isLoading ? "Loading..." : 
-                                    reviewContent.length == 0 ? "등록된 리뷰가 없습니다" : reviewContent.map( review => (
+                                    reviewContent.length == 0 ? <div id='detailpage-reviews-review-none'>등록된 리뷰가 없습니다</div> : reviewContent.map( review => (
                                         <MovieTitleReview  key={review.title}
                                             reviewId={review.reviewId}
                                             userNickname={review.user}

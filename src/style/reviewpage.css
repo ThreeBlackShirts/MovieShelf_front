@@ -135,6 +135,11 @@
     margin: auto;
 }
 
+#reviewpage-comment-none{
+    padding-top: 20vh;
+    color: gray;
+}
+
 #reviewpage-comment-nothing{
     font-size: 20px;
     font-family: 'EliceDigitalBaeum_Regular';
