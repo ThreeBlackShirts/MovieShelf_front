@@ -1,0 +1,14 @@
+.redirectpage{
+    min-height: 100vh;
+    width: 100%;
+    text-align: center;
+    background-color: black;
+}
+
+.redirectpage-icon{
+    font-family: 'EliceDigitalBaeum_Regular';
+    color: beige;
+    position: absolute;
+    top: 45vh;
+    left: 45%;
+}
