@@ -18,10 +18,10 @@ import { BsFileEarmarkPlus } from "react-icons/bs";
 
 const ReviewContents = () => {
     let navigate = useNavigate();
-    const [userEmail, setUserEmail] = useState(localStorage.getItem("authenticatedUser") || '');
+    const [userEmail] = useState(localStorage.getItem("authenticatedUser") || '');
     const [onLogin] = useState(AuthenticationService.isUserLoggedIn);
     const [isLoading, setIsLoading] = useState(true);
-    const [movieId, setMovieId] = useState(useParams().movieid);
+    const [movieId] = useState(useParams().movieid);
     const [movie, setMovie] = useState([]);
     const [reviewContent, setReviewContent] = useState([]);
     const [reviewHeart, setReviewHeart] = useState([]);
@@ -34,13 +34,11 @@ const ReviewContents = () => {
                 .then((response) => {
                     setMovie(response.data.data)
                 }).catch(() => {
-                    console.log("findMovieId failed")
                     alert("findMovieId fail");
             }); 
             ReviewService
                 .findReviewByMovieId(movieId)
                 .then((response) => {
-                    console.log(response.data.data)
                     setReviewContent(response.data.data)
                     let dataLength = response.data.data.length
                     let rateData = []
@@ -53,7 +51,6 @@ const ReviewContents = () => {
                                     setReviewRate(rateData)
                                 }
                             }).catch((error) => {
-                                console.log("rate error")
                                 console.log(error)
                             })
                     ))
@@ -72,16 +69,13 @@ const ReviewContents = () => {
                                     setIsLoading(false)
                                 }
                             }).catch((error) => {
-                                console.log("like error")
                                 console.log(error)
                             })
                     ))
                 }).catch(() => {
-                    console.log("findReviewByMovieId failed")
                     alert("findReviewByMovieId fail");
                 });       
         } else {
-            console.log("movieId error")
             history.back()
         }
     },[]);
@@ -110,7 +104,6 @@ const ReviewContents = () => {
                         navigate(`/review/write/${movieId}`)
                     }
                 }).catch(() => {
-                    console.log("searchReviewByUseremail failed")
                     alert("searchReviewByUseremail fail");
                 }); 
         }
@@ -123,14 +116,11 @@ const ReviewContents = () => {
         }else{
             let heart = false
             reviewHeart.map( data =>
-                data.reviewId === reviewId ? data.isheart === true ? heart = true : null : console.log("오류: 해당하는 리뷰 없음")
+                data.reviewId === reviewId ? data.isheart === true ? heart = true : null : null
             )
             if(heart){
-                console.log("리뷰 좋아요 취소")
-        
                 LikeService.deleteLike(userEmail, reviewId)
                     .then((response)=>{
-                        console.log("deleteReviewLike service :")
                         setReviewHeart(
                             reviewHeart.map( data =>
                                 data.reviewId === reviewId ? { ...data, isheart: !data.isheart } : data
@@ -142,16 +132,12 @@ const ReviewContents = () => {
                             )
                         )
                     }).catch((error) => {
-                        console.log("wishlist error :")
                         console.log(error)
                     })
             }
             else{
-                console.log("리뷰 좋아요")
-        
                 LikeService.addLike(userEmail, reviewId)
                     .then((response)=>{
-                        console.log("addReviewLike service :")
                         setReviewHeart(
                             reviewHeart.map( data =>
                                 data.reviewId === reviewId ? { ...data, isheart: !data.isheart } : data
@@ -163,7 +149,6 @@ const ReviewContents = () => {
                             )
                         )
                     }).catch((error) => {
-                        console.log("wishlist error :")
                         console.log(error)
                     })
             }
@@ -201,7 +186,6 @@ const ReviewContents = () => {
     }
 
     function goBackBtn(){
-        console.log("goback btn clicked!")
         history.back()
     }
 

@@ -24,7 +24,6 @@ function GoEditReview(data){
 }
 
 function DeleteReview(info){
-    console.log("delete review clicked")
     if(confirm("리뷰를 삭제하시겠습니까?") == true) {
     ReviewService.deleteReview(info.reviewId)
         .then(()=> {

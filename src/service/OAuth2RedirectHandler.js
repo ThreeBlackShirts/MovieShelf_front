@@ -14,13 +14,10 @@ const OAuth2RedirectHandler = (props) => {
 	useEffect(async () => {
 		await AuthenticationService.kakaoLogin(code)
 			.then((response) => {
-				console.log('kakaoLogin');
-				console.log(response.data.data.token);
-				console.log(response.data.data.userEmail);
 				AuthenticationService.registerSuccessfulLoginForJwt(response.data.data.userEmail, response.data.data.token);
 			})
 			.catch((error) => {
-				console.log('kakaoLogin Failed');
+				console.log(error);
 			});
 		navigate('/main');
 	}, []);

@@ -19,25 +19,19 @@ const ListContent = () => {
     const onChangeInput = e => setSearchInput(e.target.value);
         
     useEffect(() => {
-        console.log("search start")
         if(searchInput !== null && searchInput !== ""){
-            console.log(searchInput +" search")
             MovieService
                 .search(searchInput)
                 .then((response) => {
-                    console.log(response.data.data)
                     if(response.data.data == [] || response.data.data == null || response.data.data.length == 0){
                         setIsNull(true)
                     } else {
                         setMovie(response.data.data)
-                        console.log(movie)
                     }
                     setIsLoading(false)
                 }).catch(() => {
-                    console.log("search failed")
                 });
         }else{
-            console.log("input to listpage error")
             navigate(-1)
         }
     },[]);

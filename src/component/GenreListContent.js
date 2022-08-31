@@ -30,15 +30,11 @@ class GenreListContent extends Component {
     }
 
     genreMovieList(target) {
-        //console.log("genre list Movie")
-        //console.log("INPUT : " + target)
         MovieService
             .genreCateory(target)
             .then((response) => {
                 this.setState({ genreData: response.data.data, isLoading: false })
-                //console.log(this.state.genreData)
             }).catch(() => {
-                console.log("genre failed")
                 alert("genre fail");
             });
     }
@@ -81,7 +77,6 @@ class GenreListContent extends Component {
                 </div>
                 <div className='listpage-content-result-wrap'>  
                     <div className="listpage-content-result">
-                        {/* <div className="listpage-content-result-target">장르 : {this.state.targetGenre}</div> */}
                         { isLoading ? "Loading..." : genreData.map( movie => (
                             <GenreMovieList key={movie.movieTitle}
                                 id={movie.movieId}

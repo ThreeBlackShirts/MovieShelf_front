@@ -23,15 +23,12 @@ const EditReviewContent = () => {
             ReviewService
                 .searchReviewById(reviewId)
                 .then((response) => {
-                    console.log(response.data.data)
                     setReviewTitle(response.data.data.title)
                     setReviewContent(response.data.data.content)
                 }).catch(() => {
-                    console.log("searchReviewById failed")
                     alert("searchReviewById fail");
             });    
         } else {
-            console.log("reviewId error")
             navigate(-1)
         }
     },[]);
@@ -56,8 +53,7 @@ const EditReviewContent = () => {
     function editReview(){
         if(reviewTitle == "" || reviewContent == "") {
             alert("리뷰 제목과 내용 모두 입력해주세요!")
-        } else {
-            console.log("edit review clicked")        
+        } else {    
             ReviewService
                 .editReview(reviewId, reviewTitle, reviewContent)
                 .then(() => {
@@ -66,11 +62,10 @@ const EditReviewContent = () => {
                             alert("리뷰 수정이 완료되었습니다.")
                             navigate(-1)
                         }).catch(() => {
-                            console.log("editRate failed")
                             alert("editRate fail")
                     });
                 }).catch((error) => {
-                    console.log("edit error")
+                    console.log(error)
                 })
         }
         

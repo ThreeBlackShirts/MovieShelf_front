@@ -26,63 +26,48 @@ class MainContent extends Component {
     }
 
     bannerMovie() {
-        console.log("banner Movie")
         MovieService
             .bannerMovie()
             .then((response) => {
                 this.setState({ bannerData: response.data.data, isLoading: false })
-                console.log(this.state.bannerData)
             }).catch(() => {
-                console.log("banner failed")
                 alert("banner fail");
             });
     }
 
     recommendMovieList() {
-        console.log("Recommendation Movie")
         if(this.state.target !== null && this.state.target !== ""){
             MovieService
                 .recommendation()
                 .then((response) => {
                     this.setState({ recommendData: response.data.data, isLoading: false })
-                    console.log(this.state.recommendData)
                 }).catch(() => {
-                    console.log("Recommendation failed")
                     alert("Recommendation fail");
                 });
         }else{
-            console.log("target error")
         }
     }
 
     nationMovieList(target) {
-        console.log("nation category Movie")
         MovieService
             .nationCateory(target)
             .then((response) => {
                 this.setState({ nationData: response.data.data, isLoading: false })
-                console.log(this.state.nationData)
             }).catch(() => {
-                console.log("category failed")
                 alert("category fail");
             });
     }
 
     genreMovieList(target, count) {
-        console.log("genre category Movie")
-        console.log("INPUT : " + target + " " + count)
         MovieService
             .genreCateory(target)
             .then((response) => {
                 if(count == 1){
                     this.setState({ genreData1: response.data.data, isLoading: false })
-                    console.log(this.state.genreData1)
                 }else if(count == 2){
                     this.setState({ genreData2: response.data.data, isLoading: false })
-                    console.log(this.state.genreData2)
                 }
             }).catch(() => {
-                console.log("category failed")
                 alert("category fail");
             });
     }
@@ -110,7 +95,7 @@ class MainContent extends Component {
             <div className='content'>
                 <div className='banner-content'>
                     { isLoading ? "Loading..." :                         
-                        <BannerMovieView key={bannerData.movieId}
+                        <BannerMovieView
                             id={this.handelNull(bannerData.movieId)}
                             title={this.handelNull(bannerData.movieTitle)}
                             stillcut={this.handelNull(bannerData.movieStillcut)}

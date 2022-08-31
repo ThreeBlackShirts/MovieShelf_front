@@ -17,10 +17,10 @@ import MovieRatingService from 'service/MovieRatingService';
 
 const DetailContent = () => {
 
-    const [userEmail, setUserEmail] = useState(localStorage.getItem("authenticatedUser") || '');
+    const [userEmail] = useState(localStorage.getItem("authenticatedUser") || '');
     const [onLogin] = useState(AuthenticationService.isUserLoggedIn);
     const [isLoading, setIsLoading] = useState(true);
-    const [movieId, setMovieId] = useState(useParams().movieid);
+    const [movieId] = useState(useParams().movieid);
     const [movie, setMovie] = useState([]);
     const [reviewContent, setReviewContent] = useState([]);
     const [checkwish, setCheckwish] = useState(false);
@@ -30,14 +30,11 @@ const DetailContent = () => {
     let navigate = useNavigate();
 
     useEffect(() => {
-        console.log("detail Movie")
         if(movieId !== null && movieId !== ""){
-            console.log("target movieId : " +  movieId)
             MovieService
                 .detailById(movieId)
                 .then((response) => {
                     setMovie(response.data.data)
-                    console.log("Movie Review")
                     ReviewService
                         .findReviewByMovieId(movieId)
                         .then((response) => {
@@ -54,7 +51,6 @@ const DetailContent = () => {
                                             setReviewRate(rateData)
                                         }
                                     }).catch((error) => {
-                                        console.log("rate error")
                                         console.log(error)
                                     })
                             ))
@@ -73,12 +69,10 @@ const DetailContent = () => {
                                             setIsLoading(false)
                                         }
                                     }).catch((error) => {
-                                        console.log("like error")
                                         console.log(error)
                                     })
                             ))
                         }).catch(() => {
-                            console.log("findReviewByMovieId failed")
                             alert("findReviewByMovieId fail");
                     });
                     if(onLogin) {
@@ -90,16 +84,13 @@ const DetailContent = () => {
                                 else
                                     setCheckwish(false)
                             }).catch(() => {
-                                console.log("isWishBtUserEmail failed")
                                 alert("isWishBtUserEmail fail");
                         }); 
                     }
                 }).catch(() => {
-                    console.log("detail failed")
                     alert("detail fail");
                 });
         }else{
-            console.log("target error")
             navigate(-1)
         }
     },[]);
@@ -132,7 +123,6 @@ const DetailContent = () => {
                         navigate(`/review/write/${movieId}`)
                     }
                 }).catch(() => {
-                    console.log("searchReviewByUseremail failed")
                     alert("searchReviewByUseremail fail");
                 }); 
         }
@@ -147,7 +137,6 @@ const DetailContent = () => {
     }
 
     function goBackBtn(){
-        console.log("goback btn clicked!")
         navigate(-1)
     }
     
@@ -168,31 +157,25 @@ const DetailContent = () => {
             alert("로그인이 필요합니다")
             navigate("/login")
         }else{
-            console.log("current this.state.checkwish:" + checkwish)
             if(checkwish){
                 // wishlist.classList.add("background-color: pink");
                 setCheckwish(false)
-                console.log("찜 취소")
 
                 WishListService.deleteWishList(userEmail, movieId)
                     .then((response)=>{
-                        console.log("wishlist service :")
                         alert('찜 취소')
                     }).catch((error) => {
-                        console.log("wishlist error :")
                         console.log(error)
                     })
             }
             else{
                 setCheckwish(true)
-                console.log("찜")
 
                 WishListService.addWishList(userEmail,movieId)
                     .then((response)=>{
-                        console.log("wishlist service :")
                         alert("찜꽁")
                     }).catch((error) => {
-                        console.log("wishlist error :")
+                        console.log(error)
                     })
             }
         }
@@ -208,11 +191,8 @@ const DetailContent = () => {
                 data.reviewId === reviewId ? data.isheart === true ? heart = true : null : null
             )
             if(heart){
-                console.log("리뷰 좋아요 취소")
-        
                 LikeService.deleteLike(userEmail, reviewId)
                     .then((response)=>{
-                        console.log("deleteReviewLike service :")
                         setReviewHeart(
                             reviewHeart.map( data =>
                                 data.reviewId === reviewId ? { ...data, isheart: !data.isheart } : data
@@ -224,16 +204,12 @@ const DetailContent = () => {
                             )
                         )
                     }).catch((error) => {
-                        console.log("wishlist error :")
                         console.log(error)
                     })
             }
             else{
-                console.log("리뷰 좋아요")
-        
                 LikeService.addLike(userEmail, reviewId)
                     .then((response)=>{
-                        console.log("addReviewLike service :")
                         setReviewHeart(
                             reviewHeart.map( data =>
                                 data.reviewId === reviewId ? { ...data, isheart: !data.isheart } : data
@@ -245,7 +221,6 @@ const DetailContent = () => {
                             )
                         )
                     }).catch((error) => {
-                        console.log("wishlist error :")
                         console.log(error)
                     })
             }

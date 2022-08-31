@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import {TopRankMovieList} from 'component/MovieContent';
 import MovieService from 'service/MovieService';
@@ -19,15 +18,13 @@ const MovieTopRankPage = () => {
     useEffect(() => {
         MovieService.topRank()
             .then((response) => {
-                console.log(response.data.data)
                 if(response.data.data == [] || response.data.data == null || response.data.data.length == 0){
-                    console.log("Movie Ranking Null")
                 } else {
                     setMovie(response.data.data)
                 }
                 setIsLoading(false)
-            }).catch(() => {
-                console.log("search failed")
+            }).catch((error) => {
+                console.log(error)
             });
     },[]);
 
